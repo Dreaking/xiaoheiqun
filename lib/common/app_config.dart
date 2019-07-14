@@ -46,12 +46,13 @@ class AppConfig {
   ///
 
   /// 按钮名称
-  static const BOTTOM_TAB_BAR_TITLE = <String>["消息", "动态", "收藏", "我的"];
+  static const BOTTOM_TAB_BAR_TITLE = <String>["消息", "动态", "", "收藏", "我的"];
 
   ///按钮图标，未选择
   static const BOTTOM_TAB_BAR_IMAGE = <String>[
     "image/index_share.png",
     "image/index_home.png",
+    "",
     "image/index_card.png",
     "image/index_book.png"
   ];
@@ -60,6 +61,7 @@ class AppConfig {
   static const BOTTOM_TAB_BAR_IMAGE_SELECT = <String>[
     "image/index_share_select.png",
     "image/index_home_select.png",
+    "",
     "image/index_card_select.png",
     "image/index_book_select.png"
   ];
@@ -84,7 +86,7 @@ class AppConfig {
       Color.fromARGB(0xff, 0xd0, 0x02, 0x1b);
 
   ///是否显示浮动按钮
-  static const IS_BOTTOM_FLOAT_ICON = true;
+  static const IS_BOTTOM_FLOAT_ICON = false;
 
   ///浮动按钮
   static const BOTTOM_TAB_BAR_FLOAT_ICON = Icon(

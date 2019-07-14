@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 
@@ -52,11 +53,13 @@ class EditIndexState extends State<EditIndex> {
                     ),
                   ),
                   onTap: () {
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => TinkerScaffold()),
-                      (route) => route == null,
-                    );
+//                    Navigator.pushAndRemoveUntil(
+//                      context,
+//                      CupertinoPageRoute(
+//                          builder: (context) => TinkerScaffold()),
+//                      (route) => route == null,
+//                    );
+                    Navigator.pop(context);
                   },
                 ),
               ),
@@ -177,17 +180,19 @@ class EditIndexState extends State<EditIndex> {
                                   height: 20,
                                 ),
                                 onTap: () {
-                                  setState(() {
-                                    if (select == 0) {
+                                  if (select == 0) {
+                                    setState(() {
                                       xieyi = "image/sel_@2x_294.png";
                                       select = 1;
                                       xieyiColor = Colors.red;
-                                    } else {
+                                    });
+                                  } else {
+                                    setState(() {
                                       xieyi = "image/sel_@2x_290.png";
                                       select = 0;
                                       xieyiColor = Colors.black12;
-                                    }
-                                  });
+                                    });
+                                  }
                                 },
                               ),
                               Container(
@@ -221,11 +226,12 @@ class EditIndexState extends State<EditIndex> {
             )),
         //重写返回操作
         onWillPop: () {
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => TinkerScaffold()),
-            (route) => route == null,
-          );
+//          Navigator.pushAndRemoveUntil(
+//            context,
+//            CupertinoPageRoute(builder: (context) => TinkerScaffold()),
+//            (route) => route == null,
+//          );
+          Navigator.pop(context);
         });
   }
 

@@ -11,6 +11,7 @@ import 'package:xiaoheiqun/pages/edit/index.dart';
 import '../pages/main/index.dart';
 import '../pages/message//index.dart';
 import '../pages/user//index.dart';
+import 'EnterExitRoute.dart';
 import 'app_config.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:xiaoheiqun/login.dart';
@@ -332,7 +333,8 @@ class TinkerScaffold extends StatefulWidget {
   }
 }
 
-class TinkerScaffoldState extends State<TinkerScaffold> {
+class TinkerScaffoldState extends State<TinkerScaffold>
+    with TickerProviderStateMixin {
   List<Widget> _screenList = List<Widget>();
   List<BottomNavigationBarItem> _itemList = List<BottomNavigationBarItem>();
   var _bottomAppBarItemList;
@@ -367,9 +369,9 @@ class TinkerScaffoldState extends State<TinkerScaffold> {
         floatingActionButton: AppConfig.IS_BOTTOM_FLOAT_ICON
             ? FloatingActionButton(
                 onPressed: () => {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => EditIndex())),
-                    },
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => EditIndex())),
+                },
                 child: AppConfig.BOTTOM_TAB_BAR_FLOAT_ICON,
                 backgroundColor: AppConfig.BOTTOM_TAB_BAR_COLOR_SELECT,
               )
@@ -382,10 +384,12 @@ class TinkerScaffoldState extends State<TinkerScaffold> {
   }
 
   _switchTab(index) {
-    setState(() {
-      _currentIndex = index;
-      _initBottomAppVarItemList();
-    });
+    if (index == 2) {
+    } else
+      setState(() {
+        _currentIndex = index;
+        _initBottomAppVarItemList();
+      });
     _pageController.animateToPage(
       _currentIndex,
       duration: Duration(milliseconds: 300),
@@ -412,20 +416,47 @@ class TinkerScaffoldState extends State<TinkerScaffold> {
     );
   }
 
-  BottomNavigationBar _createBottonNavigationBar() {
-    return BottomNavigationBar(
-      currentIndex: _currentIndex,
-      elevation: 10.0,
-      onTap: (index) => _switchTab(index),
-      items: _itemList,
-      type: BottomNavigationBarType.fixed,
+  Widget _createBottonNavigationBar() {
+    return Container(
+        height: 55,
+        child: Stack(
+          children: <Widget>[
+            Align(
+              child: BottomNavigationBar(
+                elevation: 20,
+                currentIndex: _currentIndex,
+                onTap: (index) => _switchTab(index),
+                items: _itemList,
+                type: BottomNavigationBarType.fixed,
 //      fixedColor: AppConfig.BOTTOM_TAR_BAR_COLOR[1],
-      selectedItemColor: AppConfig.BOTTOM_TAB_BAR_COLOR_SELECT,
-      unselectedItemColor: AppConfig.BOTTOM_TAB_BAR_COLOR,
-      selectedFontSize: AppConfig.BOTTOM_TAB_BAR_TITLE_SIZE_SELECT,
-      unselectedFontSize: AppConfig.BOTTOM_TAB_BAR_TITLE_SIZE,
-      backgroundColor: Colors.white,
-    );
+                selectedItemColor: AppConfig.BOTTOM_TAB_BAR_COLOR_SELECT,
+                unselectedItemColor: AppConfig.BOTTOM_TAB_BAR_COLOR,
+                selectedFontSize: AppConfig.BOTTOM_TAB_BAR_TITLE_SIZE_SELECT,
+                unselectedFontSize: AppConfig.BOTTOM_TAB_BAR_TITLE_SIZE,
+                backgroundColor: Colors.white,
+              ),
+              alignment: Alignment.bottomCenter,
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: GestureDetector(
+                child: new Image.asset(
+                  "image/fabu_btn.png",
+                  width: 40.0,
+                  height: 40.0,
+                ),
+                onTap: () {
+//                  Navigator.push(context,
+//                      CupertinoPageRoute(builder: (context) => EditIndex()));
+                  Navigator.push(
+                      context,
+                      EnterExitRoute(
+                          exitPage: TinkerScaffold(), enterPage: EditIndex()));
+                },
+              ),
+            )
+          ],
+        ));
   }
 
   ///初始化pagecontroller
@@ -455,25 +486,25 @@ class TinkerScaffoldState extends State<TinkerScaffold> {
       _bottomAppBarItemList.add(
         InkWell(
           onTap: () async => {
-                if (i == 1)
+            if (i == 1)
+              {
+                _switchTab(i),
+              }
+            else
+              {
+                print("aaaaaaaaaaaaaaaaaa"),
+                prefs = await SharedPreferences.getInstance(),
+                print(prefs.get("user1")),
+                if (prefs.get("user1") == null)
                   {
-                    _switchTab(i),
+//                        Tinker.toast("为空"),
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Login())),
                   }
                 else
-                  {
-                    print("aaaaaaaaaaaaaaaaaa"),
-                    prefs = await SharedPreferences.getInstance(),
-                    print(prefs.get("user1")),
-                    if (prefs.get("user1") == null)
-                      {
-//                        Tinker.toast("为空"),
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Login())),
-                      }
-                    else
-                      _switchTab(i),
-                  }
-              },
+                  _switchTab(i),
+              }
+          },
           borderRadius: BorderRadius.all(Radius.circular(100)),
           child: AspectRatio(
             aspectRatio: 1,
@@ -519,8 +550,8 @@ class TinkerScaffoldState extends State<TinkerScaffold> {
         _bottomAppBarItemList.add(
           GestureDetector(
             onTap: () => {
-                  _switchTab(i),
-                },
+              _switchTab(i),
+            },
             child: AspectRatio(
               aspectRatio: 1,
               child: Container(
@@ -568,6 +599,7 @@ class TinkerScaffoldState extends State<TinkerScaffold> {
     _screenList
       ..add(MessageIndex())
       ..add(MainIndex())
+      ..add(null)
       ..add(ShoucangIndex())
       ..add(UserIndex());
   }

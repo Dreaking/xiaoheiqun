@@ -101,6 +101,7 @@ flutter:
     - image/vip_copy4@2x.png
     - image/talk@2x.png
     - image/weipay@2x.png
+    - image/fabu_btn.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
