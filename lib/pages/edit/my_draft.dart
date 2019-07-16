@@ -12,8 +12,9 @@ class draftState extends State<draft> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Material(
-      child: Scaffold(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,

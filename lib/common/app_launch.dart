@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -35,44 +36,19 @@ class TinkerLaunchState extends State<TinkerLaunch>
     ).animate(_animationController)
       ..addStatusListener(
         (status) => {
-              if (AnimationStatus.completed == status)
-                {
-                  _timer = Timer(
-                    Duration(milliseconds: 2000),
-                    () => {
-                          Navigator.of(context).pushAndRemoveUntil(
-                            PageRouteBuilder(
-                              pageBuilder: (
-                                ctx,
-                                animation1,
-                                animation2,
-                              ) {
-                                return TinkerScaffold();
-                              },
-                              transitionsBuilder: (
-                                BuildContext context,
-                                Animation<double> animation,
-                                Animation<double> secondaryAnimation,
-                                Widget child,
-                              ) {
-                                return FadeTransition(
-                                  opacity: Tween(
-                                    begin: 0.0,
-                                    end: 1.0,
-                                  ).animate(CurvedAnimation(
-                                      parent: animation,
-                                      curve: Curves.fastOutSlowIn)),
-                                  child: child,
-                                );
-                              },
-                              transitionDuration: Duration(milliseconds: 2000),
-                            ),
-                            (route) => route == null,
-                          ),
-                        },
+          if (AnimationStatus.completed == status)
+            {
+              _timer = Timer(
+                Duration(milliseconds: 2000),
+                () => {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    CupertinoPageRoute(builder: (context) => TinkerScaffold()),
+                    (route) => route == null,
                   ),
                 },
+              ),
             },
+        },
       );
     _animationController.forward();
   }

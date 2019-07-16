@@ -19,7 +19,8 @@ class payState extends State<pay> {
     final size = MediaQuery.of(context).size;
     final width = size.width;
     // TODO: implement build
-    return Material(
+    return SafeArea(
+        child: Material(
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -355,7 +356,7 @@ class payState extends State<pay> {
           ),
         ),
       ),
-    );
+    ));
   }
 
   var xieyi = "image/sel_@2x_290.png";

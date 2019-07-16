@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/pages/user/person_data.dart';
 import 'package:xiaoheiqun/pages/user/release.dart';
 import 'package:xiaoheiqun/pages/user/settings.dart';
@@ -122,8 +123,11 @@ class UserIndexState extends State<UserIndex> {
           });
     }
 
-    return Scaffold(
-      backgroundColor: Colors.white,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: Tinker.getThemeData(),
+      home: Scaffold(
+        backgroundColor: Colors.white,
 //      appBar: AppBar(
 //        brightness: Brightness.light,
 //        title: Text(
@@ -133,354 +137,367 @@ class UserIndexState extends State<UserIndex> {
 //        elevation: 0,
 //        backgroundColor: Colors.white,
 //      ),
-      body: SingleChildScrollView(
-        child: new Column(
-          children: <Widget>[
-            new Container(
-                child: new Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                new Container(
-                  child: Text(
-                    "我的",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  margin: EdgeInsets.fromLTRB(15, 30, 0, 0),
-                ),
-                new Row(
-                  children: <Widget>[
-                    new Container(
-                      child: new Row(
-                        children: <Widget>[
-                          new Container(
-                            child: new ClipOval(
-                              child: Image.asset(
-                                "image/nologin@2x.png",
-                                height: 70,
-                              ),
-                            ),
-                            margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                            height: 120,
-                            width: 70,
-                          ),
-                          new Container(
-                            child: new Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                new Container(
-                                  child: new Text(
-                                    "用户-873",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 25),
-                                ),
-                                new Row(
-                                  children: <Widget>[
-                                    new Container(
-                                      child: new Row(
-                                        children: <Widget>[
-                                          new Container(
-                                            child: Image.asset(
-                                              "image/age@2x.png",
-                                              height: 12,
-                                            ),
-                                            margin:
-                                                EdgeInsets.fromLTRB(0, 0, 5, 0),
-                                          ),
-                                          new Text("20"),
-                                        ],
-                                      ),
-                                      margin: EdgeInsets.fromLTRB(0, 0, 15, 0),
-                                    ),
-                                    new Container(
-                                      child: new Row(
-                                        children: <Widget>[
-                                          new Container(
-                                            child: Image.asset(
-                                              "image/male@2x.png",
-                                              height: 12,
-                                            ),
-                                            margin:
-                                                EdgeInsets.fromLTRB(0, 0, 5, 0),
-                                          ),
-                                          new Text("男"),
-                                        ],
-                                      ),
-                                      margin: EdgeInsets.fromLTRB(0, 0, 15, 0),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            margin: EdgeInsets.fromLTRB(10, 25, 0, 0),
-                          ),
-                        ],
-                        //                        mainAxisAlignment: MainAxisAlignment.center,
-                      ),
-                      height: 120,
+        body: SingleChildScrollView(
+          child: new Column(
+            children: <Widget>[
+              new Container(
+                  child: new Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  new Container(
+                    child: Text(
+                      "我的",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    new Container(
-                      decoration: new BoxDecoration(
-                        image: new DecorationImage(
-                            image: new AssetImage("image/path_8@2x.png"),
-                            fit: BoxFit.contain // 填满
+                    margin: EdgeInsets.fromLTRB(15, 30, 0, 0),
+                  ),
+                  new Row(
+                    children: <Widget>[
+                      new Container(
+                        child: new Row(
+                          children: <Widget>[
+                            new Container(
+                              child: new ClipOval(
+                                child: Image.asset(
+                                  "image/nologin@2x.png",
+                                  height: 70,
+                                ),
+                              ),
+                              margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                              height: 120,
+                              width: 70,
                             ),
+                            new Container(
+                              child: new Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  new Container(
+                                    child: new Text(
+                                      "用户-873",
+                                      style: TextStyle(fontSize: 15),
+                                    ),
+                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 25),
+                                  ),
+                                  new Row(
+                                    children: <Widget>[
+                                      new Container(
+                                        child: new Row(
+                                          children: <Widget>[
+                                            new Container(
+                                              child: Image.asset(
+                                                "image/age@2x.png",
+                                                height: 12,
+                                              ),
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0, 0, 5, 0),
+                                            ),
+                                            new Text("20"),
+                                          ],
+                                        ),
+                                        margin:
+                                            EdgeInsets.fromLTRB(0, 0, 15, 0),
+                                      ),
+                                      new Container(
+                                        child: new Row(
+                                          children: <Widget>[
+                                            new Container(
+                                              child: Image.asset(
+                                                "image/male@2x.png",
+                                                height: 12,
+                                              ),
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0, 0, 5, 0),
+                                            ),
+                                            new Text("男"),
+                                          ],
+                                        ),
+                                        margin:
+                                            EdgeInsets.fromLTRB(0, 0, 15, 0),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              margin: EdgeInsets.fromLTRB(10, 25, 0, 0),
+                            ),
+                          ],
+                          //                        mainAxisAlignment: MainAxisAlignment.center,
+                        ),
+                        height: 120,
                       ),
+                      new Container(
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage("image/path_8@2x.png"),
+                              fit: BoxFit.contain // 填满
+                              ),
+                        ),
+                        child: new Container(
+                          child: new Column(
+                            children: <Widget>[
+                              new Container(
+                                child: new Image.asset(
+                                  "image/vip@2x.png",
+                                  height: 20,
+                                ),
+                                margin: EdgeInsets.fromLTRB(0, 67, 0, 0),
+                              ),
+                              new Container(
+                                child: new Text(
+                                  "有效期至2020-02-04",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color.fromRGBO(165, 165, 177, 1),
+                                  ),
+                                ),
+                                margin: EdgeInsets.fromLTRB(0, 15, 0, 10),
+                              ),
+                            ],
+                          ),
+                        ),
+                        width: 150,
+                        height: 180,
+                      ),
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  ),
+                ],
+              )),
+              new Container(
+                margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                padding: const EdgeInsets.only(top: 25.0),
+                height: 100,
+                decoration: new BoxDecoration(
+                  border: new Border(
+                      top: BorderSide(color: Theme.of(context).dividerColor),
+                      bottom:
+                          BorderSide(color: Theme.of(context).dividerColor)),
+                ),
+                child: new Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    new GestureDetector(
                       child: new Container(
                         child: new Column(
                           children: <Widget>[
                             new Container(
-                              child: new Image.asset(
-                                "image/vip@2x.png",
-                                height: 20,
-                              ),
-                              margin: EdgeInsets.fromLTRB(0, 67, 0, 0),
+                              child: new Text("0"),
+                              margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                             ),
-                            new Container(
-                              child: new Text(
-                                "有效期至2020-02-04",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Color.fromRGBO(165, 165, 177, 1),
-                                ),
-                              ),
-                              margin: EdgeInsets.fromLTRB(0, 15, 0, 10),
+                            new Text(
+                              "好友邀请",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(165, 165, 177, 1)),
                             ),
                           ],
                         ),
                       ),
-                      width: 150,
-                      height: 180,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => SecondScreen()));
+                      },
+                    ),
+                    new GestureDetector(
+                      child: new Container(
+                        child: new Column(
+                          children: <Widget>[
+                            new Container(
+                              child: new Text("0"),
+                              margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                            ),
+                            new Text(
+                              "账户余额",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(165, 165, 177, 1)),
+                            ),
+                          ],
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => balance()));
+                      },
                     ),
                   ],
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 ),
-              ],
-            )),
-            new Container(
-              margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
-              padding: const EdgeInsets.only(top: 25.0),
-              height: 100,
-              decoration: new BoxDecoration(
-                border: new Border(
-                    top: BorderSide(color: Theme.of(context).dividerColor),
-                    bottom: BorderSide(color: Theme.of(context).dividerColor)),
               ),
-              child: new Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  new GestureDetector(
-                    child: new Container(
-                      child: new Column(
-                        children: <Widget>[
-                          new Container(
-                            child: new Text("0"),
-                            margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                          ),
-                          new Text(
-                            "好友邀请",
-                            style: TextStyle(
-                                color: Color.fromRGBO(165, 165, 177, 1)),
-                          ),
-                        ],
+              new Container(
+                padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                child: new Column(
+                  children: <Widget>[
+                    new InkWell(
+                      child: new Container(
+                        margin: EdgeInsets.only(bottom: 12, top: 20),
+                        child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            new Text(
+                              "个人资料",
+                              style: Theme.of(context).textTheme.subhead,
+                            ),
+                            new Image.asset(
+                              "image/shape_copy2@2x.png",
+                              height: 15,
+                            )
+                          ],
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.push(context,
+                            CupertinoPageRoute(builder: (context) => person()));
+                      },
                     ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SecondScreen()));
-                    },
-                  ),
-                  new GestureDetector(
-                    child: new Container(
-                      child: new Column(
-                        children: <Widget>[
-                          new Container(
-                            child: new Text("0"),
-                            margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                          ),
-                          new Text(
-                            "账户余额",
-                            style: TextStyle(
-                                color: Color.fromRGBO(165, 165, 177, 1)),
-                          ),
-                        ],
+                    InkWell(
+                      child: new Container(
+                        margin: EdgeInsets.symmetric(vertical: 12),
+                        child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            new Text(
+                              "我的发布",
+                              style: Theme.of(context).textTheme.subhead,
+                            ),
+                            new Image.asset(
+                              "image/shape_copy2@2x.png",
+                              height: 15,
+                            )
+                          ],
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => release()));
+                      },
                     ),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => balance()));
-                    },
-                  ),
-                ],
-              ),
-            ),
-            new Container(
-              padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-              child: new Column(
-                children: <Widget>[
-                  new InkWell(
-                    child: new Container(
-                      margin: EdgeInsets.only(bottom: 12, top: 20),
-                      child: new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          new Text(
-                            "个人资料",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          new Image.asset(
-                            "image/shape_copy2@2x.png",
-                            height: 15,
-                          )
-                        ],
+                    InkWell(
+                      child: new Container(
+                        margin: EdgeInsets.symmetric(vertical: 12),
+                        child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            new Text(
+                              "认证用户列表",
+                              style: Theme.of(context).textTheme.subhead,
+                            ),
+                            new Image.asset(
+                              "image/shape_copy2@2x.png",
+                              height: 15,
+                            )
+                          ],
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => authentation()));
+                      },
                     ),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => person()));
-                    },
-                  ),
-                  InkWell(
-                    child: new Container(
-                      margin: EdgeInsets.symmetric(vertical: 12),
-                      child: new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          new Text(
-                            "我的发布",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          new Image.asset(
-                            "image/shape_copy2@2x.png",
-                            height: 15,
-                          )
-                        ],
+                    InkWell(
+                      child: new Container(
+                        margin: EdgeInsets.symmetric(vertical: 12),
+                        child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            new Text(
+                              "我的邀请码",
+                              style: Theme.of(context).textTheme.subhead,
+                            ),
+                            new Image.asset(
+                              "image/shape_copy2@2x.png",
+                              height: 15,
+                            )
+                          ],
+                        ),
                       ),
+                      onTap: () {
+                        showMySimpleDialog(context);
+                      },
                     ),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => release()));
-                    },
-                  ),
-                  InkWell(
-                    child: new Container(
-                      margin: EdgeInsets.symmetric(vertical: 12),
-                      child: new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          new Text(
-                            "认证用户列表",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          new Image.asset(
-                            "image/shape_copy2@2x.png",
-                            height: 15,
-                          )
-                        ],
+                    InkWell(
+                      child: new Container(
+                        margin: EdgeInsets.symmetric(vertical: 12),
+                        child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            new Text(
+                              "下载小黑裙",
+                              style: Theme.of(context).textTheme.subhead,
+                            ),
+                            new Image.asset(
+                              "image/shape_copy2@2x.png",
+                              height: 15,
+                            )
+                          ],
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => download()));
+                      },
                     ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => authentation()));
-                    },
-                  ),
-                  InkWell(
-                    child: new Container(
-                      margin: EdgeInsets.symmetric(vertical: 12),
-                      child: new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          new Text(
-                            "我的邀请码",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          new Image.asset(
-                            "image/shape_copy2@2x.png",
-                            height: 15,
-                          )
-                        ],
+                    InkWell(
+                      child: new Container(
+                        margin: EdgeInsets.symmetric(vertical: 12),
+                        child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            new Text(
+                              "设置",
+                              style: Theme.of(context).textTheme.subhead,
+                            ),
+                            new Image.asset(
+                              "image/shape_copy2@2x.png",
+                              height: 15,
+                            )
+                          ],
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => Settings()));
+                      },
                     ),
-                    onTap: () {
-                      showMySimpleDialog(context);
-                    },
-                  ),
-                  InkWell(
-                    child: new Container(
-                      margin: EdgeInsets.symmetric(vertical: 12),
-                      child: new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          new Text(
-                            "下载小黑裙",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          new Image.asset(
-                            "image/shape_copy2@2x.png",
-                            height: 15,
-                          )
-                        ],
+                    InkWell(
+                      child: new Container(
+                        margin: EdgeInsets.symmetric(vertical: 12),
+                        child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            new Text(
+                              "联系客服",
+                              style: Theme.of(context).textTheme.subhead,
+                            ),
+                            new Image.asset(
+                              "image/shape_copy2@2x.png",
+                              height: 15,
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => download()));
-                    },
-                  ),
-                  InkWell(
-                    child: new Container(
-                      margin: EdgeInsets.symmetric(vertical: 12),
-                      child: new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          new Text(
-                            "设置",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          new Image.asset(
-                            "image/shape_copy2@2x.png",
-                            height: 15,
-                          )
-                        ],
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Settings()));
-                    },
-                  ),
-                  InkWell(
-                    child: new Container(
-                      margin: EdgeInsets.symmetric(vertical: 12),
-                      child: new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          new Text(
-                            "联系客服",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          new Image.asset(
-                            "image/shape_copy2@2x.png",
-                            height: 15,
-                          )
-                        ],
-                      ),
-                    ),
-                    onTap: () {
-                      showKefu(context);
+                      onTap: () {
+                        showKefu(context);
 //                      Navigator.push(context,
 //                          MaterialPageRoute(builder: (context) => openVip()));
-                    },
-                  ),
-                ],
+                      },
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

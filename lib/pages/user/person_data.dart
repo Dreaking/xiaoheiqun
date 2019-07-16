@@ -7,6 +7,8 @@ import 'dart:ui' as ui;
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:xiaoheiqun/common/app_config.dart';
+import 'package:xiaoheiqun/common/diag.dart';
+import 'package:xiaoheiqun/common/tinker.dart';
 
 class person extends StatefulWidget {
   @override
@@ -19,6 +21,11 @@ class _personState extends State<person> {
   var username = "用户名-75";
   var qq = "";
   var alipay = "";
+  TextStyle textStyle = TextStyle(fontFamily: "Arial", fontSize: 16);
+  TextStyle textRight = TextStyle(
+      fontSize: 15,
+      color: Color.fromRGBO(158, 158, 158, 1),
+      fontFamily: "Arial");
   DateTime _dateTime = DateTime.now(); // 要做个初始化，不然后面不能传入null
   void _showDatePicker() {
     _selectDate(context);
@@ -208,6 +215,7 @@ class _personState extends State<person> {
     var mediaQueryData = MediaQueryData.fromWindow(ui.window);
 
     return MaterialApp(
+        theme: Tinker.getThemeData(),
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           resizeToAvoidBottomPadding: false,
@@ -224,15 +232,19 @@ class _personState extends State<person> {
             ),
             title: new Text(
               '个人资料',
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.normal),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18),
             ),
             actions: <Widget>[
               Container(
                 margin: EdgeInsets.only(right: 10),
                 child: Text(
                   "保存",
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
                 ),
                 alignment: Alignment.center,
               )
@@ -275,7 +287,8 @@ class _personState extends State<person> {
                           showModalBottomSheet(
                               context: context,
                               builder: (BuildContext context) {
-                                return new Column(
+                                return SafeArea(
+                                    child: new Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
                                     new ListTile(
@@ -297,7 +310,7 @@ class _personState extends State<person> {
                                       },
                                     ),
                                   ],
-                                );
+                                ));
                               });
                         },
                       ),
@@ -312,7 +325,6 @@ class _personState extends State<person> {
                       InkWell(
                         child: new Container(
                           margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           decoration: new BoxDecoration(
                               border: Border(
                                   bottom: BorderSide(
@@ -322,7 +334,7 @@ class _personState extends State<person> {
                             children: <Widget>[
                               new Text(
                                 "用户名",
-                                style: TextStyle(fontSize: 18),
+                                style: textStyle,
                               ),
                               new Container(
                                 child: new Row(
@@ -334,6 +346,7 @@ class _personState extends State<person> {
                                               maxHeight: 50, maxWidth: 90),
                                           child: new TextField(
                                             enabled: false,
+                                            style: textRight,
                                             textDirection: TextDirection.rtl,
                                             controller:
                                                 TextEditingController.fromValue(
@@ -378,7 +391,7 @@ class _personState extends State<person> {
                           children: <Widget>[
                             new Text(
                               "生日",
-                              style: TextStyle(fontSize: 18),
+                              style: textStyle,
                             ),
                             new Container(
                               child: new Row(
@@ -387,7 +400,9 @@ class _personState extends State<person> {
                                     child: new Align(
                                       child: new InkWell(
                                         child: new Text(
-                                            "${_time ?? "1991-01-01"}"),
+                                          "${_time ?? "1991-01-01"}",
+                                          style: textRight,
+                                        ),
                                         onTap: () {
                                           _showDatePicker();
                                         },
@@ -409,7 +424,6 @@ class _personState extends State<person> {
                       InkWell(
                         child: new Container(
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           decoration: new BoxDecoration(
                               border: Border(
                                   bottom: BorderSide(
@@ -419,7 +433,7 @@ class _personState extends State<person> {
                             children: <Widget>[
                               new Text(
                                 "性别",
-                                style: TextStyle(fontSize: 18),
+                                style: textStyle,
                               ),
                               new Container(
                                 child: new Row(
@@ -431,6 +445,7 @@ class _personState extends State<person> {
                                               maxHeight: 50, maxWidth: 90),
                                           child: new TextField(
                                             enabled: false,
+                                            style: textRight,
                                             textDirection: TextDirection.rtl,
                                             controller:
                                                 TextEditingController.fromValue(
@@ -459,13 +474,26 @@ class _personState extends State<person> {
                             ],
                           ),
                         ),
-                        onTap: () {
-                          showMySimpleDialog(context);
+                        onTap: () async {
+                          var result = await showDialog(
+                              context: context, //BuildContext对象
+                              barrierDismissible: false,
+                              builder: (BuildContext context) {
+                                return new LoadingDialog(
+                                  //调用对话框
+                                  text: sex_value,
+                                );
+                              });
+                          print("result=$result");
+                          setState(() {
+                            sex_value = result;
+                          });
+                          print("11111");
+                          //                          showMySimpleDialog(context);
                         },
                       ),
                       new Container(
                         height: 50,
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                         decoration: new BoxDecoration(
                             border: Border(
                                 bottom: BorderSide(
@@ -475,7 +503,7 @@ class _personState extends State<person> {
                           children: <Widget>[
                             new Text(
                               "年龄",
-                              style: TextStyle(fontSize: 18),
+                              style: textStyle,
                             ),
                             new Container(
                               child: new Row(
@@ -483,6 +511,7 @@ class _personState extends State<person> {
                                   Container(
                                     child: new Text(
                                       "20",
+                                      style: textRight,
                                     ),
                                     margin: EdgeInsets.only(right: 10),
                                   ),
@@ -498,7 +527,6 @@ class _personState extends State<person> {
                       ),
                       InkWell(
                         child: new Container(
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           decoration: new BoxDecoration(
                               border: Border(
                                   bottom: BorderSide(
@@ -508,7 +536,7 @@ class _personState extends State<person> {
                             children: <Widget>[
                               new Text(
                                 "支付宝",
-                                style: TextStyle(fontSize: 18),
+                                style: textStyle,
                               ),
                               new Container(
                                 child: new Row(
@@ -521,6 +549,7 @@ class _personState extends State<person> {
                                           child: new TextField(
                                             textAlign: TextAlign.right,
                                             enabled: false,
+                                            style: textRight,
                                             textDirection: TextDirection.rtl,
                                             controller:
                                                 TextEditingController.fromValue(
@@ -531,7 +560,8 @@ class _personState extends State<person> {
                                             )),
                                             decoration: InputDecoration(
                                                 border: InputBorder.none,
-                                                hintText: "请输入支付宝账号"),
+                                                hintText: "请输入支付宝账号",
+                                                hintStyle: textRight),
                                           ),
                                         ),
                                         alignment: Alignment.topCenter,
@@ -554,7 +584,6 @@ class _personState extends State<person> {
                       ),
                       InkWell(
                         child: new Container(
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           decoration: new BoxDecoration(
                               border: Border(
                                   bottom: BorderSide(
@@ -564,7 +593,7 @@ class _personState extends State<person> {
                             children: <Widget>[
                               new Text(
                                 "QQ",
-                                style: TextStyle(fontSize: 18),
+                                style: textStyle,
                               ),
                               new Container(
                                 child: new Row(
@@ -576,6 +605,7 @@ class _personState extends State<person> {
                                               maxHeight: 50, maxWidth: 90),
                                           child: new TextField(
                                             enabled: false,
+                                            style: textRight,
                                             textDirection: TextDirection.rtl,
                                             controller:
                                                 TextEditingController.fromValue(
@@ -587,7 +617,8 @@ class _personState extends State<person> {
                                             )),
                                             decoration: InputDecoration(
                                                 border: InputBorder.none,
-                                                hintText: "请输入QQ号"),
+                                                hintText: "请输入QQ号",
+                                                hintStyle: textRight),
                                           ),
                                         ),
                                         alignment: Alignment.topCenter,
@@ -609,7 +640,6 @@ class _personState extends State<person> {
                         },
                       ),
                       new Container(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                         decoration: new BoxDecoration(
                             border: Border(
                                 bottom: BorderSide(
@@ -619,7 +649,7 @@ class _personState extends State<person> {
                           children: <Widget>[
                             new Text(
                               "手机号",
-                              style: TextStyle(fontSize: 18),
+                              style: textStyle,
                             ),
                             new Container(
                               height: 50,
@@ -628,6 +658,7 @@ class _personState extends State<person> {
                                   Container(
                                     child: new Text(
                                       "15616484",
+                                      style: textRight,
                                     ),
                                     margin: EdgeInsets.only(right: 10),
                                   ),

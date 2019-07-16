@@ -79,7 +79,7 @@ class MainIndexState extends State<MainIndex>
       indicatorWeight: 2.0,
       unselectedLabelStyle: TextStyle(fontSize: 14.0),
       unselectedLabelColor: AppConfig.BOTTOM_TAB_BAR_COLOR,
-      labelStyle: TextStyle(fontSize: 16.0),
+//      labelStyle: TextStyle(fontSize: 16.0),
       labelColor: AppConfig.BOTTOM_TAB_BAR_COLOR_SELECT,
       onTap: (index) => _switchTabBar(index),
     );

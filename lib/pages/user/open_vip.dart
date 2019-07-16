@@ -15,7 +15,8 @@ class openVipState extends State<openVip> {
     final size = MediaQuery.of(context).size;
     final width = size.width;
     // TODO: implement build
-    return Material(
+    return SafeArea(
+        child: Material(
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -241,6 +242,6 @@ class openVipState extends State<openVip> {
           ),
         ),
       ),
-    );
+    ));
   }
 }

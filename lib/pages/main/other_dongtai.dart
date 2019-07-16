@@ -32,7 +32,8 @@ class otherDongtaiState extends State<otherDongtai>
     final size = MediaQuery.of(context).size;
 
     final width = size.width;
-    return Material(
+    return SafeArea(
+        child: Material(
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -284,6 +285,6 @@ class otherDongtaiState extends State<otherDongtai>
           ),
         ),
       ),
-    );
+    ));
   }
 }

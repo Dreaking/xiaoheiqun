@@ -113,7 +113,11 @@ class Tinker {
   ///获取app主题
   ///
   static ThemeData getThemeData() {
-    return ThemeData();
+    return ThemeData(
+        fontFamily: "Arial",
+        primaryColor: Colors.yellow,
+        accentColor: Colors.blue,
+        textTheme: TextTheme(caption: TextStyle(fontSize: 18)));
   }
 
 //  static final Dio _dio = Dio(BaseOptions(
@@ -341,7 +345,6 @@ class TinkerScaffoldState extends State<TinkerScaffold>
   int _currentIndex = 1;
   PageView _pageView;
   PageController _pageController;
-
   @override
   void initState() {
     // TODO: implement initState
@@ -368,9 +371,8 @@ class TinkerScaffoldState extends State<TinkerScaffold>
             : _createBottonNavigationBar(),
         floatingActionButton: AppConfig.IS_BOTTOM_FLOAT_ICON
             ? FloatingActionButton(
-                onPressed: () => {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => EditIndex())),
+                onPressed: () {
+                  _switchTab(2);
                 },
                 child: AppConfig.BOTTOM_TAB_BAR_FLOAT_ICON,
                 backgroundColor: AppConfig.BOTTOM_TAB_BAR_COLOR_SELECT,
@@ -383,16 +385,39 @@ class TinkerScaffoldState extends State<TinkerScaffold>
     );
   }
 
-  _switchTab(index) {
+  _switchTab(index) async {
+    SharedPreferences prefs;
+    prefs = await SharedPreferences.getInstance();
+
     if (index == 2) {
-    } else
-      setState(() {
-        _currentIndex = index;
-        _initBottomAppVarItemList();
-      });
+      if (prefs.get("user1") == null) {
+        Navigator.push(
+            context, CupertinoPageRoute(builder: (context) => Login()));
+      } else {
+        Navigator.push(
+            context, CupertinoPageRoute(builder: (context) => EditIndex()));
+      }
+    } else {
+      if (index == 1) {
+        setState(() {
+          _currentIndex = index;
+          _initBottomAppVarItemList();
+        });
+      } else {
+        if (prefs.get("user1") == null) {
+          Navigator.push(
+              context, CupertinoPageRoute(builder: (context) => Login()));
+        } else {
+          setState(() {
+            _currentIndex = index;
+            _initBottomAppVarItemList();
+          });
+        }
+      }
+    }
     _pageController.animateToPage(
       _currentIndex,
-      duration: Duration(milliseconds: 300),
+      duration: Duration(milliseconds: 500),
       curve: Curves.fastOutSlowIn,
     );
   }
@@ -401,7 +426,7 @@ class TinkerScaffoldState extends State<TinkerScaffold>
     return BottomAppBar(
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: 10,
+//          horizontal: 10,
           vertical: 0,
         ),
         height: 60,
@@ -418,12 +443,14 @@ class TinkerScaffoldState extends State<TinkerScaffold>
 
   Widget _createBottonNavigationBar() {
     return Container(
+        decoration: BoxDecoration(
+            border: Border(top: BorderSide(color: Colors.black12, width: 1))),
         height: 55,
         child: Stack(
           children: <Widget>[
             Align(
               child: BottomNavigationBar(
-                elevation: 20,
+//                elevation: 20,
                 currentIndex: _currentIndex,
                 onTap: (index) => _switchTab(index),
                 items: _itemList,
@@ -440,20 +467,45 @@ class TinkerScaffoldState extends State<TinkerScaffold>
             Align(
               alignment: Alignment.center,
               child: GestureDetector(
-                child: new Image.asset(
-                  "image/fabu_btn.png",
-                  width: 40.0,
-                  height: 40.0,
-                ),
-                onTap: () {
+                  child: new Image.asset(
+                    "image/fabu_btn.png",
+                    width: 40.0,
+                    height: 40.0,
+                  ),
+                  onTap: () async {
 //                  Navigator.push(context,
 //                      CupertinoPageRoute(builder: (context) => EditIndex()));
-                  Navigator.push(
-                      context,
-                      EnterExitRoute(
-                          exitPage: TinkerScaffold(), enterPage: EditIndex()));
-                },
-              ),
+                    SharedPreferences prefs;
+                    prefs = await SharedPreferences.getInstance();
+                    if (prefs.get("user1") == null) {
+                      Navigator.push(context,
+                          CupertinoPageRoute(builder: (context) => Login()));
+                    } else {
+                      if (_currentIndex == 0) {
+                        Navigator.push(
+                            context,
+                            EnterExitRoute(
+                                exitPage: MessageIndex(),
+                                enterPage: EditIndex()));
+                      } else if (_currentIndex == 1) {
+                        Navigator.push(
+                            context,
+                            EnterExitRoute(
+                                exitPage: MainIndex(), enterPage: EditIndex()));
+                      } else if (_currentIndex == 3) {
+                        Navigator.push(
+                            context,
+                            EnterExitRoute(
+                                exitPage: ShoucangIndex(),
+                                enterPage: EditIndex()));
+                      } else if (_currentIndex == 4) {
+                        Navigator.push(
+                            context,
+                            EnterExitRoute(
+                                exitPage: UserIndex(), enterPage: EditIndex()));
+                      }
+                    }
+                  }),
             )
           ],
         ));
@@ -499,7 +551,7 @@ class TinkerScaffoldState extends State<TinkerScaffold>
                   {
 //                        Tinker.toast("为空"),
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Login())),
+                        CupertinoPageRoute(builder: (context) => Login())),
                   }
                 else
                   _switchTab(i),

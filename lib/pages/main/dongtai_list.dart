@@ -37,16 +37,72 @@ class DongtaiListState extends State<DongtaiList>
         padding: EdgeInsets.only(top: 0),
         shrinkWrap: true,
         addAutomaticKeepAlives: false,
-        itemCount: 4,
+        itemCount: 10,
         itemBuilder: (context, index) => DongtaiItem());
+  }
+
+  Widget Lis() {
+//    return CustomScrollView(
+//      slivers: <Widget>[
+//        const SliverAppBar(
+//          pinned: true,
+//          expandedHeight: 250.0,
+//          flexibleSpace: FlexibleSpaceBar(
+//            title: Text('Demo'),
+//          ),
+//        ),
+//        SliverGrid(
+//          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+//            maxCrossAxisExtent: 200.0,
+//            mainAxisSpacing: 10.0,
+//            crossAxisSpacing: 10.0,
+//            childAspectRatio: 4.0,
+//          ),
+//          delegate: SliverChildBuilderDelegate(
+//            (BuildContext context, int index) {
+//              return Container(
+//                alignment: Alignment.center,
+//                color: Colors.teal[100 * (index % 9)],
+//                child: Text('grid item $index'),
+//              );
+//            },
+//            childCount: 20,
+//          ),
+//        ),
+//        SliverFixedExtentList(
+//          itemExtent: 50.0,
+//          delegate: SliverChildBuilderDelegate(
+//            (BuildContext context, int index) {
+//              return Container(
+//                alignment: Alignment.center,
+//                color: Colors.lightBlue[100 * (index % 9)],
+//                child: Text('list item $index'),
+//              );
+//            },
+//          ),
+//        ),
+//      ],
+//    );
+    return ListView(
+      padding: EdgeInsets.only(top: 0),
+      children: <Widget>[
+        DongtaiItem(),
+        DongtaiItem(),
+        DongtaiItem(),
+        DongtaiItem(),
+        DongtaiItem(),
+        DongtaiItem(),
+        DongtaiItem(),
+        DongtaiItem(),
+        DongtaiItem(),
+      ],
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Container(
-      child: Lists(context),
-    );
+    return Lis();
 //    return StaggeredGridView.countBuilder(
 //      addAutomaticKeepAlives: true,
 //      primary: true,

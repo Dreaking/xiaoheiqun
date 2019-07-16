@@ -39,13 +39,13 @@ class EditIndexState extends State<EditIndex> {
                       "存为草稿",
                       style: TextStyle(color: Colors.black),
                     ),
-                    margin: EdgeInsets.symmetric(horizontal: 10),
+//                    margin: EdgeInsets.symmetric(horizontal: 10),
                   ),
                 ],
                 elevation: 0,
                 centerTitle: true,
                 iconTheme: IconThemeData(size: 10),
-                leading: InkWell(
+                leading: GestureDetector(
                   child: Container(
                     child: Icon(
                       Icons.arrow_back_ios,
@@ -86,8 +86,29 @@ class EditIndexState extends State<EditIndex> {
                           ),
                         ),
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => draft()));
+                          Navigator.push(
+                              context,
+                              new PageRouteBuilder(pageBuilder:
+                                  (BuildContext context,
+                                      Animation<double> animation,
+                                      Animation<double> secondaryAnimation) {
+                                return draft();
+                              }, transitionsBuilder: (
+                                BuildContext context,
+                                Animation<double> animation,
+                                Animation<double> secondaryAnimation,
+                                Widget child,
+                              ) {
+                                // 添加一个平移动画
+                                return SlideTransition(
+                                  position: new Tween<Offset>(
+                                    begin: Offset(1.0, 0.0),
+                                    end: Offset(0.0, 0.0),
+                                  ).animate(animation),
+                                  child:
+                                      child, // child is the value returned by pageBuilder
+                                );
+                              }));
                         },
                       ),
                     ),

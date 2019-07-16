@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
@@ -152,7 +153,7 @@ class SettingsState extends State<Settings> {
                   prefs.remove("user1"); //删除指定键
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => TinkerScaffold()),
+                    CupertinoPageRoute(builder: (context) => TinkerScaffold()),
                     (route) => route == null,
                   );
                 },

@@ -21,7 +21,8 @@ class LoginState extends State<Login> {
   int _countdownTime = 0;
   Widget build(BuildContext context) {
     // TODO: implement build
-
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
     return Material(
       child: Scaffold(
         resizeToAvoidBottomPadding: false,
@@ -90,7 +91,7 @@ class LoginState extends State<Login> {
                               Container(
                                 margin: EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 5),
-                                width: 200,
+                                width: 150,
                                 child: TextField(
                                   controller: code,
                                   decoration: InputDecoration(
@@ -106,7 +107,8 @@ class LoginState extends State<Login> {
                               ),
                               GestureDetector(
                                   child: Container(
-                                    alignment: Alignment.center,
+                                    width: 100,
+                                    alignment: Alignment.centerRight,
                                     child: Text(
                                       _countdownTime == 0
                                           ? "获取验证码"
@@ -236,23 +238,25 @@ class LoginState extends State<Login> {
                     ],
                   ),
                 ),
-                InkWell(
-                  child: Container(
-                    width: double.infinity,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(10)),
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.symmetric(horizontal: 60, vertical: 35),
-                    child: Text(
-                      "注册/登录",
-                      style: TextStyle(color: Colors.white),
+                Container(
+                  margin: EdgeInsets.only(top: 30),
+                  child: InkWell(
+                    child: Container(
+                      width: width * 0.7,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(10)),
+                      alignment: Alignment.center,
+                      child: Text(
+                        "注册/登录",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
+                    onTap: () {
+                      login();
+                    },
                   ),
-                  onTap: () {
-                    login();
-                  },
                 )
               ],
             )),
@@ -280,7 +284,7 @@ class LoginState extends State<Login> {
       } else {
 //        Tinker.toast("无");
         Tinker.post("/api/user/login", (data) {
-//          Tinker.toast("成功");
+//          Tinker.toast("发送验证码成功");
           Tinker.setStrong(data["rows"]["userId"]);
           Tinker.getStrong();
           Navigator.pop(context);

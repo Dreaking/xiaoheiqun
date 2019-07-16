@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:xiaoheiqun/pages/main/user_detail.dart';
@@ -175,15 +176,17 @@ class DongtaiItemState extends State<DongtaiItem> {
                               fit: BoxFit.cover,
                             ),
                             onTap: () {
-                              setState(() {
-                                if (_imgIndex == 0) {
+                              if (_imgIndex == 0) {
+                                setState(() {
                                   showImages = "image/shoucang2.png";
                                   _imgIndex = 1;
-                                } else {
+                                });
+                              } else {
+                                setState(() {
                                   showImages = "image/shoucang1.png";
                                   _imgIndex = 0;
-                                }
-                              });
+                                });
+                              }
                             },
                           ),
                           Padding(
@@ -219,7 +222,7 @@ class DongtaiItemState extends State<DongtaiItem> {
       ),
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => udetail()));
+            context, CupertinoPageRoute(builder: (context) => udetail()));
       },
     );
   }
