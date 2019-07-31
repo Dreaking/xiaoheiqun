@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 
 import 'about.dart';
@@ -14,9 +15,57 @@ class Settings extends StatefulWidget {
   }
 }
 
+Future launchGooglePlay() async {
+  String url = "https://www.pgyer.com/VrkO";
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
 class SettingsState extends State<Settings> {
+  TextStyle dialogButtonTextStyle;
   @override
   Widget build(BuildContext context) {
+    Future<void> _showNewVersionAppDialog() async {
+      return showDialog<void>(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: new Row(
+                children: <Widget>[
+                  new Image.asset("images/ic_launcher_icon.png",
+                      height: 35.0, width: 35.0),
+                  new Padding(
+                      padding: const EdgeInsets.fromLTRB(30.0, 0.0, 10.0, 0.0),
+                      child: new Text("项目名称", style: dialogButtonTextStyle))
+                ],
+              ),
+              content: new Text(
+                '版本更新',
+              ),
+              actions: <Widget>[
+                new FlatButton(
+                  child: new Text('以后', style: dialogButtonTextStyle),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                new FlatButton(
+                  child: new Text('下载', style: dialogButtonTextStyle),
+                  onPressed: () {
+//                  launch("https://play.google.com/store/apps/details?id=项目包名");
+                    launchGooglePlay(); //到Google Play官网去下载APK
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            );
+          });
+    }
+
     // TODO: implement build
     return Material(
       child: Scaffold(
@@ -46,37 +95,47 @@ class SettingsState extends State<Settings> {
                 margin: EdgeInsets.fromLTRB(15, 20, 15, 0),
                 child: Column(
                   children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            "清楚缓存",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          Image.asset(
-                            "image/shape_copy2@2x.png",
-                            height: 15,
-                          )
-                        ],
+                    InkWell(
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              "清除缓存",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                            Image.asset(
+                              "image/shape_copy2@2x.png",
+                              height: 15,
+                            )
+                          ],
+                        ),
                       ),
+                      onTap: () {
+                        Tinker.clearCache();
+                      },
                     ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            "检查更新",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          Image.asset(
-                            "image/shape_copy2@2x.png",
-                            height: 15,
-                          )
-                        ],
+                    InkWell(
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              "检查更新",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                            Image.asset(
+                              "image/shape_copy2@2x.png",
+                              height: 15,
+                            )
+                          ],
+                        ),
                       ),
+                      onTap: () {
+                        _showNewVersionAppDialog();
+                      },
                     ),
                     //关于小黑裙
                     InkWell(

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:dio/dio.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:xiaoheiqun/pages/edit/index.dart';
@@ -17,8 +18,71 @@ import 'package:image_picker/image_picker.dart';
 import 'package:xiaoheiqun/login.dart';
 import 'package:xiaoheiqun/pages/shoucang/index.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:convert/convert.dart';
+import 'package:crypto/crypto.dart';
 
 class Tinker {
+  /// 递归方式 计算文件的大小
+  Future<double> _getTotalSizeOfFilesInDir(final FileSystemEntity file) async {
+    try {
+      if (file is File) {
+        int length = await file.length();
+        return double.parse(length.toString());
+      }
+      if (file is Directory) {
+        final List<FileSystemEntity> children = file.listSync();
+        double total = 0;
+        if (children != null)
+          for (final FileSystemEntity child in children)
+            total += await _getTotalSizeOfFilesInDir(child);
+        return total;
+      }
+      return 0;
+    } catch (e) {
+      print(e);
+      return 0;
+    }
+  }
+
+  //清除缓存
+  static clearCache() async {
+    //此处展示加载loading
+    try {
+      Directory tempDir = await getTemporaryDirectory();
+      //删除缓存目录
+      await delDir(tempDir);
+      Tinker.toast('清除缓存成功');
+    } catch (e) {
+      print(e);
+      Tinker.toast('清除缓存失败');
+    } finally {
+      //此处隐藏加载loading
+    }
+  }
+
+  ///递归方式删除目录
+  static Future<Null> delDir(FileSystemEntity file) async {
+    try {
+      if (file is Directory) {
+        final List<FileSystemEntity> children = file.listSync();
+        for (final FileSystemEntity child in children) {
+          await delDir(child);
+        }
+      }
+      await file.delete();
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  //获取用户Id
+  static Future<String> getuserID() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String userId = prefs.getString("user1");
+    return userId;
+  }
+
   ///AjAx请求
   //get方法
   static void get(String url, Function callback,
@@ -53,26 +117,28 @@ class Tinker {
   //post方法
   static void post(String url, Function callback,
       {params, Function errorCallback}) async {
-    try {
-      http.Response res =
-          await http.post(AppConfig.AJAX_SERVER_API + url, body: params);
-      if (callback != null) {
-        var data = json.decode(res.body);
-        if (data["statusCode"] == "200") {
-//          Tinker.toast("执行");
-          callback(data);
-        } else {
-          print("-----------------");
-          print(data);
-          Tinker.toast(data["message"]);
-        }
-      }
-    } catch (e) {
-//      Tinker.toast("失败");
-      if (errorCallback != null) {
-        errorCallback(e);
-      }
+//    try {
+    final res = await http.post(AppConfig.AJAX_SERVER_API + url, body: params);
+//    Tinker.toast("执行");
+    print("aaaaaaaaaaaaa");
+    print(res.body.toString());
+    var data = json.decode(res.body);
+    print(data);
+    print("11112222222222222");
+    if (data["statusCode"] == "200") {
+//      Tinker.toast("执行");
+      callback(data);
+    } else {
+      print("-----------------");
+      print(data);
+      Tinker.toast(data["message"]);
     }
+//    } catch (e) {
+//      Tinker.toast("失败");
+//      if (errorCallback != null) {
+//        errorCallback(e);
+//      }
+//    }
   }
 
   //查询用户信息
@@ -327,6 +393,14 @@ class Tinker {
       backgroundColor: Color.fromRGBO(250, 250, 250, 1),
     );
   }
+
+//md5加密
+  static String generateMd5(String data) {
+    var content = new Utf8Encoder().convert(data);
+    var digest = md5.convert(content);
+    // 这里其实就是 digest.toString()
+    return hex.encode(digest.bytes);
+  }
 }
 
 class TinkerScaffold extends StatefulWidget {
@@ -360,6 +434,7 @@ class TinkerScaffoldState extends State<TinkerScaffold>
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
+      theme: Tinker.getThemeData(),
       routes: {
         "/edit": (BuildContext context) => new EditIndex(),
       },
@@ -436,16 +511,26 @@ class TinkerScaffoldState extends State<TinkerScaffold>
           children: _bottomAppBarItemList,
         ),
       ),
-      elevation: 20.0,
+//      elevation: 20.0,
       shape: CircularNotchedRectangle(),
     );
   }
 
   Widget _createBottonNavigationBar() {
+    double bottom, height;
+    final double bottomPadding = MediaQuery.of(context).padding.bottom;
+    if (bottomPadding == 34) {
+      height = 87;
+      bottom = 34;
+    } else {
+      height = 55;
+      bottom = 0;
+    }
     return Container(
         decoration: BoxDecoration(
+            color: Colors.white,
             border: Border(top: BorderSide(color: Colors.black12, width: 1))),
-        height: 55,
+        height: height,
         child: Stack(
           children: <Widget>[
             Align(
@@ -464,8 +549,9 @@ class TinkerScaffoldState extends State<TinkerScaffold>
               ),
               alignment: Alignment.bottomCenter,
             ),
-            Align(
+            Container(
               alignment: Alignment.center,
+              margin: EdgeInsets.only(bottom: bottom),
               child: GestureDetector(
                   child: new Image.asset(
                     "image/fabu_btn.png",
@@ -729,10 +815,14 @@ class Select_Image_pickerState extends State<Image_picker> {
         }
       });
       tiles.add(
-        new LongPressDraggable(
-          data: imgList[i],
-          child: new DragTarget(
-            onAccept: (data) {
+        new Stack(
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              child: LongPressDraggable(
+                data: imgList[i],
+                child: new DragTarget(
+                  onAccept: (data) {
 //            var bj;
 //            print("data = $data img=$img onAccept");
 //            setState(() {
@@ -751,133 +841,159 @@ class Select_Image_pickerState extends State<Image_picker> {
 //
 //              print("data = $data img=$img onAccept");
 //            });
-            },
-            builder: (context, data, rejectedData) {
-              if (_willAcceptIndex >= 0 && _willAcceptIndex == i) {
-                return new Container(
+                  },
+                  builder: (context, data, rejectedData) {
+                    if (_willAcceptIndex >= 0 && _willAcceptIndex == i) {
+                      return new Container(
+                        width: widget.Img_width,
+                        height: widget.Img_height,
+                        margin: EdgeInsets.fromLTRB(
+                            0, 0, widget.spacing, widget.runSpacing),
+                      );
+                    } else {
+                      if ((i + 1) % widget.line_count == 0) {
+                        return Container(
+                          child: Image.file(
+                            imgList[i],
+                            height: widget.Img_height,
+                            width: widget.Img_width,
+                            fit: BoxFit.fill,
+                          ),
+                          margin: EdgeInsets.fromLTRB(
+                              0, 0, widget.spacing, widget.runSpacing),
+//                          margin:
+//                              EdgeInsets.fromLTRB(0, 0, 0, widget.runSpacing),
+                        );
+                      } else {
+                        return Container(
+                          child: Image.file(
+                            imgList[i],
+                            height: widget.Img_height,
+                            width: widget.Img_width,
+                            fit: BoxFit.fill,
+                          ),
+                          margin: EdgeInsets.fromLTRB(
+                              0, 0, spac, widget.runSpacing),
+                        );
+                      }
+                    }
+                  },
+                  onLeave: (data) {
+                    print("data = $data onLeave");
+                    _willAcceptIndex = -1;
+                    setState(() {
+                      _showItemWhenCovered = false;
+                      print(_dataListBackup);
+                      imgList = _dataListBackup.sublist(0);
+                    });
+                  },
+                  onWillAccept: (data) {
+                    print("data = $data onWillAccept");
+                    var bj;
+                    for (var i = 0; i < imgList.length; i++) {
+                      if (data == imgList[i]) {
+                        bj = i;
+                      }
+                    }
+//            img = imgList[i];
+//            imgList[i] = data;
+                    final accept = bj != i;
+                    if (accept) {
+                      print(
+                          "data = $data img=$img onAccept---------------------------------------$i");
+                      imgList = _dataListBackup.sublist(0);
+                      setState(() {
+                        var bj;
+                        for (var i = 0; i < imgList.length; i++) {
+                          if (data == imgList[i]) {
+                            bj = i;
+                          }
+                        }
+                        print(
+                            "----------------------------------------------------");
+                        print(i);
+//                  img = imgList[i];
+//                  imgList[i] = data;
+//                  imgList[bj] = img;
+                        _showItemWhenCovered = true;
+//
+                        _willAcceptIndex = i;
+                        print(data);
+                        imgList.removeAt(bj);
+                        imgList.insert(i, data);
+                      });
+                    }
+
+                    return accept;
+                  },
+                ),
+                onDragStarted: () {
+                  //开始拖动，备份数据源
+//            _draggingItemIndex = index;
+                  _dataListBackup = imgList.sublist(0);
+                  print(_dataListBackup);
+                  print('item $i ---------------------------onDragStarted');
+                },
+                onDraggableCanceled: (Velocity velocity, Offset offset) {
+                  print(
+                      'item $i ---------------------------onDraggableCanceled,velocity = $velocity,offset = $offset');
+                  //拖动取消，还原数据源
+                  setState(() {
+                    _willAcceptIndex = -1;
+                    _showItemWhenCovered = false;
+                    imgList = _dataListBackup.sublist(0);
+                    print(imgList);
+                  });
+                },
+                onDragCompleted: () {
+                  //拖动完成，刷新状态，重置willAcceptIndex
+                  print("item $i ---------------------------onDragCompleted");
+                  setState(() {
+                    _showItemWhenCovered = false;
+                    _willAcceptIndex = -1;
+                  });
+                },
+                feedback: Image.file(
+                  img,
+                  height: widget.Img_height,
+                  width: widget.Img_width,
+                  fit: BoxFit.fill,
+                ),
+                childWhenDragging: new Container(
+                  child: _showItemWhenCovered
+                      ? Image.file(
+                          imgList[i],
+                          height: widget.Img_height,
+                          width: widget.Img_width,
+                          fit: BoxFit.fill,
+                        )
+                      : null,
                   width: widget.Img_width,
                   height: widget.Img_height,
                   margin: EdgeInsets.fromLTRB(
                       0, 0, widget.spacing, widget.runSpacing),
-                );
-              } else {
-                if ((i + 1) % widget.line_count == 0) {
-                  return Container(
-                    child: Image.file(
-                      imgList[i],
-                      height: widget.Img_height,
-                      width: widget.Img_width,
-                      fit: BoxFit.fill,
-                    ),
-                    margin: EdgeInsets.fromLTRB(0, 0, 0, widget.runSpacing),
-                  );
-                } else {
-                  return Container(
-                    child: Image.file(
-                      imgList[i],
-                      height: widget.Img_height,
-                      width: widget.Img_width,
-                      fit: BoxFit.fill,
-                    ),
-                    margin: EdgeInsets.fromLTRB(0, 0, spac, widget.runSpacing),
-                  );
-                }
-              }
-            },
-            onLeave: (data) {
-              print("data = $data onLeave");
-              _willAcceptIndex = -1;
-              setState(() {
-                _showItemWhenCovered = false;
-                print(_dataListBackup);
-                imgList = _dataListBackup.sublist(0);
-              });
-            },
-            onWillAccept: (data) {
-              print("data = $data onWillAccept");
-              var bj;
-              for (var i = 0; i < imgList.length; i++) {
-                if (data == imgList[i]) {
-                  bj = i;
-                }
-              }
-//            img = imgList[i];
-//            imgList[i] = data;
-              final accept = bj != i;
-              if (accept) {
-                print(
-                    "data = $data img=$img onAccept---------------------------------------$i");
-                imgList = _dataListBackup.sublist(0);
-                setState(() {
-                  var bj;
-                  for (var i = 0; i < imgList.length; i++) {
-                    if (data == imgList[i]) {
-                      bj = i;
-                    }
-                  }
-                  print("----------------------------------------------------");
-                  print(i);
-//                  img = imgList[i];
-//                  imgList[i] = data;
-//                  imgList[bj] = img;
-                  _showItemWhenCovered = true;
-//
-                  _willAcceptIndex = i;
-                  print(data);
-                  imgList.removeAt(bj);
-                  imgList.insert(i, data);
-                });
-              }
-
-              return accept;
-            },
-          ),
-          onDragStarted: () {
-            //开始拖动，备份数据源
-//            _draggingItemIndex = index;
-            _dataListBackup = imgList.sublist(0);
-            print(_dataListBackup);
-            print('item $i ---------------------------onDragStarted');
-          },
-          onDraggableCanceled: (Velocity velocity, Offset offset) {
-            print(
-                'item $i ---------------------------onDraggableCanceled,velocity = $velocity,offset = $offset');
-            //拖动取消，还原数据源
-            setState(() {
-              _willAcceptIndex = -1;
-              _showItemWhenCovered = false;
-              imgList = _dataListBackup.sublist(0);
-              print(imgList);
-            });
-          },
-          onDragCompleted: () {
-            //拖动完成，刷新状态，重置willAcceptIndex
-            print("item $i ---------------------------onDragCompleted");
-            setState(() {
-              _showItemWhenCovered = false;
-              _willAcceptIndex = -1;
-            });
-          },
-          feedback: Image.file(
-            img,
-            height: widget.Img_height,
-            width: widget.Img_width,
-            fit: BoxFit.fill,
-          ),
-          childWhenDragging: new Container(
-            child: _showItemWhenCovered
-                ? Image.file(
-                    imgList[i],
-                    height: widget.Img_height,
-                    width: widget.Img_width,
-                    fit: BoxFit.fill,
-                  )
-                : null,
-            width: widget.Img_width,
-            height: widget.Img_height,
-            margin:
-                EdgeInsets.fromLTRB(0, 0, widget.spacing, widget.runSpacing),
-          ),
+                ),
+              ),
+              height: widget.Img_height + 20,
+            ),
+            Positioned(
+              child: InkWell(
+                child: Image.asset(
+                  "image/del@2x.png",
+                  height: 15,
+                  width: 15,
+                  fit: BoxFit.fill,
+                ),
+                onTap: () {
+                  setState(() {
+                    imgList.removeAt(i);
+                  });
+                },
+              ),
+              right: 5,
+              top: 0,
+            )
+          ],
         ),
       );
     }
@@ -892,7 +1008,8 @@ class Select_Image_pickerState extends State<Image_picker> {
                 showModalBottomSheet(
                     context: context,
                     builder: (BuildContext context) {
-                      return new Column(
+                      return new SafeArea(
+                          child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           new ListTile(
@@ -912,7 +1029,7 @@ class Select_Image_pickerState extends State<Image_picker> {
                             },
                           ),
                         ],
-                      );
+                      ));
                     });
               }),
         ),

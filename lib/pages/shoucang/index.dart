@@ -72,7 +72,7 @@ class ShoucangIndexState extends State<ShoucangIndex>
               child: TabBar(
                 unselectedLabelColor: Colors.black38,
                 isScrollable: false,
-                unselectedLabelStyle: TextStyle(fontSize: 12),
+//                unselectedLabelStyle: TextStyle(fontSize: 12),
                 indicatorColor: Colors.deepOrange,
                 indicatorSize: TabBarIndicatorSize.label,
                 labelStyle: TextStyle(fontSize: 15),

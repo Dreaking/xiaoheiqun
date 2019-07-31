@@ -1,7 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:xiaoheiqun/data/Animate.dart';
 
 import '../../common/app_config.dart';
 import '../../common/tinker.dart';
+import 'dongtai_item.dart';
 import 'dongtai_list.dart';
 
 class MainIndex extends StatefulWidget {
@@ -26,6 +30,7 @@ class MainIndexState extends State<MainIndex>
   List<String> _tabbarTitle = ["热门", "发布时间", "认证用户", "关注"];
 
   TabController _tabController;
+  ScrollController _scrollViewController;
 
   DongtaiList _dongtaiList;
 
@@ -42,6 +47,8 @@ class MainIndexState extends State<MainIndex>
   @override
   void initState() {
     super.initState();
+    _scrollViewController = ScrollController(initialScrollOffset: 0.0);
+
 //    Tinker.toast(super.context, "123");
     _tabController = TabController(
       length: _tabbarTitle.length,
@@ -95,10 +102,10 @@ class MainIndexState extends State<MainIndex>
   Widget _createTabbarView() {
     return TabBarView(
       children: <Widget>[
-        DongtaiList(0),
-        DongtaiList(1),
         DongtaiList(2),
-        DongtaiList(3)
+        DongtaiList(3),
+        DongtaiList(4),
+        DongtaiList(5)
       ],
       controller: _tabController,
     );
@@ -169,7 +176,7 @@ class MainIndexState extends State<MainIndex>
 
         //7.? 材料设计中控件的 z 坐标顺序，默认值为 4，对于可滚动的 SliverAppBar，
         // 当 SliverAppBar 和内容同级的时候，该值为 0， 当内容滚动 SliverAppBar 变为 Toolbar 的时候，修改 elevation 的值
-        elevation: 8,
+        elevation: 4,
 
         //APP bar 的颜色，默认值为 ThemeData.primaryColor。改值通常和下面的三个属性一起使用
         backgroundColor: Colors.white,
@@ -207,17 +214,37 @@ class MainIndexState extends State<MainIndex>
     ];
   }
 
+  Future<Null> _pullToRefresh() async {
+//    curPage = 1;
+    //下拉刷新做处理
+    setState(() {
+      ////改变数据，这里随意发挥
+    });
+    return null;
+  }
+
+  //下拉刷新以及上拉加载
+  Future<Null> _refresh() async {
+    Tinker.toast("刷新成功");
+    return;
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return DefaultTabController(
-      length: _tabbarTitle.length,
-      child: Scaffold(
-        body: NestedScrollView(
-          headerSliverBuilder: _headerSliverBuilder,
-          body: _createTabbarView(),
-        ),
-      ),
-    );
+        length: _tabbarTitle.length,
+        child: Scaffold(
+          body: RefreshIndicator(
+              child: NestedScrollView(
+                controller: _scrollViewController,
+                headerSliverBuilder: _headerSliverBuilder,
+                body: _createTabbarView(),
+              ),
+              onRefresh: _refresh),
+        ));
   }
+
+  //////////////////////////////
+
 }

@@ -1,11 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oktoast/oktoast.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:xiaoheiqun/common/KefuDiag.dart';
+import 'package:xiaoheiqun/common/app_config.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/pages/user/person_data.dart';
 import 'package:xiaoheiqun/pages/user/release.dart';
 import 'package:xiaoheiqun/pages/user/settings.dart';
-
 import 'authentation_user.dart';
 import 'balance.dart';
 import 'download.dart';
@@ -22,9 +25,36 @@ class UserIndex extends StatefulWidget {
 
 class UserIndexState extends State<UserIndex> {
   @override
+  /*拍照*/
+  var headimg = null;
+
+  Future _takePhoto() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    if (image != null) {
+      setState(() {
+        headimg = image.path;
+        print(headimg + "------------");
+      });
+    }
+  }
+
+  /*相册*/
+  Future _openGallery() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      setState(() {
+        headimg = image.path;
+        print(headimg + "------------");
+        print(image.path + "------------");
+      });
+    }
+  }
+
   Widget build(BuildContext context) {
     // TODO: implement build
     //Ios风格弹窗
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
     void showMySimpleDialog(BuildContext context) {
       showCupertinoDialog(
           context: context,
@@ -54,7 +84,7 @@ class UserIndexState extends State<UserIndex> {
       showCupertinoDialog(
           context: context,
           builder: (context) {
-            return new CupertinoAlertDialog(
+            return new AlertDialog(
               title: Align(
                 child: new Text("提醒"),
                 alignment: Alignment.topLeft,
@@ -123,10 +153,8 @@ class UserIndexState extends State<UserIndex> {
           });
     }
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: Tinker.getThemeData(),
-      home: Scaffold(
+    return Material(
+      child: Scaffold(
         backgroundColor: Colors.white,
 //      appBar: AppBar(
 //        brightness: Brightness.light,
@@ -157,16 +185,73 @@ class UserIndexState extends State<UserIndex> {
                       new Container(
                         child: new Row(
                           children: <Widget>[
-                            new Container(
-                              child: new ClipOval(
-                                child: Image.asset(
-                                  "image/nologin@2x.png",
-                                  height: 70,
+                            GestureDetector(
+                              child: new Container(
+                                child: Row(
+                                  children: <Widget>[
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(70),
+                                          border: Border.all(
+                                              color: Colors.black12)),
+                                      child: new ClipOval(
+                                        child: headimg == null
+                                            ? Image.asset(
+                                                "image/nologin@2x.png",
+                                                width: 70,
+                                                height: 70,
+                                              )
+                                            : ClipOval(
+                                                child: new SizedBox(
+                                                width: 70,
+                                                height: 70,
+                                                child: Image.file(
+                                                  File("$headimg"),
+                                                ),
+                                              )),
+                                      ),
+                                      height: 70,
+                                      width: 70,
+                                    )
+                                  ],
                                 ),
+                                margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                height: 120,
+                                width: 70,
                               ),
-                              margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                              height: 120,
-                              width: 70,
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return SafeArea(
+                                          child: new Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: <Widget>[
+                                          new ListTile(
+                                            leading:
+                                                AppConfig.Image_picker_icon1,
+                                            title: new Text(
+                                                AppConfig.Image_picker_name1),
+                                            onTap: () async {
+                                              _takePhoto();
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                          new ListTile(
+                                            leading:
+                                                AppConfig.Image_picker_icon2,
+                                            title: new Text(
+                                                AppConfig.Image_picker_name2),
+                                            onTap: () async {
+                                              _openGallery();
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                        ],
+                                      ));
+                                    });
+                              },
                             ),
                             new Container(
                               child: new Column(
@@ -243,15 +328,23 @@ class UserIndexState extends State<UserIndex> {
                                 ),
                                 margin: EdgeInsets.fromLTRB(0, 67, 0, 0),
                               ),
-                              new Container(
-                                child: new Text(
-                                  "有效期至2020-02-04",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color.fromRGBO(165, 165, 177, 1),
+                              InkWell(
+                                child: new Container(
+                                  child: new Text(
+                                    "有效期至2020-02-04",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Color.fromRGBO(165, 165, 177, 1),
+                                    ),
                                   ),
+                                  margin: EdgeInsets.fromLTRB(0, 15, 0, 10),
                                 ),
-                                margin: EdgeInsets.fromLTRB(0, 15, 0, 10),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                          builder: (context) => openVip()));
+                                },
                               ),
                             ],
                           ),
@@ -278,7 +371,7 @@ class UserIndexState extends State<UserIndex> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                    new GestureDetector(
+                    new InkWell(
                       child: new Container(
                         child: new Column(
                           children: <Widget>[
@@ -301,7 +394,7 @@ class UserIndexState extends State<UserIndex> {
                                 builder: (context) => SecondScreen()));
                       },
                     ),
-                    new GestureDetector(
+                    new InkWell(
                       child: new Container(
                         child: new Column(
                           children: <Widget>[
@@ -487,9 +580,16 @@ class UserIndexState extends State<UserIndex> {
                           ],
                         ),
                       ),
-                      onTap: () {
-                        showKefu(context);
-//                      Navigator.push(context,
+                      onTap: () async {
+                        var result = await showDialog(
+                            context: context, //BuildContext对象
+                            barrierDismissible: false,
+                            builder: (BuildContext context) {
+                              return new LDialog(
+                                  //调用对话框
+                                  );
+                            });
+                        //                      Navigator.push(context,
 //                          MaterialPageRoute(builder: (context) => openVip()));
                       },
                     ),

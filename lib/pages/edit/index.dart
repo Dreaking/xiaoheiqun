@@ -18,6 +18,8 @@ class EditIndexState extends State<EditIndex> {
   var select = 1;
   var xieyiColor = Colors.black12;
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
     //监听系统返回操作
     return WillPopScope(
         child: MaterialApp(
@@ -26,6 +28,7 @@ class EditIndexState extends State<EditIndex> {
               resizeToAvoidBottomPadding: false,
               backgroundColor: Colors.white,
               appBar: AppBar(
+                brightness: Brightness.light,
                 backgroundColor: Colors.white,
                 title: Text(
                   "动态编辑",
@@ -39,7 +42,7 @@ class EditIndexState extends State<EditIndex> {
                       "存为草稿",
                       style: TextStyle(color: Colors.black),
                     ),
-//                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    margin: EdgeInsets.symmetric(horizontal: 10),
                   ),
                 ],
                 elevation: 0,
@@ -170,23 +173,25 @@ class EditIndexState extends State<EditIndex> {
 
                     //添加图片
                     Container(
+                        alignment: Alignment.center,
                         child: SingleChildScrollView(
-                      child: Tinker.Select_Image_picker(
-                          Image_height: 100,
-                          Image_width: 100,
-                          count: 5,
-                          line_count: 3,
-                          spacing: 10,
-                          runSpacing: 10,
-                          Click_Image_file: Image.asset(
-                            "image/tianjiatupian.png",
-                            width: 100,
-                            height: 100,
-                          ),
-                          callback: (path) {
-                            //              print(da);
-                          }),
-                    )),
+                          child: Tinker.Select_Image_picker(
+                              Image_height: width / 5,
+                              Image_width: width / 5,
+                              count: 5,
+                              line_count: 3,
+                              spacing: 10,
+                              runSpacing: 10,
+                              Click_Image_file: Image.asset(
+                                "image/tianjiatupian.png",
+                                width: width / 5,
+                                height: width / 5,
+                              ),
+                              callback: (path) {
+                                print("asdasddasdasda");
+                                print(path[0].path);
+                              }),
+                        )),
                     //协议
                     Container(
                         margin: EdgeInsets.symmetric(vertical: 10),

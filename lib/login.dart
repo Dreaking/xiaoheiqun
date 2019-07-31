@@ -107,14 +107,14 @@ class LoginState extends State<Login> {
                               ),
                               GestureDetector(
                                   child: Container(
-                                    width: 100,
+                                    width: 80,
                                     alignment: Alignment.centerRight,
                                     child: Text(
                                       _countdownTime == 0
                                           ? "获取验证码"
                                           : "$_countdownTime     ",
                                       style: TextStyle(
-                                        fontSize: 13,
+                                        fontSize: 12,
                                       ),
                                     ),
                                   ),
@@ -282,19 +282,10 @@ class LoginState extends State<Login> {
       } else if (code.text == "") {
         Tinker.toast("验证码不为空");
       } else {
-//        Tinker.toast("无");
         Tinker.post("/api/user/login", (data) {
-//          Tinker.toast("发送验证码成功");
           Tinker.setStrong(data["rows"]["userId"]);
           Tinker.getStrong();
           Navigator.pop(context);
-//          Tinker.queryUserInfo(data["rows"]["userId"], (data) {
-//            Tinker.setStrong(data);
-//            Tinker.getStrong();
-//            print(data);
-//            print("=============================1");
-//            Tinker.toast("登录成功");
-//          });
         }, params: p);
       }
     } else

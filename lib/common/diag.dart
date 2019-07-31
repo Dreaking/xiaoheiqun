@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // 自定义弹层
 class LoadingDialog extends Dialog {
-  var text;
+  String text;
 
   LoadingDialog({Key key, @required this.text}) : super(key: key);
 
@@ -19,7 +19,7 @@ class LoadingDialog extends Dialog {
           fit: StackFit.expand,
           children: <Widget>[
             GestureDetector(onTap: () {
-              Navigator.pop(context);
+              Navigator.pop(context, "$text");
             }),
             Sex(
               text: text,

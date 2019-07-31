@@ -1,10 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import 'tinker.dart';
+import 'app_advert.dart';
 import 'app_config.dart';
 
 class TinkerLaunch extends StatefulWidget {
@@ -25,12 +23,10 @@ class TinkerLaunchState extends State<TinkerLaunch>
   void initState() {
     // TODO: implement initState
     super.initState();
-
     _animationController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 1000),
     );
-
     _animation = CurveTween(
       curve: Curves.fastOutSlowIn,
     ).animate(_animationController)
@@ -39,10 +35,18 @@ class TinkerLaunchState extends State<TinkerLaunch>
           if (AnimationStatus.completed == status)
             {
               _timer = Timer(
-                Duration(milliseconds: 2000),
+                Duration(milliseconds: 1000),
                 () => {
                   Navigator.of(context).pushAndRemoveUntil(
-                    CupertinoPageRoute(builder: (context) => TinkerScaffold()),
+                    PageRouteBuilder(
+                      pageBuilder: (
+                        ctx,
+                        animation1,
+                        animation2,
+                      ) {
+                        return AppDvert();
+                      },
+                    ),
                     (route) => route == null,
                   ),
                 },
@@ -67,10 +71,5 @@ class TinkerLaunchState extends State<TinkerLaunch>
       AppConfig.APP_LAUNCH_IMAGE,
       fit: BoxFit.cover,
     );
-//    渐变动画
-//    return FadeTransition(
-//      child: widget._welcomeWidget,
-//      opacity: _animation,
-//    );
   }
 }

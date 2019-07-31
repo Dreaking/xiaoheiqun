@@ -32,11 +32,11 @@ class otherDongtaiState extends State<otherDongtai>
     final size = MediaQuery.of(context).size;
 
     final width = size.width;
-    return SafeArea(
-        child: Material(
+    return Material(
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          brightness: Brightness.dark,
           centerTitle: true,
           backgroundColor: Colors.white,
           title: Text(
@@ -60,7 +60,8 @@ class otherDongtaiState extends State<otherDongtai>
         ),
         body: ConstrainedBox(
           constraints: BoxConstraints.expand(),
-          child: Stack(
+          child: SafeArea(
+              child: Stack(
             fit: StackFit.loose,
             overflow: Overflow.visible,
             children: <Widget>[
@@ -282,9 +283,9 @@ class otherDongtaiState extends State<otherDongtai>
                 bottom: 0,
               )
             ],
-          ),
+          )),
         ),
       ),
-    ));
+    );
   }
 }

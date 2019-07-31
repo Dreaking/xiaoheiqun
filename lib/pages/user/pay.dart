@@ -1,6 +1,14 @@
 import 'dart:async';
+import 'dart:math';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluwx/fluwx.dart' as fluwx;
+import 'package:fluwx/fluwx.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:xiaoheiqun/common/app_config.dart';
+import 'package:xiaoheiqun/common/tinker.dart';
+import 'package:xiaoheiqun/common/wxchart.dart';
 
 class pay extends StatefulWidget {
   @override
@@ -14,7 +22,6 @@ class payState extends State<pay> {
   @override
   var _pay = "weipay";
   String _newValue = '1';
-
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width;
@@ -342,13 +349,21 @@ class payState extends State<pay> {
               Positioned(
                 height: 45,
                 width: width,
-                child: Container(
-                  alignment: Alignment.center,
-                  color: Color.fromRGBO(254, 0, 8, 1),
-                  child: Text(
-                    "立即支付",
-                    style: TextStyle(color: Colors.white),
+                child: GestureDetector(
+                  child: Container(
+                    alignment: Alignment.center,
+                    color: Color.fromRGBO(254, 0, 8, 1),
+                    child: Text(
+                      "立即支付",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
+                  onTap: () {
+//                    WxPay.SHare();
+                    WxPay.register();
+                    WxPay.getPrepayid();
+//                    getPrepayid();
+                  },
                 ),
                 bottom: 0,
               )
@@ -391,6 +406,7 @@ class payState extends State<pay> {
     //获取总秒数，2 分钟为 120 秒
     seconds = twoHours.inSeconds;
     startTimer();
+    fluwx.register(appId: AppConfig.WX_PAY_ID);
   }
 
   void startTimer() {

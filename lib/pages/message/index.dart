@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:xiaoheiqun/pages/message/systen_message.dart';
+import 'package:xiaoheiqun/pages/message/test.dart';
 
 class MessageIndex extends StatefulWidget {
   @override
@@ -50,7 +51,7 @@ class MessageIndexState extends State<MessageIndex>
               child: TabBar(
                 unselectedLabelColor: Colors.black38,
                 isScrollable: false,
-                unselectedLabelStyle: TextStyle(fontSize: 12),
+//                unselectedLabelStyle: TextStyle(fontSize: 12),
                 indicatorColor: Colors.deepOrange,
                 indicatorSize: TabBarIndicatorSize.label,
                 labelStyle: TextStyle(fontSize: 15),

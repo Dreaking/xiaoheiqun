@@ -1,6 +1,9 @@
+import 'dart:async';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:xiaoheiqun/common/tinker.dart';
+import 'package:xiaoheiqun/data/Animate.dart';
 import 'dongtai_item.dart';
 
 class DongtaiList extends StatefulWidget {
@@ -19,6 +22,27 @@ class DongtaiList extends StatefulWidget {
 
 class DongtaiListState extends State<DongtaiList>
     with AutomaticKeepAliveClientMixin {
+  List movies, addList;
+  int homepage = 1;
+  Future getData() async {
+    print("1111111111111111122323");
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String userId = prefs.getString("user1");
+    FormData param = FormData.from({
+      "userId": userId == null ? "" : userId,
+      "currentPage": homepage.toString(),
+      "sortType": widget.orderType.toString(),
+    });
+    Tinker.post("api/product/findProductByPage", (data) {
+//      Tinker.toast(data["rows"][1].toString());
+      List top = data["rows"];
+      int a = int.parse(data["size"]);
+      setState(() {
+        movies = top.map((json) => Animate.fromJson(json)).toList();
+      });
+    }, params: param);
+  }
+
   List<Widget> dataList = List<Widget>();
 
   @override
@@ -29,91 +53,82 @@ class DongtaiListState extends State<DongtaiList>
   void initState() {
     // TODO: implement initState
     super.initState();
+    print("3333333333333");
+    getData();
   }
 
-  Widget Lists(BuildContext context) {
-    return ListView.builder(
-        primary: true,
-        padding: EdgeInsets.only(top: 0),
-        shrinkWrap: true,
-        addAutomaticKeepAlives: false,
-        itemCount: 10,
-        itemBuilder: (context, index) => DongtaiItem());
+  //下拉加载********
+  List data;
+  String listType;
+  void _getMoretEvent() {
+    setState(() {
+      homepage++;
+    });
+    FormData param = FormData.from({
+      "userId": "",
+      "currentPage": homepage.toString(),
+      "sortType": "2",
+    });
+    Tinker.post("api/product/findProductByPage", (data) {
+      List top = data["rows"];
+      setState(() {
+        addList = top.map((json) => Animate.fromJson(json)).toList();
+      });
+      if (addList.length > 0) {
+        for (var i = 0; i < addList.length; i++) {
+          setState(() {
+            movies.add(addList[i]);
+          });
+        }
+      } else {
+        Tinker.toast("暂无数据");
+      }
+    }, params: param);
   }
 
-  Widget Lis() {
-//    return CustomScrollView(
-//      slivers: <Widget>[
-//        const SliverAppBar(
-//          pinned: true,
-//          expandedHeight: 250.0,
-//          flexibleSpace: FlexibleSpaceBar(
-//            title: Text('Demo'),
-//          ),
-//        ),
-//        SliverGrid(
-//          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-//            maxCrossAxisExtent: 200.0,
-//            mainAxisSpacing: 10.0,
-//            crossAxisSpacing: 10.0,
-//            childAspectRatio: 4.0,
-//          ),
-//          delegate: SliverChildBuilderDelegate(
-//            (BuildContext context, int index) {
-//              return Container(
-//                alignment: Alignment.center,
-//                color: Colors.teal[100 * (index % 9)],
-//                child: Text('grid item $index'),
-//              );
-//            },
-//            childCount: 20,
-//          ),
-//        ),
-//        SliverFixedExtentList(
-//          itemExtent: 50.0,
-//          delegate: SliverChildBuilderDelegate(
-//            (BuildContext context, int index) {
-//              return Container(
-//                alignment: Alignment.center,
-//                color: Colors.lightBlue[100 * (index % 9)],
-//                child: Text('list item $index'),
-//              );
-//            },
-//          ),
-//        ),
-//      ],
-//    );
-    return ListView(
-      padding: EdgeInsets.only(top: 0),
-      children: <Widget>[
-        DongtaiItem(),
-        DongtaiItem(),
-        DongtaiItem(),
-        DongtaiItem(),
-        DongtaiItem(),
-        DongtaiItem(),
-        DongtaiItem(),
-        DongtaiItem(),
-        DongtaiItem(),
-      ],
-    );
+  Future<Null> _refresh() async {
+    homepage = 1;
+    getData();
+    Tinker.toast("刷新成功");
+    return;
   }
+
+  ScrollController _scrollController = new ScrollController();
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Lis();
-//    return StaggeredGridView.countBuilder(
-//      addAutomaticKeepAlives: true,
-//      primary: true,
-//      crossAxisCount: 1,
-//      mainAxisSpacing: 5.0,
-//      crossAxisSpacing: 10.0,
-//      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-//      itemCount: 10,
-//      itemBuilder: (context, index) => DongtaiItem(),
-//      staggeredTileBuilder: (index) => StaggeredTile.fit(1),
-//    );
+    return new SafeArea(
+      top: false,
+      bottom: false,
+      child: Builder(
+        builder: (BuildContext context) {
+          return NotificationListener<ScrollEndNotification>(
+            // or  OverscrollNotification
+            onNotification: (ScrollEndNotification scroll) {
+              if (scroll.metrics.pixels == scroll.metrics.maxScrollExtent) {
+                // Scroll End
+                print("我监听到我滑到底部了");
+                _getMoretEvent();
+              }
+            },
+            child: RefreshIndicator(
+                child: movies == null
+                    ? Center(child: CircularProgressIndicator())
+                    : ListView.builder(
+                        padding: EdgeInsets.only(top: 5),
+//                    physics: NeverScrollableScrollPhysics(),
+                        itemCount: movies.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return DongtaiItem(movies[index]);
+                        },
+                        //                controller: _scrollController,
+                      ),
+                onRefresh: _refresh),
+          );
+        },
+      ),
+    );
   }
 }
 

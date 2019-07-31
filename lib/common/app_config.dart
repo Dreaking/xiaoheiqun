@@ -31,6 +31,9 @@ class AppConfig {
   ///服务器地址
   static const AJAX_SERVER_API = "http://api.jiashilan.com/";
 
+  //图片服务器地址
+  static const AJAX_IMG_SERVER = " http://imgs.jiashilan.com/";
+
   ///ajax get请求
   static const AJAX_METHOD_GET = "GET";
 
@@ -116,4 +119,9 @@ class AppConfig {
   static const Image_picker_icon2 = Icon(
     Icons.photo_library,
   );
+
+  //微信服务
+  static const String WX_PAY_ID = "wx4b5e0d93567cde79";
+  static const String WX_PAY_SHOP_ID = "1521937761";
+  static const WX_PAY_SECRET = "ff6d85a9ff00bfab3f2bdcf18432459f";
 }

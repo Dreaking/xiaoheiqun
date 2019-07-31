@@ -21,6 +21,16 @@ class _balanceState extends State<balance> {
         brightness: Brightness.light,
         backgroundColor: Colors.white,
         centerTitle: true,
+        leading: InkWell(
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+            size: 20,
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
         iconTheme: IconThemeData(
           color: Colors.black,
         ),

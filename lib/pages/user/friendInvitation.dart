@@ -14,9 +14,17 @@ class SecondScreen extends StatelessWidget {
         brightness: Brightness.light,
         backgroundColor: Colors.white,
         centerTitle: true,
-        iconTheme: IconThemeData(
-          color: Colors.black,
+        leading: InkWell(
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+            size: 20,
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
         ),
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       body: new Container(
         child: new Column(
