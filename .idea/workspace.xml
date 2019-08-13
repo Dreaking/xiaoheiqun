@@ -21,9 +21,7 @@
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fb33d7d-f81b-446a-b887-96cce5bb9e45" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3fb33d7d-f81b-446a-b887-96cce5bb9e45" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
     <ignored path="$PROJECT_DIR$/.pub/" />
@@ -63,8 +61,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/pages/user/index.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="39">
-              <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+            <state relative-caret-position="429">
+              <caret line="41" column="26" lean-forward="true" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#17#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -219,8 +220,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="46" />
-    <option name="y" value="22" />
+    <option name="x" value="96" />
+    <option name="y" value="35" />
     <option name="width" value="1360" />
     <option name="height" value="800" />
   </component>
@@ -415,7 +416,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565672985271</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Merge branch 'develop' of https://gitee.com/fuful/flutterapp into test&#10;&#10;# Conflicts:&#10;#&#9;.gitignore&#10;#&#9;README.md">
+      <created>1565673123903</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1565673123903</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView">
@@ -428,7 +436,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="46" y="22" width="1360" height="800" extended-state="0" />
+    <frame x="96" y="35" width="1360" height="800" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976852" visible="true" weight="0.29135054" />
       <window_info id="Captures" order="1" side_tool="true" />
@@ -446,9 +454,9 @@
       <window_info anchor="bottom" id="Logcat" order="4" sideWeight="0.49928468" weight="0.3146965" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.32344633" />
       <window_info anchor="bottom" id="Device File Explorer" order="6" sideWeight="0.5007153" side_tool="true" weight="0.32650602" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="7" sideWeight="0.50143063" side_tool="true" visible="true" weight="0.32909605" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5022762" side_tool="true" visible="true" weight="0.27259886" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" sideWeight="0.50143063" side_tool="true" weight="0.38313252" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4985694" weight="0.27259886" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49772382" visible="true" weight="0.27259886" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4985694" weight="0.30747533" />
       <window_info anchor="bottom" id="Find" order="11" weight="0.24698795" />
       <window_info anchor="bottom" id="Build" order="12" />
@@ -935,8 +943,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/user/index.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        <state relative-caret-position="429">
+          <caret line="41" column="26" lean-forward="true" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
