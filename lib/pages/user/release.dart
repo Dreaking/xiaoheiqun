@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xiaoheiqun/pages/user/release_list.dart';
 
 class release extends StatefulWidget {
   @override
@@ -88,27 +89,9 @@ class releaseState extends State<release> with TickerProviderStateMixin {
             Expanded(
               child: TabBarView(
                 children: <Widget>[
-                  Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "暂无数据",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "暂无数据",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "暂无数据",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  )
+                  release_list("1"),
+                  release_list("2"),
+                  release_list("3")
                 ],
                 controller: _controller,
               ),

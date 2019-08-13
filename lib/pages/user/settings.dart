@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
+import 'package:xiaoheiqun/login.dart';
 
 import 'about.dart';
 import 'feedback.dart';
@@ -26,6 +27,18 @@ Future launchGooglePlay() async {
 
 class SettingsState extends State<Settings> {
   TextStyle dialogButtonTextStyle;
+  var userId;
+  Future getData() async {
+    userId = await Tinker.getuserID();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     Future<void> _showNewVersionAppDialog() async {
@@ -179,43 +192,58 @@ class SettingsState extends State<Settings> {
                         ),
                       ),
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => feedback()));
+                        if (userId == null) {
+                          Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                  builder: (context) => Login()));
+                        } else {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => feedback()));
+                        }
                       },
                     ),
                   ],
                 ),
               ),
               //退出登录
-              InkWell(
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 55,
-                  margin: EdgeInsets.only(top: 10),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      border: Border(
-                    top: BorderSide(color: Color.fromRGBO(238, 238, 238, 1)),
-                    bottom: BorderSide(color: Color.fromRGBO(238, 238, 238, 1)),
-                  )),
-                  child: Text(
-                    "退出登录",
-                    style: TextStyle(
-                        color: Color.fromRGBO(234, 6, 59, 1), fontSize: 17),
-                  ),
-                ),
-                onTap: () async {
-                  SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-                  prefs.remove("user1"); //删除指定键
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    CupertinoPageRoute(builder: (context) => TinkerScaffold()),
-                    (route) => route == null,
-                  );
-                },
+              Container(
+                child: userId == ""
+                    ? Container()
+                    : InkWell(
+                        child: Container(
+                          alignment: Alignment.center,
+                          height: 55,
+                          margin: EdgeInsets.only(top: 10),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              border: Border(
+                            top: BorderSide(
+                                color: Color.fromRGBO(238, 238, 238, 1)),
+                            bottom: BorderSide(
+                                color: Color.fromRGBO(238, 238, 238, 1)),
+                          )),
+                          child: Text(
+                            "退出登录",
+                            style: TextStyle(
+                                color: Color.fromRGBO(234, 6, 59, 1),
+                                fontSize: 17),
+                          ),
+                        ),
+                        onTap: () async {
+                          SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+                          prefs.remove("user1"); //删除指定键
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => TinkerScaffold()),
+                            (route) => route == null,
+                          );
+                        },
+                      ),
               )
             ],
           )),

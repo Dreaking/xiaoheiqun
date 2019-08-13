@@ -1,6 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:xiaoheiqun/common/app_config.dart';
+import 'package:xiaoheiqun/common/tinker.dart';
+import 'package:xiaoheiqun/data/Renzheng.dart';
 
 class authentationItem extends StatefulWidget {
+  Renzheng renzheng;
+  authentationItem(this.renzheng);
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -11,12 +19,65 @@ class authentationItem extends StatefulWidget {
 class authentationItemState extends State<authentationItem>
     with AutomaticKeepAliveClientMixin {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initView();
+  }
+
+  void initView() {
+    color_sel = int.parse(widget.renzheng.isShoucang);
+    if (color_sel == 1) {
+      setState(() {
+        color_font = Colors.white;
+        colors = Color.fromRGBO(255, 188, 1, 1);
+        color_shoucang = "image/shoucang2.png";
+        color_text = "已关注";
+      });
+    } else {
+      setState(() {
+        color_font = Colors.black;
+        colors = Colors.white;
+        color_text = "未关注";
+        color_shoucang = "image/shoucang1.png";
+      });
+    }
+  }
+
+  @override
   bool get wantKeepAlive => false;
   var color_font = Colors.black;
   var colors = Colors.white;
-  var color_sel = 0;
+  var color_sel;
   var color_text = "未关注";
   var color_shoucang = "image/shoucang1.png";
+
+  var userId;
+  Future shoucang1() async {
+    userId = await Tinker.getuserID();
+    FormData param =
+        FormData.from({"userId": userId, "merchantId": widget.renzheng.userId});
+    if (color_sel == 0) {
+      setState(() {
+        color_sel = 1;
+        color_font = Colors.white;
+        colors = Color.fromRGBO(255, 188, 1, 1);
+        color_shoucang = "image/shoucang2.png";
+        color_text = "已关注";
+      });
+      print(widget.renzheng.userId);
+      Tinker.post("/api/system/doShoucangMerchant", () {}, params: param);
+    } else {
+      setState(() {
+        color_sel = 0;
+        color_font = Colors.black;
+        colors = Colors.white;
+        color_text = "未关注";
+        color_shoucang = "image/shoucang1.png";
+      });
+      Tinker.post("/api/system/doCancelShoucangMerchant", () {}, params: param);
+    }
+  }
 
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -36,10 +97,38 @@ class authentationItemState extends State<authentationItem>
             margin: EdgeInsets.only(
               left: 30,
             ),
-            child: Image.asset(
-              "image/nologin@2x.png",
-              height: 40,
-              width: 40,
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+                border: Border.all(color: Colors.black12)),
+            child: ClipOval(
+              child: widget.renzheng.headImg == null
+                  ? Image.asset(
+                      "image/nologin@2x.png",
+                      width: 40,
+                      height: 40,
+                      fit: BoxFit.fill,
+                    )
+                  : CachedNetworkImage(
+                      width: 40,
+                      height: 40,
+                      fit: BoxFit.fill,
+                      imageUrl:
+                          AppConfig.AJAX_IMG_SERVER + widget.renzheng.headImg,
+                      placeholder: (context, url) => new Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          new SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(),
+                          )
+                        ],
+                      ),
+                      errorWidget: (context, url, error) =>
+                          new Icon(Icons.error),
+                    ),
             ),
           ),
           //右侧信息
@@ -63,26 +152,38 @@ class authentationItemState extends State<authentationItem>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              "用户-0142",
+                              widget.renzheng.userName,
                               style: TextStyle(fontSize: 17),
                             ),
                             Container(
                               child: Row(
                                 children: <Widget>[
-                                  Image.asset(
-                                    "image/vip@2x.png",
-                                    width: 20,
-                                    height: 10,
+                                  Container(
+                                    child: widget.renzheng.vipType == "1"
+                                        ? Image.asset(
+                                            "image/vip@2x.png",
+                                            width: 20,
+                                            height: 10,
+                                          )
+                                        : null,
                                   ),
-                                  Image.asset(
-                                    "image/renzheng.png",
-                                    width: 20,
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    "已认证",
-                                    style: TextStyle(fontSize: 12),
-                                  ),
+                                  Container(
+                                    child: widget.renzheng.isRenzheng == "1"
+                                        ? Row(
+                                            children: <Widget>[
+                                              Image.asset(
+                                                "image/renzheng.png",
+                                                width: 20,
+                                                height: 10,
+                                              ),
+                                              Text(
+                                                "已认证",
+                                                style: TextStyle(fontSize: 12),
+                                              ),
+                                            ],
+                                          )
+                                        : null,
+                                  )
                                 ],
                               ),
                             ),
@@ -98,24 +199,39 @@ class authentationItemState extends State<authentationItem>
                                         ),
                                         margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
                                       ),
-                                      new Text("20"),
+                                      new Text(widget.renzheng.age.toString()),
                                     ],
                                   ),
                                   margin: EdgeInsets.fromLTRB(0, 0, 15, 0),
                                 ),
                                 new Container(
-                                  child: new Row(
-                                    children: <Widget>[
-                                      new Container(
-                                        child: Image.asset(
-                                          "image/male@2x.png",
-                                          height: 10,
+                                  child: widget.renzheng.sex == "0"
+                                      ? new Row(
+                                          children: <Widget>[
+                                            new Container(
+                                              child: Image.asset(
+                                                "image/male@2x.png",
+                                                height: 10,
+                                              ),
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0, 0, 5, 0),
+                                            ),
+                                            new Text("男"),
+                                          ],
+                                        )
+                                      : new Row(
+                                          children: <Widget>[
+                                            new Container(
+                                              child: Image.asset(
+                                                "image/female@2x.png",
+                                                height: 10,
+                                              ),
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0, 0, 5, 0),
+                                            ),
+                                            new Text("女"),
+                                          ],
                                         ),
-                                        margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                                      ),
-                                      new Text("男"),
-                                    ],
-                                  ),
                                   margin: EdgeInsets.fromLTRB(0, 0, 15, 0),
                                 ),
                               ],
@@ -189,23 +305,7 @@ class authentationItemState extends State<authentationItem>
                           ),
                         ),
                         onTap: () {
-                          if (color_sel == 0) {
-                            setState(() {
-                              color_sel = 1;
-                              color_font = Colors.white;
-                              colors = Color.fromRGBO(255, 188, 1, 1);
-                              color_shoucang = "image/shoucang2.png";
-                              color_text = "已关注";
-                            });
-                          } else {
-                            setState(() {
-                              color_sel = 0;
-                              color_font = Colors.black;
-                              colors = Colors.white;
-                              color_text = "未关注";
-                              color_shoucang = "image/shoucang1.png";
-                            });
-                          }
+                          shoucang1();
                         },
                       )
                     ],

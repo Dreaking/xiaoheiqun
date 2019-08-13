@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:xiaoheiqun/common/tinker.dart';
 
 class balance extends StatefulWidget {
   @override
@@ -9,7 +11,36 @@ class _balanceState extends State<balance> {
   @override
   double i = 0.0;
   TextEditingController controller = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initView();
+  }
 
+  var shuiPrice, userId;
+  void initView() {
+    Tinker.post("/api/user/applyTixianShuiprice", (data) {
+      print("12");
+      print(data);
+      setState(() {
+        shuiPrice = data["rows"]["shuiPrice"];
+      });
+    });
+  }
+
+  Future submit() async {
+    userId = await Tinker.getuserID();
+    FormData param = FormData.from({
+      "userId": userId,
+      "shenqingMoney": controller.text,
+    });
+    Tinker.post("/api/user/applyUserTixian", (data) {
+      Tinker.toast("提现成功");
+    }, params: param);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
@@ -46,7 +77,7 @@ class _balanceState extends State<balance> {
                 children: <Widget>[
                   new Text(
                     ""
-                    "提现金额（收取1%服务费）",
+                    "提现金额（收取$shuiPrice%服务费）",
                     style: TextStyle(fontSize: 18),
                   ),
                   new Container(
@@ -69,7 +100,8 @@ class _balanceState extends State<balance> {
                           if (controller.text == "") {
                             i = 0;
                           } else
-                            i = (double.parse(a) / 100);
+                            i = (double.parse(a) / 100) *
+                                double.parse(shuiPrice);
                           print(controller.text);
                         });
                       },
@@ -105,16 +137,21 @@ class _balanceState extends State<balance> {
                   new Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      new Container(
-                        child: new Text(
-                          "申请提现",
-                          style: TextStyle(color: Colors.white, fontSize: 15),
+                      new InkWell(
+                        child: Container(
+                          child: new Text(
+                            "申请提现",
+                            style: TextStyle(color: Colors.white, fontSize: 15),
+                          ),
+                          margin: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                          width: 140,
+                          alignment: Alignment.center,
+                          height: 40,
+                          color: Colors.deepOrange,
                         ),
-                        margin: EdgeInsets.fromLTRB(0, 40, 0, 0),
-                        width: 140,
-                        alignment: Alignment.center,
-                        height: 40,
-                        color: Colors.deepOrange,
+                        onTap: () {
+                          submit();
+                        },
                       )
                     ],
                   )

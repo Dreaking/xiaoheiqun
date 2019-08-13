@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:cookie_jar/cookie_jar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -7,22 +6,25 @@ import 'package:dio/dio.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:xiaoheiqun/data/Draft.dart';
 import 'dart:convert';
 import 'package:xiaoheiqun/pages/edit/index.dart';
 import '../pages/main/index.dart';
 import '../pages/message//index.dart';
 import '../pages/user//index.dart';
-import 'EnterExitRoute.dart';
 import 'app_config.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:xiaoheiqun/login.dart';
 import 'package:xiaoheiqun/pages/shoucang/index.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
 
+import 'events_bus.dart';
+
 class Tinker {
+  static Dio dio = new Dio();
+
   /// 递归方式 计算文件的大小
   Future<double> _getTotalSizeOfFilesInDir(final FileSystemEntity file) async {
     try {
@@ -76,6 +78,19 @@ class Tinker {
     }
   }
 
+  //查询用户信息
+  static Future queryUserInfo(String userId, callback) async {
+    FormData param = FormData.from({
+      "userId": userId,
+      "type": 0,
+      "fromUserId":
+          await Tinker.getuserID() == null ? "" : await Tinker.getuserID()
+    });
+    Tinker.post("/api/user/doUserMessage", (data) {
+      callback(data["rows"]);
+    }, params: param);
+  }
+
   //获取用户Id
   static Future<String> getuserID() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -114,23 +129,63 @@ class Tinker {
     }
   }
 
+  //图片上传
+  static Future uploadImage(path, Function callback) async {
+    Response response;
+    var name = path.substring(path.lastIndexOf("/") + 1, path.length);
+    FormData formData =
+        new FormData.from({"file1": new UploadFileInfo(new File(path), name)});
+    response = await dio.post(AppConfig.AJAX_IMG_SERVER + "/api/upload1",
+        data: formData);
+    print(response.data);
+    callback(json.decode(response.data)["dizhi"]);
+  }
+
+  //图片组上传
+  static Future uploadImageList(data, Function callback) async {
+    Response response;
+//    var name = path.substring(path.lastIndexOf("/") + 1, path.length);
+    List files = [];
+    for (var i = 0; i < data.length; i++) {
+      files.add(new UploadFileInfo(
+          data[i],
+          data[i].path.substring(
+              data[i].path.lastIndexOf("/") + 1, data[i].path.length)));
+      print("名字");
+      print(data[i]
+          .path
+          .substring(data[i].path.lastIndexOf("/") + 1, data[i].path.length));
+    }
+    FormData formData = new FormData.from({
+      "file1": files,
+      // 支持文件数组上传
+    });
+//    Tinker.post(AppConfig.AJAX_IMG_SERVER + "/api/upload2", (data) {
+//      callback(data);
+//    }, params: formData);
+    response = await dio.post(AppConfig.AJAX_IMG_SERVER + "/api/upload2",
+        data: formData);
+    if (json.decode(response.data)["statusCode"] == "200") {
+      callback(json.decode(response.data)["rows"]);
+      print("111111");
+      print(json.decode(response.data)["rows"]);
+    }
+//    print(response.toString());
+  }
+
   //post方法
   static void post(String url, Function callback,
       {params, Function errorCallback}) async {
 //    try {
-    final res = await http.post(AppConfig.AJAX_SERVER_API + url, body: params);
-//    Tinker.toast("执行");
-    print("aaaaaaaaaaaaa");
-    print(res.body.toString());
-    var data = json.decode(res.body);
+    print(url);
+    final res = await dio.post(AppConfig.AJAX_SERVER_API + url, data: params);
+    print(res.data.toString());
+    var data = json.decode(res.data);
     print(data);
-    print("11112222222222222");
+    print(data["statusCode"]);
     if (data["statusCode"] == "200") {
-//      Tinker.toast("执行");
       callback(data);
     } else {
-      print("-----------------");
-      print(data);
       Tinker.toast(data["message"]);
     }
 //    } catch (e) {
@@ -139,21 +194,6 @@ class Tinker {
 //        errorCallback(e);
 //      }
 //    }
-  }
-
-  //查询用户信息
-  static void queryUserInfo(userId, callback) {
-    FormData p = FormData.from({
-      'userId': userId,
-      'type': 0,
-      'fromUserId':
-          Tinker.getStrong() == null ? "" : Tinker.getStrong()["userId"]
-    });
-    post(AppConfig.AJAX_SERVER_API + "/api/user/doUserMessage", (data) {
-      print("============================");
-      print(data["rows"].toString());
-      callback(data["rows"].toString());
-    }, params: p);
   }
 
   //保存本地用户信息
@@ -333,25 +373,26 @@ class Tinker {
     @required List<Widget> widgetList,
   }) {
     return Swiper(
+      loop: false,
       itemCount: widgetList.length,
-      itemBuilder: (ctx, index) {
-        if (index < widgetList.length) {
+      itemBuilder: (BuildContext context, int index) {
+        if (index < widgetList.length)
           return widgetList[index];
-        } else {
+        else
           return null;
-        }
       },
+      controller: SwiperController(),
       pagination: SwiperPagination(
         builder: DotSwiperPaginationBuilder(
-          color: AppConfig.APP_COLOR_BACKGROUND,
-          activeColor: AppConfig.APP_COLOR_THEME,
+          color: Colors.black,
+          activeColor: Colors.white,
           activeSize: 7.0,
           size: 7.0,
         ),
       ),
       autoplay: true,
-      viewportFraction: 1,
       scale: 0.8,
+      scrollDirection: Axis.horizontal,
     );
   }
 
@@ -365,7 +406,9 @@ class Tinker {
     @required double spacing, //图片的左右间距,
     @required double line_count, //每行图片的数量
     @required double runSpacing, //图片的上下间距,
-    @required Function callback, //回调函数,
+    @required Function callback,
+    @required List ImgList,
+    //回调函数,
   }) {
     return Container(
       child: Image_picker(
@@ -374,6 +417,7 @@ class Tinker {
         Img_height: Image_height,
         Image_file: Click_Image_file,
         spacing: spacing,
+        ImgList1: ImgList,
         runSpacing: runSpacing,
         callback: callback,
         line_count: line_count,
@@ -473,7 +517,7 @@ class TinkerScaffoldState extends State<TinkerScaffold>
             context, CupertinoPageRoute(builder: (context) => EditIndex()));
       }
     } else {
-      if (index == 1) {
+      if (index == 1 || index == 4) {
         setState(() {
           _currentIndex = index;
           _initBottomAppVarItemList();
@@ -567,29 +611,33 @@ class TinkerScaffoldState extends State<TinkerScaffold>
                       Navigator.push(context,
                           CupertinoPageRoute(builder: (context) => Login()));
                     } else {
-                      if (_currentIndex == 0) {
-                        Navigator.push(
-                            context,
-                            EnterExitRoute(
-                                exitPage: MessageIndex(),
-                                enterPage: EditIndex()));
-                      } else if (_currentIndex == 1) {
-                        Navigator.push(
-                            context,
-                            EnterExitRoute(
-                                exitPage: MainIndex(), enterPage: EditIndex()));
-                      } else if (_currentIndex == 3) {
-                        Navigator.push(
-                            context,
-                            EnterExitRoute(
-                                exitPage: ShoucangIndex(),
-                                enterPage: EditIndex()));
-                      } else if (_currentIndex == 4) {
-                        Navigator.push(
-                            context,
-                            EnterExitRoute(
-                                exitPage: UserIndex(), enterPage: EditIndex()));
-                      }
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => EditIndex()));
+//                      if (_currentIndex == 0) {
+//                        Navigator.push(
+//                            context,
+//                            EnterExitRoute(
+//                                exitPage: MessageIndex(),
+//                                enterPage: EditIndex()));
+//                      } else if (_currentIndex == 1) {
+//                        Navigator.push(
+//                            context,
+//                            EnterExitRoute(
+//                                exitPage: MainIndex(), enterPage: EditIndex()));
+//                      } else if (_currentIndex == 3) {
+//                        Navigator.push(
+//                            context,
+//                            EnterExitRoute(
+//                                exitPage: ShoucangIndex(),
+//                                enterPage: EditIndex()));
+//                      } else if (_currentIndex == 4) {
+//                        Navigator.push(
+//                            context,
+//                            EnterExitRoute(
+//                                exitPage: UserIndex(), enterPage: EditIndex()));
+//                      }
                     }
                   }),
             )
@@ -754,6 +802,7 @@ class Image_picker extends StatefulWidget {
   final double spacing; //图片的左右间隔
   final double runSpacing; //图片的上下间隔
   final double line_count; //一行图片的数量
+  final List ImgList1;
   final Function callback; //回调函数
   State<StatefulWidget> createState() {
     return Select_Image_pickerState();
@@ -768,20 +817,51 @@ class Image_picker extends StatefulWidget {
       this.runSpacing,
       this.Image_file,
       this.callback,
+      this.ImgList1,
       this.line_count})
       : super(key: key);
 }
 
 class Select_Image_pickerState extends State<Image_picker> {
   @override
-  List imgList = new List<File>();
-  List _dataListBackup = new List<File>();
+  List imgList = [];
+  List _dataListBackup = new List();
   bool _showItemWhenCovered = false; //手指覆盖的地方，即item被拖动时 底部的那个widget是否可见；
   int _willAcceptIndex = -1; //当拖动覆盖到某个item上的时候，记录这个item的坐标
+  Draft draft1 = null;
+  List ImgList1;
+  var i = 4;
+  var _control;
+  void _listen() {
+    _control = eventBus.on<CaoClickInEvent>().listen((event) {
+      setState(() {
+        draft1 = event.draft;
+      });
+    });
+    if (draft1 != null) {}
+    if (draft1 != null) {
+      if (i == 4) {
+        for (var i = 0; i < draft1.img.length; i++) {
+          if (draft1.img[i] != null) {
+            if (imgList.length == 0) {
+              setState(() {
+                imgList.add(draft1.img[i]);
+              });
+            } else
+              setState(() {
+                imgList[i] = (draft1.img[i]);
+              });
+          }
+        }
+        i = 0;
+      } else {}
+    }
+  }
 
   @override
   void initState() {
     super.initState();
+
     _dataListBackup = imgList.sublist(0);
   }
 
@@ -789,13 +869,18 @@ class Select_Image_pickerState extends State<Image_picker> {
   void dispose() {
     // TODO: implement dispose
     super.dispose();
+    _control.cancle();
 //    _scrollController?.dispose();
   }
 
   Widget build(BuildContext context) {
+    _listen();
 //    imgList=widget.imgList;
+    if (imgList.length != 0) {
+      widget.callback(imgList);
+    }
     // TODO: implement build
-    return new Container(
+    return Container(
       child: img(),
     );
   }
@@ -807,7 +892,6 @@ class Select_Image_pickerState extends State<Image_picker> {
     var img;
     for (var i = 0; i < imgList.length; i++) {
       img = imgList[i];
-      var d = imgList[i].path;
       double spac = widget.spacing;
       setState(() {
         if ((i + 1) % widget.line_count == 0) {
@@ -822,26 +906,7 @@ class Select_Image_pickerState extends State<Image_picker> {
               child: LongPressDraggable(
                 data: imgList[i],
                 child: new DragTarget(
-                  onAccept: (data) {
-//            var bj;
-//            print("data = $data img=$img onAccept");
-//            setState(() {
-//              for (var i = 0; i < imgList.length; i++) {
-//                if (data == imgList[i]) {
-//                  bj = i;
-//                }
-//              }
-//              img = imgList[i];
-//              imgList[i] = data;
-//              imgList..removeAt(i);
-//              imgList.insert(bj, img);
-////              img = imgList[i];
-////              imgList[i] = data;
-////              imgList[bj] = img;
-//
-//              print("data = $data img=$img onAccept");
-//            });
-                  },
+                  onAccept: (data) {},
                   builder: (context, data, rejectedData) {
                     if (_willAcceptIndex >= 0 && _willAcceptIndex == i) {
                       return new Container(
@@ -853,12 +918,19 @@ class Select_Image_pickerState extends State<Image_picker> {
                     } else {
                       if ((i + 1) % widget.line_count == 0) {
                         return Container(
-                          child: Image.file(
-                            imgList[i],
-                            height: widget.Img_height,
-                            width: widget.Img_width,
-                            fit: BoxFit.fill,
-                          ),
+                          child: imgList[i].runtimeType == String
+                              ? Image.network(
+                                  AppConfig.AJAX_IMG_SERVER + imgList[i],
+                                  height: widget.Img_height,
+                                  width: widget.Img_width,
+                                  fit: BoxFit.fill,
+                                )
+                              : Image.file(
+                                  imgList[i],
+                                  height: widget.Img_height,
+                                  width: widget.Img_width,
+                                  fit: BoxFit.fill,
+                                ),
                           margin: EdgeInsets.fromLTRB(
                               0, 0, widget.spacing, widget.runSpacing),
 //                          margin:
@@ -866,12 +938,19 @@ class Select_Image_pickerState extends State<Image_picker> {
                         );
                       } else {
                         return Container(
-                          child: Image.file(
-                            imgList[i],
-                            height: widget.Img_height,
-                            width: widget.Img_width,
-                            fit: BoxFit.fill,
-                          ),
+                          child: imgList[i].runtimeType == String
+                              ? Image.network(
+                                  AppConfig.AJAX_IMG_SERVER + imgList[i],
+                                  height: widget.Img_height,
+                                  width: widget.Img_width,
+                                  fit: BoxFit.fill,
+                                )
+                              : Image.file(
+                                  imgList[i],
+                                  height: widget.Img_height,
+                                  width: widget.Img_width,
+                                  fit: BoxFit.fill,
+                                ),
                           margin: EdgeInsets.fromLTRB(
                               0, 0, spac, widget.runSpacing),
                         );
@@ -953,20 +1032,34 @@ class Select_Image_pickerState extends State<Image_picker> {
                     _willAcceptIndex = -1;
                   });
                 },
-                feedback: Image.file(
-                  img,
-                  height: widget.Img_height,
-                  width: widget.Img_width,
-                  fit: BoxFit.fill,
-                ),
+                feedback: imgList[i].runtimeType == String
+                    ? Image.network(
+                        AppConfig.AJAX_IMG_SERVER + imgList[i],
+                        height: widget.Img_height,
+                        width: widget.Img_width,
+                        fit: BoxFit.fill,
+                      )
+                    : Image.file(
+                        img,
+                        height: widget.Img_height,
+                        width: widget.Img_width,
+                        fit: BoxFit.fill,
+                      ),
                 childWhenDragging: new Container(
                   child: _showItemWhenCovered
-                      ? Image.file(
-                          imgList[i],
-                          height: widget.Img_height,
-                          width: widget.Img_width,
-                          fit: BoxFit.fill,
-                        )
+                      ? imgList[i].runtimeType == String
+                          ? Image.network(
+                              AppConfig.AJAX_IMG_SERVER + imgList[i],
+                              height: widget.Img_height,
+                              width: widget.Img_width,
+                              fit: BoxFit.fill,
+                            )
+                          : Image.file(
+                              imgList[i],
+                              height: widget.Img_height,
+                              width: widget.Img_width,
+                              fit: BoxFit.fill,
+                            )
                       : null,
                   width: widget.Img_width,
                   height: widget.Img_height,
@@ -1057,25 +1150,6 @@ class Select_Image_pickerState extends State<Image_picker> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: rows,
     );
-//    content = new Container(
-//      child: new Wrap(
-//        children: tiles,
-//        spacing: widget.spacing,
-//        runSpacing: widget.runSpacing,
-//      ),
-//      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-//    );
-    if (imgList.length != 0) {
-      widget.callback(imgList);
-    }
-//    return GridView.count(
-//        childAspectRatio: 1.0, //item宽高比
-//        scrollDirection: Axis.vertical, //默认vertical
-//        crossAxisCount: 3, //列数
-//        mainAxisSpacing: 10,
-//        crossAxisSpacing: 10,
-//        children: tiles,
-//    );
     return content;
   }
 

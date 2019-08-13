@@ -1,16 +1,17 @@
 import 'dart:io';
-
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:ui' as ui;
-//import 'package:flutter_localizations/flutter_localizations.dart';
-
 import 'package:xiaoheiqun/common/app_config.dart';
 import 'package:xiaoheiqun/common/dataPicker.dart';
 import 'package:xiaoheiqun/common/diag.dart';
+import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
+import 'package:xiaoheiqun/data/person_data.dart';
+import 'package:xiaoheiqun/pages/user/index.dart';
 
 class person extends StatefulWidget {
   @override
@@ -27,6 +28,7 @@ class _personState extends State<person> {
   var username = "用户名-75";
   var qq = "";
   var alipay = "";
+  var age = "28";
   TextStyle textStyle = TextStyle(fontFamily: "Arial", fontSize: 16);
   TextStyle textRight = TextStyle(
       fontSize: 15,
@@ -138,6 +140,7 @@ class _personState extends State<person> {
         setState(() {
           _time = dateTime.year.toString() + "-" + month + "-" + day;
           _dateTime = dateTime;
+          age = (DateTime.now().year - dateTime.year).toString();
         });
       },
     );
@@ -146,6 +149,77 @@ class _personState extends State<person> {
   @override
   void initState() {
     super.initState();
+    initView();
+  }
+
+  bool imgUpdate = false;
+  void save() {
+    var sex;
+    if (sex_value == "女") {
+      sex = 1;
+    } else
+      sex = 0;
+    if (imgUpdate) {
+      Tinker.uploadImage(headimg, (data) {
+        print(data);
+        print("图片");
+
+        FormData param = FormData.from({
+          "userId": userId,
+          "birthday": _time,
+          "sex": sex,
+          "age": age,
+          "qq": qq,
+          "userName": username,
+          "alipayNumber": alipay,
+          "headImg": data
+        });
+        Tinker.post("/api/user/updateUserMessage", (data) {
+          initView();
+        }, params: param);
+      });
+    } else {
+      FormData param = FormData.from({
+        "userId": userId,
+        "birthday": _time,
+        "sex": sex,
+        "age": age,
+        "qq": qq,
+        "userName": username,
+        "alipayNumber": alipay,
+        "headImg": headimg
+      });
+      Tinker.post("/api/user/updateUserMessage", (data) {
+        print("保存1");
+        initView();
+      }, params: param);
+    }
+    eventBus.fire(new UserLoggedInEvent("10"));
+  }
+
+  var userId;
+  Person_data user;
+  Future initView() async {
+    userId = await Tinker.getuserID();
+    Tinker.queryUserInfo(userId, (data) {
+      user = Person_data.fromJson(data);
+      setState(() {
+        imgUpdate = false;
+        if (user.headImg != null) {
+          headimg = user.headImg;
+        }
+        _time = user.birthday;
+        username = user.userName;
+        if (user.sex == "0") {
+          sex_value = "男";
+        } else {
+          sex_value = "女";
+        }
+        age = user.age.toString();
+        if (user.qq != null) qq = user.qq;
+        if (user.alipayNumber != null) alipay = user.alipayNumber;
+      });
+    });
   }
 
   Future<Null> _selectDate(BuildContext context) async {
@@ -243,7 +317,7 @@ class _personState extends State<person> {
       if (image != null) {
         setState(() {
           headimg = image.path;
-          print(headimg + "------------");
+          imgUpdate = true;
         });
       }
     }
@@ -253,9 +327,8 @@ class _personState extends State<person> {
       var image = await ImagePicker.pickImage(source: ImageSource.gallery);
       if (image != null) {
         setState(() {
+          imgUpdate = true;
           headimg = image.path;
-          print(headimg + "------------");
-          print(image.path + "------------");
         });
       }
     }
@@ -337,488 +410,533 @@ class _personState extends State<person> {
     return MaterialApp(
       theme: Tinker.getThemeData(),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        resizeToAvoidBottomPadding: false,
-        appBar: new AppBar(
-          leading: InkWell(
-            child: Icon(
-              Icons.arrow_back_ios,
-              color: Colors.black,
-              size: 20,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          title: new Text(
-            '个人资料',
-            style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.normal,
-                fontSize: 18),
-          ),
-          actions: <Widget>[
-            Container(
-              margin: EdgeInsets.only(right: 10),
-              child: Text(
-                "保存",
-                style: TextStyle(
+      home: user == null
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : Scaffold(
+              resizeToAvoidBottomPadding: false,
+              appBar: new AppBar(
+                leading: InkWell(
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.black,
+                    size: 20,
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                title: new Text(
+                  '个人资料',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 18),
+                ),
+                actions: <Widget>[
+                  InkWell(
+                    child: Container(
+                      margin: EdgeInsets.only(right: 10),
+                      child: Text(
+                        "保存",
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                      alignment: Alignment.center,
+                    ),
+                    onTap: () {
+                      save();
+                    },
+                  )
+                ],
+                elevation: 0,
+                brightness: Brightness.light,
+                backgroundColor: Colors.white,
+                centerTitle: true,
+                iconTheme: IconThemeData(
                   color: Colors.black,
                 ),
               ),
-              alignment: Alignment.center,
-            )
-          ],
-          elevation: 0,
-          brightness: Brightness.light,
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          iconTheme: IconThemeData(
-            color: Colors.black,
-          ),
-        ),
-        body: new Container(
-          color: Colors.white,
-          child: new Column(
-            children: <Widget>[
-              new Align(
-                alignment: Alignment.center,
+              body: new Container(
+                color: Colors.white,
                 child: new Column(
                   children: <Widget>[
-                    InkWell(
-                      child: new Container(
-                        child: headimg == null
-                            ? Image.asset(
-                                "image/nologin@2x.png",
-                                width: 80,
-                                height: 80,
-                              )
-                            : Container(
-                                height: 80,
-                                width: 80,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(80),
-                                    border: Border.all(color: Colors.black12)),
-                                child: ClipOval(
-                                    child: new SizedBox(
-                                  width: 80,
-                                  height: 80,
-                                  child: Image.file(
-                                    File("$headimg"),
-                                  ),
-                                )),
-                              ),
-                        margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
-                      ),
-                      onTap: () {
-                        showModalBottomSheet(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return SafeArea(
-                                  child: new Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  new ListTile(
-                                    leading: AppConfig.Image_picker_icon1,
-                                    title:
-                                        new Text(AppConfig.Image_picker_name1),
-                                    onTap: () async {
-                                      _takePhoto();
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                  new ListTile(
-                                    leading: AppConfig.Image_picker_icon2,
-                                    title:
-                                        new Text(AppConfig.Image_picker_name2),
-                                    onTap: () async {
-                                      _openGallery();
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              ));
-                            });
-                      },
-                    ),
-                    new Text("修改头像")
-                  ],
-                ),
-              ),
-              new Container(
-                margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                child: new Column(
-                  children: <Widget>[
-                    InkWell(
-                      child: new Container(
-                        margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        decoration: new BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Theme.of(context).dividerColor))),
-                        child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            new Text(
-                              "用户名",
-                              style: textStyle,
-                            ),
-                            new Container(
-                              child: new Row(
-                                children: <Widget>[
-                                  Container(
-                                    child: new Align(
-                                      child: new ConstrainedBox(
-                                        constraints: BoxConstraints(
-                                            maxHeight: 50, maxWidth: 90),
-                                        child: new TextField(
-                                          enabled: false,
-                                          style: textRight,
-                                          textDirection: TextDirection.rtl,
-                                          controller:
-                                              TextEditingController.fromValue(
-                                                  TextEditingValue(
-                                            // 设置内容
-                                            text: "$username",
-
-                                            // 保持光标在最后
-                                          )),
-                                          decoration: InputDecoration(
-                                            border: InputBorder.none,
-                                          ),
-                                        ),
-                                      ),
-                                      alignment: Alignment.topCenter,
-                                    ),
-                                    margin: EdgeInsets.only(right: 10),
-                                  ),
-                                  new Image.asset(
-                                    "image/shape_copy2@2x.png",
-                                    height: 15,
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        showUserName(context, "用户名", username, 0);
-                      },
-                    ),
-                    new Container(
-                      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                      decoration: new BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  color: Theme.of(context).dividerColor))),
-                      child: new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    new Align(
+                      alignment: Alignment.center,
+                      child: new Column(
                         children: <Widget>[
-                          new Text(
-                            "生日",
-                            style: textStyle,
-                          ),
-                          new Container(
-                            child: new Row(
-                              children: <Widget>[
-                                Container(
-                                  child: new Align(
-                                    child: new InkWell(
-                                      child: new Text(
-                                        "${_time ?? "1991-01-01"}",
-                                        style: textRight,
-                                      ),
-                                      onTap: () async {
-                                        if (Platform.isIOS)
-                                          _showDatePicker();
-                                        else {
-                                          var result = await showDialog(
-                                              context: context, //BuildContext对象
-                                              barrierDismissible: false,
-                                              builder: (BuildContext context) {
-                                                return new Load(
-                                                  text: _time ?? "1991-01-01",
-                                                  //调用对话框
-                                                );
-                                              });
-                                          setState(() {
-                                            _time = result;
-                                          });
-                                        }
-                                      },
+                          InkWell(
+                            child: new Container(
+                              child: headimg == null
+                                  ? Image.asset(
+                                      "image/nologin@2x.png",
+                                      width: 80,
+                                      height: 80,
+                                    )
+                                  : Container(
+                                      height: 80,
+                                      width: 80,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(80),
+                                          border: Border.all(
+                                              color: Colors.black12)),
+                                      child: ClipOval(
+                                          child: new SizedBox(
+                                        width: 80,
+                                        height: 80,
+                                        child: imgUpdate
+                                            ? Image.file(
+                                                File(headimg),
+                                                fit: BoxFit.cover,
+                                              )
+                                            : Image.network(
+                                                AppConfig.AJAX_IMG_SERVER +
+                                                    "$headimg",
+                                                fit: BoxFit.cover,
+                                              ),
+                                      )),
                                     ),
-                                    alignment: Alignment.topCenter,
-                                  ),
-                                  margin: EdgeInsets.only(right: 10),
-                                ),
-                                new Image.asset(
-                                  "image/shape_copy2@2x.png",
-                                  height: 15,
-                                )
-                              ],
+                              margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
                             ),
+                            onTap: () {
+                              showModalBottomSheet(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return SafeArea(
+                                        child: new Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: <Widget>[
+                                        new ListTile(
+                                          leading: AppConfig.Image_picker_icon1,
+                                          title: new Text(
+                                              AppConfig.Image_picker_name1),
+                                          onTap: () async {
+                                            _takePhoto();
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        new ListTile(
+                                          leading: AppConfig.Image_picker_icon2,
+                                          title: new Text(
+                                              AppConfig.Image_picker_name2),
+                                          onTap: () async {
+                                            _openGallery();
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    ));
+                                  });
+                            },
                           ),
+                          new Text("修改头像")
                         ],
                       ),
                     ),
-                    InkWell(
-                      child: new Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        decoration: new BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Theme.of(context).dividerColor))),
-                        child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            new Text(
-                              "性别",
-                              style: textStyle,
-                            ),
-                            new Container(
+                    new Container(
+                      margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                      child: new Column(
+                        children: <Widget>[
+                          InkWell(
+                            child: new Container(
+                              margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                              decoration: new BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                          color:
+                                              Theme.of(context).dividerColor))),
                               child: new Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
-                                  Container(
-                                    child: new Align(
-                                      child: new ConstrainedBox(
-                                        constraints: BoxConstraints(
-                                            maxHeight: 50, maxWidth: 90),
-                                        child: new TextField(
-                                          enabled: false,
-                                          style: textRight,
-                                          textDirection: TextDirection.rtl,
-                                          controller:
-                                              TextEditingController.fromValue(
-                                                  TextEditingValue(
-                                            // 设置内容
-                                            text: "$sex_value",
-
-                                            // 保持光标在最后
-                                          )),
-                                          decoration: InputDecoration(
-                                            border: InputBorder.none,
-                                          ),
-                                        ),
-                                      ),
-                                      alignment: Alignment.topCenter,
-                                    ),
-                                    margin: EdgeInsets.only(right: 10),
+                                  new Text(
+                                    "用户名",
+                                    style: textStyle,
                                   ),
-                                  new Image.asset(
-                                    "image/shape_copy2@2x.png",
-                                    height: 15,
-                                  )
+                                  new Container(
+                                    child: new Row(
+                                      children: <Widget>[
+                                        Container(
+                                          child: new Align(
+                                            child: new ConstrainedBox(
+                                              constraints: BoxConstraints(
+                                                  maxHeight: 50, maxWidth: 90),
+                                              child: new TextField(
+                                                enabled: false,
+                                                style: textRight,
+                                                textDirection:
+                                                    TextDirection.rtl,
+                                                controller:
+                                                    TextEditingController
+                                                        .fromValue(
+                                                            TextEditingValue(
+                                                  // 设置内容
+                                                  text: "$username",
+
+                                                  // 保持光标在最后
+                                                )),
+                                                decoration: InputDecoration(
+                                                  border: InputBorder.none,
+                                                ),
+                                              ),
+                                            ),
+                                            alignment: Alignment.topCenter,
+                                          ),
+                                          margin: EdgeInsets.only(right: 10),
+                                        ),
+                                        new Image.asset(
+                                          "image/shape_copy2@2x.png",
+                                          height: 15,
+                                        )
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                      onTap: () async {
-                        if (Platform.isIOS) {
-                          //ios相关代码
-                          showSexIos();
-                        } else if (Platform.isAndroid) {
-                          //android相关代码
-                          var result = await showDialog(
-                              context: context, //BuildContext对象
-                              barrierDismissible: false,
-                              builder: (BuildContext context) {
-                                return new LoadingDialog(
-                                  //调用对话框
-                                  text: sex_value,
-                                );
-                              });
-                          print("result=$result");
-                          setState(() {
-                            sex_value = result;
-                          });
-                        }
-                      },
-                    ),
-                    new Container(
-                      height: 50,
-                      decoration: new BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  color: Theme.of(context).dividerColor))),
-                      child: new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          new Text(
-                            "年龄",
-                            style: textStyle,
+                            onTap: () {
+                              showUserName(context, "用户名", username, 0);
+                            },
                           ),
                           new Container(
+                            margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                            decoration: new BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        color:
+                                            Theme.of(context).dividerColor))),
                             child: new Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Container(
-                                  child: new Text(
-                                    "20",
-                                    style: textRight,
-                                  ),
-                                  margin: EdgeInsets.only(right: 10),
+                                new Text(
+                                  "生日",
+                                  style: textStyle,
                                 ),
-                                new Image.asset(
-                                  "image/shape_copy2@2x.png",
-                                  height: 15,
-                                )
+                                new Container(
+                                  child: new Row(
+                                    children: <Widget>[
+                                      Container(
+                                        child: new Align(
+                                          child: new InkWell(
+                                            child: new Text(
+                                              "${_time ?? "1991-01-01"}",
+                                              style: textRight,
+                                            ),
+                                            onTap: () async {
+                                              if (Platform.isIOS)
+                                                _showDatePicker();
+                                              else {
+                                                var result = await showDialog(
+                                                    context:
+                                                        context, //BuildContext对象
+                                                    barrierDismissible: false,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return new Load(
+                                                        text: _time ??
+                                                            "1991-01-01",
+                                                        //调用对话框
+                                                      );
+                                                    });
+                                                setState(() {
+                                                  _time = result;
+                                                  age = (DateTime.now().year -
+                                                          int.parse(result
+                                                              .toString()
+                                                              .split("-")[0]))
+                                                      .toString();
+                                                });
+                                              }
+                                            },
+                                          ),
+                                          alignment: Alignment.topCenter,
+                                        ),
+                                        margin: EdgeInsets.only(right: 10),
+                                      ),
+                                      new Image.asset(
+                                        "image/shape_copy2@2x.png",
+                                        height: 15,
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    InkWell(
-                      child: new Container(
-                        decoration: new BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Theme.of(context).dividerColor))),
-                        child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            new Text(
-                              "支付宝",
-                              style: textStyle,
-                            ),
-                            new Container(
+                          InkWell(
+                            child: new Container(
+                              margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              decoration: new BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                          color:
+                                              Theme.of(context).dividerColor))),
                               child: new Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
-                                  Container(
-                                    child: new Align(
-                                      child: new ConstrainedBox(
-                                        constraints: BoxConstraints(
-                                            maxHeight: 50, maxWidth: 140),
-                                        child: new TextField(
-                                          textAlign: TextAlign.right,
-                                          enabled: false,
-                                          style: textRight,
-                                          textDirection: TextDirection.rtl,
-                                          controller:
-                                              TextEditingController.fromValue(
-                                                  TextEditingValue(
-                                            // 设置内容
-                                            text: "$alipay",
-                                            // 保持光标在最后
-                                          )),
-                                          decoration: InputDecoration(
-                                              border: InputBorder.none,
-                                              hintText: "请输入支付宝账号",
-                                              hintStyle: textRight),
-                                        ),
-                                      ),
-                                      alignment: Alignment.topCenter,
-                                    ),
-                                    margin: EdgeInsets.only(right: 10),
+                                  new Text(
+                                    "性别",
+                                    style: textStyle,
                                   ),
-                                  new Image.asset(
-                                    "image/shape_copy2@2x.png",
-                                    height: 15,
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        showUserName(context, "支付宝", null, 1);
-                      },
-                    ),
-                    InkWell(
-                      child: new Container(
-                        decoration: new BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Theme.of(context).dividerColor))),
-                        child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            new Text(
-                              "QQ",
-                              style: textStyle,
-                            ),
-                            new Container(
-                              child: new Row(
-                                children: <Widget>[
-                                  Container(
-                                    child: new Align(
-                                      child: new ConstrainedBox(
-                                        constraints: BoxConstraints(
-                                            maxHeight: 50, maxWidth: 90),
-                                        child: new TextField(
-                                          enabled: false,
-                                          style: textRight,
-                                          textDirection: TextDirection.rtl,
-                                          controller:
-                                              TextEditingController.fromValue(
-                                                  TextEditingValue(
-                                            // 设置内容
-                                            text: "$qq",
+                                  new Container(
+                                    child: new Row(
+                                      children: <Widget>[
+                                        Container(
+                                          child: new Align(
+                                            child: new ConstrainedBox(
+                                              constraints: BoxConstraints(
+                                                  maxHeight: 50, maxWidth: 90),
+                                              child: new TextField(
+                                                enabled: false,
+                                                style: textRight,
+                                                textDirection:
+                                                    TextDirection.rtl,
+                                                controller:
+                                                    TextEditingController
+                                                        .fromValue(
+                                                            TextEditingValue(
+                                                  // 设置内容
+                                                  text: "$sex_value",
 
-                                            // 保持光标在最后
-                                          )),
-                                          decoration: InputDecoration(
-                                              border: InputBorder.none,
-                                              hintText: "请输入QQ号",
-                                              hintStyle: textRight),
+                                                  // 保持光标在最后
+                                                )),
+                                                decoration: InputDecoration(
+                                                  border: InputBorder.none,
+                                                ),
+                                              ),
+                                            ),
+                                            alignment: Alignment.topCenter,
+                                          ),
+                                          margin: EdgeInsets.only(right: 10),
                                         ),
-                                      ),
-                                      alignment: Alignment.topCenter,
+                                        new Image.asset(
+                                          "image/shape_copy2@2x.png",
+                                          height: 15,
+                                        )
+                                      ],
                                     ),
-                                    margin: EdgeInsets.only(right: 10),
                                   ),
-                                  new Image.asset(
-                                    "image/shape_copy2@2x.png",
-                                    height: 15,
-                                  )
                                 ],
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        showUserName(context, "QQ", null, 2);
-                      },
-                    ),
-                    new Container(
-                      decoration: new BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  color: Theme.of(context).dividerColor))),
-                      child: new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          new Text(
-                            "手机号",
-                            style: textStyle,
+                            onTap: () async {
+                              if (Platform.isIOS) {
+                                //ios相关代码
+                                showSexIos();
+                              } else if (Platform.isAndroid) {
+                                //android相关代码
+                                var result = await showDialog(
+                                    context: context, //BuildContext对象
+                                    barrierDismissible: false,
+                                    builder: (BuildContext context) {
+                                      return new LoadingDialog(
+                                        //调用对话框
+                                        text: sex_value,
+                                      );
+                                    });
+                                print("result=$result");
+                                setState(() {
+                                  sex_value = result;
+                                });
+                              }
+                            },
                           ),
                           new Container(
                             height: 50,
+                            decoration: new BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        color:
+                                            Theme.of(context).dividerColor))),
                             child: new Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Container(
-                                  child: new Text(
-                                    "15616484",
-                                    style: textRight,
-                                  ),
-                                  margin: EdgeInsets.only(right: 10),
+                                new Text(
+                                  "年龄",
+                                  style: textStyle,
                                 ),
-                                new Image.asset(
-                                  "image/shape_copy2@2x.png",
-                                  height: 15,
-                                )
+                                new Container(
+                                  child: new Row(
+                                    children: <Widget>[
+                                      Container(
+                                        child: new Text(
+                                          "$age",
+                                          style: textRight,
+                                        ),
+                                        margin: EdgeInsets.only(right: 10),
+                                      ),
+                                      new Image.asset(
+                                        "image/shape_copy2@2x.png",
+                                        height: 15,
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    new Container(),
+                          InkWell(
+                            child: new Container(
+                              decoration: new BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                          color:
+                                              Theme.of(context).dividerColor))),
+                              child: new Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  new Text(
+                                    "支付宝",
+                                    style: textStyle,
+                                  ),
+                                  new Container(
+                                    child: new Row(
+                                      children: <Widget>[
+                                        Container(
+                                          child: new Align(
+                                            child: new ConstrainedBox(
+                                              constraints: BoxConstraints(
+                                                  maxHeight: 50, maxWidth: 140),
+                                              child: new TextField(
+                                                textAlign: TextAlign.right,
+                                                enabled: false,
+                                                style: textRight,
+                                                textDirection:
+                                                    TextDirection.rtl,
+                                                controller:
+                                                    TextEditingController
+                                                        .fromValue(
+                                                            TextEditingValue(
+                                                  // 设置内容
+                                                  text: "$alipay",
+                                                  // 保持光标在最后
+                                                )),
+                                                decoration: InputDecoration(
+                                                    border: InputBorder.none,
+                                                    hintText: "请输入支付宝账号",
+                                                    hintStyle: textRight),
+                                              ),
+                                            ),
+                                            alignment: Alignment.topCenter,
+                                          ),
+                                          margin: EdgeInsets.only(right: 10),
+                                        ),
+                                        new Image.asset(
+                                          "image/shape_copy2@2x.png",
+                                          height: 15,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              showUserName(context, "支付宝", null, 1);
+                            },
+                          ),
+                          InkWell(
+                            child: new Container(
+                              decoration: new BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                          color:
+                                              Theme.of(context).dividerColor))),
+                              child: new Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  new Text(
+                                    "QQ",
+                                    style: textStyle,
+                                  ),
+                                  new Container(
+                                    child: new Row(
+                                      children: <Widget>[
+                                        Container(
+                                          child: new Align(
+                                            child: new ConstrainedBox(
+                                              constraints: BoxConstraints(
+                                                  maxHeight: 50, maxWidth: 90),
+                                              child: new TextField(
+                                                enabled: false,
+                                                style: textRight,
+                                                textDirection:
+                                                    TextDirection.rtl,
+                                                controller:
+                                                    TextEditingController
+                                                        .fromValue(
+                                                            TextEditingValue(
+                                                  // 设置内容
+                                                  text: "$qq",
+
+                                                  // 保持光标在最后
+                                                )),
+                                                decoration: InputDecoration(
+                                                    border: InputBorder.none,
+                                                    hintText: "请输入QQ号",
+                                                    hintStyle: textRight),
+                                              ),
+                                            ),
+                                            alignment: Alignment.topCenter,
+                                          ),
+                                          margin: EdgeInsets.only(right: 10),
+                                        ),
+                                        new Image.asset(
+                                          "image/shape_copy2@2x.png",
+                                          height: 15,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              showUserName(context, "QQ", null, 2);
+                            },
+                          ),
+                          new Container(
+                            decoration: new BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        color:
+                                            Theme.of(context).dividerColor))),
+                            child: new Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                new Text(
+                                  "手机号",
+                                  style: textStyle,
+                                ),
+                                new Container(
+                                  height: 50,
+                                  child: new Row(
+                                    children: <Widget>[
+                                      Container(
+                                        child: new Text(
+                                          user.phone,
+                                          style: textRight,
+                                        ),
+                                        margin: EdgeInsets.only(right: 10),
+                                      ),
+                                      new Image.asset(
+                                        "image/shape_copy2@2x.png",
+                                        height: 15,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          new Container(),
 //                  new Container(
 //                    child: new MaterialButton(
 //                      color: Colors.blue,
@@ -828,23 +946,13 @@ class _personState extends State<person> {
 //                      },
 //                    ),
 //                  ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
-      ),
-//        localizationsDelegates: [
-//          //此处
-//          GlobalMaterialLocalizations.delegate,
-//          GlobalWidgetsLocalizations.delegate,
-//        ],
-//        supportedLocales: [
-//          //此处
-//          const Locale('zh', 'CH'),
-//          const Locale('en', 'US'),
-//        ]
+            ),
     );
   }
 }

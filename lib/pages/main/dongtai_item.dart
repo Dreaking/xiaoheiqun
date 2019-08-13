@@ -1,13 +1,18 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:xiaoheiqun/common/app_config.dart';
+import 'package:xiaoheiqun/common/events_bus.dart';
+import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/data/Animate.dart';
+import 'package:xiaoheiqun/login.dart';
 import 'package:xiaoheiqun/pages/main/user_detail.dart';
+import 'package:xiaoheiqun/pages/shoucang/shoucang.dart';
 
 class DongtaiItem extends StatefulWidget {
   @override
   Animate animate;
-
   DongtaiItem(this.animate);
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -16,16 +21,67 @@ class DongtaiItem extends StatefulWidget {
 }
 
 class DongtaiItemState extends State<DongtaiItem> {
-  var showImages = "image/shoucang1.png";
-
-  int _imgIndex = 0;
-
   @override
+  var showImages = "image/shoucang1.png";
+  var userId;
+  int _imgIndex;
+
   // TODO: implement wantKeepAlive
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    getData();
+    print("item");
+    setState(() {
+      var isshou = widget.animate.isShoucang;
+      print(isshou);
+    });
+    if (widget.animate.isShoucang) {
+      setState(() {
+        showImages = "image/shoucang2.png";
+        _imgIndex = 1;
+      });
+    } else {
+      setState(() {
+        showImages = "image/shoucang1.png";
+        _imgIndex = 0;
+      });
+    }
+  }
+
+  Future getData() async {
+    userId = await Tinker.getuserID();
+  }
+
+  bool T = true;
+  Future shoucang() async {
+    userId = await Tinker.getuserID();
+    FormData param = FormData.from({
+      "userId": userId == null ? "" : userId,
+      "productId": widget.animate.id
+    });
+    if (!widget.animate.isShoucang) {
+      Tinker.post("/api/product/doShoucangProduct", (data) {
+        print(data);
+      }, params: param);
+      Tinker.toast("收藏成功");
+      setState(() {
+        widget.animate.isShoucang = true;
+//        showImages = "image/shoucang2.png";
+//        _imgIndex = 1;
+      });
+    } else {
+      Tinker.post("/api/product/doCancelShoucangProduct", (data) {},
+          params: param);
+      Tinker.toast("取消收藏");
+      setState(() {
+//        showImages = "image/shoucang1.png";
+//        _imgIndex = 0;
+        widget.animate.isShoucang = false;
+      });
+    }
+    eventBus.fire(new ShouCangInEvent());
   }
 
   @override
@@ -155,7 +211,7 @@ class DongtaiItemState extends State<DongtaiItem> {
                                     width: width * 0.3,
                                     height: 120,
                                     fit: BoxFit.fill,
-                                    imageUrl: "http://imgs.jiashilan.com/" +
+                                    imageUrl: AppConfig.AJAX_IMG_SERVER +
                                         widget.animate.img[0],
                                     placeholder: (context, url) => new Row(
                                       mainAxisAlignment:
@@ -188,7 +244,7 @@ class DongtaiItemState extends State<DongtaiItem> {
                                     width: width * 0.3,
                                     height: 120,
                                     fit: BoxFit.fill,
-                                    imageUrl: "http://imgs.jiashilan.com/" +
+                                    imageUrl: AppConfig.AJAX_IMG_SERVER +
                                         widget.animate.img[1],
                                     placeholder: (context, url) => new Row(
                                       mainAxisAlignment:
@@ -294,24 +350,27 @@ class DongtaiItemState extends State<DongtaiItem> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           InkWell(
-                            child: Image.asset(
-                              "$showImages",
-                              width: 20,
-                              height: 20,
-                              fit: BoxFit.cover,
-                            ),
+                            child: widget.animate.isShoucang
+                                ? Image.asset(
+                                    "image/shoucang2.png",
+                                    width: 20,
+                                    height: 20,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.asset(
+                                    "image/shoucang1.png",
+                                    width: 20,
+                                    height: 20,
+                                    fit: BoxFit.cover,
+                                  ),
                             onTap: () {
-                              if (_imgIndex == 0) {
-                                setState(() {
-                                  showImages = "image/shoucang2.png";
-                                  _imgIndex = 1;
-                                });
-                              } else {
-                                setState(() {
-                                  showImages = "image/shoucang1.png";
-                                  _imgIndex = 0;
-                                });
-                              }
+                              if (userId == null) {
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (context) => Login()));
+                              } else
+                                shoucang();
                             },
                           ),
                           Padding(
@@ -336,10 +395,14 @@ class DongtaiItemState extends State<DongtaiItem> {
         ),
       ),
       onTap: () {
-        Navigator.push(
-            context,
-            CupertinoPageRoute(
-                builder: (context) => udetail(widget.animate.id)));
+        if (userId == null) {
+          Navigator.push(
+              context, CupertinoPageRoute(builder: (context) => Login()));
+        } else
+          Navigator.push(
+              context,
+              CupertinoPageRoute(
+                  builder: (context) => udetail(widget.animate.id)));
       },
     );
   }

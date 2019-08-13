@@ -1,17 +1,24 @@
 import 'dart:async';
 import "package:dio/dio.dart";
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:xiaoheiqun/common/events_bus.dart';
+import 'package:xiaoheiqun/pages/user/index.dart';
 import 'common/tinker.dart';
 
 class Login extends StatefulWidget {
+  UserIndexState userIndexState;
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return LoginState();
+    return LoginState(this.userIndexState);
   }
 }
 
 class LoginState extends State<Login> {
+  UserIndexState userIndexState;
+  LoginState(this.userIndexState);
   @override
   var xieyi1 = "image/sel_@2x_290.png";
   var xieyi2 = "image/sel_@2x_290.png";
@@ -108,7 +115,7 @@ class LoginState extends State<Login> {
                               GestureDetector(
                                   child: Container(
                                     width: 80,
-                                    alignment: Alignment.centerRight,
+                                    alignment: Alignment.centerLeft,
                                     child: Text(
                                       _countdownTime == 0
                                           ? "获取验证码"
@@ -285,7 +292,13 @@ class LoginState extends State<Login> {
         Tinker.post("/api/user/login", (data) {
           Tinker.setStrong(data["rows"]["userId"]);
           Tinker.getStrong();
-          Navigator.pop(context);
+//          userIndexState.refresh();
+//          Navigator.pop(context);
+          Navigator.pushAndRemoveUntil(
+              context,
+              CupertinoPageRoute(builder: (context) => TinkerScaffold()),
+              (route) => route == null);
+          eventBus.fire(new UserLoggedInEvent("10"));
         }, params: p);
       }
     } else
@@ -303,7 +316,7 @@ class LoginState extends State<Login> {
       //开始倒计时
       startCountdownTimer();
       FormData param = FormData.from({"phone": phone.text});
-      Tinker.get("/api/user/getCode", (data) {
+      Tinker.post("/api/user/getCode", (data) {
 //        Tinker.toast(data);
         Tinker.toast("发送验证码成功");
       }, params: param);

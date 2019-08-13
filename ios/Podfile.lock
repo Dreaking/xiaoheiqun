@@ -7,6 +7,12 @@ PODS:
   - FMDB/standard (2.7.5)
   - image_picker (0.0.1):
     - Flutter
+  - JCore (2.1.1)
+  - JPush (3.2.2):
+    - JCore (< 3.0.0, >= 2.0.0)
+  - jpush_flutter (0.0.2):
+    - Flutter
+    - JPush
   - package_info (0.0.1):
     - Flutter
   - path_provider (0.0.1):
@@ -30,13 +36,15 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - Flutter (from `.symlinks/flutter/ios`)
+  - Flutter (from `.symlinks/flutter/ios-release`)
   - fluwx (from `.symlinks/plugins/fluwx/ios`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
+  - jpush_flutter (from `.symlinks/plugins/jpush_flutter/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
+  - UMCAnalytics
   - UMCCommon
   - UMCPush
   - UMCSecurityPlugins
@@ -46,6 +54,8 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - FMDB
+    - JCore
+    - JPush
     - UMCAnalytics
     - UMCCommon
     - UMCPush
@@ -53,11 +63,13 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: ".symlinks/flutter/ios"
+    :path: ".symlinks/flutter/ios-release"
   fluwx:
     :path: ".symlinks/plugins/fluwx/ios"
   image_picker:
     :path: ".symlinks/plugins/image_picker/ios"
+  jpush_flutter:
+    :path: ".symlinks/plugins/jpush_flutter/ios"
   package_info:
     :path: ".symlinks/plugins/package_info/ios"
   path_provider:
@@ -76,6 +88,9 @@ SPEC CHECKSUMS:
   fluwx: 19524c5e4c9c539a646407259139c9c1e4eaf9e5
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   image_picker: a211f28b95a560433c00f5cd3773f4710a20404d
+  JCore: 4072327557f0b83cc22dd4041f2f839740c0077b
+  JPush: 0e9088c85c73275629facc311fe5992dfac36eeb
+  jpush_flutter: d7e3a79466eb9447fd940233f02661b514f137c6
   package_info: 78cabb3c322943c55d39676f4a5bfc748c01d055
   path_provider: f96fff6166a8867510d2c25fdcc346327cc4b259
   shared_preferences: 1feebfa37bb57264736e16865e7ffae7fc99b523
@@ -87,6 +102,6 @@ SPEC CHECKSUMS:
   umeng_uapp: e592d13e46fca9b636bc2fcebda0d5972c7fa91d
   url_launcher: 0067ddb8f10d36786672aa0722a21717dba3a298
 
-PODFILE CHECKSUM: 9952ce6143c06f6f889c1541c3fc0739709863c9
+PODFILE CHECKSUM: b4a945ab8812547704d70d89a8d95f663f1daf85
 
 COCOAPODS: 1.6.2

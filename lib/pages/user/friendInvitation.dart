@@ -1,6 +1,38 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:xiaoheiqun/common/tinker.dart';
 
-class SecondScreen extends StatelessWidget {
+class SecondScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return SecondScreenState();
+  }
+}
+
+class SecondScreenState extends State<SecondScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initView();
+  }
+
+  var userId, poll = "12", money = "0", friends = "0";
+  Future initView() async {
+    userId = await Tinker.getuserID();
+    FormData param = FormData.from({"userId": userId});
+    Tinker.post("/api/user/findAllFriend", (data1) {
+      Tinker.queryUserInfo(userId, (data) {
+        setState(() {
+          money = data["money"].toString();
+          poll = data["poll"];
+          friends = data1["size"];
+        });
+      });
+    }, params: param);
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -37,7 +69,7 @@ class SecondScreen extends StatelessWidget {
                   new Column(
                     children: <Widget>[
                       new Text(
-                        "O1770PB4",
+                        poll,
                         style: TextStyle(
                           fontSize: 25,
                           color: Colors.deepOrange,
@@ -52,14 +84,14 @@ class SecondScreen extends StatelessWidget {
                   new Column(
                     children: <Widget>[
                       new Text(
-                        "O1770PB4",
+                        money,
                         style: TextStyle(
                           fontSize: 25,
                           color: Colors.deepOrange,
                         ),
                       ),
                       new Text(
-                        "我的邀请码",
+                        "总收益",
                         style: TextStyle(fontSize: 15),
                       ),
                     ],
@@ -86,7 +118,7 @@ class SecondScreen extends StatelessWidget {
                         width: 70,
                       ),
                       new Container(
-                        child: new Text("共0个"),
+                        child: new Text("共" + friends + "个"),
                         width: 50,
                       )
                     ],

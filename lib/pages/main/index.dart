@@ -1,11 +1,7 @@
-import 'package:dio/dio.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:xiaoheiqun/data/Animate.dart';
-
 import '../../common/app_config.dart';
 import '../../common/tinker.dart';
-import 'dongtai_item.dart';
 import 'dongtai_list.dart';
 
 class MainIndex extends StatefulWidget {
@@ -16,16 +12,40 @@ class MainIndex extends StatefulWidget {
 }
 
 class MainIndexState extends State<MainIndex>
-    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  List<Widget> _swiperList = List()
-    ..add(Image.asset(
-      "image/banner1.png",
-      fit: BoxFit.fill,
-    ))
-    ..add(Image.asset(
-      "image/banner2.png",
-      fit: BoxFit.fill,
-    ));
+    with SingleTickerProviderStateMixin {
+  List<Widget> _swiperList = List();
+
+  void _getBanner() {
+    Tinker.post("/api/adv/findAllBanner", (path) {
+      print("vvvvvvvv");
+      print(path);
+//      print(path["rows"][0]["imgUrl"]);
+      paths = path["rows"][0]["imgUrl"];
+      for (var i = 0; i < int.parse(path["size"]); i++) {
+        setState(() {
+          _swiperList.add(CachedNetworkImage(
+            fit: BoxFit.fill,
+            imageUrl: AppConfig.AJAX_IMG_SERVER + path["rows"][i]["imgUrl"],
+            placeholder: (context, url) => new Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new SizedBox(
+                  width: 30,
+                  height: 30,
+                  child: CircularProgressIndicator(),
+                )
+              ],
+            ),
+            errorWidget: (context, url, error) => new Icon(Icons.error),
+          ));
+        });
+      }
+      print("bvcx");
+      print(_swiperList);
+    });
+  }
+
+  static var paths;
 
   List<String> _tabbarTitle = ["热门", "发布时间", "认证用户", "关注"];
 
@@ -39,17 +59,17 @@ class MainIndexState extends State<MainIndex>
   PageView _indexPageView;
   PageController _indexPageController;
 
-  @override
-  bool get wantKeepAlive {
-    return true;
-  }
+//  @override
+//  bool get wantKeepAlive {
+//    return true;
+//  }
 
   @override
   void initState() {
     super.initState();
+    _getBanner();
     _scrollViewController = ScrollController(initialScrollOffset: 0.0);
 
-//    Tinker.toast(super.context, "123");
     _tabController = TabController(
       length: _tabbarTitle.length,
       vsync: this,

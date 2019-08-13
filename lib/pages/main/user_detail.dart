@@ -5,8 +5,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/data/Animate.dart';
+import 'package:xiaoheiqun/data/User.dart';
+import 'package:xiaoheiqun/pages/main/dongtai_list.dart';
 
 import 'other_dongtai.dart';
 
@@ -22,43 +25,109 @@ class udetail extends StatefulWidget {
 
 class detailState extends State<udetail> {
   @override
-  double leftFontSize;
-  var guanzhu = "未关注";
-  var guanzhu_sel = 0;
-  var shoucang = "未收藏";
-  var shoucang_sel = 0;
-  @override
-  List movies;
-  Animate animate1;
-  Future getData() {
-    FormData param = FormData.from({
-      "userId": "",
-      "productId": widget.id,
-    });
-    Tinker.post("api/product/findProductMessage", (data) {
-//      List top = data["rows"];
-//      Tinker.toast(movies.toString());
-//      Tinker.toast(data["rows"]["title"].toString());
-      setState(() {
-//        movies = top.map((json) => Animate.fromJson(json)).toList();
-//        movies = data["rows"];
-        Map<String, dynamic> user = data["rows"];
-        animate1 = Animate.fromJson(user);
-//        animate1 = Animate.fromJson(data["rows"]);
-      });
-//      Tinker.toast("cscscs");
-//      Tinker.toast(animate1.img.toString());
-      print("1111111999");
-      print(animate1.merchantName);
-      print("1111111999");
-    }, params: param);
-  }
-
   void initState() {
     // TODO: implement initState
     super.initState();
     leftFontSize = 12;
     getData();
+  }
+
+  double leftFontSize;
+  var guanzhu = "未关注";
+  var guanzhu_sel = 0;
+  var shoucang;
+  var shoucang_sel;
+  List movies;
+  Animate animate1;
+  String merchanId;
+  User Muser;
+  Future getData() async {
+    userId = await Tinker.getuserID();
+    FormData param = FormData.from({
+      "userId": userId,
+      "productId": widget.id,
+    });
+    Tinker.post("api/product/findProductMessage", (data) {
+      setState(() {
+        Map<String, dynamic> user = data["rows"];
+        merchanId = data["rows"]["merchantId"];
+        animate1 = Animate.fromJson(user);
+        print("ggg");
+        print(data);
+        print(data["rows"]["isMShoucang"]);
+        if (data["rows"]["isMShoucang"]) {
+          guanzhu_sel = 1;
+          guanzhu = "已关注";
+        } else {
+          guanzhu = "未关注";
+          guanzhu_sel = 0;
+        }
+        if (data["rows"]["isShoucang"]) {
+          setState(() {
+            shoucang_sel = 1;
+            shoucang = "已收藏";
+          });
+        } else {
+          setState(() {
+            shoucang_sel = 0;
+            shoucang = "未收藏";
+          });
+        }
+      });
+      Tinker.queryUserInfo(merchanId, (data) {
+        setState(() {
+          Muser = User.fromJson(data);
+        });
+      });
+    }, params: param);
+  }
+
+  Future guanzhuMethod() async {
+    userId = await Tinker.getuserID();
+    FormData param =
+        FormData.from({"userId": userId, "merchantId": Muser.userId});
+    if (guanzhu_sel == 0) {
+      setState(() {
+        guanzhu = "已关注";
+        guanzhu_sel = 1;
+        Tinker.post("/api/system/doShoucangMerchant", () {}, params: param);
+        Tinker.toast("关注成功");
+      });
+    } else {
+      setState(() {
+        Tinker.post("/api/system/doCancelShoucangMerchant", (data) {
+          Tinker.toast("取消关注");
+          print(data);
+        }, params: param);
+        guanzhu_sel = 0;
+        guanzhu = "未关注";
+      });
+    }
+  }
+
+  var userId;
+  Future shoucangMethod() async {
+    userId = await Tinker.getuserID();
+    FormData param = FormData.from(
+        {"userId": userId == null ? "" : userId, "productId": widget.id});
+    if (shoucang_sel == 0) {
+      setState(() {
+        shoucang = "已收藏";
+        shoucang_sel = 1;
+      });
+      Tinker.post("/api/product/doShoucangProduct", (data) {
+        Tinker.toast("收藏成功");
+      }, params: param);
+    } else {
+      setState(() {
+        shoucang = "未收藏";
+        shoucang_sel = 0;
+      });
+      Tinker.post("/api/product/doCancelShoucangProduct", (data) {
+        Tinker.toast("取消收藏");
+      }, params: param);
+    }
+    eventBus.fire(new UserLoggedInEvent("10"));
   }
 
   Widget build(BuildContext context) {
@@ -99,7 +168,7 @@ class detailState extends State<udetail> {
 
     return WillPopScope(
         child: Material(
-            child: animate1 == null
+            child: animate1 == null || Muser == null
                 ? Center(child: CircularProgressIndicator())
                 : Scaffold(
                     backgroundColor: Colors.white,
@@ -196,12 +265,15 @@ class detailState extends State<udetail> {
                                                   ),
                                                   Positioned(
                                                     child: ClipOval(
-                                                      child: Image.asset(
-                                                        "image/vipicon.png",
-                                                        width: 30,
-                                                        height: 30,
-                                                        fit: BoxFit.fill,
-                                                      ),
+                                                      child: Muser.vipType ==
+                                                              "1"
+                                                          ? Image.asset(
+                                                              "image/vipicon.png",
+                                                              width: 30,
+                                                              height: 30,
+                                                              fit: BoxFit.fill,
+                                                            )
+                                                          : null,
                                                     ),
                                                     bottom: -8,
                                                     left: 30,
@@ -239,10 +311,12 @@ class detailState extends State<udetail> {
                                                             MainAxisAlignment
                                                                 .spaceBetween,
                                                         children: <Widget>[
-                                                          Image.asset(
-                                                            "image/vip@2x.png",
-                                                            width: 20,
-                                                            height: 10,
+                                                          Container(
+                                                            child: Image.asset(
+                                                              "image/vip@2x.png",
+                                                              width: 20,
+                                                              height: 10,
+                                                            ),
                                                           ),
                                                           Image.asset(
                                                             "image/renzheng.png",
@@ -284,17 +358,7 @@ class detailState extends State<udetail> {
                                                   ),
                                                 ),
                                                 onTap: () {
-                                                  setState(() {
-                                                    if (guanzhu_sel == 0) {
-                                                      guanzhu = "已关注";
-                                                      guanzhu_sel = 1;
-                                                      Tinker.toast("关注成功");
-                                                    } else {
-                                                      guanzhu_sel = 0;
-                                                      guanzhu = "未关注";
-                                                      Tinker.toast("取消关注");
-                                                    }
-                                                  });
+                                                  guanzhuMethod();
                                                 },
                                               ),
                                               GestureDetector(
@@ -323,7 +387,8 @@ class detailState extends State<udetail> {
                                                       context,
                                                       CupertinoPageRoute(
                                                           builder: (context) =>
-                                                              otherDongtai()));
+                                                              otherDongtai(animate1
+                                                                  .merchantId)));
                                                 },
                                               ),
                                             ],
@@ -411,17 +476,7 @@ class detailState extends State<udetail> {
                                                     EdgeInsets.only(left: 10),
                                               ),
                                               onTap: () {
-                                                setState(() {
-                                                  if (shoucang_sel == 0) {
-                                                    shoucang = "已收藏";
-                                                    shoucang_sel = 1;
-                                                    Tinker.toast("收藏成功");
-                                                  } else {
-                                                    shoucang = "未收藏";
-                                                    shoucang_sel = 0;
-                                                    Tinker.toast("取消收藏");
-                                                  }
-                                                });
+                                                shoucangMethod();
                                               },
                                             )
                                           ],
@@ -466,6 +521,7 @@ class detailState extends State<udetail> {
                   )),
         onWillPop: () {
           Navigator.pop(context);
+
 //              Navigator.pushAndRemoveUntil(
 //                context,
 //                MaterialPageRoute(builder: (context) => TinkerScaffold()),

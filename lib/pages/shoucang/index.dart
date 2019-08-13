@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/pages/main/dongtai_list.dart';
+import 'package:xiaoheiqun/pages/shoucang/shoucang.dart';
 
 import 'guanzhu_person.dart';
 
@@ -93,10 +94,10 @@ class ShoucangIndexState extends State<ShoucangIndex>
                 children: <Widget>[
                   Container(
                     color: Color.fromRGBO(250, 250, 250, 1),
-                    child: DongtaiList(0),
+                    child: shoucangList(),
                   ),
-                  Column(
-                    children: <Widget>[guanzhuPerson()],
+                  Container(
+                    child: guanzhuPerson(),
                   ),
                 ],
                 controller: _controller,

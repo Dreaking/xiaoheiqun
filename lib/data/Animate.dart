@@ -6,7 +6,7 @@ class Animate {
   final String title;
   final String headImg;
   final int clickCount;
-  final bool isShoucang;
+  bool isShoucang;
   final String isRenzheng;
   final List img;
   final String merchantName;

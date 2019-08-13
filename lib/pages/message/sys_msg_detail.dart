@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:xiaoheiqun/data/sys_msg.dart';
 
 class sys_msg_detail extends StatefulWidget {
+  sys_msg item;
+  sys_msg_detail(this.item);
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -43,20 +46,20 @@ class sys_msg_detailState extends State<sys_msg_detail> {
                 Container(
                   margin: EdgeInsets.only(bottom: 10),
                   child: Text(
-                    "小黑裙上线",
+                    widget.item.title,
                     style: TextStyle(fontSize: 18),
                   ),
                 ),
                 Container(
                   margin: EdgeInsets.only(bottom: 20),
                   child: Text(
-                    "2019-03-04",
+                    widget.item.createTime.split(" ")[0],
                     style: TextStyle(fontSize: 10),
                   ),
                 ),
                 Container(
                   child: Text(
-                    "       小黑裙现已正式上线，您已开通VIP权限，现可以发布动态和日常聊天，现邀请好友成为会员可获得返利！",
+                    widget.item.content,
                     style: TextStyle(fontSize: 16),
                   ),
                 )

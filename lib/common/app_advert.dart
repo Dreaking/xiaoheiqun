@@ -17,12 +17,10 @@ class AppDvertState extends State<AppDvert>
     with SingleTickerProviderStateMixin {
   AnimationController _animationController;
   Animation _animation;
-  Timer _timer;
+  Timer _timer, _second;
   int seconds = 5;
   void timer() {
-    Timer.periodic(Duration(seconds: 1), (timer) {
-      print('计时中...$seconds');
-
+    _second = Timer.periodic(Duration(seconds: 1), (timer) {
       if (seconds < 0) {
         timer.cancel(); // 取消重复计时
         return;
@@ -76,54 +74,65 @@ class AppDvertState extends State<AppDvert>
   void dispose() {
     _animationController.dispose();
     _timer.cancel();
+    _second.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     // TODO: implement build
-    return Stack(
-      children: <Widget>[
-        Image.asset(
-          "image/app_advert.jpg",
-          fit: BoxFit.cover,
-        ),
-        Positioned(
-          child: SafeArea(
-              child: GestureDetector(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 13, vertical: 8),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.white)),
-              child: Text(
-                "$seconds秒跳过",
-                style: TextStyle(
-                    fontSize: 11,
-                    color: Colors.white,
-                    decoration: TextDecoration.none),
-              ),
-              alignment: Alignment.center,
+    return ConstrainedBox(
+      constraints: BoxConstraints.expand(),
+      child: Stack(
+        fit: StackFit.loose,
+        overflow: Overflow.visible,
+        children: <Widget>[
+          Container(
+            child: Image.asset(
+              "image/app_advert.jpg",
+              fit: BoxFit.fill,
             ),
-            onTap: () {
-              Navigator.of(context).pushAndRemoveUntil(
-                PageRouteBuilder(
-                  pageBuilder: (
-                    ctx,
-                    animation1,
-                    animation2,
-                  ) {
-                    return TinkerScaffold();
-                  },
+            width: size.width,
+            height: size.height,
+          ),
+          Positioned(
+            child: SafeArea(
+                child: GestureDetector(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 13, vertical: 8),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.white)),
+                child: Text(
+                  "$seconds秒跳过",
+                  style: TextStyle(
+                      fontSize: 11,
+                      color: Colors.white,
+                      decoration: TextDecoration.none),
                 ),
-                (route) => route == null,
-              );
-            },
-          )),
-          top: 10,
-          right: 13,
-        )
-      ],
+                alignment: Alignment.center,
+              ),
+              onTap: () {
+                Navigator.of(context).pushAndRemoveUntil(
+                  PageRouteBuilder(
+                    pageBuilder: (
+                      ctx,
+                      animation1,
+                      animation2,
+                    ) {
+                      return TinkerScaffold();
+                    },
+                  ),
+                  (route) => route == null,
+                );
+              },
+            )),
+            top: 10,
+            right: 13,
+          )
+        ],
+      ),
     );
   }
 }

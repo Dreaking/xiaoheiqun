@@ -32,7 +32,7 @@ class AppConfig {
   static const AJAX_SERVER_API = "http://api.jiashilan.com/";
 
   //图片服务器地址
-  static const AJAX_IMG_SERVER = " http://imgs.jiashilan.com/";
+  static const AJAX_IMG_SERVER = "http://imgs.jiashilan.com/";
 
   ///ajax get请求
   static const AJAX_METHOD_GET = "GET";
