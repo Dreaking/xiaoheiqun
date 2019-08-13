@@ -45,7 +45,6 @@ class UserIndexState extends State<UserIndex>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     initView();
   }
