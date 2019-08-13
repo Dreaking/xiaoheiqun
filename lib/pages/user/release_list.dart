@@ -17,7 +17,6 @@ class release_list extends StatefulWidget {
 class release_listState extends State<release_list> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getData();
   }
