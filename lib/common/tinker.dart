@@ -151,18 +151,11 @@ class Tinker {
           data[i],
           data[i].path.substring(
               data[i].path.lastIndexOf("/") + 1, data[i].path.length)));
-      print("名字");
-      print(data[i]
-          .path
-          .substring(data[i].path.lastIndexOf("/") + 1, data[i].path.length));
     }
     FormData formData = new FormData.from({
       "file1": files,
       // 支持文件数组上传
     });
-//    Tinker.post(AppConfig.AJAX_IMG_SERVER + "/api/upload2", (data) {
-//      callback(data);
-//    }, params: formData);
     response = await dio.post(AppConfig.AJAX_IMG_SERVER + "/api/upload2",
         data: formData);
     if (json.decode(response.data)["statusCode"] == "200") {
@@ -170,7 +163,6 @@ class Tinker {
       print("111111");
       print(json.decode(response.data)["rows"]);
     }
-//    print(response.toString());
   }
 
   //post方法
@@ -212,8 +204,6 @@ class Tinker {
 
   ///
   ///
-  ///
-  ///
 
   ///
   ///获取app主题
@@ -226,28 +216,6 @@ class Tinker {
         textTheme: TextTheme(caption: TextStyle(fontSize: 18)));
   }
 
-//  static final Dio _dio = Dio(BaseOptions(
-//      connectTimeout: AppConfig.AJAX_TIMEOUT,
-//      receiveTimeout: AppConfig.AJAX_TIMEOUT,
-//      baseUrl: AppConfig.AJAX_SERVER_API,
-//      headers: {"1": 1}));
-
-//  static BuildContext _buildContext;
-//
-//  static void initContext(BuildContext buildContext) {
-//    _buildContext = buildContext;
-//  }
-
-//  static void toast(
-//    BuildContext context,
-//    String msg,
-//  ) {
-//    OverlayState overlayState = Overlay.of(context);
-//    OverlayEntry overlayEntry = OverlayEntry(builder: (context) {
-//      _buildToastLayout(msg);
-//    });
-//    overlayState.insert(overlayEntry);
-//  }
 
   static LayoutBuilder _buildToastLayout(String msg) {
     return LayoutBuilder(builder: (context, constraints) {
@@ -282,89 +250,6 @@ class Tinker {
       );
     });
   }
-
-//  ///网络请求
-//  static Future<Map> ajax(
-//    String url, {
-//    method: AppConfig.AJAX_METHOD_GET,
-//    Map values,
-//    Map header,
-//  }) async {
-//    print({
-//      "url": url,
-//      "method": method,
-//      "values": values,
-//    });
-//
-//    Dio _dio = Dio(BaseOptions(
-//        connectTimeout: AppConfig.AJAX_TIMEOUT,
-//        receiveTimeout: AppConfig.AJAX_TIMEOUT,
-//        baseUrl: AppConfig.AJAX_SERVER_API,
-//        headers: header));
-//
-//    ///设置ajax拦截器
-//    _dio.interceptors
-//
-//      ///Cookie控制
-//      ..add(CookieManager(CookieJar()))
-//
-//      ///请求拦截器
-//      ..add(InterceptorsWrapper(
-//        onRequest: (RequestOptions options) {
-//          // 在请求被发送之前做一些事情
-//          if (AppConfig.AJAX_LOG) {
-//            print(
-//                "发起请求：URL:${options.baseUrl}${options.uri},Method:${options.method},values:${options.queryParameters}");
-//          }
-//
-//          return options; //continue
-//          // 如果你想完成请求并返回一些自定义数据，可以返回一个`Response`对象或返回`dio.resolve(data)`。
-//          // 这样请求将会被终止，上层then会被调用，then中返回的数据将是你的自定义数据data.
-//          //
-//          // 如果你想终止请求并触发一个错误,你可以返回一个`DioError`对象，或返回`dio.reject(errMsg)`，
-//          // 这样请求将被中止并触发异常，上层catchError会被调用。
-//        },
-//        onResponse: (Response response) {
-//          // 在返回响应数据之前做一些预处理
-//          if (AppConfig.AJAX_LOG) {
-//            print(response.data);
-//          }
-//          if (response.statusCode != 200 ||
-//              json.decode(response.data)[AppConfig.AJAX_STATUS_NAME] != 200) {
-//            return null;
-//          }
-//          return response; // continue
-//        },
-//        onError: (DioError e) {
-//          // 当请求失败时做一些预处理
-//          print(e.message);
-//          return e; //continue
-//        },
-//      ));
-//
-//    Response response;
-//    if (method == AppConfig.AJAX_METHOD_GET) {
-//      response = await _dio.get(
-//        url,
-//        queryParameters: values ??= {},
-//      );
-//    } else {
-//      response = await _dio.post(
-//        url,
-//        queryParameters: values ??= {},
-//      );
-//    }
-//    if (response != null) {
-//      return response.data;
-//    } else {}
-////    Tinker.toast();
-//    final _json = json.decode(response.data);
-//    if (response.statusCode == 200 && _json["statusCode"] == "200") {
-//      return _json;
-//    } else {
-////      Tinker.toast();
-//    }
-//  }
 
   ///
   /// 创建轮播图
