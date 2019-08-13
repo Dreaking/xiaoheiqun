@@ -26,7 +26,6 @@ class DongtaiItemState extends State<DongtaiItem> {
   var userId;
   int _imgIndex;
 
-  // TODO: implement wantKeepAlive
   @override
   void initState() {
     // TODO: implement initState
