@@ -175,6 +175,7 @@ class _personState extends State<person> {
           "headImg": data
         });
         Tinker.post("/api/user/updateUserMessage", (data) {
+          Tinker.toast("保存成功");
           initView();
         }, params: param);
       });
@@ -190,7 +191,7 @@ class _personState extends State<person> {
         "headImg": headimg
       });
       Tinker.post("/api/user/updateUserMessage", (data) {
-        print("保存1");
+        Tinker.toast("保存成功");
         initView();
       }, params: param);
     }
@@ -437,7 +438,7 @@ class _personState extends State<person> {
                 actions: <Widget>[
                   InkWell(
                     child: Container(
-                      margin: EdgeInsets.only(right: 10),
+                      margin: EdgeInsets.only(left: 10, right: 10),
                       child: Text(
                         "保存",
                         style: TextStyle(

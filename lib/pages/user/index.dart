@@ -247,7 +247,7 @@ class UserIndexState extends State<UserIndex>
     }
 
     return Material(
-      child: userId == ""
+      child: userId == "" || name == null
           ? Center(
               child: SizedBox(
                 width: 50,
@@ -257,15 +257,6 @@ class UserIndexState extends State<UserIndex>
             )
           : Scaffold(
               backgroundColor: Colors.white,
-//      appBar: AppBar(
-//        brightness: Brightness.light,
-//        title: Text(
-//          "我的",
-//          style: TextStyle(color: Colors.black, fontSize: 22),
-//        ),
-//        elevation: 0,
-//        backgroundColor: Colors.white,
-//      ),
               body: SingleChildScrollView(
                 child: new Column(
                   children: <Widget>[

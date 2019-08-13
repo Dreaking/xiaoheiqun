@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:xiaoheiqun/login.dart';
+import 'package:xiaoheiqun/pages/edit/index.dart';
 import 'package:xiaoheiqun/pages/user/release_list.dart';
 
 class release extends StatefulWidget {
@@ -38,15 +41,21 @@ class releaseState extends State<release> with TickerProviderStateMixin {
                 fontSize: 18),
           ),
           actions: <Widget>[
-            Container(
-              alignment: Alignment.center,
+            InkWell(
               child: Container(
-                child: Text(
-                  "新增",
-                  style: TextStyle(color: Colors.black, fontSize: 16),
+                alignment: Alignment.center,
+                child: Container(
+                  child: Text(
+                    "新增",
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                  ),
+                  margin: EdgeInsets.only(left: 10, right: 10),
                 ),
-                margin: EdgeInsets.only(right: 15),
               ),
+              onTap: () {
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => EditIndex()));
+              },
             )
           ],
           elevation: 0,

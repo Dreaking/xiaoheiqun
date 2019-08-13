@@ -21,6 +21,15 @@ class release_listState extends State<release_list> {
     getData();
   }
 
+  Future del(productId) async {
+    userId = await Tinker.getuserID();
+    FormData param = FormData.from({"userId": userId, "productId": productId});
+    Tinker.post("/api/product/doDeleteProduct", (data) {
+      Tinker.toast("删除成功");
+      getData();
+    }, params: param);
+  }
+
   var userId, headimg, vipType, name;
   int a;
   List movies;
@@ -74,57 +83,76 @@ class release_listState extends State<release_list> {
                         child: Column(
                           children: <Widget>[
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      left: 15, top: 8, bottom: 10),
-                                  width: 50,
-                                  height: 40,
-                                  child: Stack(
-                                    children: <Widget>[
-                                      Container(
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.black12),
-                                            borderRadius:
-                                                BorderRadius.circular(40)),
-                                        child: ClipOval(
-                                          child: Image.network(
-                                            "http://imgs.jiashilan.com/$headimg",
-                                            width: 40,
-                                            height: 40,
-                                            fit: BoxFit.cover,
+                                Row(
+                                  children: <Widget>[
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          left: 15, top: 8, bottom: 10),
+                                      width: 50,
+                                      height: 40,
+                                      child: Stack(
+                                        children: <Widget>[
+                                          Container(
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Colors.black12),
+                                                borderRadius:
+                                                    BorderRadius.circular(40)),
+                                            child: ClipOval(
+                                              child: Image.network(
+                                                "http://imgs.jiashilan.com/$headimg",
+                                                width: 40,
+                                                height: 40,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
                                           ),
-                                        ),
+                                          Positioned(
+                                            child: Container(
+                                              width: 20,
+                                              height: 20,
+                                              alignment: Alignment.center,
+                                              child: Image.asset(
+                                                "image/vipicon.png",
+                                                width: 20,
+                                                height: 20,
+                                                fit: BoxFit.fill,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          25)),
+                                            ),
+                                            left: 26,
+                                            top: 22,
+                                          )
+                                        ],
                                       ),
-                                      Positioned(
-                                        child: Container(
-                                          width: 20,
-                                          height: 20,
-                                          alignment: Alignment.center,
-                                          child: Image.asset(
-                                            "image/vipicon.png",
-                                            width: 20,
-                                            height: 20,
-                                            fit: BoxFit.fill,
-                                          ),
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(25)),
-                                        ),
-                                        left: 26,
-                                        top: 22,
-                                      )
-                                    ],
-                                  ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      height: 40,
+                                      child: Text(
+                                        name,
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Container(
-                                  alignment: Alignment.center,
-                                  height: 40,
-                                  child: Text(
-                                    name,
-                                    style: TextStyle(fontSize: 15),
+                                GestureDetector(
+                                  child: Container(
+                                    margin: EdgeInsets.only(right: 30, top: 10),
+                                    child: Image.asset(
+                                      "image/delete_blank.png",
+                                      width: 15,
+                                      height: 15,
+                                    ),
                                   ),
+                                  onTap: () {
+                                    del(movies[index].id);
+                                  },
                                 ),
                               ],
                             ),
