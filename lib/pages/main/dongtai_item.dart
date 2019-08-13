@@ -8,7 +8,6 @@ import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/data/Animate.dart';
 import 'package:xiaoheiqun/login.dart';
 import 'package:xiaoheiqun/pages/main/user_detail.dart';
-import 'package:xiaoheiqun/pages/shoucang/shoucang.dart';
 
 class DongtaiItem extends StatefulWidget {
   @override
