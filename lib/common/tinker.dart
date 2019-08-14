@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:xiaoheiqun/data/Draft.dart';
 import 'dart:convert';
 import 'package:xiaoheiqun/pages/edit/index.dart';
+import 'package:xiaoheiqun/vido.dart';
 import '../pages/main/index.dart';
 import '../pages/message//index.dart';
 import '../pages/user//index.dart';
@@ -215,7 +216,6 @@ class Tinker {
         accentColor: Colors.blue,
         textTheme: TextTheme(caption: TextStyle(fontSize: 18)));
   }
-
 
   static LayoutBuilder _buildToastLayout(String msg) {
     return LayoutBuilder(builder: (context, constraints) {
@@ -668,7 +668,8 @@ class TinkerScaffoldState extends State<TinkerScaffold>
   ///初始化页面路由
   void _initScreenList() {
     _screenList
-      ..add(MessageIndex())
+      ..add(ChewieDemo())
+//      ..add(MessageIndex())
       ..add(MainIndex())
       ..add(null)
       ..add(ShoucangIndex())

@@ -8,7 +8,7 @@ import 'package:xiaoheiqun/data/Animate.dart';
 import 'dongtai_item.dart';
 
 class DongtaiList extends StatefulWidget {
-  int orderType;
+  int orderType; //查询的类别：2热门 3发布时间 4认证用户 5关注
   DongtaiList(
     this.orderType,
   ) : super();
@@ -39,6 +39,7 @@ class DongtaiListState extends State<DongtaiList> {
       "currentPage": homepage.toString(),
       "sortType": widget.orderType.toString(),
     });
+
     Tinker.post("api/product/findProductByPage", (data) {
       List top = data["rows"];
       setState(() {

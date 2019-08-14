@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/data/release.dart';
+import 'package:xiaoheiqun/pages/main/user_detail.dart';
 
 class release_list extends StatefulWidget {
   String status;
@@ -356,7 +358,13 @@ class release_listState extends State<release_list> {
                           ],
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) =>
+                                    udetail(movies[index].id)));
+                      },
                     );
                   }),
     );

@@ -4,9 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/login.dart';
+import 'package:xiaoheiqun/pages/user/feedback.dart';
 
 import 'about.dart';
-import 'feedback.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -80,173 +80,169 @@ class SettingsState extends State<Settings> {
     }
 
     // TODO: implement build
-    return Material(
-      child: Scaffold(
-          backgroundColor: Colors.white,
-          appBar: AppBar(
-              elevation: 0,
-              title: Text(
-                "设置",
-                style: TextStyle(
-                    color: Colors.black, fontWeight: FontWeight.normal),
+    return Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+            elevation: 0,
+            title: Text(
+              "设置",
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.normal),
+            ),
+            centerTitle: true,
+            backgroundColor: Colors.white,
+            leading: InkWell(
+              child: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.black,
+                size: 20,
               ),
-              centerTitle: true,
-              backgroundColor: Colors.white,
-              leading: InkWell(
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                  size: 20,
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              )),
-          body: Column(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.fromLTRB(15, 20, 15, 0),
-                child: Column(
-                  children: <Widget>[
-                    InkWell(
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              "清除缓存",
-                              style: TextStyle(fontSize: 15),
-                            ),
-                            Image.asset(
-                              "image/shape_copy2@2x.png",
-                              height: 15,
-                            )
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        Tinker.clearCache();
-                      },
-                    ),
-                    InkWell(
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              "检查更新",
-                              style: TextStyle(fontSize: 15),
-                            ),
-                            Image.asset(
-                              "image/shape_copy2@2x.png",
-                              height: 15,
-                            )
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        _showNewVersionAppDialog();
-                      },
-                    ),
-                    //关于小黑裙
-                    InkWell(
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              "关于小黑裙",
-                              style: TextStyle(fontSize: 15),
-                            ),
-                            Image.asset(
-                              "image/shape_copy2@2x.png",
-                              height: 15,
-                            )
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => about()));
-                      },
-                    ),
-                    //反馈
-                    InkWell(
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              "我要反馈",
-                              style: TextStyle(fontSize: 15),
-                            ),
-                            Image.asset(
-                              "image/shape_copy2@2x.png",
-                              height: 15,
-                            )
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        if (userId == null) {
-                          Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                  builder: (context) => Login()));
-                        } else {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => feedback()));
-                        }
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              //退出登录
-              Container(
-                child: userId == ""
-                    ? Container()
-                    : InkWell(
-                        child: Container(
-                          alignment: Alignment.center,
-                          height: 55,
-                          margin: EdgeInsets.only(top: 10),
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              border: Border(
-                            top: BorderSide(
-                                color: Color.fromRGBO(238, 238, 238, 1)),
-                            bottom: BorderSide(
-                                color: Color.fromRGBO(238, 238, 238, 1)),
-                          )),
-                          child: Text(
-                            "退出登录",
-                            style: TextStyle(
-                                color: Color.fromRGBO(234, 6, 59, 1),
-                                fontSize: 17),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            )),
+        body: Column(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.fromLTRB(15, 20, 15, 0),
+              child: Column(
+                children: <Widget>[
+                  InkWell(
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            "清除缓存",
+                            style: TextStyle(fontSize: 15),
                           ),
-                        ),
-                        onTap: () async {
-                          SharedPreferences prefs =
-                              await SharedPreferences.getInstance();
-                          prefs.remove("user1"); //删除指定键
-                          Navigator.pushAndRemoveUntil(
+                          Image.asset(
+                            "image/shape_copy2@2x.png",
+                            height: 15,
+                          )
+                        ],
+                      ),
+                    ),
+                    onTap: () {
+                      Tinker.clearCache();
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            "检查更新",
+                            style: TextStyle(fontSize: 15),
+                          ),
+                          Image.asset(
+                            "image/shape_copy2@2x.png",
+                            height: 15,
+                          )
+                        ],
+                      ),
+                    ),
+                    onTap: () {
+                      _showNewVersionAppDialog();
+                    },
+                  ),
+                  //关于小黑裙
+                  InkWell(
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            "关于小黑裙",
+                            style: TextStyle(fontSize: 15),
+                          ),
+                          Image.asset(
+                            "image/shape_copy2@2x.png",
+                            height: 15,
+                          )
+                        ],
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => about()));
+                    },
+                  ),
+                  //反馈
+                  InkWell(
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            "我要反馈",
+                            style: TextStyle(fontSize: 15),
+                          ),
+                          Image.asset(
+                            "image/shape_copy2@2x.png",
+                            height: 15,
+                          )
+                        ],
+                      ),
+                    ),
+                    onTap: () {
+                      if (userId == null) {
+                        Navigator.push(context,
+                            CupertinoPageRoute(builder: (context) => Login()));
+                      } else {
+                        Navigator.push(
                             context,
                             CupertinoPageRoute(
-                                builder: (context) => TinkerScaffold()),
-                            (route) => route == null,
-                          );
-                        },
+                                builder: (context) => feedback()));
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ),
+            //退出登录
+            Container(
+              child: userId == ""
+                  ? Container()
+                  : InkWell(
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 55,
+                        margin: EdgeInsets.only(top: 10),
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            border: Border(
+                          top: BorderSide(
+                              color: Color.fromRGBO(238, 238, 238, 1)),
+                          bottom: BorderSide(
+                              color: Color.fromRGBO(238, 238, 238, 1)),
+                        )),
+                        child: Text(
+                          "退出登录",
+                          style: TextStyle(
+                              color: Color.fromRGBO(234, 6, 59, 1),
+                              fontSize: 17),
+                        ),
                       ),
-              )
-            ],
-          )),
-    );
+                      onTap: () async {
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        prefs.remove("user1"); //删除指定键
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => TinkerScaffold()),
+                          (route) => route == null,
+                        );
+                      },
+                    ),
+            )
+          ],
+        ));
   }
 }

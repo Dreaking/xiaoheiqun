@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:xiaoheiqun/pages/main/dongtai_list.dart';
 import '../../common/app_config.dart';
 import '../../common/tinker.dart';
-import 'dongtai_list.dart';
 
 class MainIndex extends StatefulWidget {
   @override

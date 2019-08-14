@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
+import 'package:xiaoheiqun/pages/edit/my_draft.dart';
 import 'package:xiaoheiqun/pages/edit/release_success.dart';
-import 'my_draft.dart';
 import 'package:xiaoheiqun/data/Draft.dart';
 
 class EditIndex extends StatefulWidget {
@@ -63,21 +63,25 @@ class EditIndexState extends State<EditIndex> {
       Tinker.toast("请同意相关协议");
     } else {
       print(imgList);
-      for (var i = 0; i < imgList.length; i++) {
-        if (imgList[i].runtimeType != String) {
-          imgListUpload.add(imgList[i]);
-        } else {
-          imgListNet.add(imgList[i]);
+      if (imgList != null) {
+        for (var i = 0; i < imgList.length; i++) {
+          if (imgList[i].runtimeType != String) {
+            imgListUpload.add(imgList[i]);
+          } else {
+            imgListNet.add(imgList[i]);
+          }
         }
       }
       Tinker.uploadImageList(imgListUpload, (data) {
         print(imgListNet);
-        for (var i = 0; i < imgListNet.length; i++) {
-          data.add(imgListNet[i]);
+        if (imgListNet != null) {
+          for (var i = 0; i < imgListNet.length; i++) {
+            data.add(imgListNet[i]);
+          }
         }
         FormData param = FormData.from({
           "merchantId": userId,
-          "img": data,
+          "img": ["/upload/2019/0814/f954fe093bf54b77921584f4f3a4c146.jpg"],
           "title": title.text,
           "content": content.text,
           "biaoqian": biaoqian.text,

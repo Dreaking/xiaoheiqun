@@ -112,6 +112,13 @@
             </list>
           </value>
         </entry>
+        <entry key="chewie">
+          <value>
+            <list>
+              <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/chewie-0.9.7/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="code_builder">
           <value>
             <list>
@@ -444,6 +451,13 @@
             </list>
           </value>
         </entry>
+        <entry key="open_iconic_flutter">
+          <value>
+            <list>
+              <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/open_iconic_flutter-0.3.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="package_config">
           <value>
             <list>
@@ -539,6 +553,13 @@
           <value>
             <list>
               <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/redux_thunk-0.2.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="screen">
+          <value>
+            <list>
+              <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/screen-0.0.5/lib" />
             </list>
           </value>
         </entry>
@@ -750,6 +771,13 @@
             </list>
           </value>
         </entry>
+        <entry key="video_player">
+          <value>
+            <list>
+              <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.1+6/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="vm_service_lib">
           <value>
             <list>
@@ -799,6 +827,7 @@
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/cached_network_image-1.1.1/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/charcode-1.1.2/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/checked_yaml-1.0.2/lib" />
+      <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/chewie-0.9.7/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/code_builder-3.2.0/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/collection-1.14.11/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/convert-2.1.1/lib" />
@@ -838,6 +867,7 @@
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/meta-1.1.6/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/mime-0.9.6+3/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/oktoast-2.2.0/lib" />
+      <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/open_iconic_flutter-0.3.0/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/package_config-1.0.5/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.3.2+1/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/package_resolver-1.0.10/lib" />
@@ -851,6 +881,7 @@
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/quiver-2.0.3/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/redux-3.0.0/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/redux_thunk-0.2.1/lib" />
+      <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/screen-0.0.5/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.3+4/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shelf-0.7.5/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shelf_web_socket-0.2.3/lib" />
@@ -872,6 +903,7 @@
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.1.2/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/uuid-2.0.2/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/vector_math-2.0.8/lib" />
+      <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.1+6/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/watcher-0.9.7+12/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/web_socket_channel-1.0.15/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/yaml-2.1.16/lib" />

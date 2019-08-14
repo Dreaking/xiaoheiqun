@@ -6,10 +6,12 @@ import io.flutter.plugins.imagepicker.ImagePickerPlugin;
 import com.jiguang.jpush.JPushPlugin;
 import io.flutter.plugins.packageinfo.PackageInfoPlugin;
 import io.flutter.plugins.pathprovider.PathProviderPlugin;
+import flutter.plugins.screen.screen.ScreenPlugin;
 import io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin;
 import com.tekartik.sqflite.SqflitePlugin;
 import com.fuman.flutter.umeng_uapp.UmengUappPlugin;
 import io.flutter.plugins.urllauncher.UrlLauncherPlugin;
+import io.flutter.plugins.videoplayer.VideoPlayerPlugin;
 
 /**
  * Generated file. Do not edit.
@@ -24,10 +26,12 @@ public final class GeneratedPluginRegistrant {
     JPushPlugin.registerWith(registry.registrarFor("com.jiguang.jpush.JPushPlugin"));
     PackageInfoPlugin.registerWith(registry.registrarFor("io.flutter.plugins.packageinfo.PackageInfoPlugin"));
     PathProviderPlugin.registerWith(registry.registrarFor("io.flutter.plugins.pathprovider.PathProviderPlugin"));
+    ScreenPlugin.registerWith(registry.registrarFor("flutter.plugins.screen.screen.ScreenPlugin"));
     SharedPreferencesPlugin.registerWith(registry.registrarFor("io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin"));
     SqflitePlugin.registerWith(registry.registrarFor("com.tekartik.sqflite.SqflitePlugin"));
     UmengUappPlugin.registerWith(registry.registrarFor("com.fuman.flutter.umeng_uapp.UmengUappPlugin"));
     UrlLauncherPlugin.registerWith(registry.registrarFor("io.flutter.plugins.urllauncher.UrlLauncherPlugin"));
+    VideoPlayerPlugin.registerWith(registry.registrarFor("io.flutter.plugins.videoplayer.VideoPlayerPlugin"));
   }
 
   private static boolean alreadyRegisteredWith(PluginRegistry registry) {
