@@ -234,34 +234,17 @@ class MainIndexState extends State<MainIndex>
     ];
   }
 
-  Future<Null> _pullToRefresh() async {
-//    curPage = 1;
-    //下拉刷新做处理
-    setState(() {
-      ////改变数据，这里随意发挥
-    });
-    return null;
-  }
-
-  //下拉刷新以及上拉加载
-  Future<Null> _refresh() async {
-    Tinker.toast("刷新成功");
-    return;
-  }
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return DefaultTabController(
         length: _tabbarTitle.length,
         child: Scaffold(
-          body: RefreshIndicator(
-              child: NestedScrollView(
-                controller: _scrollViewController,
-                headerSliverBuilder: _headerSliverBuilder,
-                body: _createTabbarView(),
-              ),
-              onRefresh: _refresh),
+          body: NestedScrollView(
+            controller: _scrollViewController,
+            headerSliverBuilder: _headerSliverBuilder,
+            body: _createTabbarView(),
+          ),
         ));
   }
 

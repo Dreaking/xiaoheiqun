@@ -4,9 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/login.dart';
+import 'package:xiaoheiqun/pages/user/about.dart';
 import 'package:xiaoheiqun/pages/user/feedback.dart';
-
-import 'about.dart';
 
 class Settings extends StatefulWidget {
   @override

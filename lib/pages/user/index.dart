@@ -8,15 +8,15 @@ import 'package:image_picker/image_picker.dart';
 import 'package:xiaoheiqun/common/KefuDiag.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
+import 'package:xiaoheiqun/pages/user/authentation_user.dart';
+import 'package:xiaoheiqun/pages/user/balance.dart';
+import 'package:xiaoheiqun/pages/user/download.dart';
+import 'package:xiaoheiqun/pages/user/friendInvitation.dart';
+import 'package:xiaoheiqun/pages/user/open_vip.dart';
 import 'package:xiaoheiqun/pages/user/person_data.dart';
 import 'package:xiaoheiqun/pages/user/release.dart';
 import 'package:xiaoheiqun/pages/user/settings.dart';
 import 'package:xiaoheiqun/login.dart';
-import 'authentation_user.dart';
-import 'balance.dart';
-import 'download.dart';
-import 'friendInvitation.dart';
-import 'open_vip.dart';
 
 class UserIndex extends StatefulWidget {
   @override

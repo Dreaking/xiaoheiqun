@@ -9,9 +9,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:xiaoheiqun/data/Draft.dart';
 import 'dart:convert';
 import 'package:xiaoheiqun/pages/edit/index.dart';
+import 'package:xiaoheiqun/pages/message/index.dart';
 import 'package:xiaoheiqun/vido.dart';
 import '../pages/main/index.dart';
-import '../pages/message//index.dart';
 import '../pages/user//index.dart';
 import 'app_config.dart';
 import 'package:image_picker/image_picker.dart';
@@ -161,7 +161,6 @@ class Tinker {
         data: formData);
     if (json.decode(response.data)["statusCode"] == "200") {
       callback(json.decode(response.data)["rows"]);
-      print("111111");
       print(json.decode(response.data)["rows"]);
     }
   }
@@ -364,9 +363,6 @@ class TinkerScaffoldState extends State<TinkerScaffold>
     // TODO: implement build
     return MaterialApp(
       theme: Tinker.getThemeData(),
-      routes: {
-        "/edit": (BuildContext context) => new EditIndex(),
-      },
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: _pageView,
@@ -399,7 +395,7 @@ class TinkerScaffoldState extends State<TinkerScaffold>
             context, CupertinoPageRoute(builder: (context) => Login()));
       } else {
         Navigator.push(
-            context, CupertinoPageRoute(builder: (context) => EditIndex()));
+            context, CupertinoPageRoute(builder: (context) => EditIndex(null)));
       }
     } else {
       if (index == 1 || index == 4) {
@@ -499,7 +495,7 @@ class TinkerScaffoldState extends State<TinkerScaffold>
                       Navigator.push(
                           context,
                           CupertinoPageRoute(
-                              builder: (context) => EditIndex()));
+                              builder: (context) => EditIndex(null)));
 //                      if (_currentIndex == 0) {
 //                        Navigator.push(
 //                            context,
@@ -668,8 +664,8 @@ class TinkerScaffoldState extends State<TinkerScaffold>
   ///初始化页面路由
   void _initScreenList() {
     _screenList
-      ..add(ChewieDemo())
-//      ..add(MessageIndex())
+//      ..add(ChewieDemo())
+      ..add(MessageIndex())
       ..add(MainIndex())
       ..add(null)
       ..add(ShoucangIndex())
@@ -747,7 +743,10 @@ class Select_Image_pickerState extends State<Image_picker> {
   @override
   void initState() {
     super.initState();
-
+    if (widget.ImgList1 != null)
+      for (var i = 0; i < widget.ImgList1.length; i++) {
+        if (widget.ImgList1[i] != null) imgList.add(widget.ImgList1[i]);
+      }
     _dataListBackup = imgList.sublist(0);
   }
 

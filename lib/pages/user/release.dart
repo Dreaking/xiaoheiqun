@@ -54,7 +54,7 @@ class releaseState extends State<release> with TickerProviderStateMixin {
               ),
               onTap: () {
                 Navigator.push(context,
-                    CupertinoPageRoute(builder: (context) => EditIndex()));
+                    CupertinoPageRoute(builder: (context) => EditIndex(null)));
               },
             )
           ],

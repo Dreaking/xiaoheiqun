@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/data/Animate.dart';
+import 'package:xiaoheiqun/data/Draft.dart';
 import 'package:xiaoheiqun/data/User.dart';
+import 'package:xiaoheiqun/pages/edit/index.dart';
 import 'package:xiaoheiqun/pages/main/other_dongtai.dart';
 
 class udetail extends StatefulWidget {
@@ -37,6 +38,7 @@ class detailState extends State<udetail> {
   Animate animate1;
   String merchanId;
   User Muser;
+  Draft draft;
   Future getData() async {
     userId = await Tinker.getuserID();
     FormData param = FormData.from({
@@ -48,7 +50,9 @@ class detailState extends State<udetail> {
         Map<String, dynamic> user = data["rows"];
         merchanId = data["rows"]["merchantId"];
         animate1 = Animate.fromJson(user);
-        print(data["rows"]["isMShoucang"]);
+        draft = Draft.fromJson(user);
+        print(draft.img);
+        print("aazzzz");
         if (data["rows"]["isMShoucang"]) {
           guanzhu_sel = 1;
           guanzhu = "已关注";
@@ -488,27 +492,37 @@ class detailState extends State<udetail> {
                                             flex: 1,
                                           ),
                                           Expanded(
-                                            child: Container(
-                                              color:
-                                                  Color.fromRGBO(234, 6, 59, 1),
-                                              alignment: Alignment.center,
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Container(
-                                                    child: Text(
-                                                      "编辑",
-                                                      style: TextStyle(
-                                                          fontSize:
-                                                              leftFontSize,
-                                                          color: Colors.white),
-                                                    ),
-                                                    margin: EdgeInsets.only(
-                                                        left: 10),
-                                                  )
-                                                ],
+                                            child: InkWell(
+                                              child: Container(
+                                                color: Color.fromRGBO(
+                                                    234, 6, 59, 1),
+                                                alignment: Alignment.center,
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Container(
+                                                      child: Text(
+                                                        "编辑",
+                                                        style: TextStyle(
+                                                            fontSize:
+                                                                leftFontSize,
+                                                            color:
+                                                                Colors.white),
+                                                      ),
+                                                      margin: EdgeInsets.only(
+                                                          left: 10),
+                                                    )
+                                                  ],
+                                                ),
                                               ),
+                                              onTap: () {
+                                                Navigator.push(
+                                                    context,
+                                                    CupertinoPageRoute(
+                                                        builder: (context) =>
+                                                            EditIndex(draft)));
+                                              },
                                             ),
                                             flex: 1,
                                           ),
