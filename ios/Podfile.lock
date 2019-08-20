@@ -33,7 +33,6 @@ PODS:
   - UMCCommon (2.1.1)
   - UMCPush (3.2.4):
     - UMCCommon
-  - UMCSecurityPlugins (1.0.6)
   - url_launcher (0.0.1):
     - Flutter
   - video_player (0.0.1):
@@ -54,7 +53,6 @@ DEPENDENCIES:
   - UMCAnalytics
   - UMCCommon
   - UMCPush
-  - UMCSecurityPlugins
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
   - video_player (from `.symlinks/plugins/video_player/ios`)
 
@@ -67,7 +65,6 @@ SPEC REPOS:
     - UMCAnalytics
     - UMCCommon
     - UMCPush
-    - UMCSecurityPlugins
 
 EXTERNAL SOURCES:
   Flutter:
@@ -113,10 +110,9 @@ SPEC CHECKSUMS:
   UMCAnalytics: 045be2cd1ec05aa95ad62405a850757f932e2d59
   UMCCommon: 971f324a5a99c9d662ae040a815e7e3d7ef8b2a8
   UMCPush: 1edd856027dcf905333effb4040ace5d236a7316
-  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   url_launcher: 0067ddb8f10d36786672aa0722a21717dba3a298
   video_player: 3964090a33353060ed7f58aa6427c7b4b208ec21
 
-PODFILE CHECKSUM: 108a8708c66e9a95762037370020bd48252a9075
+PODFILE CHECKSUM: b79245d67085cd715cc678264af646a34c9f4e5e
 
 COCOAPODS: 1.6.2

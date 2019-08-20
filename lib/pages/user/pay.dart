@@ -423,7 +423,6 @@ class payState extends State<pay> {
     print(payResult);
     print("结果");
     if (payResult["resultStatus"] == "9000") {
-      Tinker.toast("支付成功");
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => TinkerScaffold()),
