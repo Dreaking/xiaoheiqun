@@ -14,7 +14,6 @@ class DongtaiItem extends StatefulWidget {
   Animate animate;
   DongtaiItem(this.animate);
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return DongtaiItemState();
   }
 }

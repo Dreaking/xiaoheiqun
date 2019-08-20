@@ -8,6 +8,7 @@ import 'package:xiaoheiqun/data/Animate.dart';
 import 'package:xiaoheiqun/data/Draft.dart';
 import 'package:xiaoheiqun/data/User.dart';
 import 'package:xiaoheiqun/pages/edit/index.dart';
+import 'package:xiaoheiqun/pages/main/o_person_data.dart';
 import 'package:xiaoheiqun/pages/main/other_dongtai.dart';
 
 class udetail extends StatefulWidget {
@@ -230,28 +231,41 @@ class detailState extends State<udetail> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.center,
                                                   children: <Widget>[
-                                                    Container(
-                                                      width: 50,
-                                                      height: 50,
-                                                      child: ClipOval(
-                                                        child: Image.network(
-                                                          "http://imgs.jiashilan.com/" +
-                                                              animate1.headImg,
-                                                          width: 50,
-                                                          height: 50,
-                                                          fit: BoxFit.fill,
+                                                    InkWell(
+                                                      child: Container(
+                                                        width: 50,
+                                                        height: 50,
+                                                        child: ClipOval(
+                                                          child: Image.network(
+                                                            "http://imgs.jiashilan.com/" +
+                                                                animate1
+                                                                    .headImg,
+                                                            width: 50,
+                                                            height: 50,
+                                                            fit: BoxFit.fill,
+                                                          ),
                                                         ),
+                                                        margin: EdgeInsets.only(
+                                                            right: 10, top: 10),
+                                                        decoration: BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        50),
+                                                            border: Border.all(
+                                                                color: Colors
+                                                                    .black12,
+                                                                width: 0.6)),
                                                       ),
-                                                      margin: EdgeInsets.only(
-                                                          right: 10, top: 10),
-                                                      decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(50),
-                                                          border: Border.all(
-                                                              color: Colors
-                                                                  .black12,
-                                                              width: 0.6)),
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                            context,
+                                                            CupertinoPageRoute(
+                                                                builder: (context) =>
+                                                                    o_person(
+                                                                        animate1
+                                                                            .merchantId)));
+                                                      },
                                                     ),
                                                   ],
                                                 ),

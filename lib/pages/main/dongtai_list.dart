@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/data/Animate.dart';
@@ -15,7 +14,6 @@ class DongtaiList extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return DongtaiListState();
   }
 }
@@ -50,9 +48,6 @@ class Refresh extends StatefulWidget {
 }
 
 class RefreshState extends State<Refresh> {
-  @override
-  // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
   List movies, addList;
   int homepage = 1;
   var userId, _control;
@@ -61,13 +56,6 @@ class RefreshState extends State<Refresh> {
     // TODO: implement initState
     super.initState();
     getData();
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    _control.cancel();
   }
 
   //下拉加载********
@@ -126,6 +114,10 @@ class RefreshState extends State<Refresh> {
   }
 
   @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
     _listen();
     // TODO: implement build
@@ -156,5 +148,11 @@ class RefreshState extends State<Refresh> {
                     ),
           onRefresh: refresh),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
   }
 }

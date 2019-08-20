@@ -23,3 +23,7 @@ class CaoClickInEvent {
     this.id = id;
   }
 }
+
+class RinitView {
+  RinitView() {}
+}

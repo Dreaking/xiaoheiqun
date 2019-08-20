@@ -1,5 +1,5 @@
+import 'dart:async';
 import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,7 +29,7 @@ class UserIndex extends StatefulWidget {
 class UserIndexState extends State<UserIndex>
     with AutomaticKeepAliveClientMixin {
 //监听Bus events
-  var _control;
+  StreamSubscription _control;
   void _listen() {
     _control = eventBus.on<UserLoggedInEvent>().listen((event) {
       setState(() {
@@ -48,13 +48,6 @@ class UserIndexState extends State<UserIndex>
     // TODO: implement initState
     super.initState();
     initView();
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    _control.cancel();
   }
 
   void refresh() {
@@ -465,7 +458,7 @@ class UserIndexState extends State<UserIndex>
                                                   0, 15, 0, 10),
                                             ),
                                             onTap: () {
-                                              if (vipType == "0") {
+                                              if (vipType == "1") {
                                                 Navigator.push(
                                                     context,
                                                     CupertinoPageRoute(
@@ -768,5 +761,12 @@ class UserIndexState extends State<UserIndex>
               ),
             ),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _control.cancel();
   }
 }

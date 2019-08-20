@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -51,10 +52,6 @@ class EditIndexState extends State<EditIndex> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    initView();
-  }
-
-  void initView() {
     if (widget.draft != null) {
       setState(() {
         title.text = widget.draft.title;
@@ -66,7 +63,16 @@ class EditIndexState extends State<EditIndex> {
           ImgList1.add(widget.draft.img[i]);
         });
       }
+      print(ImgList1);
+      print("ssss");
     }
+    initView();
+  }
+
+  Future initView() async {
+    userId = await Tinker.getuserID();
+    print(widget.draft.img);
+    print("1111");
   }
 
   var xieyi = "image/sel_@2x_290.png";
@@ -97,33 +103,41 @@ class EditIndexState extends State<EditIndex> {
           }
         }
       }
+      print(imgListUpload);
       Tinker.uploadImageList(imgListUpload, (data) {
         print(imgListNet);
+        print(data);
         if (imgListNet != null) {
           for (var i = 0; i < imgListNet.length; i++) {
             data.add(imgListNet[i]);
           }
         }
         if (widget.draft != null) {
+          print(data);
+          print("11");
+//          json.encode(json.decode(data));
           FormData param = FormData.from({
-            "merchantId": userId,
-            "img": data,
-            "title": title.text,
-            "content": content.text,
-            "biaoqian": biaoqian.text,
-            "productId": widget.draft.id
+            "merchantId": userId.toString(),
+            "img": json.encode(data),
+            "title": title.text.toString(),
+            "content": content.text.toString(),
+            "biaoqian": biaoqian.text.toString(),
+            "productId": widget.draft.id.toString()
           });
           Tinker.post("/api/product/doEditProduct", (data) {
             Navigator.push(context,
                 CupertinoPageRoute(builder: (context) => release_success()));
           }, params: param);
         } else {
+          print(data);
+          print("asd");
+          json.encode(data);
           FormData param = FormData.from({
-            "merchantId": userId,
+            "merchantId": userId.toString(),
             "img": data,
-            "title": title.text,
-            "content": content.text,
-            "biaoqian": biaoqian.text,
+            "title": title.text.toString(),
+            "content": content.text.toString(),
+            "biaoqian": biaoqian.text.toString(),
             "isCaogao": isCaogao
           });
           Tinker.post("/api/product/doSaveProduct", (data) {
@@ -159,25 +173,43 @@ class EditIndexState extends State<EditIndex> {
             style:
                 TextStyle(color: Colors.black, fontWeight: FontWeight.normal),
           ),
-          actions: <Widget>[
-            InkWell(
-              child: Container(
-                alignment: Alignment.center,
-                child: Text(
-                  "存为草稿",
-                  style: TextStyle(color: Colors.black),
-                ),
-                margin: EdgeInsets.symmetric(horizontal: 10),
-              ),
-              onTap: () {
-                submit("true");
-              },
-            ),
-          ],
+          actions: widget.draft != null
+              ? userId == widget.draft.merchantId
+                  ? null
+                  : <Widget>[
+                      InkWell(
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "存为草稿",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                        ),
+                        onTap: () {
+                          submit("true");
+                        },
+                      ),
+                    ]
+              : <Widget>[
+                  InkWell(
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "存为草稿",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                    ),
+                    onTap: () {
+                      submit("true");
+                    },
+                  ),
+                ],
           elevation: 0,
           centerTitle: true,
           iconTheme: IconThemeData(size: 10),
-          leading: GestureDetector(
+          leading: InkWell(
             child: Container(
               child: Icon(
                 Icons.arrow_back_ios,
@@ -186,6 +218,7 @@ class EditIndexState extends State<EditIndex> {
             ),
             onTap: () {
               Navigator.pop(context);
+              eventBus.fire(RinitView());
             },
           ),
         ),
@@ -371,6 +404,5 @@ class EditIndexState extends State<EditIndex> {
   @override
   void dispose() {
     super.dispose();
-    _control.cancel();
   }
 }

@@ -36,6 +36,7 @@ target 'Runner' do
   pod 'UMCCommon'
   pod 'UMCAnalytics'
   pod 'UMCPush'
+  pod 'AlipaySDK-iOS'
   pod 'UMCSecurityPlugins'
   # Prepare symlinks folder. We use symlinks to avoid having Podfile.lock
   # referring to absolute paths on developers' machines.

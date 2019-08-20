@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AlipaySDK-iOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -74,6 +79,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>screen.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>shared_preferences.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -84,12 +94,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>umeng_uapp.xcscheme</key>
+		<key>tobias.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>url_launcher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>video_player.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:xiaoheiqun/common/app_config.dart';
+import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/pages/main/dongtai_list.dart';
-import '../../common/app_config.dart';
-import '../../common/tinker.dart';
 
 class MainIndex extends StatefulWidget {
   @override
@@ -14,12 +14,8 @@ class MainIndex extends StatefulWidget {
 class MainIndexState extends State<MainIndex>
     with SingleTickerProviderStateMixin {
   List<Widget> _swiperList = List();
-
   void _getBanner() {
     Tinker.post("/api/adv/findAllBanner", (path) {
-      print("vvvvvvvv");
-      print(path);
-//      print(path["rows"][0]["imgUrl"]);
       paths = path["rows"][0]["imgUrl"];
       for (var i = 0; i < int.parse(path["size"]); i++) {
         setState(() {
@@ -40,8 +36,6 @@ class MainIndexState extends State<MainIndex>
           ));
         });
       }
-      print("bvcx");
-      print(_swiperList);
     });
   }
 
@@ -56,9 +50,6 @@ class MainIndexState extends State<MainIndex>
 
   int _tabBarIndex = 0;
 
-  PageView _indexPageView;
-  PageController _indexPageController;
-
 //  @override
 //  bool get wantKeepAlive {
 //    return true;
@@ -69,7 +60,6 @@ class MainIndexState extends State<MainIndex>
     super.initState();
     _getBanner();
     _scrollViewController = ScrollController(initialScrollOffset: 0.0);
-
     _tabController = TabController(
       length: _tabbarTitle.length,
       vsync: this,
@@ -106,7 +96,6 @@ class MainIndexState extends State<MainIndex>
       indicatorWeight: 2.0,
       unselectedLabelStyle: TextStyle(fontSize: 14.0),
       unselectedLabelColor: AppConfig.BOTTOM_TAB_BAR_COLOR,
-//      labelStyle: TextStyle(fontSize: 16.0),
       labelColor: AppConfig.BOTTOM_TAB_BAR_COLOR_SELECT,
       onTap: (index) => _switchTabBar(index),
     );
@@ -129,14 +118,6 @@ class MainIndexState extends State<MainIndex>
       ],
       controller: _tabController,
     );
-//    return TabBarView(
-//      children: List<Widget>()
-//        ..add(DongtaiList(0))
-//        ..add(DongtaiList(1))
-//        ..add(DongtaiList(2))
-//        ..add(DongtaiList(3)),
-//      controller: _tabController,
-//    );
   }
 
   List<Widget> _headerSliverBuilder(
@@ -249,5 +230,9 @@ class MainIndexState extends State<MainIndex>
   }
 
   //////////////////////////////
-
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
 }

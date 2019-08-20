@@ -10,7 +10,6 @@ import 'package:xiaoheiqun/data/Draft.dart';
 import 'dart:convert';
 import 'package:xiaoheiqun/pages/edit/index.dart';
 import 'package:xiaoheiqun/pages/message/index.dart';
-import 'package:xiaoheiqun/vido.dart';
 import '../pages/main/index.dart';
 import '../pages/user//index.dart';
 import 'app_config.dart';
@@ -159,9 +158,11 @@ class Tinker {
     });
     response = await dio.post(AppConfig.AJAX_IMG_SERVER + "/api/upload2",
         data: formData);
+    var result = response.data;
     if (json.decode(response.data)["statusCode"] == "200") {
-      callback(json.decode(response.data)["rows"]);
-      print(json.decode(response.data)["rows"]);
+//      callback(result["rows"]);
+      callback((json.decode(result)["rows"]));
+      print(result["rows"]);
     }
   }
 
@@ -743,6 +744,8 @@ class Select_Image_pickerState extends State<Image_picker> {
   @override
   void initState() {
     super.initState();
+    print(widget.ImgList1);
+    print("dddd");
     if (widget.ImgList1 != null)
       for (var i = 0; i < widget.ImgList1.length; i++) {
         if (widget.ImgList1[i] != null) imgList.add(widget.ImgList1[i]);
