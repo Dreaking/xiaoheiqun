@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
@@ -21,7 +23,7 @@ class shoucangListState extends State<shoucangList> {
     initView();
   }
 
-  var _control;
+  StreamSubscription _control;
 //监听Bus events
   void _listen() {
     _control = eventBus.on<ShouCangInEvent>().listen((event) {
@@ -29,13 +31,6 @@ class shoucangListState extends State<shoucangList> {
         initView();
       });
     });
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    _control.cancel();
   }
 
   var userId;
@@ -85,5 +80,12 @@ class shoucangListState extends State<shoucangList> {
                       ),
             onRefresh: refresh));
     ;
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _control.cancel();
   }
 }

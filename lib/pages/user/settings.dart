@@ -4,9 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/login.dart';
-
-import 'about.dart';
-import 'feedback.dart';
+import 'package:xiaoheiqun/pages/user/about.dart';
+import 'package:xiaoheiqun/pages/user/feedback.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -200,7 +199,7 @@ class SettingsState extends State<Settings> {
                         } else {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
+                              CupertinoPageRoute(
                                   builder: (context) => feedback()));
                         }
                       },

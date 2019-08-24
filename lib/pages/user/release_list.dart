@@ -1,8 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/data/release.dart';
+import 'package:xiaoheiqun/pages/main/user_detail.dart';
 
 class release_list extends StatefulWidget {
   String status;
@@ -19,6 +22,16 @@ class release_listState extends State<release_list> {
   void initState() {
     super.initState();
     getData();
+  }
+
+  var _control;
+  void _listen() {
+    _control = eventBus.on<RinitView>().listen((event) {
+      setState(() {
+        getData();
+      });
+      Tinker.toast("取消新增");
+    });
   }
 
   Future del(productId) async {
@@ -60,7 +73,8 @@ class release_listState extends State<release_list> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    final size = MediaQuery.of(context).size;
+    _listen();
     return Scaffold(
       backgroundColor: Colors.white,
       body: movies == null
@@ -204,11 +218,11 @@ class release_listState extends State<release_list> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
                                 Container(
-                                    margin: EdgeInsets.only(left: 20, top: 10),
+                                    margin: EdgeInsets.only(left: 10, top: 10),
                                     child: movies[index].img[0] == null
                                         ? Container()
                                         : CachedNetworkImage(
-                                            width: 120,
+                                            width: size.width * 0.3,
                                             height: 120,
                                             fit: BoxFit.fill,
                                             imageUrl:
@@ -232,11 +246,11 @@ class release_listState extends State<release_list> {
                                                     new Icon(Icons.error),
                                           )),
                                 Container(
-                                    margin: EdgeInsets.only(left: 20, top: 10),
+                                    margin: EdgeInsets.only(left: 10, top: 10),
                                     child: movies[index].img[1] == null
                                         ? Container()
                                         : CachedNetworkImage(
-                                            width: 120,
+                                            width: size.width * 0.3,
                                             height: 120,
                                             fit: BoxFit.fill,
                                             imageUrl:
@@ -260,11 +274,11 @@ class release_listState extends State<release_list> {
                                                     new Icon(Icons.error),
                                           )),
                                 Container(
-                                    margin: EdgeInsets.only(left: 20, top: 10),
+                                    margin: EdgeInsets.only(left: 10, top: 10),
                                     child: movies[index].img[2] == null
                                         ? Container()
                                         : CachedNetworkImage(
-                                            width: 120,
+                                            width: size.width * 0.3,
                                             height: 120,
                                             fit: BoxFit.fill,
                                             imageUrl:
@@ -356,9 +370,21 @@ class release_listState extends State<release_list> {
                           ],
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) =>
+                                    udetail(movies[index].id)));
+                      },
                     );
                   }),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
   }
 }

@@ -35,7 +35,7 @@ packages:
       name: build
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.1.5"
+    version: "1.1.6"
   build_config:
     dependency: transitive
     description:
@@ -56,14 +56,14 @@ packages:
       name: build_resolvers
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.6"
+    version: "1.0.7"
   build_runner:
     dependency: "direct main"
     description:
       name: build_runner
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.6.5"
+    version: "1.6.6"
   build_runner_core:
     dependency: transitive
     description:
@@ -106,6 +106,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.2"
+  chewie:
+    dependency: "direct main"
+    description:
+      name: chewie
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.9.7"
   code_builder:
     dependency: transitive
     description:
@@ -140,7 +147,7 @@ packages:
       name: crypto
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.1+1"
+    version: "2.1.2"
   csslib:
     dependency: transitive
     description:
@@ -394,13 +401,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.2.0"
+  open_iconic_flutter:
+    dependency: transitive
+    description:
+      name: open_iconic_flutter
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.3.0"
   package_config:
     dependency: transitive
     description:
       name: package_config
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.5"
+    version: "1.1.0"
   package_info:
     dependency: "direct main"
     description:
@@ -485,6 +499,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.2.1"
+  screen:
+    dependency: transitive
+    description:
+      name: screen
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.5"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -595,6 +616,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.5"
+  tobias:
+    dependency: "direct main"
+    description:
+      name: tobias
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.1.0+1"
   transformer_page_view:
     dependency: transitive
     description:
@@ -609,13 +637,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.6"
-  umeng_uapp:
-    dependency: "direct main"
-    description:
-      name: umeng_uapp
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.0.3"
   url_launcher:
     dependency: "direct main"
     description:
@@ -637,6 +658,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.8"
+  video_player:
+    dependency: "direct main"
+    description:
+      name: video_player
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.10.1+6"
   watcher:
     dependency: transitive
     description:

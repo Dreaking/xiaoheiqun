@@ -1,14 +1,16 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:math';
 
+import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
+import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:fluwx/fluwx.dart' as fluwx;
-import 'package:fluwx/fluwx.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:xiaoheiqun/common/app_config.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/common/wxchart.dart';
+import 'package:tobias/tobias.dart' as tobias;
 
 class pay extends StatefulWidget {
   @override
@@ -360,9 +362,9 @@ class payState extends State<pay> {
                   ),
                   onTap: () {
 //                    WxPay.SHare();
-                    WxPay.register();
-                    WxPay.getPrepayid();
-//                    getPrepayid();
+//                    WxPay.register();
+//                    WxPay.getPrepayid();
+                    alipay();
                   },
                 ),
                 bottom: 0,
@@ -372,6 +374,64 @@ class payState extends State<pay> {
         ),
       ),
     ));
+  }
+
+  var _payInfo, _payResult;
+  void _loadData() {
+    _payInfo = "";
+    _payResult = {};
+    http
+        .post("http://120.79.190.42:8071/pay/test_pay/create",
+            body: json.encode({"fee": 1, "title": "test pay"}))
+        .then((http.Response response) {
+      if (response.statusCode == 200) {
+        print(response.body);
+        var map = json.decode(response.body);
+        int flag = map["flag"];
+        if (flag == 0) {
+          var result = map["result"];
+          setState(() {
+            _payInfo = result["credential"]["payInfo"];
+          });
+          return;
+        }
+      }
+      throw new Exception("创建订单失败");
+    }).catchError((e) {
+      setState(() {
+        _payInfo = e.toString();
+      });
+    });
+
+    setState(() {});
+  }
+
+  Future alipay() async {
+//    _loadData();
+    print(_payInfo);
+    FormData param = FormData.from({"userId": await Tinker.getuserID()});
+    final res = await http
+        .post("http://192.168.1.57:8080/springcase8_war/alipay/payInfo");
+    var data = json.decode(res.body);
+    print(data);
+    print("asd");
+//        int.parse((new DateTime.now().millisecondsSinceEpoch).toString());
+//    print(timeStamp);
+//    String _payInfo =
+//        "app_id=2019081366206450&biz_content{'out_trade_no':'20150320010101009','total_amount':'88.0','subject':'标题'}&charset=utf-8&method=alipay.trade.create&sign_type=RSA2&timestamp=1566236389588&version=1.0&sign=W2QUz6R8AoqCGgQIHYRGPSWyf3rf/Nv/XZBqO7rfJ/ziZ42RYnYcrExdcdzdQkBdGlF8pU0AksLdXnmsN4rNf/nrwv5z7PcA9UOmSXKJMDWRfpoiYRwxKHXfWYZG1BYge/v0NuxTIim7tOMASoua87zNRUUubX7pPvM96JRkQt5OjxZElR7QD3UmM2abN80YINJm76CocNVxC+3AtuQP2yGNJCXXb2fTQrxOPb6NqTMuKkea/5gCwwVUUvk3tQdjxkfI0k8tf5NAkw0wh/cJ98upRa5FL25Ot8Fi4C+1Ct/vSCmkwf3aDxnIGhgXch4Qkn1mqbit9fiax4rCVE903Q==";
+    var payResult = await tobias.pay(data["rows"]["data"]);
+    print(payResult);
+    print("结果");
+    if (payResult["resultStatus"] == "9000") {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => TinkerScaffold()),
+          (route) => route == null);
+    }
+    tobias.isAliPayInstalled().then((data) {
+      print("installed $data");
+      Tinker.toast("支付成功");
+    });
   }
 
   var xieyi = "image/sel_@2x_290.png";

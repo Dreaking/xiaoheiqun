@@ -8,10 +8,12 @@
 #import <jpush_flutter/JPushPlugin.h>
 #import <package_info/PackageInfoPlugin.h>
 #import <path_provider/PathProviderPlugin.h>
+#import <screen/ScreenPlugin.h>
 #import <shared_preferences/SharedPreferencesPlugin.h>
 #import <sqflite/SqflitePlugin.h>
-#import <umeng_uapp/UmengUappPlugin.h>
+#import <tobias/TobiasPlugin.h>
 #import <url_launcher/UrlLauncherPlugin.h>
+#import <video_player/VideoPlayerPlugin.h>
 
 @implementation GeneratedPluginRegistrant
 
@@ -21,10 +23,12 @@
   [JPushPlugin registerWithRegistrar:[registry registrarForPlugin:@"JPushPlugin"]];
   [FLTPackageInfoPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPackageInfoPlugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
+  [ScreenPlugin registerWithRegistrar:[registry registrarForPlugin:@"ScreenPlugin"]];
   [FLTSharedPreferencesPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharedPreferencesPlugin"]];
   [SqflitePlugin registerWithRegistrar:[registry registrarForPlugin:@"SqflitePlugin"]];
-  [UmengUappPlugin registerWithRegistrar:[registry registrarForPlugin:@"UmengUappPlugin"]];
+  [TobiasPlugin registerWithRegistrar:[registry registrarForPlugin:@"TobiasPlugin"]];
   [FLTUrlLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTUrlLauncherPlugin"]];
+  [FLTVideoPlayerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTVideoPlayerPlugin"]];
 }
 
 @end

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:xiaoheiqun/login.dart';
 import 'package:xiaoheiqun/pages/edit/index.dart';
 import 'package:xiaoheiqun/pages/user/release_list.dart';
 
@@ -23,10 +22,7 @@ class releaseState extends State<release> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
-      theme: ThemeData(
-          textTheme: TextTheme(display1: TextStyle(color: Colors.black))),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
@@ -54,7 +50,7 @@ class releaseState extends State<release> with TickerProviderStateMixin {
               ),
               onTap: () {
                 Navigator.push(context,
-                    CupertinoPageRoute(builder: (context) => EditIndex()));
+                    CupertinoPageRoute(builder: (context) => EditIndex(null)));
               },
             )
           ],
@@ -66,7 +62,7 @@ class releaseState extends State<release> with TickerProviderStateMixin {
               color: Colors.black,
             ),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pop(context, "");
             },
           ),
         ),

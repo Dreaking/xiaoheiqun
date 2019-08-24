@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
-import 'package:xiaoheiqun/data/Animate.dart';
 import 'package:xiaoheiqun/data/User.dart';
-
-import 'dongtai_list.dart';
+import 'package:xiaoheiqun/pages/main/dongtai_list.dart';
+import 'package:xiaoheiqun/pages/main/other_dongtai_list.dart';
 
 class otherDongtai extends StatefulWidget {
   String id;
@@ -254,9 +253,9 @@ class otherDongtaiState extends State<otherDongtai>
                         Expanded(
                             child: TabBarView(
                           children: <Widget>[
-                            DongtaiList(2),
-                            DongtaiList(3),
-                            DongtaiList(4)
+                            other_dongtai_list(widget.id, 2),
+                            other_dongtai_list(widget.id, 3),
+                            other_dongtai_list(widget.id, 4)
                           ],
                           controller: _control,
                         ))
