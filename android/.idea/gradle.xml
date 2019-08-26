@@ -9,12 +9,16 @@
           <set>
             <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/android" />
             <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/image_picker-0.4.12+1/android" />
+            <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/jpush_flutter-0.0.13/android" />
             <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.3.2+1/android" />
             <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.2.0/android" />
+            <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/android" />
+            <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/screen-0.0.5/android" />
             <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.3+4/android" />
             <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.6+3/android" />
-            <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/umeng_uapp-1.0.3/android" />
-            <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.1.1/android" />
+            <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/tobias-1.1.0+1/android" />
+            <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.1.2/android" />
+            <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.1+6/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
           </set>

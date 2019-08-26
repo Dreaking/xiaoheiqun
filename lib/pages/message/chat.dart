@@ -143,7 +143,7 @@ class chatSate extends State<chat> {
     });
     //获取用户信息
     msgs = await RongcloudImPlugin.getHistoryMessage(
-        RCConversationType.Private, widget.id, 0, 10);
+        RCConversationType.Private, widget.id, 0, 20);
     count = msgs.length;
     print("get history message");
     //倒序
@@ -319,15 +319,10 @@ class chatSate extends State<chat> {
                                       },
                                     ),
                                     onTap: () {
-                                      if (bottomUp == 0) {
-                                        setState(() {
-                                          bottomUp = 1;
-                                        });
-                                      } else {
-                                        setState(() {
-                                          bottomUp = 0;
-                                        });
-                                      }
+                                      setState(() {
+                                        bottomUp = 0;
+                                      });
+
                                       FocusScope.of(context)
                                           .requestFocus(FocusNode());
                                     },
@@ -337,6 +332,7 @@ class chatSate extends State<chat> {
                             ),
                           ),
                           Container(
+                            margin: EdgeInsets.only(top: 10),
                             width: size.width,
                             height: 60,
                             decoration: BoxDecoration(

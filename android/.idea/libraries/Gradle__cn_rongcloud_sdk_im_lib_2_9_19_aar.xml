@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: cn.rongcloud.sdk:im_lib:2.9.19@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/92c4ad7145471b88836715209fe34bb2/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/92c4ad7145471b88836715209fe34bb2/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/92c4ad7145471b88836715209fe34bb2/jars/libs/tools_push_lib-2.9.19.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/92c4ad7145471b88836715209fe34bb2/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.rongcloud.sdk/im_lib/2.9.19/2a550f8641e658ef7314c746be2c0f28367b3a0c/im_lib-2.9.19-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

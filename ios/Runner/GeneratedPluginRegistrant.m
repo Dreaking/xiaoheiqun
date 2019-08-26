@@ -3,11 +3,13 @@
 //
 
 #import "GeneratedPluginRegistrant.h"
+#import <flutter_sound/FlutterSoundPlugin.h>
 #import <fluwx/FluwxPlugin.h>
 #import <image_picker/ImagePickerPlugin.h>
 #import <jpush_flutter/JPushPlugin.h>
 #import <package_info/PackageInfoPlugin.h>
 #import <path_provider/PathProviderPlugin.h>
+#import <rongcloud_im_plugin/RongcloudImPlugin.h>
 #import <screen/ScreenPlugin.h>
 #import <shared_preferences/SharedPreferencesPlugin.h>
 #import <sqflite/SqflitePlugin.h>
@@ -18,11 +20,13 @@
 @implementation GeneratedPluginRegistrant
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
+  [FlutterSoundPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterSoundPlugin"]];
   [FluwxPlugin registerWithRegistrar:[registry registrarForPlugin:@"FluwxPlugin"]];
   [FLTImagePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTImagePickerPlugin"]];
   [JPushPlugin registerWithRegistrar:[registry registrarForPlugin:@"JPushPlugin"]];
   [FLTPackageInfoPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPackageInfoPlugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
+  [RongcloudImPlugin registerWithRegistrar:[registry registrarForPlugin:@"RongcloudImPlugin"]];
   [ScreenPlugin registerWithRegistrar:[registry registrarForPlugin:@"ScreenPlugin"]];
   [FLTSharedPreferencesPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharedPreferencesPlugin"]];
   [SqflitePlugin registerWithRegistrar:[registry registrarForPlugin:@"SqflitePlugin"]];

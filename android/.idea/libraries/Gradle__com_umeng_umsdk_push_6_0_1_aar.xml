@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.umeng.umsdk:push:6.0.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/push-6.0.1.aar/4d9b05ee7acb216b8a4afa63e0a54dc2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/push-6.0.1.aar/4d9b05ee7acb216b8a4afa63e0a54dc2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2fb0386d8bf94362bd6d5b2fcfd41259/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2fb0386d8bf94362bd6d5b2fcfd41259/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

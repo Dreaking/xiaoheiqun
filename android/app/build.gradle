@@ -54,6 +54,8 @@ android {
                 JPUSH_APPKEY : "7861397af19cbdeaef2afa47", // NOTE: JPush 上注册的包名对应的 Appkey.
                 JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
         ]
+        multiDexEnabled true
+
     }
 
     signingConfigs {
@@ -91,6 +93,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //PushSDK必须依赖基础组件库，所以需要加入对应依赖
     implementation  'com.umeng.umsdk:analytics:8.0.0'
+    implementation 'com.android.support:multidex:1.0.3'
 
 //PushSDK必须依赖基础组件库，所以需要加入对应依赖
     implementation 'com.umeng.umsdk:common:2.0.2'

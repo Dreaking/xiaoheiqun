@@ -2,6 +2,7 @@ package com.fuman.flutter.xiaoheiqun;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.multidex.MultiDex;
 
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
@@ -32,6 +33,7 @@ public class MainActivity extends FlutterActivity {
   protected void onCreate(Bundle savedInstanceState) {
     PushAgent.getInstance(this).onAppStart();
     super.onCreate(savedInstanceState);
+    MultiDex.install(this);
     GeneratedPluginRegistrant.registerWith(this);
     new MethodChannel(getFlutterView(), CHANNEL).setMethodCallHandler(
             new MethodCallHandler() {
