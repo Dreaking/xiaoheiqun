@@ -7,6 +7,7 @@ class User {
   final String headImg;
   final String sex;
   final String isRenzheng;
+  final int isShoucang;
   final int age;
   final int money;
   final String account;
@@ -21,6 +22,7 @@ class User {
       this.headImg,
       this.sex,
       this.isRenzheng,
+      this.isShoucang,
       this.age,
       this.money,
       this.account,
@@ -36,6 +38,7 @@ class User {
         headImg: json['headImg'] as String,
         sex: json['sex'] as String,
         isRenzheng: json['isRenzheng'] as String,
+        isShoucang: json['isShoucang'] as int,
         age: json['age'] as int,
         money: json['money'] as int,
         account: json['account'] as String,

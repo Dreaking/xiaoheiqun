@@ -23,6 +23,12 @@
       <excludeFolder url="file://$MODULE_DIR$/flutter_plugin/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/flutter_plugin/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/flutter_plugin/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_sound/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_sound/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_sound/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_sound/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_sound/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_sound/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_webview_plugin/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_webview_plugin/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_webview_plugin/build" />
@@ -59,6 +65,12 @@
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/path_provider/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/path_provider/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/path_provider/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/rongcloud_im_plugin/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/rongcloud_im_plugin/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/rongcloud_im_plugin/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/rongcloud_im_plugin/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/rongcloud_im_plugin/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/rongcloud_im_plugin/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/screen/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/screen/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/screen/build" />

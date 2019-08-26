@@ -416,11 +416,12 @@ class TinkerScaffoldState extends State<TinkerScaffold>
         }
       }
     }
-    _pageController.animateToPage(
-      _currentIndex,
-      duration: Duration(milliseconds: 500),
-      curve: Curves.fastOutSlowIn,
-    );
+    _pageController.jumpToPage(_currentIndex);
+//    _pageController.animateToPage(
+//      _currentIndex,
+//      duration: Duration(milliseconds: 800),
+//      curve: Curves.fastOutSlowIn,
+//    );
   }
 
   BottomAppBar _createBottonAppBar() {
@@ -497,29 +498,6 @@ class TinkerScaffoldState extends State<TinkerScaffold>
                           context,
                           CupertinoPageRoute(
                               builder: (context) => EditIndex(null)));
-//                      if (_currentIndex == 0) {
-//                        Navigator.push(
-//                            context,
-//                            EnterExitRoute(
-//                                exitPage: MessageIndex(),
-//                                enterPage: EditIndex()));
-//                      } else if (_currentIndex == 1) {
-//                        Navigator.push(
-//                            context,
-//                            EnterExitRoute(
-//                                exitPage: MainIndex(), enterPage: EditIndex()));
-//                      } else if (_currentIndex == 3) {
-//                        Navigator.push(
-//                            context,
-//                            EnterExitRoute(
-//                                exitPage: ShoucangIndex(),
-//                                enterPage: EditIndex()));
-//                      } else if (_currentIndex == 4) {
-//                        Navigator.push(
-//                            context,
-//                            EnterExitRoute(
-//                                exitPage: UserIndex(), enterPage: EditIndex()));
-//                      }
                     }
                   }),
             )

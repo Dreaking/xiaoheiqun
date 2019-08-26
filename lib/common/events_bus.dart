@@ -24,6 +24,13 @@ class CaoClickInEvent {
   }
 }
 
+class JoinChatEvent {
+  int index;
+  JoinChatEvent(int index) {
+    this.index = index;
+  }
+}
+
 class RinitView {
   RinitView() {}
 }

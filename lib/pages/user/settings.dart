@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/login.dart';
 import 'package:xiaoheiqun/pages/user/about.dart';
@@ -26,9 +27,13 @@ Future launchGooglePlay() async {
 
 class SettingsState extends State<Settings> {
   TextStyle dialogButtonTextStyle;
-  var userId;
-  Future getData() async {
-    userId = await Tinker.getuserID();
+  var userId, _control;
+  void _listen() {
+    _control = eventBus.on<UserLoggedInEvent>().listen((event) {
+      setState(() {
+        getData();
+      });
+    });
   }
 
   @override
@@ -38,8 +43,15 @@ class SettingsState extends State<Settings> {
     getData();
   }
 
+  Future getData() async {
+    userId = await Tinker.getuserID();
+    print(userId);
+    print("1");
+  }
+
   @override
   Widget build(BuildContext context) {
+    _listen();
     Future<void> _showNewVersionAppDialog() async {
       return showDialog<void>(
           context: context,
@@ -209,7 +221,7 @@ class SettingsState extends State<Settings> {
               ),
               //退出登录
               Container(
-                child: userId == ""
+                child: userId == null || userId == ""
                     ? Container()
                     : InkWell(
                         child: Container(
@@ -235,6 +247,7 @@ class SettingsState extends State<Settings> {
                           SharedPreferences prefs =
                               await SharedPreferences.getInstance();
                           prefs.remove("user1"); //删除指定键
+                          getData();
                           Navigator.pushAndRemoveUntil(
                             context,
                             CupertinoPageRoute(
@@ -247,5 +260,12 @@ class SettingsState extends State<Settings> {
             ],
           )),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _control.cancel();
   }
 }

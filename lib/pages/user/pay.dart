@@ -8,9 +8,11 @@ import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:fluwx/fluwx.dart' as fluwx;
 import 'package:xiaoheiqun/common/app_config.dart';
+import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/common/wxchart.dart';
 import 'package:tobias/tobias.dart' as tobias;
+import 'package:xiaoheiqun/data/Vip_Price.dart';
 
 class pay extends StatefulWidget {
   @override
@@ -23,414 +25,292 @@ class pay extends StatefulWidget {
 class payState extends State<pay> {
   @override
   var _pay = "weipay";
-  String _newValue = '1';
+  String month = '';
+  String type = "";
+  String money = "";
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width;
     // TODO: implement build
-    return SafeArea(
-        child: Material(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          elevation: 0,
-          title: Text(
-            "在线支付",
-            style:
-                TextStyle(color: Colors.black, fontWeight: FontWeight.normal),
-          ),
-          leading: InkWell(
-            child: Icon(
-              Icons.arrow_back_ios,
-              size: 20,
-              color: Colors.black,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        body: ConstrainedBox(
-          constraints: BoxConstraints.expand(),
-          child: Stack(
-            children: <Widget>[
-              SingleChildScrollView(
-                child: Column(children: <Widget>[
-                  //头标提示
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    width: double.infinity,
-                    height: 60,
-                    decoration: BoxDecoration(
-                        border: Border(
-                            top: BorderSide(
-                                color: Color.fromRGBO(249, 244, 255, 1)),
-                            bottom: BorderSide(
-                                color: Color.fromRGBO(249, 244, 255, 1)))),
-                    child: Container(
-                      margin: EdgeInsets.only(left: 10),
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "请选择开通会员时长",
-                        style:
-                            TextStyle(color: Color.fromRGBO(129, 129, 129, 1)),
-                      ),
-                    ),
-                  ),
-                  //充值时间的选择
-                  Column(
-                    children: <Widget>[
-                      Container(
-                        height: 60,
-                        decoration: BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromRGBO(249, 244, 255, 1)))),
-                        margin: EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              child: Radio<String>(
-                                value: '1',
-                                activeColor: Color.fromRGBO(218, 4, 32, 1),
-                                groupValue: _newValue,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _newValue = value;
-                                  });
-                                },
-                              ),
-                            ),
-                            Container(
-                              width: 80,
-                              margin: EdgeInsets.only(left: 10, right: 60),
-                              child: Text(
-                                "1个月",
-                                style: TextStyle(fontSize: 17),
-                              ),
-                            ),
-                            Text(
-                              "￥98.8",
-                              style: TextStyle(
-                                  color: Color.fromRGBO(218, 4, 32, 1),
-                                  fontSize: 17),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: 60,
-                        decoration: BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromRGBO(249, 244, 255, 1)))),
-                        margin: EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              child: Radio<String>(
-                                value: '3',
-                                activeColor: Color.fromRGBO(218, 4, 32, 1),
-                                groupValue: _newValue,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _newValue = value;
-                                  });
-                                },
-                              ),
-                            ),
-                            Container(
-                              width: 80,
-                              margin: EdgeInsets.only(left: 10, right: 60),
-                              child: Text(
-                                "3个月",
-                                style: TextStyle(fontSize: 17),
-                              ),
-                            ),
-                            Text(
-                              "￥188",
-                              style: TextStyle(
-                                  color: Color.fromRGBO(218, 4, 32, 1),
-                                  fontSize: 17),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: 60,
-                        decoration: BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromRGBO(249, 244, 255, 1)))),
-                        margin: EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              child: Radio<String>(
-                                value: '6',
-                                activeColor: Color.fromRGBO(218, 4, 32, 1),
-                                groupValue: _newValue,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _newValue = value;
-                                  });
-                                },
-                              ),
-                            ),
-                            Container(
-                              width: 80,
-                              margin: EdgeInsets.only(left: 10, right: 60),
-                              child: Text(
-                                "6个月",
-                                style: TextStyle(fontSize: 17),
-                              ),
-                            ),
-                            Text(
-                              "￥288",
-                              style: TextStyle(
-                                  color: Color.fromRGBO(218, 4, 32, 1),
-                                  fontSize: 17),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: 60,
-                        decoration: BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromRGBO(249, 244, 255, 1)))),
-                        margin: EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              child: Radio<String>(
-                                value: '7',
-                                activeColor: Color.fromRGBO(218, 4, 32, 1),
-                                groupValue: _newValue,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _newValue = value;
-                                  });
-                                },
-                              ),
-                            ),
-                            Container(
-                              width: 80,
-                              margin: EdgeInsets.only(left: 10, right: 60),
-                              child: Text(
-                                "7天体验",
-                                style: TextStyle(fontSize: 17),
-                              ),
-                            ),
-                            Text(
-                              "￥28.8",
-                              style: TextStyle(
-                                  color: Color.fromRGBO(218, 4, 32, 1),
-                                  fontSize: 17),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  //计时器
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    width: double.infinity,
-                    height: 60,
-                    decoration: BoxDecoration(
-                        border: Border(
-                            bottom: BorderSide(
-                                color: Color.fromRGBO(249, 244, 255, 1)))),
-                    child: Container(
-                      margin: EdgeInsets.only(left: 10),
-                      alignment: Alignment.centerLeft,
-                      child: Row(
-                        children: <Widget>[
-                          Text(
-                            "请在",
-                            style: TextStyle(
-                                color: Color.fromRGBO(129, 129, 129, 1)),
-                          ),
-                          Text(
-                            constructTime(seconds),
-                            style:
-                                TextStyle(color: Color.fromRGBO(218, 4, 32, 1)),
-                          ),
-                          Text(
-                            "时间内完成支付，到期后自动取消",
-                            style: TextStyle(
-                                color: Color.fromRGBO(129, 129, 129, 1)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  //微信支付
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    width: double.infinity,
-                    height: 60,
-                    decoration: BoxDecoration(
-                        border: Border(
-                            bottom: BorderSide(
-                                color: Color.fromRGBO(249, 244, 255, 1)))),
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      child: Row(
-                        children: <Widget>[
-                          Radio<String>(
-                            value: "weipay",
-                            groupValue: _pay,
-                            activeColor: Color.fromRGBO(218, 4, 32, 1),
-                            onChanged: (value) {
-                              setState(() {
-                                _pay = value;
-                              });
-                            },
-                          ),
-                          Container(
-                            child: Image.asset(
-                              "image/weipay@2x.png",
-                              width: 100,
-                              height: 20,
-                            ),
-                          ),
-                          Container(
-                            child: Text(
-                              "微信支付",
-                              style: TextStyle(fontSize: 17),
-                            ),
-                            margin: EdgeInsets.only(left: 40),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  //协议
-                  Container(
-                    margin: EdgeInsets.only(top: 30),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        GestureDetector(
-                          child: Container(
-                            margin: EdgeInsets.only(right: 10),
-                            child: Image.asset(
-                              "$xieyi",
-                              width: 15,
-                              height: 15,
-                            ),
-                          ),
-                          onTap: () {
-                            setState(() {
-                              if (xieyi_sel == 0) {
-                                xieyi = "image/sel_@2x_294.png";
-                                xieyi_sel = 1;
-                              } else {
-                                xieyi_sel = 0;
-                                xieyi = "image/sel_@2x_290.png";
-                              }
-                            });
-                          },
-                        ),
-                        Text("我同意"),
-                        Text(
-                          "《会员协议》",
-                          style: TextStyle(
-                              color: Color.fromRGBO(124, 187, 230, 1)),
-                        ),
-                      ],
-                    ),
-                  )
-                ]),
-              ),
-              Positioned(
-                height: 45,
-                width: width,
-                child: GestureDetector(
-                  child: Container(
-                    alignment: Alignment.center,
-                    color: Color.fromRGBO(254, 0, 8, 1),
-                    child: Text(
-                      "立即支付",
-                      style: TextStyle(color: Colors.white),
-                    ),
+    return Material(
+      child: movies == null
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : Scaffold(
+              backgroundColor: Colors.white,
+              appBar: AppBar(
+                centerTitle: true,
+                backgroundColor: Colors.white,
+                elevation: 0,
+                title: Text(
+                  "在线支付",
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.normal),
+                ),
+                leading: InkWell(
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    size: 20,
+                    color: Colors.black,
                   ),
                   onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+              body: ConstrainedBox(
+                constraints: BoxConstraints.expand(),
+                child: Stack(
+                  children: <Widget>[
+                    SingleChildScrollView(
+                      child: Column(children: <Widget>[
+                        //头标提示
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          width: double.infinity,
+                          height: 60,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                  top: BorderSide(
+                                      color: Color.fromRGBO(249, 244, 255, 1)),
+                                  bottom: BorderSide(
+                                      color:
+                                          Color.fromRGBO(249, 244, 255, 1)))),
+                          child: Container(
+                            margin: EdgeInsets.only(left: 10),
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "请选择开通会员时长",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(129, 129, 129, 1)),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 60 * movies.length.toDouble(),
+                          child: ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: movies.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: Color.fromRGBO(
+                                                  249, 244, 255, 1)))),
+                                  margin: EdgeInsets.symmetric(horizontal: 10),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Container(
+                                        child: Radio<String>(
+                                          value: '${movies[index].month}',
+                                          activeColor:
+                                              Color.fromRGBO(218, 4, 32, 1),
+                                          groupValue: month,
+                                          onChanged: (value) {
+                                            setState(() {
+                                              month = value;
+                                            });
+                                            money = movies[index].money;
+                                            type = movies[index].type;
+                                          },
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 80,
+                                        margin: EdgeInsets.only(
+                                            left: 10, right: 60),
+                                        child: Text(
+                                          movies[index].type == 1
+                                              ? "${movies[index].month}个月"
+                                              : "${movies[index].month}天体验",
+                                          style: TextStyle(fontSize: 17),
+                                        ),
+                                      ),
+                                      Text(
+                                        "￥${movies[index].money}",
+                                        style: TextStyle(
+                                            color:
+                                                Color.fromRGBO(218, 4, 32, 1),
+                                            fontSize: 17),
+                                      )
+                                    ],
+                                  ),
+                                );
+                              }),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          width: double.infinity,
+                          height: 60,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                  bottom: BorderSide(
+                                      color:
+                                          Color.fromRGBO(249, 244, 255, 1)))),
+                          child: Container(
+                            margin: EdgeInsets.only(left: 10),
+                            alignment: Alignment.centerLeft,
+                            child: Row(
+                              children: <Widget>[
+                                Text(
+                                  "请在",
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(129, 129, 129, 1)),
+                                ),
+                                Text(
+                                  constructTime(seconds),
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(218, 4, 32, 1)),
+                                ),
+                                Text(
+                                  "时间内完成支付，到期后自动取消",
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(129, 129, 129, 1)),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        //微信支付
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          width: double.infinity,
+                          height: 60,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                  bottom: BorderSide(
+                                      color:
+                                          Color.fromRGBO(249, 244, 255, 1)))),
+                          child: Container(
+                            alignment: Alignment.centerLeft,
+                            child: Row(
+                              children: <Widget>[
+                                Radio<String>(
+                                  value: "weipay",
+                                  groupValue: _pay,
+                                  activeColor: Color.fromRGBO(218, 4, 32, 1),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _pay = value;
+                                    });
+                                  },
+                                ),
+                                Container(
+                                  child: Image.asset(
+                                    "image/alpay@2x.png",
+//                              width: 100,
+                                    fit: BoxFit.cover,
+                                    height: 50,
+                                  ),
+                                ),
+                                Container(
+                                  child: Text(
+                                    "支付宝支付",
+                                    style: TextStyle(fontSize: 17),
+                                  ),
+                                  margin: EdgeInsets.only(left: 40),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        //协议
+                        Container(
+                          margin: EdgeInsets.only(top: 30),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              GestureDetector(
+                                child: Container(
+                                  margin: EdgeInsets.only(right: 10),
+                                  child: Image.asset(
+                                    "$xieyi",
+                                    width: 15,
+                                    height: 15,
+                                  ),
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    if (xieyi_sel == 0) {
+                                      xieyi = "image/sel_@2x_294.png";
+                                      xieyi_sel = 1;
+                                    } else {
+                                      xieyi_sel = 0;
+                                      xieyi = "image/sel_@2x_290.png";
+                                    }
+                                  });
+                                },
+                              ),
+                              Text("我同意"),
+                              Text(
+                                "《会员协议》",
+                                style: TextStyle(
+                                    color: Color.fromRGBO(124, 187, 230, 1)),
+                              ),
+                            ],
+                          ),
+                        )
+                      ]),
+                    ),
+                    Positioned(
+                      child: SafeArea(
+                          child: GestureDetector(
+                        child: Container(
+                          height: 45,
+                          width: width,
+                          alignment: Alignment.center,
+                          color: Color.fromRGBO(254, 0, 8, 1),
+                          child: Text(
+                            "立即支付",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        onTap: () {
 //                    WxPay.SHare();
 //                    WxPay.register();
 //                    WxPay.getPrepayid();
-                    alipay();
-                  },
+                          if (xieyi_sel == 0) {
+                            Tinker.toast("请先同意相关协议");
+                          } else
+                            alipay();
+                        },
+                      )),
+                      bottom: 0,
+                    )
+                  ],
                 ),
-                bottom: 0,
-              )
-            ],
-          ),
-        ),
-      ),
-    ));
+              ),
+            ),
+    );
   }
 
-  var _payInfo, _payResult;
-  void _loadData() {
-    _payInfo = "";
-    _payResult = {};
-    http
-        .post("http://120.79.190.42:8071/pay/test_pay/create",
-            body: json.encode({"fee": 1, "title": "test pay"}))
-        .then((http.Response response) {
-      if (response.statusCode == 200) {
-        print(response.body);
-        var map = json.decode(response.body);
-        int flag = map["flag"];
-        if (flag == 0) {
-          var result = map["result"];
-          setState(() {
-            _payInfo = result["credential"]["payInfo"];
-          });
-          return;
-        }
-      }
-      throw new Exception("创建订单失败");
-    }).catchError((e) {
-      setState(() {
-        _payInfo = e.toString();
-      });
-    });
-
-    setState(() {});
-  }
+  var userId;
 
   Future alipay() async {
-//    _loadData();
-    print(_payInfo);
+    userId = await Tinker.getuserID();
     FormData param = FormData.from({"userId": await Tinker.getuserID()});
-    final res = await http
-        .post("http://192.168.1.57:8080/springcase8_war/alipay/payInfo");
+    final res = await http.post("http://pay.fuful.com/alipay/payInfo");
     var data = json.decode(res.body);
-    print(data);
-    print("asd");
-//        int.parse((new DateTime.now().millisecondsSinceEpoch).toString());
-//    print(timeStamp);
-//    String _payInfo =
-//        "app_id=2019081366206450&biz_content{'out_trade_no':'20150320010101009','total_amount':'88.0','subject':'标题'}&charset=utf-8&method=alipay.trade.create&sign_type=RSA2&timestamp=1566236389588&version=1.0&sign=W2QUz6R8AoqCGgQIHYRGPSWyf3rf/Nv/XZBqO7rfJ/ziZ42RYnYcrExdcdzdQkBdGlF8pU0AksLdXnmsN4rNf/nrwv5z7PcA9UOmSXKJMDWRfpoiYRwxKHXfWYZG1BYge/v0NuxTIim7tOMASoua87zNRUUubX7pPvM96JRkQt5OjxZElR7QD3UmM2abN80YINJm76CocNVxC+3AtuQP2yGNJCXXb2fTQrxOPb6NqTMuKkea/5gCwwVUUvk3tQdjxkfI0k8tf5NAkw0wh/cJ98upRa5FL25Ot8Fi4C+1Ct/vSCmkwf3aDxnIGhgXch4Qkn1mqbit9fiax4rCVE903Q==";
     var payResult = await tobias.pay(data["rows"]["data"]);
     print(payResult);
-    print("结果");
+    FormData open_Vip = FormData.from(
+        {"userId": userId, "month": month, "money": money, "type": type});
     if (payResult["resultStatus"] == "9000") {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => TinkerScaffold()),
-          (route) => route == null);
+      Tinker.post("/api/user/openVip", (data) {
+        eventBus.fire(new UserLoggedInEvent("10"));
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => TinkerScaffold()),
+            (route) => route == null);
+      }, params: open_Vip);
+    } else {
+      Tinker.toast(payResult["memo"]);
     }
     tobias.isAliPayInstalled().then((data) {
       print("installed $data");
-      Tinker.toast("支付成功");
     });
   }
 
@@ -456,9 +336,27 @@ class payState extends State<pay> {
     return timeNum < 10 ? "0" + timeNum.toString() : timeNum.toString();
   }
 
+  List movies;
+  Future initView() async {
+    userId = await Tinker.getuserID();
+    FormData param = FormData.from({"userId": userId});
+    Tinker.post("/api/vip/findVipPrice", (data) {
+      print(data);
+      List top = data["rows"];
+      movies = top.map((json) => Price.fromJson(json)).toList();
+      setState(() {
+        month = movies[0].month;
+        money = movies[0].money;
+        type = movies[0].type.toString();
+      });
+      print("sss");
+    }, params: param);
+  }
+
   @override
   void initState() {
     super.initState();
+    initView();
     //获取当期时间
     var now = DateTime.now();
     //获取 2 分钟的时间间隔

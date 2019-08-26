@@ -50,10 +50,10 @@ class MainIndexState extends State<MainIndex>
 
   int _tabBarIndex = 0;
 
-//  @override
-//  bool get wantKeepAlive {
-//    return true;
-//  }
+  @override
+  bool get wantKeepAlive {
+    return true;
+  }
 
   @override
   void initState() {

@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:xiaoheiqun/pages/message/my_msg.dart';
 import 'package:xiaoheiqun/pages/message/systen_message.dart';
 import 'package:xiaoheiqun/pages/message/test.dart';
 
@@ -70,13 +71,14 @@ class MessageIndexState extends State<MessageIndex>
             Expanded(
               child: TabBarView(
                 children: <Widget>[
-                  Container(
-                    child: Text(
-                      "暂无数据",
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    alignment: Alignment.center,
-                  ),
+//                  Container(
+//                    child: Text(
+//                      "暂无数据",
+//                      style: TextStyle(fontSize: 16),
+//                    ),
+//                    alignment: Alignment.center,
+//                  ),
+                  my_msg(),
                   systemMsg()
                 ],
                 controller: _controller,

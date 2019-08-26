@@ -458,7 +458,7 @@ class UserIndexState extends State<UserIndex>
                                                   0, 15, 0, 10),
                                             ),
                                             onTap: () {
-                                              if (vipType == "1") {
+                                              if (vipType == "0") {
                                                 Navigator.push(
                                                     context,
                                                     CupertinoPageRoute(

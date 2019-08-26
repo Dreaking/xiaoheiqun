@@ -1,8 +1,13 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:rongcloud_im_plugin/rongcloud_im_plugin.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/data/User.dart';
 import 'package:xiaoheiqun/pages/main/dongtai_list.dart';
 import 'package:xiaoheiqun/pages/main/other_dongtai_list.dart';
+import 'package:xiaoheiqun/pages/message/chat.dart';
 
 class otherDongtai extends StatefulWidget {
   String id;
@@ -31,7 +36,7 @@ class otherDongtaiState extends State<otherDongtai>
     initView();
   }
 
-  var userId;
+  var userId, id;
   User user;
   Future initView() async {
     userId = await Tinker.getuserID();
@@ -40,10 +45,37 @@ class otherDongtaiState extends State<otherDongtai>
     Tinker.queryUserInfo(fromId, (data) {
       setState(() {
         user = User.fromJson(data);
+        id = data["userId"];
+        if (user.isShoucang == 1) {
+          guanzhu = "已关注";
+          guanzhu_sel = 1;
+        }
       });
       print("ccc");
       print(data);
     });
+  }
+
+  Future guanzhuMethod() async {
+    userId = await Tinker.getuserID();
+    FormData param = FormData.from({"userId": userId, "merchantId": id});
+    if (guanzhu_sel == 0) {
+      setState(() {
+        guanzhu = "已关注";
+        guanzhu_sel = 1;
+        Tinker.post("/api/system/doShoucangMerchant", () {}, params: param);
+        Tinker.toast("关注成功");
+      });
+    } else {
+      setState(() {
+        Tinker.post("/api/system/doCancelShoucangMerchant", (data) {
+          Tinker.toast("取消关注");
+          print(data);
+        }, params: param);
+        guanzhu_sel = 0;
+        guanzhu = "未关注";
+      });
+    }
   }
 
   var _control;
@@ -283,7 +315,7 @@ class otherDongtaiState extends State<otherDongtai>
                                     InkWell(
                                       child: Container(
                                         child: Text(
-                                          "$shoucang",
+                                          "$guanzhu",
                                           style: TextStyle(
                                               fontSize: leftFontSize,
                                               color: Colors.white),
@@ -291,15 +323,7 @@ class otherDongtaiState extends State<otherDongtai>
                                         margin: EdgeInsets.only(left: 10),
                                       ),
                                       onTap: () {
-                                        setState(() {
-                                          if (shoucang_sel == 0) {
-                                            shoucang = "已收藏";
-                                            shoucang_sel = 1;
-                                          } else {
-                                            shoucang = "未收藏";
-                                            shoucang_sel = 0;
-                                          }
-                                        });
+                                        guanzhuMethod();
                                       },
                                     )
                                   ],
@@ -308,28 +332,73 @@ class otherDongtaiState extends State<otherDongtai>
                               flex: 1,
                             ),
                             Expanded(
-                              child: Container(
-                                color: Color.fromRGBO(234, 6, 59, 1),
-                                alignment: Alignment.center,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Image.asset(
-                                      "image/kefu@2x.png",
-                                      width: 20,
-                                      height: 20,
-                                    ),
-                                    Container(
-                                      child: Text(
-                                        "发消息",
-                                        style: TextStyle(
-                                            fontSize: leftFontSize,
-                                            color: Colors.white),
+                              child: InkWell(
+                                child: Container(
+                                  color: Color.fromRGBO(234, 6, 59, 1),
+                                  alignment: Alignment.center,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Image.asset(
+                                        "image/kefu@2x.png",
+                                        width: 20,
+                                        height: 20,
                                       ),
-                                      margin: EdgeInsets.only(left: 10),
-                                    )
-                                  ],
+                                      Container(
+                                        child: Text(
+                                          "发消息",
+                                          style: TextStyle(
+                                              fontSize: leftFontSize,
+                                              color: Colors.white),
+                                        ),
+                                        margin: EdgeInsets.only(left: 10),
+                                      )
+                                    ],
+                                  ),
                                 ),
+                                onTap: () async {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => chat(id)));
+                                  //获取用户信息
+//                                  List msgs =
+//                                      await RongcloudImPlugin.getHistoryMessage(
+//                                          RCConversationType.Private,
+//                                          "1d95592285ca4ef2ac618aef470ae08a",
+//                                          0,
+//                                          10);
+//                                  print("get history message");
+//
+//                                  for (Message m in msgs) {
+//                                    TextMessage a = m.content;
+//                                    print("sentTime = " + a.content);
+//                                  }
+                                  //获取用户组数据
+//                                  List conversationList =
+//                                      await RongcloudImPlugin
+//                                          .getConversationList([
+//                                    RCConversationType.Private,
+//                                    RCConversationType.Group,
+//                                    RCConversationType.System
+//                                  ]);
+//
+//                                  for (Conversation con in conversationList) {
+//                                    print("1");
+//                                    TextMessage a = con.latestMessageContent;
+//                                    print(a.content);
+//                                  }
+                                  //发送消息
+//                                  TextMessage txtMessage = new TextMessage();
+//                                  txtMessage.content = "这条消息来自 flutter";
+//                                  Message msg =
+//                                      await RongcloudImPlugin.sendMessage(
+//                                          RCConversationType.Private,
+//                                          "1d95592285ca4ef2ac618aef470ae08a",
+//                                          txtMessage);
+//                                  print("send message start senderUserId = " +
+//                                      msg.senderUserId);
+                                },
                               ),
                               flex: 1,
                             ),

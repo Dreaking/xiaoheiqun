@@ -63,7 +63,7 @@ packages:
       name: build_runner
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.6.6"
+    version: "1.6.7"
   build_runner_core:
     dependency: transitive
     description:
@@ -141,8 +141,15 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.1"
-  crypto:
+  crypt:
     dependency: "direct main"
+    description:
+      name: crypt
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.7"
+  crypto:
+    dependency: transitive
     description:
       name: crypto
       url: "https://pub.flutter-io.cn"
@@ -175,7 +182,7 @@ packages:
       name: dio
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.13"
+    version: "2.1.16"
   event_bus:
     dependency: "direct main"
     description:
@@ -208,7 +215,7 @@ packages:
       name: flutter_cupertino_date_picker
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.11"
+    version: "1.0.12"
   flutter_easyrefresh:
     dependency: "direct main"
     description:
@@ -235,6 +242,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.5.3"
+  flutter_sound:
+    dependency: "direct main"
+    description:
+      name: flutter_sound
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.4.2"
   flutter_staggered_grid_view:
     dependency: "direct main"
     description:
@@ -499,6 +513,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.2.1"
+  rongcloud_im_plugin:
+    dependency: "direct main"
+    description:
+      name: rongcloud_im_plugin
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.9.5"
   screen:
     dependency: transitive
     description:
@@ -538,7 +559,7 @@ packages:
       name: source_gen
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.9.4+3"
+    version: "0.9.4+4"
   source_span:
     dependency: transitive
     description:
@@ -664,7 +685,7 @@ packages:
       name: video_player
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.10.1+6"
+    version: "0.10.2"
   watcher:
     dependency: transitive
     description:
