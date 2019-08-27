@@ -1,6 +1,7 @@
 package io.flutter.plugins;
 
 import io.flutter.plugin.common.PluginRegistry;
+import com.jordanalcaraz.audiorecorder.audiorecorder.AudioRecorderPlugin;
 import com.dooboolab.fluttersound.FlutterSoundPlugin;
 import com.jarvan.fluwx.FluwxPlugin;
 import io.flutter.plugins.imagepicker.ImagePickerPlugin;
@@ -23,6 +24,7 @@ public final class GeneratedPluginRegistrant {
     if (alreadyRegisteredWith(registry)) {
       return;
     }
+    AudioRecorderPlugin.registerWith(registry.registrarFor("com.jordanalcaraz.audiorecorder.audiorecorder.AudioRecorderPlugin"));
     FlutterSoundPlugin.registerWith(registry.registrarFor("com.dooboolab.fluttersound.FlutterSoundPlugin"));
     FluwxPlugin.registerWith(registry.registrarFor("com.jarvan.fluwx.FluwxPlugin"));
     ImagePickerPlugin.registerWith(registry.registrarFor("io.flutter.plugins.imagepicker.ImagePickerPlugin"));

@@ -20,7 +20,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  rongcloud_im_plugin: ^0.9.5
   jpush_flutter: ^0.0.13
   cupertino_icons: ^0.1.2
   flutter_swiper: ^1.1.6
@@ -52,6 +51,8 @@ dependencies:
   chewie: ^0.9.7
   tobias: ^1.1.0
   flutter_sound: ^1.4.2
+  rongcloud_im_plugin: ^0.9.5
+  audio_recorder: ^1.0.0
 
   #  flutter_webview_plugin: ^0.3.5
 

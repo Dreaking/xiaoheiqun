@@ -1,3 +1,4 @@
+audio_recorder=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/audio_recorder-1.0.1/
 flutter_sound=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_sound-1.4.2/
 fluwx=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/
 image_picker=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/image_picker-0.4.12+1/
@@ -7,7 +8,7 @@ path_provider=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider
 rongcloud_im_plugin=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/
 screen=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/screen-0.0.5/
 shared_preferences=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.3+4/
-sqflite=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.6+3/
+sqflite=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.6+4/
 tobias=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/tobias-1.1.0+1/
 url_launcher=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.1.2/
 video_player=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.2/

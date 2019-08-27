@@ -1,14 +1,20 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:audio_recorder/audio_recorder.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sound/flutter_sound.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:rongcloud_im_plugin/rongcloud_im_plugin.dart';
+import 'package:xiaoheiqun/chatService/meadia_util.dart';
 import 'package:xiaoheiqun/common/app_config.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/rongyunListen.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/data/User.dart';
-import 'package:intl/intl.dart' show DateFormat;
 
 class chat extends StatefulWidget {
   var id;
@@ -32,97 +38,18 @@ class chatSate extends State<chat> {
 //    发送消息
     TextMessage txtMessage = new TextMessage();
     txtMessage.content = _control.text;
-
-    Message msg = await RongcloudImPlugin.sendMessage(
-        RCConversationType.Private, widget.id, txtMessage);
-    setState(() {
-      initView();
-      _control.text = "";
-    });
-    print("send message start senderUserId = " + msg.senderUserId);
-  }
-
-  String vcLocal;
-  void startRecorder() async {
-    try {
-      String path = await flutterSound.startRecorder(null);
-      print('startRecorder: $path');
+    if (_control.text != "") {
+      Message msg = await RongcloudImPlugin.sendMessage(
+          RCConversationType.Private, widget.id, txtMessage);
       setState(() {
-        vcLocal = path;
+        initView();
+        _control.text = "";
       });
-      _recorderSubscription = flutterSound.onRecorderStateChanged.listen((e) {
-        DateTime date = new DateTime.fromMillisecondsSinceEpoch(
-            e.currentPosition.toInt(),
-            isUtc: true);
-        String txt = DateFormat('mm:ss:SS', 'en_GB').format(date);
-
-        this.setState(() {
-          this._recorderTxt = txt.substring(0, 8);
-        });
-      });
-      _dbPeakSubscription =
-          flutterSound.onRecorderDbPeakChanged.listen((value) {
-        print("got update -> $value");
-        setState(() {
-          this._dbLevel = value;
-        });
-      });
-
-      this.setState(() {
-        this._isRecording = true;
-      });
-    } catch (err) {
-      print('startRecorder error: $err');
     }
   }
 
-  void stopRecorder() async {
-    try {
-      String result = await flutterSound.stopRecorder();
-      print('stopRecorder: $result');
-
-      if (_recorderSubscription != null) {
-        _recorderSubscription.cancel();
-        _recorderSubscription = null;
-      }
-      if (_dbPeakSubscription != null) {
-        _dbPeakSubscription.cancel();
-        _dbPeakSubscription = null;
-      }
-
-      this.setState(() {
-        this._isRecording = false;
-      });
-    } catch (err) {
-      print('stopRecorder error: $err');
-    }
-  }
-
-  //发送语音消息
-  Future sendVSMessage() async {
-    VoiceMessage vc = new VoiceMessage();
-    print(vcLocal);
-    print("ceshi");
-    vc.localPath = vcLocal;
-    Message msg = await RongcloudImPlugin.sendMessage(
-        RCConversationType.Private, widget.id, vc);
-    setState(() {
-      initView();
-    });
-  }
-
-  FlutterSound flutterSound = new FlutterSound();
-  StreamSubscription _recorderSubscription;
-  StreamSubscription _dbPeakSubscription;
-  StreamSubscription _playerSubscription;
-  String _recorderTxt = '00:00:00';
-  String _playerTxt = '00:00:00';
-  double _dbLevel;
-  bool _isRecording = false;
   var upScor = 0, startRecoder = 0;
 
-  double slider_current_position = 0.0;
-  double max_duration = 1.0;
   List TextMsg;
   List msgs;
   int count;
@@ -146,6 +73,16 @@ class chatSate extends State<chat> {
         RCConversationType.Private, widget.id, 0, 20);
     count = msgs.length;
     print("get history message");
+    VoicImage = new List(count);
+    initVoicImage();
+//    for (Message m in msgs) {
+//      VoiceMessage a = m.content;
+//      print(a.remoteUrl);
+//      print(a.localPath);
+//      print(a.duration);
+//      print(m.objectName);
+//      print("sentTime = " + m.content.toString());
+//    }
     //倒序
     TextMsg = msgs.reversed.toList();
   }
@@ -159,7 +96,85 @@ class chatSate extends State<chat> {
     });
   }
 
+  /*拍照*/
+  Future _takePhoto() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    String path;
+    if (TargetPlatform.android == defaultTargetPlatform) {
+      path = "file://" + image.path;
+    } else {
+      path = image.path;
+    }
+    if (image != null) {
+      ImageMessage imgMsg = ImageMessage.obtain("file://" + path);
+      Message msg = await RongcloudImPlugin.sendMessage(
+          RCConversationType.Private, widget.id, imgMsg);
+    }
+  }
+
+  Future pick_Image() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    String path;
+    if (TargetPlatform.android == defaultTargetPlatform) {
+      path = "file://" + image.path;
+    } else {
+      path = image.path;
+    }
+    if (image != null) {
+      ImageMessage imgMsg = ImageMessage.obtain(path);
+      Message msg = await RongcloudImPlugin.sendMessage(
+          RCConversationType.Private, widget.id, imgMsg);
+      setState(() {
+        initView();
+      });
+    }
+  }
+
   ScrollController _controller;
+  List VoicImage = new List();
+  void initVoicImage() {
+    for (var i = 0; i < count; i++) {
+      VoicImage[i] = ("ChatBox/stop.png");
+    }
+  }
+
+  FlutterSound flutterSound = new FlutterSound();
+  int millseconds;
+  var path;
+  Future statrVcMessage() async {
+    String path = await flutterSound.startRecorder(null);
+    print('startRecorder: $path');
+    print("111111111111111111");
+    this.path = path;
+    var _recorderSubscription = flutterSound.onRecorderStateChanged.listen((e) {
+      DateTime date =
+          new DateTime.fromMillisecondsSinceEpoch(e.currentPosition.toInt());
+      print(e.currentPosition.toString() + "aaaaaaaaaaa");
+      millseconds = e.currentPosition.toInt();
+    });
+  }
+
+  Future stopVcMessage() async {
+    String result = await flutterSound.stopRecorder();
+    print('stopRecorder: $result');
+  }
+
+  Future SendVcMessage() async {
+    stopVcMessage();
+    print(millseconds);
+    willSendVoice("file://" + path, millseconds);
+    print("dddddddd");
+  }
+
+  void willSendVoice(String path, int duration) async {
+    print("只你高兴");
+    VoiceMessage msg = VoiceMessage.obtain(path, duration);
+    Message message = await RongcloudImPlugin.sendMessage(
+        RCConversationType.Private, widget.id, msg);
+    setState(() {
+      initView();
+    });
+  }
 
   TextEditingController _control = new TextEditingController();
   @override
@@ -210,10 +225,12 @@ class chatSate extends State<chat> {
                                                       MainAxisAlignment.start,
                                                   children: <Widget>[
                                                     Container(
-                                                      margin: EdgeInsets.only(
-                                                          left: 8, right: 8),
-                                                      width: 40,
-                                                      height: 40,
+                                                      margin:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 8,
+                                                              vertical: 8),
+                                                      width: 50,
+                                                      height: 50,
                                                       decoration: BoxDecoration(
                                                           borderRadius:
                                                               BorderRadius
@@ -222,14 +239,40 @@ class chatSate extends State<chat> {
                                                               color: Colors
                                                                   .black12)),
                                                       child: ClipOval(
-                                                        child: Image.network(
-                                                          AppConfig
-                                                                  .AJAX_IMG_SERVER +
-                                                              targetUser
-                                                                  .headImg,
-                                                          fit: BoxFit.cover,
+                                                          child:
+                                                              CachedNetworkImage(
+                                                        fit: BoxFit.cover,
+                                                        imageUrl: AppConfig
+                                                                .AJAX_IMG_SERVER +
+                                                            targetUser.headImg,
+                                                        placeholder:
+                                                            (context, url) =>
+                                                                new Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: <Widget>[
+                                                            new SizedBox(
+                                                              width: 10,
+                                                              height: 10,
+                                                              child:
+                                                                  CircularProgressIndicator(),
+                                                            )
+                                                          ],
                                                         ),
-                                                      ),
+                                                        errorWidget: (context,
+                                                                url, error) =>
+                                                            new Icon(
+                                                                Icons.error),
+                                                      )
+//                                                        Image.network(
+//                                                          AppConfig
+//                                                                  .AJAX_IMG_SERVER +
+//                                                              targetUser
+//                                                                  .headImg,
+//                                                          fit: BoxFit.cover,
+//                                                        ),
+                                                          ),
                                                     ),
                                                     Column(
                                                       children: <Widget>[
@@ -248,10 +291,53 @@ class chatSate extends State<chat> {
                                                                         10,
                                                                     vertical:
                                                                         7),
-                                                            child: Text(
-                                                                msgs[index]
-                                                                    .content
-                                                                    .content),
+                                                            child: msgs[index]
+                                                                        .objectName ==
+                                                                    "RC:ImgMsg"
+                                                                ? Image.network(
+                                                                    msgs[index]
+                                                                        .content
+                                                                        .imageUri,
+                                                                    width: 50,
+                                                                    height: 50,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  )
+                                                                : msgs[index]
+                                                                            .objectName ==
+                                                                        "RC:HQVCMsg"
+                                                                    ? Row(
+                                                                        children: <
+                                                                            Widget>[
+                                                                          InkWell(
+                                                                            child:
+                                                                                Image.asset(
+                                                                              VoicImage[index],
+                                                                              width: 20,
+                                                                              height: 20,
+                                                                            ),
+                                                                            onTap:
+                                                                                () {
+                                                                              setState(() {
+                                                                                VoicImage[index] = "ChatBox/playing.gif";
+                                                                              });
+                                                                              Timer timer = new Timer(new Duration(seconds: msgs[index].content.duration / 1000), () {
+                                                                                // 只在倒计时结束时回调
+                                                                                setState(() {
+                                                                                  VoicImage[index] = "ChatBox/stop.png";
+                                                                                });
+                                                                              });
+                                                                              MediaUtil.instance.startPlayAudio(msgs[index].content.localPath);
+                                                                            },
+                                                                          ),
+                                                                          Text(
+                                                                              "${(msgs[index].content.duration / 1000).toString()}''")
+                                                                        ],
+                                                                      )
+                                                                    : Text(msgs[
+                                                                            index]
+                                                                        .content
+                                                                        .content),
                                                           ),
                                                         )
                                                       ],
@@ -266,10 +352,13 @@ class chatSate extends State<chat> {
                                                       children: <Widget>[
                                                         Text(user.userName),
                                                         Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  top: 5,
+                                                                  bottom: 10),
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: Colors
-                                                                .lightBlueAccent,
+                                                            color: Colors.white,
                                                           ),
                                                           child: Container(
                                                             margin: EdgeInsets
@@ -278,17 +367,90 @@ class chatSate extends State<chat> {
                                                                         10,
                                                                     vertical:
                                                                         7),
-                                                            child: Text(
-                                                                msgs[index]
-                                                                    .content
-                                                                    .content),
+                                                            child: msgs[index]
+                                                                        .objectName ==
+                                                                    "RC:ImgMsg"
+                                                                ? CachedNetworkImage(
+                                                                    imageUrl: msgs[
+                                                                            index]
+                                                                        .content
+                                                                        .imageUri,
+                                                                    placeholder:
+                                                                        (context,
+                                                                                url) =>
+                                                                            new Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      children: <
+                                                                          Widget>[
+                                                                        new SizedBox(
+                                                                          width:
+                                                                              10,
+                                                                          height:
+                                                                              10,
+                                                                          child:
+                                                                              CircularProgressIndicator(),
+                                                                        )
+                                                                      ],
+                                                                    ),
+                                                                    errorWidget: (context,
+                                                                            url,
+                                                                            error) =>
+                                                                        new Icon(
+                                                                            Icons.error),
+                                                                  )
+//                                                            Image.network(
+//                                                                    msgs[index]
+//                                                                        .content
+//                                                                        .imageUri,
+//                                                                    width: 50,
+//                                                                    height: 50,
+//                                                                    fit: BoxFit
+//                                                                        .cover,
+//                                                                  )
+                                                                : msgs[index]
+                                                                            .objectName ==
+                                                                        "RC:HQVCMsg"
+                                                                    ? Row(
+                                                                        children: <
+                                                                            Widget>[
+                                                                          InkWell(
+                                                                            child:
+                                                                                Image.asset(
+                                                                              VoicImage[index],
+                                                                              width: 20,
+                                                                              height: 20,
+                                                                            ),
+                                                                            onTap:
+                                                                                () {
+                                                                              setState(() {
+                                                                                VoicImage[index] = "ChatBox/playing.gif";
+                                                                              });
+                                                                              Timer timer = new Timer(new Duration(milliseconds: msgs[index].content.duration), () {
+                                                                                // 只在倒计时结束时回调
+                                                                                setState(() {
+                                                                                  VoicImage[index] = "ChatBox/stop.png";
+                                                                                });
+                                                                              });
+                                                                              MediaUtil.instance.startPlayAudio(msgs[index].content.localPath);
+                                                                            },
+                                                                          ),
+                                                                          Text(
+                                                                              "${(msgs[index].content.duration / 1000).toString()}''")
+                                                                        ],
+                                                                      )
+                                                                    : Text(msgs[
+                                                                            index]
+                                                                        .content
+                                                                        .content),
                                                           ),
                                                         )
                                                       ],
                                                     ),
                                                     Container(
-                                                      width: 40,
-                                                      height: 40,
+                                                      width: 50,
+                                                      height: 50,
                                                       margin: EdgeInsets.only(
                                                           left: 8, right: 8),
                                                       decoration: BoxDecoration(
@@ -299,11 +461,31 @@ class chatSate extends State<chat> {
                                                               color: Colors
                                                                   .black12)),
                                                       child: ClipOval(
-                                                        child: Image.network(
-                                                          AppConfig
+                                                        child:
+                                                            CachedNetworkImage(
+                                                          fit: BoxFit.cover,
+                                                          imageUrl: AppConfig
                                                                   .AJAX_IMG_SERVER +
                                                               user.headImg,
-                                                          fit: BoxFit.cover,
+                                                          placeholder:
+                                                              (context, url) =>
+                                                                  new Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: <Widget>[
+                                                              new SizedBox(
+                                                                width: 10,
+                                                                height: 10,
+                                                                child:
+                                                                    CircularProgressIndicator(),
+                                                              )
+                                                            ],
+                                                          ),
+                                                          errorWidget: (context,
+                                                                  url, error) =>
+                                                              new Icon(
+                                                                  Icons.error),
                                                         ),
                                                       ),
                                                     ),
@@ -356,7 +538,7 @@ class chatSate extends State<chat> {
                                       });
                                     } else {
                                       setState(() {
-                                        voice == 0;
+                                        voice = 0;
                                       });
                                     }
                                   },
@@ -372,6 +554,8 @@ class chatSate extends State<chat> {
                                             Border.all(color: Colors.black45)),
                                     child: voice == 1
                                         ? Container(
+                                            width: size.width * 0.65,
+                                            height: 30,
                                             alignment: Alignment.center,
                                             child: Text("按住说话"),
                                           )
@@ -390,34 +574,38 @@ class chatSate extends State<chat> {
                                     print("开始录制");
                                     setState(() {
                                       startRecoder = 1;
-                                      this.startRecorder();
+                                      statrVcMessage();
                                     });
                                   },
-//                            onLongPressMoveUpdate: (da) {
-//                              print("长按上滑");
-//                              //加入上滑标记
-//                              setState(() {
-//                                upScor = 1;
-//                                this.stopRecorder();
-//                              });
-//                            },
+//                                  onPanStart: (da) {
+//                                    print("长按上滑");
+//                                    //加入上滑标记
+//                                    stopVcMessage();
+//                                    setState(() {
+//                                      upScor = 1;
+//                                      startRecoder = 0;
+//                                    });
+//                                  },
+
                                   onLongPressUp: () {
                                     //识别是否进行过上滑按钮
-                                    if (upScor == 0) this.stopRecorder();
-                                    print("长按结束");
-                                    setState(() {
-                                      startRecoder = 0;
-                                    });
-                                    sendVSMessage();
+                                    if (upScor == 0) {
+                                      print("长按结束");
+                                      setState(() {
+                                        startRecoder = 0;
+                                      });
+                                      SendVcMessage();
+                                    }
+                                    upScor = 0;
                                   },
                                 ),
-                                ClipOval(
-                                  child: Image.asset(
-                                    "ChatBox/face1.png",
-                                    width: 30,
-                                    height: 30,
-                                  ),
-                                ),
+//                                ClipOval(
+//                                  child: Image.asset(
+//                                    "ChatBox/face1.png",
+//                                    width: 30,
+//                                    height: 30,
+//                                  ),
+//                                ),
                                 InkWell(
                                   child: ClipOval(
                                     child: Image.asset(
@@ -469,10 +657,15 @@ class chatSate extends State<chat> {
                                             left: 10, right: 10),
                                         child: Column(
                                           children: <Widget>[
-                                            Image.asset(
-                                              "ChatBox/img1.png",
-                                              width: 70,
-                                              height: 70,
+                                            InkWell(
+                                              child: Image.asset(
+                                                "ChatBox/img1.png",
+                                                width: 70,
+                                                height: 70,
+                                              ),
+                                              onTap: () {
+                                                pick_Image();
+                                              },
                                             ),
                                             Text("相册照片")
                                           ],
@@ -481,10 +674,15 @@ class chatSate extends State<chat> {
                                       Container(
                                         child: Column(
                                           children: <Widget>[
-                                            Image.asset(
-                                              "ChatBox/cam1.png",
-                                              width: 70,
-                                              height: 70,
+                                            InkWell(
+                                              child: Image.asset(
+                                                "ChatBox/cam1.png",
+                                                width: 70,
+                                                height: 70,
+                                              ),
+                                              onTap: () {
+                                                _takePhoto();
+                                              },
                                             ),
                                             Text("相机拍照")
                                           ],

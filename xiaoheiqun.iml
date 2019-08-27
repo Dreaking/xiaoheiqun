@@ -23,6 +23,12 @@
       <excludeFolder url="file://$MODULE_DIR$/flutter_plugin/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/flutter_plugin/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/flutter_plugin/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/audio_recorder/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/audio_recorder/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/audio_recorder/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/audio_recorder/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/audio_recorder/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/audio_recorder/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_sound/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_sound/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_sound/build" />
