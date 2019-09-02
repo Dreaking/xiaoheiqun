@@ -3,7 +3,6 @@
     <CLASSES>
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/image_picker-0.4.12+1" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.3+4" />
-      <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.3.2+1" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.2.0" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/jpush_flutter-0.0.13" />
@@ -14,7 +13,7 @@
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_sound-1.4.2" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.6+4" />
-      <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/audio_recorder-1.0.1" />
+      <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

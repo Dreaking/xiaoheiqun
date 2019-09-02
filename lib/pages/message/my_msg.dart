@@ -47,15 +47,18 @@ class my_msgState extends State<my_msg> {
     setaddListener();
   }
 
-  var testList = [];
-  void getUsers() {
-    for (var i = 0; i < users.length; i++) {
-      Tinker.queryUserInfo(users[i], (data) async {
-        testList.add(User.fromJson(data));
-        setState(() {
-          a = 1;
+  var testList = [], userId;
+  Future getUsers() async {
+    userId = await Tinker.getuserID();
+    if (users[0] != null) {
+      for (var i = 0; i < users.length; i++) {
+        Tinker.queryUserInfo(users[i], (data) async {
+          testList.add(User.fromJson(data));
+          setState(() {
+            a = 1;
+          });
         });
-      });
+      }
     }
   }
 

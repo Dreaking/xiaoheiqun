@@ -10,7 +10,7 @@ import 'app_config.dart';
 
 class WxPay {
   static void register() {
-    fluwx.register(appId: AppConfig.WX_PAY_ID);
+    fluwx.register(appId: "wx7a3f09a16d6d1068");
   }
 
   static var prepayid;
@@ -21,7 +21,25 @@ class WxPay {
     });
   }
 
+  static void listen() {
+    fluwx.responseFromShare.listen((response) {
+      //do something
+      print("分享的返回参数");
+      if (response.errCode == 0) {
+        Tinker.toast("分享成功");
+      }
+      print(response.errCode);
+    });
+    fluwx.responseFromAuth.listen((response) {
+      //do something
+    });
+    fluwx.responseFromPayment.listen((response) {
+      //do something
+    });
+  }
+
   static var targetMoney, targetMonth, targetType;
+
   //获取订单号
   static Future getPrepayid() async {
     getPrice();
@@ -90,9 +108,25 @@ class WxPay {
   }
 
   static void SHare() {
-    fluwx.share(WeChatShareTextModel(
-        text: "text from fluwx",
-        transaction: "transaction}",
-        scene: fluwx.WeChatScene.TIMELINE));
+    fluwx.WeChatScene scene = fluwx.WeChatScene.TIMELINE;
+    String _imagePath =
+//  "http://img-download.pchome.net/download/1k1/3a/3e/ofskcd-s1a.jpg"
+        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534614311230&di=b17a892b366b5d002f52abcce7c4eea0&imgtype=0&src=http%3A%2F%2Fimg.mp.sohu.com%2Fupload%2F20170516%2F51296b2673704ae2992d0a28c244274c_th.png";
+    String _thumbnail = "assets://images/logo.png";
+
+    String _response = "";
+    fluwx.isWeChatInstalled().then((data) {
+      print(data); // always false
+      if (data.toString() == "false") {
+        Tinker.toast("未安装微信");
+      } else {
+        fluwx.share(fluwx.WeChatShareImageModel(
+            image: _imagePath,
+            thumbnail: _thumbnail,
+            transaction: _imagePath,
+            scene: scene,
+            description: "image"));
+      }
+    });
   }
 }

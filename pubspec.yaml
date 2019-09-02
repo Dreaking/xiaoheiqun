@@ -24,7 +24,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   flutter_swiper: ^1.1.6
   flutter_staggered_grid_view: ^0.2.7
-  fluwx: ^0.6.3
+  fluwx: ^1.0.4
 #  umeng_uapp: ^1.0.3
   dio: ^2.1.7
   toast: ^0.1.4
@@ -52,7 +52,10 @@ dependencies:
   tobias: ^1.1.0
   flutter_sound: ^1.4.2
   rongcloud_im_plugin: ^0.9.5
-  audio_recorder: ^1.0.0
+#  audio_recorder: ^1.0.0
+  extended_text_field: ^0.4.3
+  extended_image: any
+
 
   #  flutter_webview_plugin: ^0.3.5
 
@@ -79,6 +82,7 @@ flutter:
   assets:
     - image/
     - ChatBox/
+    - ChatBox/emotion/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
+import 'package:xiaoheiqun/login.dart';
 import 'package:xiaoheiqun/pages/edit/my_draft.dart';
 import 'package:xiaoheiqun/pages/edit/release_success.dart';
 import 'package:xiaoheiqun/data/Draft.dart';
@@ -52,6 +53,7 @@ class EditIndexState extends State<EditIndex> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     if (widget.draft != null) {
       setState(() {
         title.text = widget.draft.title;

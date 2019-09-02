@@ -85,91 +85,90 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		048371BAFC0B8957F81611F5C786AACD /* SendMessageToWXReq+requestWithTextOrMediaMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4528A518B48FCC87C4DAF300A0F1551B /* SendMessageToWXReq+requestWithTextOrMediaMessage.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		07F054E20A3F5CE56089BBE2AF7CDC55 /* FluwxPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = CC40643A4F79D56E38A5C7E7F13F54B1 /* FluwxPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		080010E7917DF63FFEC67E791FF01103 /* FluwxAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D48D6322CF3D27D0428257CC55196E /* FluwxAuthHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		0C14B3D0366BFF75C8449A88ED57C15F /* PathProviderPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E3E65F594F29A9E7E7032C99AA893D /* PathProviderPlugin.m */; };
-		0C51D5BA6C3B1C6FAF22283990E1067F /* NSStringWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 37577D1FD1252A4BBE7FAB35B170476A /* NSStringWrapper.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		0D10EAD3182C991ECCD83623390B1157 /* StringToWeChatScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 266C5B4B99F05A17C0F70E1B0510746B /* StringToWeChatScene.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		0F82D5BC45FC6A7A779C4549A007AB1E /* FluwxAutoDeductHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4ADA64D46F356EA7625B365A65E9C3 /* FluwxAutoDeductHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		1308006ECCF40F4236FB1A6905CCBEA8 /* StringToWeChatScene.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CE867EA311311E2197F574F760CA220 /* StringToWeChatScene.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0E6BF2A1F6499B41AF8C460D5E83D84E /* FluwxPaymentHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = EB2FFD2251FB03C496C8307475174B25 /* FluwxPaymentHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0FEDCF94254F6EA1A487EF11F14ABA06 /* WXMediaMessage+messageConstruct.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9466AC5A88D954B0C00AE0AB3E872E /* WXMediaMessage+messageConstruct.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		14DBFA8F83EDAEDF298CA57BF6260726 /* image_picker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F26CBE99EC98D01735F35E68C6CAB06A /* image_picker-dummy.m */; };
-		16072D0C907276167B343AB14A30487B /* FluwxPaymentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDC94FE1546EC45E19FC42288B0EC61 /* FluwxPaymentHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		16DB7B8B5EF52A23256D8F0D8120F710 /* FluwxWXApiHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EC51F9926E5F7137655D72867ECCE /* FluwxWXApiHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		190C9E0C645335052A1EC7CB7B1C9712 /* VideoPlayerPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C57784E901E09CABAADC0A44280DF38 /* VideoPlayerPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		1CD1C79F32E59458C95847D6D040E85C /* FluwxShareHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADA32FF88D77FB069DD22FA22EDB3B1 /* FluwxShareHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		1CF785F69C1A2F1D03D745FE7013C58F /* RCIMFlutterDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = D7437A4C7696BAB92E44328AE9908011 /* RCIMFlutterDefine.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		1EBF576D864D99324DBF7AEE4C1C067C /* WXMediaMessage+messageConstruct.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DFE0F0D9252D1D7903EA2928715239 /* WXMediaMessage+messageConstruct.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		1FCFAEA40158CC9A002A81EF35336025 /* RongcloudImPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 1565F9533DC6FD03F9E630BC67C5DE05 /* RongcloudImPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		216E6BC68ACDBBDBC336E13C28955BF0 /* WechatAuthSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = EC1D09EF13D908585B985067109597B0 /* WechatAuthSDK.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		21C9B05A7FDA947A3B1B137740685FED /* FluwxSubscribeMsgHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 783EFF07C23EF50FB2967154EE21BFFA /* FluwxSubscribeMsgHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		210A9D4F6B370C08F9D8D700F5915428 /* FluwxResponseHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 33CD20864BA89EECF545D0C8E8A31164 /* FluwxResponseHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		252ABA2FCA43B4C30C313FA1411F3E2E /* UrlLauncherPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 0196BC9EEFF8930326FD10EE3B5E0D9D /* UrlLauncherPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		2530F368DE38E1250E886DB78D919B96 /* FluwxPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 48B62EBAE001E262518AD2DA3A733214 /* FluwxPlugin.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		25C067243D638C74A209CA141CFB6D7A /* FluwxShareHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B326B2A1963D30CEAF1FEBEB67341A5 /* FluwxShareHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		280F472802B8211D652A773203B111FE /* SqflitePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 288A6A61B9914C491088830176A3751D /* SqflitePlugin.m */; };
-		2EC7D03AE039CD72D2A4E89F06501E12 /* CallResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C556DF2849A1A1B63B777B428ADB15C /* CallResults.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2DEFF4995C64F847B0419BE4016176E5 /* NSStringWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6E2D88193A36A71A9785FCF0BCCEC7 /* NSStringWrapper.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		307A372B4D449494B967E05B73DD9C10 /* WXMediaMessage+messageConstruct.h in Headers */ = {isa = PBXBuildFile; fileRef = BE1D5B81276DD5E59B5D2B6AB2CC5589 /* WXMediaMessage+messageConstruct.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		31B13CBC6C019948FAEFA13C52390573 /* FluwxResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B8B630E6A2369E9950C7F6B6739EE1 /* FluwxResponseHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		334D73D34632E5B49378F05F9E8C4074 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D8BFA6BEE425261DDDFF19E9385B /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		3445A49E7B256805A84271472504889F /* WXApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC55F47621EABDAC34113E15868322C /* WXApi.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		3827D60A7A700E1941C63C5156C48F4B /* SqfliteOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF6F3BC7E62E521665FE5A7EF1DED0 /* SqfliteOperation.m */; };
 		389D4F2FC6DDA61DDA0EC25FDADC375E /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DE7382E5FF3506D5585E366F8D38B7 /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		38B89E8D85A314372866F101CCEF87FB /* path_provider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCDAD1A27947F2B86C188FBD2546830 /* path_provider-dummy.m */; };
 		39996B4E04CCD350E302F07F2BDFB497 /* SharedPreferencesPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B4F59D3D72E9DFEB2F8AFFBBF60BA76 /* SharedPreferencesPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		3A0883E77F7AE2EA74BAD663599DB706 /* FluwxShareHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 53BFF5E33EDD38999FD162562118E501 /* FluwxShareHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		3A871672BBAD8AA254DBF4DC4F3A7D3D /* FluwxResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE4460AC1D096CB55B8405EDAC8E050 /* FluwxResponseHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3C2E98EE4D12D9B2B07F95A201F0FFFD /* NSStringWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = E97D809D5A051F63FE22A32D0D943426 /* NSStringWrapper.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3C4C0E65FA1A0E687B36041E3A7B2CEA /* FluwxPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = A66A1D5AB442002CC2514B99262EAB96 /* FluwxPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3CEA035FECB0C45C0A5E803B22AC35FC /* WXApi.h in Headers */ = {isa = PBXBuildFile; fileRef = F86B66477958894AC748A9494C472B6C /* WXApi.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3F4F3529416B584037849165EBB7F75A /* StringToWeChatScene.h in Headers */ = {isa = PBXBuildFile; fileRef = 920D17A5223E3DBB6CEEF02B3784A5A2 /* StringToWeChatScene.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		410DC66E9D2E56598977CFC6CAEF0AA7 /* ImagePickerPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C7FB1A9E03AA8EF14EF1097D8DE6ED8 /* ImagePickerPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		42D9D21621655F6BF00DF9D6EB8FD951 /* url_launcher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 762B63D4E713790DE1A901BBD6C210BA /* url_launcher-dummy.m */; };
 		43B5CB38FECB8F66E3B895ECB51ED19D /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F511741F13BA723251CE59DF5990FE68 /* FMDatabaseAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		48E567DB01F6E4C2BE243234BD5CD8C4 /* FluwxMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = DC473A2F86A90804F9195166EB749F64 /* FluwxMethods.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		48E8D4AC66C9335BC3E0AFCD8DE03BE2 /* tobias-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9292F2E0E78E50220B1EAA7E1DE37C2B /* tobias-dummy.m */; };
-		4B22B9703AFE2AF1A77933293E00335C /* FluwxKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E184419E1AD47CACB765F79BA2E5E93 /* FluwxKeys.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4C7CBCB7FC6B984338F8369D8900752E /* UrlLauncherPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD539044459F8D05CAA344EF4FCC46A /* UrlLauncherPlugin.m */; };
 		4EEC34022A3B4A56EA09BC713E9827B0 /* FMDB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A0143B66DCC0EBCC76E2648FF242A8CC /* FMDB-dummy.m */; };
 		4F80B85A870F2A0386CA14851BAC1E2A /* RongcloudImPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F0DE17A465628FA481F21B00CE0A68 /* RongcloudImPlugin.m */; };
 		51E290D9F7BF4B1CD09E82F9D38D5ED7 /* SqflitePlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A6302F8B6D176E45017FE109FA9B81A /* SqflitePlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		5657479FAA184DF991B5E95CB561D064 /* FluwxSubscribeMsgHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = CA3A1E4AB928FB223CCF1CEDC078FA89 /* FluwxSubscribeMsgHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		596D690F3E99921F1946401A9FD56915 /* CallResults.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D9DA40E0DF52687B985E06C06DAD089 /* CallResults.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		52DEBC1D4E778C4A73A80E3E8676173A /* FluwxShareHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F56D462FAC8C56BE8E8862A968A0C2D6 /* FluwxShareHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		572C29118A1F3CDA7EF623D35A05D44D /* FluwxSubscribeMsgHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AC69121D8A4E4F09DA5AD41DDA35DB16 /* FluwxSubscribeMsgHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5A5A40873D7896B76A8E4E3C4985D223 /* SqfliteOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = EFC3FC4708414F8D6ED1E51094FBF43B /* SqfliteOperation.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5B4467F24D34E2E313B1A45D3B212C08 /* shared_preferences-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4128205014CE38C1E89E40D200368A /* shared_preferences-dummy.m */; };
 		5B5CE720C913251F90B225A0BD9CC8A2 /* FlutterSoundPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C982C2B76C9969D3C1FA4645D2053B /* FlutterSoundPlugin.m */; };
-		60858772B4399232C488787EAD77EBD7 /* FluwxKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B903A6B153F70639267047C8DBCBA /* FluwxKeys.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5CF2DA9D3DBF159E259371C2B046E2DE /* FluwxKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = CE5D0F21DA78197BD06C9936B7B0E9DD /* FluwxKeys.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5F742E7BB7A9553CFFB0D6196EED377E /* FluwxKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B88DF8FD8086AC3FE96F21904E0A2A /* FluwxKeys.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		61AB8DCAE84A5DF65F2B6667EF2E3D38 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = F40C35BD57D315B3C55D28D36B6596F6 /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		665B766D3A3C3312FED9E25947656979 /* FluwxPaymentHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = C420ED614A598B2E6BE7A6D10F77D640 /* FluwxPaymentHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		640A864696DAB989EAF99356806C4B89 /* CallResults.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C61F9F740F66272D1106E4273B8DCE5 /* CallResults.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		658462D8EB889985507E02C90A1BB26A /* ThumbnailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC6A568F85019EC0937454F82978DD7 /* ThumbnailHelper.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		680348FC9E7E660752BB799BC214642D /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CF735F53D874EA03B5306DAD36D6F4BF /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		68175428C0084C5802627EC88B9CC122 /* WXMediaMessage+messageConstruct.h in Headers */ = {isa = PBXBuildFile; fileRef = F5667AEF608C1F147863312CD1CB115E /* WXMediaMessage+messageConstruct.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		68763B6F89510347C9A9E9F314C483EF /* JPushPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC3ADF57D55F3BE4D3D81F55BC9A2FD /* JPushPlugin.m */; };
-		68E189C8736A1C3B4D3714750BD62A0F /* WXApiRequestHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AB813A4E1E550826E657B6BA11F70F76 /* WXApiRequestHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		691BED0DEEA4A483BAF4E9B27AFA4EF9 /* fluwx-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FAF8EB719CD6F3C1906745626FD61A /* fluwx-dummy.m */; };
-		69B2180AB9238D63F8A81D9A860CF7D1 /* FluwxAutoDeductHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 953A62B13CF1065CC537E85EEA56624D /* FluwxAutoDeductHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		691BED0DEEA4A483BAF4E9B27AFA4EF9 /* fluwx-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 245F4E8FE156ED7B7D36AA0FF0F422F6 /* fluwx-dummy.m */; };
+		6A2BF5B054B9E547CD0A76343DB8B789 /* WXApiRequestHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = CF91820EA4C73A36431F2B6457D104A2 /* WXApiRequestHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		6C4F1D81AA0F0C9CAA060C15B964691E /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 47DB9421F70EAD41A9958C0E565F613B /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		6DF77D6AACDDA787ED9928402618202C /* RCIMFlutterWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F9122C0C3D2FB1C0B3EB3DACF793653 /* RCIMFlutterWrapper.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		6EAE11FCA1E0C577A61579C1D9EA76AD /* FluwxLaunchMiniProgramHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 862DF81FAAA39A9EBB1D0EB0EA61E0CF /* FluwxLaunchMiniProgramHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		702961A8FFC753AAAB4D45D66825A801 /* FlutterSoundPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = BB78234C6CCCC5FB5E8D5AFF8A2BB3FE /* FlutterSoundPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		70AB28AC2C43DC65A924690B2DEAD80F /* package_info-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9D0F0DDF3E19D227BCF64D91B3EEA8 /* package_info-dummy.m */; };
-		76EEA6CCFCBF4F785F0F916323C7D58B /* WXApiRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F73A2CCC02B0D0A60E872C3B51D1D87 /* WXApiRequestHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		710F85C0A2B98DE5AE06E5BE9568E2BD /* FluwxAutoDeductHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AB87C41B69125D8CDE7FF340AE38D579 /* FluwxAutoDeductHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		7820F63825BBB19186596F11C4741DDD /* video_player-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3758502B7C0A591905FA714B85DED /* video_player-dummy.m */; };
 		79517E22F506A4D16B569BD1E5A1C094 /* screen-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 53AD7773ABD0F46AF31B2A560CA1716D /* screen-dummy.m */; };
-		7A547FCDB44B9052D4B84E8032814951 /* ImageSchema.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B95CE9B68E24DCB6CC45403DB345CEA /* ImageSchema.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		79DD9857F945F97FF1F5204FCE2D26FC /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ED5B7DFFBC04DAB8CC0695F559ADF /* StringUtil.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		7DA1A1853D8205ECC6E58CECEC78EE84 /* TobiasPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 341237045DCFBA120FACD50DB3D553FB /* TobiasPlugin.m */; };
+		7F975CD7F797571191B0DED08E614B9E /* CallResults.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4DF4CDB20D7E8C46508760E1FD6D6 /* CallResults.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		8093EFACF28C19FC37D0323C0FD1AAA4 /* PackageInfoPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F6B1663F7B8B29DB7A4B12220D7A358 /* PackageInfoPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		816998357B0580DE07BEB90EC5917CAA /* ScreenPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BE1E13CED67F8D4716A06166B5CE5FD /* ScreenPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		84F14F603AF9A08243E54C341C2DCBA5 /* FluwxMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = 68A2018C5841B83486C63ACA73030D28 /* FluwxMethods.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		873DD8AD89AC5209963D85D970BC0AC8 /* FluwxWXApiHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 184E0C20A56B39A74D70D2D8DD92210E /* FluwxWXApiHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		839BEB256C7352B2DCD09122D8FEFCF4 /* ImageSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1A887AEA34EF7CD81D850609659F4C /* ImageSchema.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		88890D707B1AE155AE4E03A9E194931F /* WechatAuthSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 90DE7E8A473452E2E41BD741807C1BA1 /* WechatAuthSDK.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		88E8F418F7CDDD5310293784C6677FBE /* FluwxAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BD74E3868D233A1262E37696F765610F /* FluwxAuthHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		898168FE07D292B38DCF5DFA9B31EDCE /* FluwxMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C519DEDF4604E06715725461429499 /* FluwxMethods.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8AD48CBA39FE5834448FD6C9DCC14CF8 /* TobiasPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B244B329CF14DE02D56B030DD09F104 /* TobiasPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		9011208CF1B366F7E80D59585E7D96E0 /* FluwxAuthHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 8430462121C735773B5A3A7815B04C4D /* FluwxAuthHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		8FDF9804AAD2E16B6128570BECC525C1 /* FluwxAuthHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D8381D0A78C881FB3FB7F07AFFD88B1 /* FluwxAuthHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		91B9A90E5509F7F697ADA39CC50B25FD /* FluwxWXApiHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 96E7BF30761413CD7C9DC1D5D388408F /* FluwxWXApiHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		92F9FCD84124564E6837692FD2722257 /* RCIMFlutterLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E92803A67704AB6C64FCFE294CC2FD5 /* RCIMFlutterLog.m */; };
+		93995C13DA4850EEE7B54075D3C8BD26 /* WXApiRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EAC93F377BA083F19A2ABE88DFCA8793 /* WXApiRequestHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		948D0DB0FBE888267654D9E8A78D220F /* FMDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 17640F7EABBCBEA00B4836C18E0CC4A8 /* FMDB.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9719760F108DD572D2E7FE5751835218 /* ScreenPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 55039F3F77A1C41FB624CAB91490B9A4 /* ScreenPlugin.m */; };
+		9A192247BAB0F762AD3328C154BE1923 /* SendMessageToWXReq+requestWithTextOrMediaMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = DDEAC87F9A7F6130407706140498CB3E /* SendMessageToWXReq+requestWithTextOrMediaMessage.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9B4E83EE752A44088A4407C6EB243360 /* WXApiObject.h in Headers */ = {isa = PBXBuildFile; fileRef = C699E7B35F5C4C24F232099565C44D30 /* WXApiObject.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9C125D95E81FE8312F41044388055C65 /* SharedPreferencesPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 426AE2F1BF9BC078846AB8038FAF0E06 /* SharedPreferencesPlugin.m */; };
-		9DD38C3825B71706ACC002869D55FCDB /* FluwxMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D0F4FDB7CA52C6962C5597D6AB57F6 /* FluwxMethods.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		9EC2118FADA27CB5B5AA91FE5D418EFC /* rongcloud_im_plugin-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C80F15CB9481DFEE45D9519C8134F6A0 /* rongcloud_im_plugin-dummy.m */; };
 		A11DBC502384D637B7D29E3C61EEDE0C /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = B5DF0B9F71A2B31CE78819B1A35FFE9A /* FMResultSet.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A34A545578375892F121A6FA9331EDF6 /* StringUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 0913B6A70D848B2D3EC3A30A5DFED1C5 /* StringUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A7E8F31D7DB9757FE1D47ADBC178F615 /* ThumbnailHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 604D3782F05A9FB4D06707AE1D1DC791 /* ThumbnailHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A8550D58F2BEF1BB6EC4463A79A8D55F /* FluwxResponseHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 80D9DFF716C36265F5EC31DD1089FEFA /* FluwxResponseHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		A14FD26440F90F8D8E3A93363EC2C460 /* FluwxAutoDeductHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = CC0263CFBDD19B76F2C7790936E03824 /* FluwxAutoDeductHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		AA493935BD05937A6F0FDF86203CF49D /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 51A0D74DEFE1C01E5FE1FA5DCCE66F6B /* FMDatabaseQueue.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		ABC0F803B00D18BE8A4E9C2F57522AAF /* PathProviderPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = D20E08DB2217641871DE4F75CE619200 /* PathProviderPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		AEA820485315D076076D5829B5AEA413 /* RCIMFlutterLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 44B30C46B213064EB6C97890CE96A510 /* RCIMFlutterLog.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B105F1F6D1DCBEA60F3EC4897D6FBAA5 /* NSStringWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C32AF11412070025B34705EB80C48E37 /* NSStringWrapper.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		B41D48ED6D26898E42E7C0FE1983B2DD /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F250DB1AEE72F75304C9D61510A27DC /* FMDatabase.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B4AB3AFCAA445BD07C1F13FC7B697F99 /* RCFlutterMessageFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = FE9013B0767CA4C7D73AF9421845C664 /* RCFlutterMessageFactory.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B68B14194F5BECD5EB3192C7F27378B2 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A28B0EB2BB1014D983FD55CECB060D74 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BCB43F796CC7A05C51288293887DAB88 /* StringUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = E62159C995F7A450988D079952F6DBC0 /* StringUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C10B9C8CBF0388B138B2BE732445D4D2 /* RCFlutterConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFC80C1463AB27AAB4AF55DC8EA441B /* RCFlutterConfig.m */; };
+		C790EB720052542F5B98C4C577441A25 /* FluwxPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 828D6594467824E0FC6F77D246819A08 /* FluwxPlugin.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		CA438CBBA500BAEA762E89BDD964544D /* RCFlutterMessageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F13B25E549D6BEF1D4AFD49E860FC63 /* RCFlutterMessageFactory.m */; };
 		CB54D15145227725ED490570643B54AF /* VideoPlayerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = E8C5BB9068A8BD704F22EBABDC8A834E /* VideoPlayerPlugin.m */; };
 		CFE56151F1E6718ACCB9386F4CBF6997 /* flutter_sound-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AFECB3E6C3F1F243EF351435C58EDB1B /* flutter_sound-dummy.m */; };
@@ -177,17 +176,18 @@
 		D228EB2CA30292F1D05FDBC5C60D4012 /* JPushPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B4DFF995332B176400DD6583FB9E8D /* JPushPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D4C98FACE33791EC62E8FF85B9E65007 /* ImagePickerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78768E4289899DFEF874E229E8BABE /* ImagePickerPlugin.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		D714C789186E0CC2CEDDB40E074BA6AF /* PackageInfoPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F30E375DDBEA974C6929F38B96ECC8 /* PackageInfoPlugin.m */; };
-		D7A4C2EE321DD47C5AA5F8F220B3741F /* FluwxLaunchMiniProgramHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3EB0944C703B08AB51D2E103CEE6C /* FluwxLaunchMiniProgramHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D763211F286054B88C9E82C1E13ADEC3 /* StringToWeChatScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EABFE7005EDFC27E6D8DB4D39BD88C /* StringToWeChatScene.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		D7AA487C930AA3AFD6E4EE1393675851 /* RCIMFlutterWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 38411A4DFEE40C40991CA5D4297F99A0 /* RCIMFlutterWrapper.m */; };
-		D83074F58B8078B1B1100E0036A6F2AE /* FluwxWXApiHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = A9C3E728DA058D35DFC6BB8897DB60A6 /* FluwxWXApiHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		DC614EC4C31C015514FFE045814398C0 /* FluwxPaymentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 440F3140F14F2571A2CC3FA1FE7C11BE /* FluwxPaymentHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		DDA816E060113C9A3907714D1456ABBB /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF7D1C8C4E4F26F9768317A786BC4F0 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		E666D0DD8E8FF204B40156361FEA86ED /* ThumbnailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE13DDCF64FFBC81B42819FAFA7DA6 /* ThumbnailHelper.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		E91F9839841E360F55D8B2C45D0D689B /* WXApiObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C848FD404AD0BEB48D02109A50522ED /* WXApiObject.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		E9A9F47680E5571CF2597DD51D7CA326 /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F2FF9BE56B59BF30D295D80504906 /* StringUtil.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		DF552FF2410E97EAADDE66F6D72AC0E4 /* FluwxLaunchMiniProgramHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4C7AC64D7E9A1F46F1B15F122EED82 /* FluwxLaunchMiniProgramHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E6DF7CD54EC7591E688313D858FA86C2 /* FluwxLaunchMiniProgramHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4979ED62DFEED81B2661BF917CEA141E /* FluwxLaunchMiniProgramHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E9F0C69E0DB868234D5E8AAD338BF170 /* ImageSchema.h in Headers */ = {isa = PBXBuildFile; fileRef = C247089BEC22558FC9C5F21C99996C45 /* ImageSchema.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		ED730F65ADA57BBCCB0E468A45F0137E /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AC56BB16793C9C2150CA4A4C4851B9F /* FMDatabasePool.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		ED7A00078BF079424A26B49167E82D01 /* ImageSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = A36B956E05D71981F358CBD10E1F50B9 /* ImageSchema.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F1003E3417A072622166F9ABE78DE2F8 /* FluwxSubscribeMsgHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C6713E383104DE998947939710A831 /* FluwxSubscribeMsgHandler.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		F26EB7EE9FF177FF7D80F2987DCDDFEE /* RCFlutterConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 615C006834D1F4D4E2C357802E3D6FDC /* RCFlutterConfig.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F6D6902B0FC47CEE561F881CC0D31276 /* sqflite-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1173E4E2EFA597B097877D389AD22EF3 /* sqflite-dummy.m */; };
+		F8AA970FB11BBDAB485312E0ED2B49C5 /* ThumbnailHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = CE1E19DDCA1A9429FA28B307B3FF25EF /* ThumbnailHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FE2A2C89881E488893A753B9996206DE /* Pods-Runner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BABC510EDB2AA29C4B8A144C66CBAC45 /* Pods-Runner-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -491,56 +491,50 @@
 /* Begin PBXFileReference section */
 		0187D63BED38D0F7CC0833E4EB01E20E /* librongcloud_im_plugin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = librongcloud_im_plugin.a; path = librongcloud_im_plugin.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0196BC9EEFF8930326FD10EE3B5E0D9D /* UrlLauncherPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UrlLauncherPlugin.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.1.2/ios/Classes/UrlLauncherPlugin.h"; sourceTree = "<group>"; };
-		06A305B7FF2817D2ECB053CCE4830B40 /* libWeChatSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/libWeChatSDK.a"; sourceTree = "<group>"; };
 		06DE7382E5FF3506D5585E366F8D38B7 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = src/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
-		0913B6A70D848B2D3EC3A30A5DFED1C5 /* StringUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = StringUtil.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/helper/StringUtil.h"; sourceTree = "<group>"; };
+		0B4C7AC64D7E9A1F46F1B15F122EED82 /* FluwxLaunchMiniProgramHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxLaunchMiniProgramHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/handler/FluwxLaunchMiniProgramHandler.m"; sourceTree = "<group>"; };
 		0DA0926F839E4BF7A1E04948493FA57B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.3.2+1/LICENSE"; sourceTree = "<group>"; };
 		1173E4E2EFA597B097877D389AD22EF3 /* sqflite-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "sqflite-dummy.m"; sourceTree = "<group>"; };
 		126E73A64FE8BF49FEC668230664803D /* image_picker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = image_picker.xcconfig; sourceTree = "<group>"; };
 		1565F9533DC6FD03F9E630BC67C5DE05 /* RongcloudImPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RongcloudImPlugin.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/ios/Classes/RongcloudImPlugin.h"; sourceTree = "<group>"; };
-		15D48D6322CF3D27D0428257CC55196E /* FluwxAuthHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxAuthHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/handler/FluwxAuthHandler.m"; sourceTree = "<group>"; };
 		1639615C5DD1525B26A60A7234D30BA6 /* libpackage_info.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libpackage_info.a; path = libpackage_info.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		17640F7EABBCBEA00B4836C18E0CC4A8 /* FMDB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = src/fmdb/FMDB.h; sourceTree = "<group>"; };
-		184E0C20A56B39A74D70D2D8DD92210E /* FluwxWXApiHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxWXApiHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/handler/FluwxWXApiHandler.m"; sourceTree = "<group>"; };
 		19EC599FC143CA8B85A00474D250D602 /* jpush_flutter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "jpush_flutter-prefix.pch"; sourceTree = "<group>"; };
 		1B015D70F89AC525F10C9946B7B9777F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.1.2/LICENSE"; sourceTree = "<group>"; };
-		1BAE13DDCF64FFBC81B42819FAFA7DA6 /* ThumbnailHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ThumbnailHelper.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/helper/ThumbnailHelper.m"; sourceTree = "<group>"; };
 		1BE1E13CED67F8D4716A06166B5CE5FD /* ScreenPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ScreenPlugin.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/screen-0.0.5/ios/Classes/ScreenPlugin.h"; sourceTree = "<group>"; };
+		1C9466AC5A88D954B0C00AE0AB3E872E /* WXMediaMessage+messageConstruct.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "WXMediaMessage+messageConstruct.m"; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/wechat/WXMediaMessage+messageConstruct.m"; sourceTree = "<group>"; };
 		1CD45AFD75ADFC5321046038C4491826 /* libopencore-amrnb.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libopencore-amrnb.a"; path = "RongCloudIM/libopencore-amrnb.a"; sourceTree = "<group>"; };
-		1D9DA40E0DF52687B985E06C06DAD089 /* CallResults.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CallResults.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/constants/CallResults.h"; sourceTree = "<group>"; };
 		1F0E3DE7A648F8428E08C7CF9A8D4077 /* sqflite-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "sqflite-prefix.pch"; sourceTree = "<group>"; };
 		1F926D90B5E2DE496ABAA6F0B0BA3F34 /* libvideo_player.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libvideo_player.a; path = libvideo_player.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		200C3F800274EF7D197C3DF36DC7AADC /* UMPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMPush.framework; sourceTree = "<group>"; };
 		20205292D0F52CD9F99BE1037E701917 /* libopencore-amrwb.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libopencore-amrwb.a"; path = "RongCloudIM/libopencore-amrwb.a"; sourceTree = "<group>"; };
-		266C5B4B99F05A17C0F70E1B0510746B /* StringToWeChatScene.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = StringToWeChatScene.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/helper/StringToWeChatScene.m"; sourceTree = "<group>"; };
+		245F4E8FE156ED7B7D36AA0FF0F422F6 /* fluwx-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "fluwx-dummy.m"; sourceTree = "<group>"; };
+		26B8B630E6A2369E9950C7F6B6739EE1 /* FluwxResponseHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxResponseHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/wechat/FluwxResponseHandler.m"; sourceTree = "<group>"; };
 		26C6E9E28A535C3757FCEE52799AB5C2 /* image_picker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = image_picker.podspec; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/image_picker-0.4.12+1/ios/image_picker.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		27B4DFF995332B176400DD6583FB9E8D /* JPushPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JPushPlugin.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/jpush_flutter-0.0.13/ios/Classes/JPushPlugin.h"; sourceTree = "<group>"; };
 		2812839A12128D9A194324D024257DE5 /* libjpush_flutter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libjpush_flutter.a; path = libjpush_flutter.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		288A6A61B9914C491088830176A3751D /* SqflitePlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SqflitePlugin.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.6+4/ios/Classes/SqflitePlugin.m"; sourceTree = "<group>"; };
-		2DB3EB0944C703B08AB51D2E103CEE6C /* FluwxLaunchMiniProgramHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxLaunchMiniProgramHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/handler/FluwxLaunchMiniProgramHandler.m"; sourceTree = "<group>"; };
-		2E184419E1AD47CACB765F79BA2E5E93 /* FluwxKeys.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxKeys.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/constants/FluwxKeys.h"; sourceTree = "<group>"; };
-		2E2B903A6B153F70639267047C8DBCBA /* FluwxKeys.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxKeys.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/constants/FluwxKeys.m"; sourceTree = "<group>"; };
+		33CD20864BA89EECF545D0C8E8A31164 /* FluwxResponseHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxResponseHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/public/FluwxResponseHandler.h"; sourceTree = "<group>"; };
 		341237045DCFBA120FACD50DB3D553FB /* TobiasPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TobiasPlugin.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/tobias-1.1.0+1/ios/Classes/TobiasPlugin.m"; sourceTree = "<group>"; };
 		36CE4AA44219C051247D9BD52807222C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/image_picker-0.4.12+1/LICENSE"; sourceTree = "<group>"; };
 		372031FB1ABE4F4459B364DBC003ECD6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_sound-1.4.2/LICENSE"; sourceTree = "<group>"; };
-		37577D1FD1252A4BBE7FAB35B170476A /* NSStringWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSStringWrapper.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/handler/NSStringWrapper.h"; sourceTree = "<group>"; };
 		38411A4DFEE40C40991CA5D4297F99A0 /* RCIMFlutterWrapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCIMFlutterWrapper.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/ios/Classes/RCIMFlutterWrapper.m"; sourceTree = "<group>"; };
+		386EC51F9926E5F7137655D72867ECCE /* FluwxWXApiHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxWXApiHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/handler/FluwxWXApiHandler.m"; sourceTree = "<group>"; };
 		38EDAE25AFBA581CF773C5802B528DFD /* UMCPush.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UMCPush.xcconfig; sourceTree = "<group>"; };
 		398BF4CEB44060C2BFB8B6197B991BB3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.2/LICENSE"; sourceTree = "<group>"; };
-		39D0F4FDB7CA52C6962C5597D6AB57F6 /* FluwxMethods.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxMethods.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/constants/FluwxMethods.m"; sourceTree = "<group>"; };
 		3AFC80C1463AB27AAB4AF55DC8EA441B /* RCFlutterConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCFlutterConfig.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/ios/Classes/RCFlutterConfig.m"; sourceTree = "<group>"; };
 		3BC3ADF57D55F3BE4D3D81F55BC9A2FD /* JPushPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JPushPlugin.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/jpush_flutter-0.0.13/ios/Classes/JPushPlugin.m"; sourceTree = "<group>"; };
 		3BCAE1A533CEF263407B64E637DBA1C4 /* Flutter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Flutter.xcconfig; sourceTree = "<group>"; };
-		3D4ADA64D46F356EA7625B365A65E9C3 /* FluwxAutoDeductHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxAutoDeductHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/public/FluwxAutoDeductHandler.h"; sourceTree = "<group>"; };
+		3D6E2D88193A36A71A9785FCF0BCCEC7 /* NSStringWrapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NSStringWrapper.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/handler/NSStringWrapper.m"; sourceTree = "<group>"; };
 		426AE2F1BF9BC078846AB8038FAF0E06 /* SharedPreferencesPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SharedPreferencesPlugin.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.3+4/ios/Classes/SharedPreferencesPlugin.m"; sourceTree = "<group>"; };
 		4279B40C35884D601F3D1748D1A5668E /* libflutter_sound.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libflutter_sound.a; path = libflutter_sound.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		440F3140F14F2571A2CC3FA1FE7C11BE /* FluwxPaymentHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxPaymentHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/handler/FluwxPaymentHandler.m"; sourceTree = "<group>"; };
 		44B30C46B213064EB6C97890CE96A510 /* RCIMFlutterLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCIMFlutterLog.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/ios/Classes/RCIMFlutterLog.h"; sourceTree = "<group>"; };
-		4528A518B48FCC87C4DAF300A0F1551B /* SendMessageToWXReq+requestWithTextOrMediaMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SendMessageToWXReq+requestWithTextOrMediaMessage.h"; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/wechat/SendMessageToWXReq+requestWithTextOrMediaMessage.h"; sourceTree = "<group>"; };
-		48B62EBAE001E262518AD2DA3A733214 /* FluwxPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxPlugin.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/FluwxPlugin.m"; sourceTree = "<group>"; };
+		45EABFE7005EDFC27E6D8DB4D39BD88C /* StringToWeChatScene.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = StringToWeChatScene.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/helper/StringToWeChatScene.m"; sourceTree = "<group>"; };
+		47DB9421F70EAD41A9958C0E565F613B /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SendMessageToWXReq+requestWithTextOrMediaMessage.m"; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/wechat/SendMessageToWXReq+requestWithTextOrMediaMessage.m"; sourceTree = "<group>"; };
+		4979ED62DFEED81B2661BF917CEA141E /* FluwxLaunchMiniProgramHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxLaunchMiniProgramHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/public/FluwxLaunchMiniProgramHandler.h"; sourceTree = "<group>"; };
 		4AA216BC415CB1E53BBE40E0E4DBEEB4 /* path_provider-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "path_provider-prefix.pch"; sourceTree = "<group>"; };
 		4B66EF35DCC67549AD567922C668DBED /* rongcloud_im_plugin.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = rongcloud_im_plugin.podspec; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/ios/rongcloud_im_plugin.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		4C556DF2849A1A1B63B777B428ADB15C /* CallResults.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CallResults.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/constants/CallResults.m"; sourceTree = "<group>"; };
-		4C848FD404AD0BEB48D02109A50522ED /* WXApiObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/public/WXApiObject.h"; sourceTree = "<group>"; };
 		4CCDAD1A27947F2B86C188FBD2546830 /* path_provider-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "path_provider-dummy.m"; sourceTree = "<group>"; };
 		4CF9ECED30605AD369F031741C2A3E87 /* liburl_launcher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = liburl_launcher.a; path = liburl_launcher.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD539044459F8D05CAA344EF4FCC46A /* UrlLauncherPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UrlLauncherPlugin.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.1.2/ios/Classes/UrlLauncherPlugin.m"; sourceTree = "<group>"; };
@@ -552,58 +546,56 @@
 		4F8A026B3FF660DEEFEE3ACEDFA9B065 /* Pods-Runner-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Runner-resources.sh"; sourceTree = "<group>"; };
 		51A0D74DEFE1C01E5FE1FA5DCCE66F6B /* FMDatabaseQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = src/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
 		53AD7773ABD0F46AF31B2A560CA1716D /* screen-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "screen-dummy.m"; sourceTree = "<group>"; };
-		53BFF5E33EDD38999FD162562118E501 /* FluwxShareHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxShareHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/public/FluwxShareHandler.h"; sourceTree = "<group>"; };
 		55039F3F77A1C41FB624CAB91490B9A4 /* ScreenPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ScreenPlugin.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/screen-0.0.5/ios/Classes/ScreenPlugin.m"; sourceTree = "<group>"; };
 		59AFD3BF23D5A745DFA64F52F8A08314 /* jpush_flutter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = jpush_flutter.xcconfig; sourceTree = "<group>"; };
-		5A3EE324741CCC707F7BD89A00428408 /* fluwx-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "fluwx-prefix.pch"; sourceTree = "<group>"; };
 		5A443459A480D95AFD247094B4EBA3E2 /* libtobias.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libtobias.a; path = libtobias.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B4ED5B7DFFBC04DAB8CC0695F559ADF /* StringUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = StringUtil.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/helper/StringUtil.m"; sourceTree = "<group>"; };
 		5B4F59D3D72E9DFEB2F8AFFBBF60BA76 /* SharedPreferencesPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SharedPreferencesPlugin.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.3+4/ios/Classes/SharedPreferencesPlugin.h"; sourceTree = "<group>"; };
 		5CD3758502B7C0A591905FA714B85DED /* video_player-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "video_player-dummy.m"; sourceTree = "<group>"; };
-		604D3782F05A9FB4D06707AE1D1DC791 /* ThumbnailHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ThumbnailHelper.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/helper/ThumbnailHelper.h"; sourceTree = "<group>"; };
 		615C006834D1F4D4E2C357802E3D6FDC /* RCFlutterConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCFlutterConfig.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/ios/Classes/RCFlutterConfig.h"; sourceTree = "<group>"; };
 		62FE9D1B7987934315BCB935165ADBF3 /* RCConfig.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = RCConfig.plist; path = RongCloudIM/RCConfig.plist; sourceTree = "<group>"; };
 		631E53D95A03224360DB9135FEC21887 /* shared_preferences.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = shared_preferences.podspec; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.3+4/ios/shared_preferences.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		68A2018C5841B83486C63ACA73030D28 /* FluwxMethods.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxMethods.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/constants/FluwxMethods.h"; sourceTree = "<group>"; };
-		69FAF8EB719CD6F3C1906745626FD61A /* fluwx-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "fluwx-dummy.m"; sourceTree = "<group>"; };
+		69C49DB10410B7D2AAA49508E96A9F86 /* fluwx.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = fluwx.podspec; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/fluwx.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6A6302F8B6D176E45017FE109FA9B81A /* SqflitePlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SqflitePlugin.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.6+4/ios/Classes/SqflitePlugin.h"; sourceTree = "<group>"; };
+		6A7FFA2081E776AA159041E7B06CBD8A /* libWeChatSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/libWeChatSDK.a"; sourceTree = "<group>"; };
 		6AC56BB16793C9C2150CA4A4C4851B9F /* FMDatabasePool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = src/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
 		6C57784E901E09CABAADC0A44280DF38 /* VideoPlayerPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VideoPlayerPlugin.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.2/ios/Classes/VideoPlayerPlugin.h"; sourceTree = "<group>"; };
-		6CE867EA311311E2197F574F760CA220 /* StringToWeChatScene.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = StringToWeChatScene.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/helper/StringToWeChatScene.h"; sourceTree = "<group>"; };
+		6C61F9F740F66272D1106E4273B8DCE5 /* CallResults.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CallResults.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/constants/CallResults.h"; sourceTree = "<group>"; };
 		6DA9DF06B5D99FE79ADAA674662F2D7B /* flutter_sound-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "flutter_sound-prefix.pch"; sourceTree = "<group>"; };
 		6DD6825B937FDE9D97CB5214EFE3BC20 /* shared_preferences.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = shared_preferences.xcconfig; sourceTree = "<group>"; };
-		6EDC94FE1546EC45E19FC42288B0EC61 /* FluwxPaymentHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxPaymentHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/handler/FluwxPaymentHandler.m"; sourceTree = "<group>"; };
 		6F8F1DD3D942976D87EC651FDCDBB9C5 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		6F9122C0C3D2FB1C0B3EB3DACF793653 /* RCIMFlutterWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCIMFlutterWrapper.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/ios/Classes/RCIMFlutterWrapper.h"; sourceTree = "<group>"; };
 		713B48E8AD682998A89CEDF1501B4C9C /* AlipaySDK-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "AlipaySDK-iOS.xcconfig"; sourceTree = "<group>"; };
 		715B050C0D3297EE96045D5A6972988C /* tobias.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = tobias.podspec; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/tobias-1.1.0+1/ios/tobias.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		71C6713E383104DE998947939710A831 /* FluwxSubscribeMsgHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxSubscribeMsgHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/handler/FluwxSubscribeMsgHandler.m"; sourceTree = "<group>"; };
+		75A2E6E20E9C72B0C9786646299367A9 /* fluwx-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "fluwx-prefix.pch"; sourceTree = "<group>"; };
 		762B63D4E713790DE1A901BBD6C210BA /* url_launcher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "url_launcher-dummy.m"; sourceTree = "<group>"; };
-		783EFF07C23EF50FB2967154EE21BFFA /* FluwxSubscribeMsgHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxSubscribeMsgHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/handler/FluwxSubscribeMsgHandler.m"; sourceTree = "<group>"; };
 		79E3AFD2B31799CC78A5065E5F8F4D85 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/tobias-1.1.0+1/LICENSE"; sourceTree = "<group>"; };
-		7AC55F47621EABDAC34113E15868322C /* WXApi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/public/WXApi.h"; sourceTree = "<group>"; };
 		7B244B329CF14DE02D56B030DD09F104 /* TobiasPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TobiasPlugin.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/tobias-1.1.0+1/ios/Classes/TobiasPlugin.h"; sourceTree = "<group>"; };
-		7B95CE9B68E24DCB6CC45403DB345CEA /* ImageSchema.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ImageSchema.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/constants/ImageSchema.h"; sourceTree = "<group>"; };
 		7C29BB262DA0BEAE8E9964713D6E8A67 /* path_provider.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = path_provider.xcconfig; sourceTree = "<group>"; };
 		7C4128205014CE38C1E89E40D200368A /* shared_preferences-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "shared_preferences-dummy.m"; sourceTree = "<group>"; };
+		7D8381D0A78C881FB3FB7F07AFFD88B1 /* FluwxAuthHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxAuthHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/public/FluwxAuthHandler.h"; sourceTree = "<group>"; };
 		7E92803A67704AB6C64FCFE294CC2FD5 /* RCIMFlutterLog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCIMFlutterLog.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/ios/Classes/RCIMFlutterLog.m"; sourceTree = "<group>"; };
 		7F8E90A06E4205E46E1CE8B02EBA6AEF /* sqflite.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = sqflite.podspec; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.6+4/ios/sqflite.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7FE366683CEAF843FA5FE9A8663CB6D2 /* libFMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFMDB.a; path = libFMDB.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FFFA0D005ED1AAEF5656A8420D13B2E /* url_launcher.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = url_launcher.podspec; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.1.2/ios/url_launcher.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		80D9DFF716C36265F5EC31DD1089FEFA /* FluwxResponseHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxResponseHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/public/FluwxResponseHandler.h"; sourceTree = "<group>"; };
 		80E3E65F594F29A9E7E7032C99AA893D /* PathProviderPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PathProviderPlugin.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.2.0/ios/Classes/PathProviderPlugin.m"; sourceTree = "<group>"; };
-		8430462121C735773B5A3A7815B04C4D /* FluwxAuthHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxAuthHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/public/FluwxAuthHandler.h"; sourceTree = "<group>"; };
+		828D6594467824E0FC6F77D246819A08 /* FluwxPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxPlugin.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/FluwxPlugin.m"; sourceTree = "<group>"; };
 		85E6EA6357C44A1DA7EFE3560A0E4AE4 /* libimage_picker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libimage_picker.a; path = libimage_picker.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		862DF81FAAA39A9EBB1D0EB0EA61E0CF /* FluwxLaunchMiniProgramHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxLaunchMiniProgramHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/public/FluwxLaunchMiniProgramHandler.h"; sourceTree = "<group>"; };
 		8658ABBC72D9890393109847B580584C /* url_launcher.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = url_launcher.xcconfig; sourceTree = "<group>"; };
 		8A28C9E53DB0FA44DBA75274F543FEBE /* path_provider.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = path_provider.podspec; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.2.0/ios/path_provider.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		8ADA32FF88D77FB069DD22FA22EDB3B1 /* FluwxShareHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxShareHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/handler/FluwxShareHandler.m"; sourceTree = "<group>"; };
 		8B278DF58E000DF962114E6AC1368948 /* sqflite.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = sqflite.xcconfig; sourceTree = "<group>"; };
+		8B326B2A1963D30CEAF1FEBEB67341A5 /* FluwxShareHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxShareHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/handler/FluwxShareHandler.m"; sourceTree = "<group>"; };
 		8C20E2D1F6F4916E93100F6744E3D6A8 /* url_launcher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "url_launcher-prefix.pch"; sourceTree = "<group>"; };
 		8CF912337EA39FE21B2CBFA76FE770E3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.2.0/LICENSE"; sourceTree = "<group>"; };
+		90DE7E8A473452E2E41BD741807C1BA1 /* WechatAuthSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WechatAuthSDK.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/public/WechatAuthSDK.h"; sourceTree = "<group>"; };
+		920D17A5223E3DBB6CEEF02B3784A5A2 /* StringToWeChatScene.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = StringToWeChatScene.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/helper/StringToWeChatScene.h"; sourceTree = "<group>"; };
 		9292F2E0E78E50220B1EAA7E1DE37C2B /* tobias-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "tobias-dummy.m"; sourceTree = "<group>"; };
 		93C982C2B76C9969D3C1FA4645D2053B /* FlutterSoundPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FlutterSoundPlugin.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_sound-1.4.2/ios/Classes/FlutterSoundPlugin.m"; sourceTree = "<group>"; };
-		953A62B13CF1065CC537E85EEA56624D /* FluwxAutoDeductHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxAutoDeductHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/handler/FluwxAutoDeductHandler.m"; sourceTree = "<group>"; };
+		94B88DF8FD8086AC3FE96F21904E0A2A /* FluwxKeys.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxKeys.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/constants/FluwxKeys.m"; sourceTree = "<group>"; };
 		95CAA7E9B2233815B8D96B6A2A03FE11 /* UMAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMAnalytics.framework; sourceTree = "<group>"; };
 		96B4ECA1F9CF1901B1ABE81847D8A2C3 /* libPods-Runner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Runner.a"; path = "libPods-Runner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		96E7BF30761413CD7C9DC1D5D388408F /* FluwxWXApiHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxWXApiHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/public/FluwxWXApiHandler.h"; sourceTree = "<group>"; };
 		9C7FB1A9E03AA8EF14EF1097D8DE6ED8 /* ImagePickerPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ImagePickerPlugin.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/image_picker-0.4.12+1/ios/Classes/ImagePickerPlugin.h"; sourceTree = "<group>"; };
 		9D1901A86356165C8892D9340393218C /* libfluwx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libfluwx.a; path = libfluwx.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D1904656EDBE23743AD5C33495E2D8E /* AlipaySDK.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
@@ -611,17 +603,15 @@
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F250DB1AEE72F75304C9D61510A27DC /* FMDatabase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = src/fmdb/FMDatabase.h; sourceTree = "<group>"; };
 		9F6B1663F7B8B29DB7A4B12220D7A358 /* PackageInfoPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PackageInfoPlugin.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.3.2+1/ios/Classes/PackageInfoPlugin.h"; sourceTree = "<group>"; };
-		9F73A2CCC02B0D0A60E872C3B51D1D87 /* WXApiRequestHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXApiRequestHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/wechat/WXApiRequestHandler.m"; sourceTree = "<group>"; };
 		A0143B66DCC0EBCC76E2648FF242A8CC /* FMDB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FMDB-dummy.m"; sourceTree = "<group>"; };
 		A127B65AA584BF075E0C1CA3F5267715 /* Flutter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Flutter.framework; path = ../../../../../../../../../../Library/Flutter/bin/cache/artifacts/engine/ios/Flutter.framework; sourceTree = "<group>"; };
-		A1ABBBEDBBE6B9809BAC675E02906AAB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/LICENSE"; sourceTree = "<group>"; };
+		A131AF1B27A5D016AFA9D85ABCA77A77 /* README.txt */ = {isa = PBXFileReference; includeInIndex = 1; name = README.txt; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/README.txt"; sourceTree = "<group>"; };
 		A2474001CBDA0D431FCF0B1DEB1FA0E9 /* RongIMLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongIMLib.framework; path = RongCloudIM/RongIMLib.framework; sourceTree = "<group>"; };
-		A28B0EB2BB1014D983FD55CECB060D74 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SendMessageToWXReq+requestWithTextOrMediaMessage.m"; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/wechat/SendMessageToWXReq+requestWithTextOrMediaMessage.m"; sourceTree = "<group>"; };
-		A36B956E05D71981F358CBD10E1F50B9 /* ImageSchema.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ImageSchema.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/constants/ImageSchema.m"; sourceTree = "<group>"; };
-		A3DE61FEECBFF3BFD2E43806F407DD58 /* fluwx.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = fluwx.xcconfig; sourceTree = "<group>"; };
-		A9C3E728DA058D35DFC6BB8897DB60A6 /* FluwxWXApiHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxWXApiHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/public/FluwxWXApiHandler.h"; sourceTree = "<group>"; };
+		A66A1D5AB442002CC2514B99262EAB96 /* FluwxPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxPlugin.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/public/FluwxPlugin.h"; sourceTree = "<group>"; };
 		AB2C51A4269A525299B8D51761A9C6C7 /* screen.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = screen.podspec; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/screen-0.0.5/ios/screen.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		AB813A4E1E550826E657B6BA11F70F76 /* WXApiRequestHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApiRequestHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/public/WXApiRequestHandler.h"; sourceTree = "<group>"; };
+		AB87C41B69125D8CDE7FF340AE38D579 /* FluwxAutoDeductHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxAutoDeductHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/handler/FluwxAutoDeductHandler.m"; sourceTree = "<group>"; };
+		AC1A887AEA34EF7CD81D850609659F4C /* ImageSchema.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ImageSchema.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/constants/ImageSchema.m"; sourceTree = "<group>"; };
+		AC69121D8A4E4F09DA5AD41DDA35DB16 /* FluwxSubscribeMsgHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxSubscribeMsgHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/public/FluwxSubscribeMsgHandler.h"; sourceTree = "<group>"; };
 		AD89CAB8B8A15034D8CEAFA86C441756 /* libsqflite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libsqflite.a; path = libsqflite.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFECB3E6C3F1F243EF351435C58EDB1B /* flutter_sound-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "flutter_sound-dummy.m"; sourceTree = "<group>"; };
 		B02133FFBA4E4811E361C99D691D347C /* package_info-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "package_info-prefix.pch"; sourceTree = "<group>"; };
@@ -631,31 +621,33 @@
 		B31D6213AD3315F3ACEE34E71E46A98B /* RongCloudIM.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RongCloudIM.xcconfig; sourceTree = "<group>"; };
 		B5C0D9A07157FD45998BCDA513F5FB8A /* rongcloud_im_plugin-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "rongcloud_im_plugin-prefix.pch"; sourceTree = "<group>"; };
 		B5DF0B9F71A2B31CE78819B1A35FFE9A /* FMResultSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = src/fmdb/FMResultSet.h; sourceTree = "<group>"; };
+		B7C519DEDF4604E06715725461429499 /* FluwxMethods.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxMethods.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/constants/FluwxMethods.h"; sourceTree = "<group>"; };
 		B89D32C37BFBD84F8221597AC96BDF03 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.6+4/LICENSE"; sourceTree = "<group>"; };
 		BABC510EDB2AA29C4B8A144C66CBAC45 /* Pods-Runner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Runner-dummy.m"; sourceTree = "<group>"; };
+		BAC6A568F85019EC0937454F82978DD7 /* ThumbnailHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ThumbnailHelper.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/helper/ThumbnailHelper.m"; sourceTree = "<group>"; };
 		BB78234C6CCCC5FB5E8D5AFF8A2BB3FE /* FlutterSoundPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlutterSoundPlugin.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_sound-1.4.2/ios/Classes/FlutterSoundPlugin.h"; sourceTree = "<group>"; };
 		BB80038C147575C5974B0DDE565F8566 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.3+4/LICENSE"; sourceTree = "<group>"; };
+		BD74E3868D233A1262E37696F765610F /* FluwxAuthHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxAuthHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/handler/FluwxAuthHandler.m"; sourceTree = "<group>"; };
+		BE1D5B81276DD5E59B5D2B6AB2CC5589 /* WXMediaMessage+messageConstruct.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WXMediaMessage+messageConstruct.h"; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/wechat/WXMediaMessage+messageConstruct.h"; sourceTree = "<group>"; };
 		BE84D14C9C63B7B01978F4E1521DF217 /* Flutter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Flutter.podspec; path = ../../../../../../../../../../Library/Flutter/bin/cache/artifacts/engine/ios/Flutter.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BF57469633EE90956353D5DE06F4B8AF /* video_player-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "video_player-prefix.pch"; sourceTree = "<group>"; };
-		BF6F2FF9BE56B59BF30D295D80504906 /* StringUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = StringUtil.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/helper/StringUtil.m"; sourceTree = "<group>"; };
-		C1369D76D80C8487CF82EA348AE0E5B4 /* fluwx.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = fluwx.podspec; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/fluwx.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BFF4DF4CDB20D7E8C46508760E1FD6D6 /* CallResults.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CallResults.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/constants/CallResults.m"; sourceTree = "<group>"; };
 		C18CDF2AFF268B6A81E9B610EEBB9AEA /* package_info.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = package_info.xcconfig; sourceTree = "<group>"; };
-		C1DFE0F0D9252D1D7903EA2928715239 /* WXMediaMessage+messageConstruct.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "WXMediaMessage+messageConstruct.m"; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/wechat/WXMediaMessage+messageConstruct.m"; sourceTree = "<group>"; };
 		C238CE4E7FEF1EFF6CA9575FCD39B173 /* UMCAnalytics.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UMCAnalytics.xcconfig; sourceTree = "<group>"; };
+		C247089BEC22558FC9C5F21C99996C45 /* ImageSchema.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ImageSchema.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/constants/ImageSchema.h"; sourceTree = "<group>"; };
 		C2C7EB8BE6ACB95EA786A165E0CECE33 /* libshared_preferences.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libshared_preferences.a; path = libshared_preferences.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C32AF11412070025B34705EB80C48E37 /* NSStringWrapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NSStringWrapper.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/handler/NSStringWrapper.m"; sourceTree = "<group>"; };
-		C420ED614A598B2E6BE7A6D10F77D640 /* FluwxPaymentHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxPaymentHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/public/FluwxPaymentHandler.h"; sourceTree = "<group>"; };
 		C485A2A96CC79B93E7F682B01751344A /* FMDB-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FMDB-prefix.pch"; sourceTree = "<group>"; };
 		C4E416AF3E533ED75404506107419678 /* shared_preferences-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "shared_preferences-prefix.pch"; sourceTree = "<group>"; };
-		C72381A9F0DB4AB875E416535C378F40 /* README.txt */ = {isa = PBXFileReference; includeInIndex = 1; name = README.txt; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/README.txt"; sourceTree = "<group>"; };
+		C699E7B35F5C4C24F232099565C44D30 /* WXApiObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/public/WXApiObject.h"; sourceTree = "<group>"; };
 		C80F15CB9481DFEE45D9519C8134F6A0 /* rongcloud_im_plugin-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "rongcloud_im_plugin-dummy.m"; sourceTree = "<group>"; };
-		CA3A1E4AB928FB223CCF1CEDC078FA89 /* FluwxSubscribeMsgHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxSubscribeMsgHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/public/FluwxSubscribeMsgHandler.h"; sourceTree = "<group>"; };
-		CC40643A4F79D56E38A5C7E7F13F54B1 /* FluwxPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxPlugin.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/public/FluwxPlugin.h"; sourceTree = "<group>"; };
+		CC0263CFBDD19B76F2C7790936E03824 /* FluwxAutoDeductHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxAutoDeductHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/public/FluwxAutoDeductHandler.h"; sourceTree = "<group>"; };
 		CCBCEE72786C71D0BA4489BB739CC91A /* screen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = screen.xcconfig; sourceTree = "<group>"; };
-		CCE4460AC1D096CB55B8405EDAC8E050 /* FluwxResponseHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxResponseHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/wechat/FluwxResponseHandler.m"; sourceTree = "<group>"; };
+		CE1E19DDCA1A9429FA28B307B3FF25EF /* ThumbnailHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ThumbnailHelper.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/helper/ThumbnailHelper.h"; sourceTree = "<group>"; };
+		CE5D0F21DA78197BD06C9936B7B0E9DD /* FluwxKeys.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxKeys.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/constants/FluwxKeys.h"; sourceTree = "<group>"; };
 		CEAAE57F10EFFD3F219E601C99FFD449 /* JCore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JCore.xcconfig; sourceTree = "<group>"; };
 		CF4448B72607073C9EDA1B9E66273275 /* flutter_sound.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = flutter_sound.podspec; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_sound-1.4.2/ios/flutter_sound.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CF735F53D874EA03B5306DAD36D6F4BF /* FMDatabase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = src/fmdb/FMDatabase.m; sourceTree = "<group>"; };
+		CF91820EA4C73A36431F2B6457D104A2 /* WXApiRequestHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApiRequestHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/public/WXApiRequestHandler.h"; sourceTree = "<group>"; };
 		D049706DCD6D409B101E49E9CA6B309F /* libjpush-ios-3.2.2.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjpush-ios-3.2.2.a"; sourceTree = "<group>"; };
 		D1F0DE17A465628FA481F21B00CE0A68 /* RongcloudImPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RongcloudImPlugin.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/ios/Classes/RongcloudImPlugin.m"; sourceTree = "<group>"; };
 		D20E08DB2217641871DE4F75CE619200 /* PathProviderPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PathProviderPlugin.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.2.0/ios/Classes/PathProviderPlugin.h"; sourceTree = "<group>"; };
@@ -666,6 +658,8 @@
 		D8414FE87A60632C08BE6A03F996B13A /* screen-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "screen-prefix.pch"; sourceTree = "<group>"; };
 		DA9D0F0DDF3E19D227BCF64D91B3EEA8 /* package_info-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "package_info-dummy.m"; sourceTree = "<group>"; };
 		DB13DCDC8D83107F84CA992112E0DE26 /* video_player.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = video_player.xcconfig; sourceTree = "<group>"; };
+		DC473A2F86A90804F9195166EB749F64 /* FluwxMethods.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FluwxMethods.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/constants/FluwxMethods.m"; sourceTree = "<group>"; };
+		DDEAC87F9A7F6130407706140498CB3E /* SendMessageToWXReq+requestWithTextOrMediaMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SendMessageToWXReq+requestWithTextOrMediaMessage.h"; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/wechat/SendMessageToWXReq+requestWithTextOrMediaMessage.h"; sourceTree = "<group>"; };
 		DF57FB6BA9F7F153CCEB04F69A0C2C20 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/LICENSE"; sourceTree = "<group>"; };
 		E015078DDC5F9D0238B5162937E1688F /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		E08FEAEC5FAB65B3CF53A2F348372EAE /* package_info.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = package_info.podspec; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.3.2+1/ios/package_info.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -673,23 +667,29 @@
 		E1A96F9B3CFCE3F0C1212C050989C26E /* jpush_flutter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = jpush_flutter.podspec; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/jpush_flutter-0.0.13/ios/jpush_flutter.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E2A8CE93BBDF4B0B8FF4764D6D9EFA54 /* rongcloud_im_plugin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = rongcloud_im_plugin.xcconfig; sourceTree = "<group>"; };
 		E2F30E375DDBEA974C6929F38B96ECC8 /* PackageInfoPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PackageInfoPlugin.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.3.2+1/ios/Classes/PackageInfoPlugin.m"; sourceTree = "<group>"; };
+		E62159C995F7A450988D079952F6DBC0 /* StringUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = StringUtil.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/helper/StringUtil.h"; sourceTree = "<group>"; };
 		E62FB2444FDB094CD15D733797B60821 /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
 		E84094843A9E5B50D6D97310DC0B415A /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		E8C5BB9068A8BD704F22EBABDC8A834E /* VideoPlayerPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VideoPlayerPlugin.m; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.2/ios/Classes/VideoPlayerPlugin.m"; sourceTree = "<group>"; };
+		E97D809D5A051F63FE22A32D0D943426 /* NSStringWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSStringWrapper.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/handler/NSStringWrapper.h"; sourceTree = "<group>"; };
+		EAC93F377BA083F19A2ABE88DFCA8793 /* WXApiRequestHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXApiRequestHandler.m; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/wechat/WXApiRequestHandler.m"; sourceTree = "<group>"; };
 		EAF7D1C8C4E4F26F9768317A786BC4F0 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = src/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		EC1D09EF13D908585B985067109597B0 /* WechatAuthSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WechatAuthSDK.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/public/WechatAuthSDK.h"; sourceTree = "<group>"; };
+		EB2FFD2251FB03C496C8307475174B25 /* FluwxPaymentHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxPaymentHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/public/FluwxPaymentHandler.h"; sourceTree = "<group>"; };
 		EC51123A1EDD449F559B8DC7B3F44FE7 /* libvo-amrwbenc.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libvo-amrwbenc.a"; path = "RongCloudIM/libvo-amrwbenc.a"; sourceTree = "<group>"; };
 		ED0B8631D7182DFA4E2A7D5CF2996457 /* Pods-Runner-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Runner-acknowledgements.plist"; sourceTree = "<group>"; };
 		EE6408DE1F2981C7D182389DD7A27BEB /* jpush_flutter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "jpush_flutter-dummy.m"; sourceTree = "<group>"; };
+		EEE783E374E8B4DA1B2C1DBDA9E07E43 /* fluwx.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = fluwx.xcconfig; sourceTree = "<group>"; };
 		EFC3FC4708414F8D6ED1E51094FBF43B /* SqfliteOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SqfliteOperation.h; path = "../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.6+4/ios/Classes/SqfliteOperation.h"; sourceTree = "<group>"; };
 		F0B5D8BFA6BEE425261DDDFF19E9385B /* FMResultSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = src/fmdb/FMResultSet.m; sourceTree = "<group>"; };
 		F1F952475F1DACC1F2510BC83324D1B0 /* video_player.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = video_player.podspec; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.2/ios/video_player.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F26CBE99EC98D01735F35E68C6CAB06A /* image_picker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "image_picker-dummy.m"; sourceTree = "<group>"; };
 		F40C35BD57D315B3C55D28D36B6596F6 /* FMDatabasePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = src/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
 		F511741F13BA723251CE59DF5990FE68 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = src/fmdb/FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		F5667AEF608C1F147863312CD1CB115E /* WXMediaMessage+messageConstruct.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WXMediaMessage+messageConstruct.h"; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios/Classes/wechat/WXMediaMessage+messageConstruct.h"; sourceTree = "<group>"; };
+		F56D462FAC8C56BE8E8862A968A0C2D6 /* FluwxShareHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FluwxShareHandler.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/public/FluwxShareHandler.h"; sourceTree = "<group>"; };
 		F6F338E5FD196C1FD815BEB81979D461 /* JPush.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JPush.xcconfig; sourceTree = "<group>"; };
 		F865303A53CB57BE62207038EF0C75DB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../../../../../../../../../../Library/Flutter/bin/cache/artifacts/engine/ios/LICENSE; sourceTree = "<group>"; };
+		F86B66477958894AC748A9494C472B6C /* WXApi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = "../../../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios/Classes/public/WXApi.h"; sourceTree = "<group>"; };
+		F8DB0F891C9FAE0AE6CC60EEF66002A6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/LICENSE"; sourceTree = "<group>"; };
 		FA026BB78D4736619D0160527239B295 /* JPUSHService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		FA5B1C86509BCC511E50661C91C28284 /* UMCCommon.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UMCCommon.xcconfig; sourceTree = "<group>"; };
 		FD45355637EFFEBCAC3AE4E0A9589CE3 /* image_picker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "image_picker-prefix.pch"; sourceTree = "<group>"; };
@@ -976,6 +976,16 @@
 			path = tinker;
 			sourceTree = "<group>";
 		};
+		0D3FDB472C99B7B438BC8D0B0AC15BE1 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				69C49DB10410B7D2AAA49508E96A9F86 /* fluwx.podspec */,
+				F8DB0F891C9FAE0AE6CC60EEF66002A6 /* LICENSE */,
+				A131AF1B27A5D016AFA9D85ABCA77A77 /* README.txt */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		0DF8FB41FF189CFCBFE47E9348BAB3F5 /* .. */ = {
 			isa = PBXGroup;
 			children = (
@@ -1061,15 +1071,6 @@
 			path = Flutter;
 			sourceTree = "<group>";
 		};
-		11B400DB6FD39D1A6873A32C8D58E791 /* .. */ = {
-			isa = PBXGroup;
-			children = (
-				BF041C589E8829911E715F8005C44F23 /* .. */,
-			);
-			name = ..;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		12F71A0C95C7BD65F4BFE29825572EC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1132,6 +1133,15 @@
 			path = Users;
 			sourceTree = "<group>";
 		};
+		14FE3C3BD9E56FD0E5D3CEC0DD40EA8A /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				5AB807DB3BE6605BEC93171A100AE689 /* .. */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		15263ABB098F0BF6A8796C653E95EF9E /* ios */ = {
 			isa = PBXGroup;
 			children = (
@@ -1157,6 +1167,15 @@
 			);
 			name = ios;
 			path = ios;
+			sourceTree = "<group>";
+		};
+		170AEC5F4351AFE1297F8E8D4AF2E45C /* fluwx */ = {
+			isa = PBXGroup;
+			children = (
+				8940534CAC4F1B5B905AF50615E65097 /* ios */,
+			);
+			name = fluwx;
+			path = fluwx;
 			sourceTree = "<group>";
 		};
 		19090822BE5FDFD3A21DA05C113AB4BA /* Frameworks */ = {
@@ -1251,6 +1270,27 @@
 			path = ../.symlinks/plugins/sqflite/ios;
 			sourceTree = "<group>";
 		};
+		1EB80B71E780F663A66ADDA08A7320C4 /* public */ = {
+			isa = PBXGroup;
+			children = (
+				7D8381D0A78C881FB3FB7F07AFFD88B1 /* FluwxAuthHandler.h */,
+				CC0263CFBDD19B76F2C7790936E03824 /* FluwxAutoDeductHandler.h */,
+				4979ED62DFEED81B2661BF917CEA141E /* FluwxLaunchMiniProgramHandler.h */,
+				EB2FFD2251FB03C496C8307475174B25 /* FluwxPaymentHandler.h */,
+				A66A1D5AB442002CC2514B99262EAB96 /* FluwxPlugin.h */,
+				33CD20864BA89EECF545D0C8E8A31164 /* FluwxResponseHandler.h */,
+				F56D462FAC8C56BE8E8862A968A0C2D6 /* FluwxShareHandler.h */,
+				AC69121D8A4E4F09DA5AD41DDA35DB16 /* FluwxSubscribeMsgHandler.h */,
+				96E7BF30761413CD7C9DC1D5D388408F /* FluwxWXApiHandler.h */,
+				90DE7E8A473452E2E41BD741807C1BA1 /* WechatAuthSDK.h */,
+				F86B66477958894AC748A9494C472B6C /* WXApi.h */,
+				C699E7B35F5C4C24F232099565C44D30 /* WXApiObject.h */,
+				CF91820EA4C73A36431F2B6457D104A2 /* WXApiRequestHandler.h */,
+			);
+			name = public;
+			path = public;
+			sourceTree = "<group>";
+		};
 		1FCF04345926DDA4A8C1D6013CF1D117 /* jpush_flutter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1269,20 +1309,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/UMCPush";
-			sourceTree = "<group>";
-		};
-		23F6BED89361FD29286BA0D4CBBDA005 /* helper */ = {
-			isa = PBXGroup;
-			children = (
-				6CE867EA311311E2197F574F760CA220 /* StringToWeChatScene.h */,
-				266C5B4B99F05A17C0F70E1B0510746B /* StringToWeChatScene.m */,
-				0913B6A70D848B2D3EC3A30A5DFED1C5 /* StringUtil.h */,
-				BF6F2FF9BE56B59BF30D295D80504906 /* StringUtil.m */,
-				604D3782F05A9FB4D06707AE1D1DC791 /* ThumbnailHelper.h */,
-				1BAE13DDCF64FFBC81B42819FAFA7DA6 /* ThumbnailHelper.m */,
-			);
-			name = helper;
-			path = helper;
 			sourceTree = "<group>";
 		};
 		253C4E6022D6F945749395B59BA0C1B2 /* .. */ = {
@@ -1319,18 +1345,6 @@
 			);
 			name = my_flutter;
 			path = my_flutter;
-			sourceTree = "<group>";
-		};
-		27491B9AD04355A4D491F56A9076DFD1 /* fluwx */ = {
-			isa = PBXGroup;
-			children = (
-				89E5B690002C09CDF4898C7C5F27FA6D /* .. */,
-				D545DAEC0DBA37EB69F42B7978FD2A91 /* Frameworks */,
-				E6D85C1CEB3CD9A6EB7C447BFB5AF97E /* Pod */,
-				524AD10200F6A54A636710ED471475C2 /* Support Files */,
-			);
-			name = fluwx;
-			path = ../.symlinks/plugins/fluwx/ios;
 			sourceTree = "<group>";
 		};
 		2943ADA52D5F9F75B271D09A6F16F8E0 /* my_flutter */ = {
@@ -1382,15 +1396,6 @@
 			);
 			name = Documents;
 			path = Documents;
-			sourceTree = "<group>";
-		};
-		2BB545FF3EE81DCCE4519D4453350AE1 /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				B2909B1E0A7C89236D56A96D81365BCE /* .symlinks */,
-			);
-			name = ios;
-			path = ios;
 			sourceTree = "<group>";
 		};
 		2D6B4A08FCA96147CA8858E45324A329 /* .symlinks */ = {
@@ -1469,6 +1474,15 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		32FDC5D86C1C85FB67EC8F977DA49079 /* Flutter */ = {
+			isa = PBXGroup;
+			children = (
+				67994D779232CFFC6C4F02D40FA3CB46 /* my_flutter */,
+			);
+			name = Flutter;
+			path = Flutter;
+			sourceTree = "<group>";
+		};
 		331698977E9AB69B02809E35A67A19B4 /* xiaoheiqun */ = {
 			isa = PBXGroup;
 			children = (
@@ -1506,23 +1520,6 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		353CC2F5628D444379073264B2F10A72 /* handler */ = {
-			isa = PBXGroup;
-			children = (
-				15D48D6322CF3D27D0428257CC55196E /* FluwxAuthHandler.m */,
-				953A62B13CF1065CC537E85EEA56624D /* FluwxAutoDeductHandler.m */,
-				2DB3EB0944C703B08AB51D2E103CEE6C /* FluwxLaunchMiniProgramHandler.m */,
-				6EDC94FE1546EC45E19FC42288B0EC61 /* FluwxPaymentHandler.m */,
-				8ADA32FF88D77FB069DD22FA22EDB3B1 /* FluwxShareHandler.m */,
-				783EFF07C23EF50FB2967154EE21BFFA /* FluwxSubscribeMsgHandler.m */,
-				184E0C20A56B39A74D70D2D8DD92210E /* FluwxWXApiHandler.m */,
-				37577D1FD1252A4BBE7FAB35B170476A /* NSStringWrapper.h */,
-				C32AF11412070025B34705EB80C48E37 /* NSStringWrapper.m */,
-			);
-			name = handler;
-			path = handler;
-			sourceTree = "<group>";
-		};
 		37C73483DE809C150799C0643B93B046 /* UMCAnalytics */ = {
 			isa = PBXGroup;
 			children = (
@@ -1531,24 +1528,6 @@
 			);
 			name = UMCAnalytics;
 			path = UMCAnalytics;
-			sourceTree = "<group>";
-		};
-		37D2941534D8CC22A2F0EB82E6C2D7A2 /* xiaoheiqun */ = {
-			isa = PBXGroup;
-			children = (
-				2BB545FF3EE81DCCE4519D4453350AE1 /* ios */,
-			);
-			name = xiaoheiqun;
-			path = xiaoheiqun;
-			sourceTree = "<group>";
-		};
-		3829EBCF20F0D7C908C2783595C26BAE /* plugins */ = {
-			isa = PBXGroup;
-			children = (
-				462D604420DA8D729D327E11DE4EA7E9 /* fluwx */,
-			);
-			name = plugins;
-			path = plugins;
 			sourceTree = "<group>";
 		};
 		382F6AE9F5A49A74C918D306F537FABB /* Pods-Runner */ = {
@@ -1715,24 +1694,6 @@
 			path = ios;
 			sourceTree = "<group>";
 		};
-		462D604420DA8D729D327E11DE4EA7E9 /* fluwx */ = {
-			isa = PBXGroup;
-			children = (
-				EB0F8FEE3760AB2B78CEB1F1DB720B9B /* ios */,
-			);
-			name = fluwx;
-			path = fluwx;
-			sourceTree = "<group>";
-		};
-		469B2CFEC8F71B6945D9722616E76BD9 /* Documents */ = {
-			isa = PBXGroup;
-			children = (
-				7790A82717722F2F7758CAB400516A2F /* Flutter */,
-			);
-			name = Documents;
-			path = Documents;
-			sourceTree = "<group>";
-		};
 		46ADDDF88012FD93AB5FA3282B282C7E /* .. */ = {
 			isa = PBXGroup;
 			children = (
@@ -1775,6 +1736,15 @@
 				62FE9D1B7987934315BCB935165ADBF3 /* RCConfig.plist */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		48CD550796F282C8915402FA37D21CE5 /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				D59477879EDC21DF5E84E6D487977C24 /* .. */,
+			);
+			name = ..;
+			path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/ios";
 			sourceTree = "<group>";
 		};
 		4A6E1179B447BA5CD8ADFB131F211FBD /* .. */ = {
@@ -1894,17 +1864,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		524AD10200F6A54A636710ED471475C2 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				A3DE61FEECBFF3BFD2E43806F407DD58 /* fluwx.xcconfig */,
-				69FAF8EB719CD6F3C1906745626FD61A /* fluwx-dummy.m */,
-				5A3EE324741CCC707F7BD89A00428408 /* fluwx-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../../../../Pods/Target Support Files/fluwx";
-			sourceTree = "<group>";
-		};
 		53C9D919CAC576B4AE2DB83B05B8AF4A /* .. */ = {
 			isa = PBXGroup;
 			children = (
@@ -1986,6 +1945,15 @@
 			);
 			name = "Support Files";
 			path = "../../../../Pods/Target Support Files/flutter_sound";
+			sourceTree = "<group>";
+		};
+		5AB807DB3BE6605BEC93171A100AE689 /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				ADD26BF8BCDDBA176A979834391691F9 /* .. */,
+			);
+			name = ..;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		5AB9E48BC46AEFC1E3B4F3C48A256CE2 /* .. */ = {
@@ -2157,6 +2125,15 @@
 			path = .symlinks;
 			sourceTree = "<group>";
 		};
+		67994D779232CFFC6C4F02D40FA3CB46 /* my_flutter */ = {
+			isa = PBXGroup;
+			children = (
+				C23B42DE278F6923DED8CEF2720F0621 /* xiaoheiqun */,
+			);
+			name = my_flutter;
+			path = my_flutter;
+			sourceTree = "<group>";
+		};
 		699D9DAC28E12F3DC019E17757BBEC14 /* Users */ = {
 			isa = PBXGroup;
 			children = (
@@ -2164,27 +2141,6 @@
 			);
 			name = Users;
 			path = Users;
-			sourceTree = "<group>";
-		};
-		69AA82705B55012C573238E85EF109DA /* public */ = {
-			isa = PBXGroup;
-			children = (
-				8430462121C735773B5A3A7815B04C4D /* FluwxAuthHandler.h */,
-				3D4ADA64D46F356EA7625B365A65E9C3 /* FluwxAutoDeductHandler.h */,
-				862DF81FAAA39A9EBB1D0EB0EA61E0CF /* FluwxLaunchMiniProgramHandler.h */,
-				C420ED614A598B2E6BE7A6D10F77D640 /* FluwxPaymentHandler.h */,
-				CC40643A4F79D56E38A5C7E7F13F54B1 /* FluwxPlugin.h */,
-				80D9DFF716C36265F5EC31DD1089FEFA /* FluwxResponseHandler.h */,
-				53BFF5E33EDD38999FD162562118E501 /* FluwxShareHandler.h */,
-				CA3A1E4AB928FB223CCF1CEDC078FA89 /* FluwxSubscribeMsgHandler.h */,
-				A9C3E728DA058D35DFC6BB8897DB60A6 /* FluwxWXApiHandler.h */,
-				EC1D09EF13D908585B985067109597B0 /* WechatAuthSDK.h */,
-				7AC55F47621EABDAC34113E15868322C /* WXApi.h */,
-				4C848FD404AD0BEB48D02109A50522ED /* WXApiObject.h */,
-				AB813A4E1E550826E657B6BA11F70F76 /* WXApiRequestHandler.h */,
-			);
-			name = public;
-			path = public;
 			sourceTree = "<group>";
 		};
 		69BB17F2500103597A232C99617D16E9 /* image_picker */ = {
@@ -2211,6 +2167,17 @@
 			);
 			name = ios;
 			path = ios;
+			sourceTree = "<group>";
+		};
+		6B98DE3DCBD724D43D41CF1749D812EF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEE783E374E8B4DA1B2C1DBDA9E07E43 /* fluwx.xcconfig */,
+				245F4E8FE156ED7B7D36AA0FF0F422F6 /* fluwx-dummy.m */,
+				75A2E6E20E9C72B0C9786646299367A9 /* fluwx-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../../../../Pods/Target Support Files/fluwx";
 			sourceTree = "<group>";
 		};
 		6DD8CABE06BC6A3838EE8C4E3A14C3D8 /* Documents */ = {
@@ -2268,6 +2235,20 @@
 			path = ios;
 			sourceTree = "<group>";
 		};
+		72D89789B417E819570E239566CDE1ED /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				828D6594467824E0FC6F77D246819A08 /* FluwxPlugin.m */,
+				A27F8504FC414087593187AACD6CD702 /* constants */,
+				A910A120EF8B8FB9C821DC72391DF894 /* handler */,
+				95A70A99189F4DE256CEAD48FCA59032 /* helper */,
+				1EB80B71E780F663A66ADDA08A7320C4 /* public */,
+				E4BF0C0DD60EB71C40D4AFB07BDF7DAC /* wechat */,
+			);
+			name = Classes;
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		743FE95FB4F32C331FF83EA11F659550 /* .. */ = {
 			isa = PBXGroup;
 			children = (
@@ -2300,7 +2281,7 @@
 			children = (
 				94D28B21D8ABC158560D6B47BF51F367 /* Flutter */,
 				7D0FB0E340BE59DA3A0530B0686772B0 /* flutter_sound */,
-				27491B9AD04355A4D491F56A9076DFD1 /* fluwx */,
+				D52FFDDA567F498D5C6C53F921638AC2 /* fluwx */,
 				2F479D598C9F052BCFC6F7A452A350D2 /* image_picker */,
 				1FCF04345926DDA4A8C1D6013CF1D117 /* jpush_flutter */,
 				39A167EC0D0785717E670ECBD65277D6 /* package_info */,
@@ -2325,15 +2306,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		76CBD59E954B298CE77DDF9266EC26CF /* my_flutter */ = {
-			isa = PBXGroup;
-			children = (
-				37D2941534D8CC22A2F0EB82E6C2D7A2 /* xiaoheiqun */,
-			);
-			name = my_flutter;
-			path = my_flutter;
-			sourceTree = "<group>";
-		};
 		775F53E222530ECC6A8F1805A1404383 /* JPush */ = {
 			isa = PBXGroup;
 			children = (
@@ -2343,15 +2315,6 @@
 			);
 			name = JPush;
 			path = JPush;
-			sourceTree = "<group>";
-		};
-		7790A82717722F2F7758CAB400516A2F /* Flutter */ = {
-			isa = PBXGroup;
-			children = (
-				76CBD59E954B298CE77DDF9266EC26CF /* my_flutter */,
-			);
-			name = Flutter;
-			path = Flutter;
 			sourceTree = "<group>";
 		};
 		77E99FE88142466D4C8CD4D8DA1069DD /* ios */ = {
@@ -2428,15 +2391,6 @@
 			path = .symlinks;
 			sourceTree = "<group>";
 		};
-		8103C24FEAD78D4BFE8EA8CCE45483F8 /* tinker */ = {
-			isa = PBXGroup;
-			children = (
-				469B2CFEC8F71B6945D9722616E76BD9 /* Documents */,
-			);
-			name = tinker;
-			path = tinker;
-			sourceTree = "<group>";
-		};
 		810BA04DCD2D833252DFE4178BD8E192 /* my_flutter */ = {
 			isa = PBXGroup;
 			children = (
@@ -2446,13 +2400,13 @@
 			path = my_flutter;
 			sourceTree = "<group>";
 		};
-		81EAB008D48FE6841AD88948EF6E19F5 /* .. */ = {
+		813BAA5A64C4F2C06A1912A5731142C0 /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				8712B61301574E00C79D20CF9C66AB72 /* .. */,
+				C0F0AAA5574B46009520FC4E79D17129 /* .symlinks */,
 			);
-			name = ..;
-			path = ..;
+			name = ios;
+			path = ios;
 			sourceTree = "<group>";
 		};
 		82063A77AF7BA2FEF3195F4498666999 /* Support Files */ = {
@@ -2473,6 +2427,15 @@
 			);
 			name = .symlinks;
 			path = .symlinks;
+			sourceTree = "<group>";
+		};
+		83794DA3F9BDC4E1D44C9A0A60279C20 /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				F7245151CC710DE03085FFD7149C3C3E /* Users */,
+			);
+			name = ..;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		839FBCAB449D31A183782C3C6CD9A12F /* Users */ = {
@@ -2557,15 +2520,6 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		8712B61301574E00C79D20CF9C66AB72 /* .. */ = {
-			isa = PBXGroup;
-			children = (
-				EE65810765BB8528A91F67610C9C43BE /* .. */,
-			);
-			name = ..;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		87FF80BB444C517D4F26FEAD34458CCF /* .. */ = {
 			isa = PBXGroup;
 			children = (
@@ -2593,6 +2547,15 @@
 			path = ios;
 			sourceTree = "<group>";
 		};
+		8940534CAC4F1B5B905AF50615E65097 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				72D89789B417E819570E239566CDE1ED /* Classes */,
+			);
+			name = ios;
+			path = ios;
+			sourceTree = "<group>";
+		};
 		89A19B8694C5843FEE6671EEA8353C7A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -2610,15 +2573,6 @@
 			);
 			name = Classes;
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		89E5B690002C09CDF4898C7C5F27FA6D /* .. */ = {
-			isa = PBXGroup;
-			children = (
-				CE1D04E9DA7FDBBA45AF551DA7E27993 /* .. */,
-			);
-			name = ..;
-			path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/ios";
 			sourceTree = "<group>";
 		};
 		8A83EF48749AD5429B3BEFF7CADBDE5B /* Flutter */ = {
@@ -2777,6 +2731,20 @@
 			path = ../.symlinks/flutter/ios;
 			sourceTree = "<group>";
 		};
+		95A70A99189F4DE256CEAD48FCA59032 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				920D17A5223E3DBB6CEEF02B3784A5A2 /* StringToWeChatScene.h */,
+				45EABFE7005EDFC27E6D8DB4D39BD88C /* StringToWeChatScene.m */,
+				E62159C995F7A450988D079952F6DBC0 /* StringUtil.h */,
+				5B4ED5B7DFFBC04DAB8CC0695F559ADF /* StringUtil.m */,
+				CE1E19DDCA1A9429FA28B307B3FF25EF /* ThumbnailHelper.h */,
+				BAC6A568F85019EC0937454F82978DD7 /* ThumbnailHelper.m */,
+			);
+			name = helper;
+			path = helper;
+			sourceTree = "<group>";
+		};
 		968358F653DF983FC376FA49E0777B21 /* .. */ = {
 			isa = PBXGroup;
 			children = (
@@ -2869,20 +2837,6 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		9EBE24A9763E5C9E5A216184DFCD6931 /* wechat */ = {
-			isa = PBXGroup;
-			children = (
-				CCE4460AC1D096CB55B8405EDAC8E050 /* FluwxResponseHandler.m */,
-				4528A518B48FCC87C4DAF300A0F1551B /* SendMessageToWXReq+requestWithTextOrMediaMessage.h */,
-				A28B0EB2BB1014D983FD55CECB060D74 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */,
-				9F73A2CCC02B0D0A60E872C3B51D1D87 /* WXApiRequestHandler.m */,
-				F5667AEF608C1F147863312CD1CB115E /* WXMediaMessage+messageConstruct.h */,
-				C1DFE0F0D9252D1D7903EA2928715239 /* WXMediaMessage+messageConstruct.m */,
-			);
-			name = wechat;
-			path = wechat;
-			sourceTree = "<group>";
-		};
 		9EBE26EE9E638F70D1FEE4058CEF7901 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -2921,6 +2875,22 @@
 			);
 			name = plugins;
 			path = plugins;
+			sourceTree = "<group>";
+		};
+		A27F8504FC414087593187AACD6CD702 /* constants */ = {
+			isa = PBXGroup;
+			children = (
+				6C61F9F740F66272D1106E4273B8DCE5 /* CallResults.h */,
+				BFF4DF4CDB20D7E8C46508760E1FD6D6 /* CallResults.m */,
+				CE5D0F21DA78197BD06C9936B7B0E9DD /* FluwxKeys.h */,
+				94B88DF8FD8086AC3FE96F21904E0A2A /* FluwxKeys.m */,
+				B7C519DEDF4604E06715725461429499 /* FluwxMethods.h */,
+				DC473A2F86A90804F9195166EB749F64 /* FluwxMethods.m */,
+				C247089BEC22558FC9C5F21C99996C45 /* ImageSchema.h */,
+				AC1A887AEA34EF7CD81D850609659F4C /* ImageSchema.m */,
+			);
+			name = constants;
+			path = constants;
 			sourceTree = "<group>";
 		};
 		A3132B7E93E22867AF96C14471255CBA /* .. */ = {
@@ -2969,6 +2939,15 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		A5BA945291486E16C10B40C54CB2077A /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				14FE3C3BD9E56FD0E5D3CEC0DD40EA8A /* .. */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		A6FD8CC57167CB7F74A76A737B3B95F5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -2977,6 +2956,23 @@
 			);
 			name = Classes;
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		A910A120EF8B8FB9C821DC72391DF894 /* handler */ = {
+			isa = PBXGroup;
+			children = (
+				BD74E3868D233A1262E37696F765610F /* FluwxAuthHandler.m */,
+				AB87C41B69125D8CDE7FF340AE38D579 /* FluwxAutoDeductHandler.m */,
+				0B4C7AC64D7E9A1F46F1B15F122EED82 /* FluwxLaunchMiniProgramHandler.m */,
+				440F3140F14F2571A2CC3FA1FE7C11BE /* FluwxPaymentHandler.m */,
+				8B326B2A1963D30CEAF1FEBEB67341A5 /* FluwxShareHandler.m */,
+				71C6713E383104DE998947939710A831 /* FluwxSubscribeMsgHandler.m */,
+				386EC51F9926E5F7137655D72867ECCE /* FluwxWXApiHandler.m */,
+				E97D809D5A051F63FE22A32D0D943426 /* NSStringWrapper.h */,
+				3D6E2D88193A36A71A9785FCF0BCCEC7 /* NSStringWrapper.m */,
+			);
+			name = handler;
+			path = handler;
 			sourceTree = "<group>";
 		};
 		A983308E30966BBE374D42C21BC3AB6D /* Pod */ = {
@@ -3043,6 +3039,15 @@
 			path = ios;
 			sourceTree = "<group>";
 		};
+		ADD26BF8BCDDBA176A979834391691F9 /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				CC69666021135C2F6C5F24702D2A4CBF /* .. */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		B13BB23794A553C1BAE8CBC5AFF15C9F /* my_flutter */ = {
 			isa = PBXGroup;
 			children = (
@@ -3080,31 +3085,6 @@
 			);
 			name = "Support Files";
 			path = "../../../../Pods/Target Support Files/video_player";
-			sourceTree = "<group>";
-		};
-		B2909B1E0A7C89236D56A96D81365BCE /* .symlinks */ = {
-			isa = PBXGroup;
-			children = (
-				3829EBCF20F0D7C908C2783595C26BAE /* plugins */,
-			);
-			name = .symlinks;
-			path = .symlinks;
-			sourceTree = "<group>";
-		};
-		B3C8EB445D70819172DEB3EAC7B41160 /* constants */ = {
-			isa = PBXGroup;
-			children = (
-				1D9DA40E0DF52687B985E06C06DAD089 /* CallResults.h */,
-				4C556DF2849A1A1B63B777B428ADB15C /* CallResults.m */,
-				2E184419E1AD47CACB765F79BA2E5E93 /* FluwxKeys.h */,
-				2E2B903A6B153F70639267047C8DBCBA /* FluwxKeys.m */,
-				68A2018C5841B83486C63ACA73030D28 /* FluwxMethods.h */,
-				39D0F4FDB7CA52C6962C5597D6AB57F6 /* FluwxMethods.m */,
-				7B95CE9B68E24DCB6CC45403DB345CEA /* ImageSchema.h */,
-				A36B956E05D71981F358CBD10E1F50B9 /* ImageSchema.m */,
-			);
-			name = constants;
-			path = constants;
 			sourceTree = "<group>";
 		};
 		B502B1B428B0EE30B5232E4195070EA2 /* .. */ = {
@@ -3149,15 +3129,6 @@
 			);
 			name = rongcloud_im_plugin;
 			path = rongcloud_im_plugin;
-			sourceTree = "<group>";
-		};
-		B7BEC667F87A0085733198286400FD03 /* .. */ = {
-			isa = PBXGroup;
-			children = (
-				F92053E1520F272B81BDC02A21B28F97 /* Users */,
-			);
-			name = ..;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		B7E050AC42B3596EF0EE3870A8216A91 /* .. */ = {
@@ -3260,15 +3231,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		BF041C589E8829911E715F8005C44F23 /* .. */ = {
-			isa = PBXGroup;
-			children = (
-				B7BEC667F87A0085733198286400FD03 /* .. */,
-			);
-			name = ..;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		BFF8DA7EACC9408881B1DDED725F084B /* tinker */ = {
 			isa = PBXGroup;
 			children = (
@@ -3296,6 +3258,24 @@
 			);
 			name = ..;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		C0F0AAA5574B46009520FC4E79D17129 /* .symlinks */ = {
+			isa = PBXGroup;
+			children = (
+				C90453DBF30DE3A58B727D0C54374CC1 /* plugins */,
+			);
+			name = .symlinks;
+			path = .symlinks;
+			sourceTree = "<group>";
+		};
+		C23B42DE278F6923DED8CEF2720F0621 /* xiaoheiqun */ = {
+			isa = PBXGroup;
+			children = (
+				813BAA5A64C4F2C06A1912A5731142C0 /* ios */,
+			);
+			name = xiaoheiqun;
+			path = xiaoheiqun;
 			sourceTree = "<group>";
 		};
 		C3085E3B95353D34A36C91DA4633E0AB /* .. */ = {
@@ -3378,6 +3358,15 @@
 			path = .symlinks;
 			sourceTree = "<group>";
 		};
+		C90453DBF30DE3A58B727D0C54374CC1 /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				170AEC5F4351AFE1297F8E8D4AF2E45C /* fluwx */,
+			);
+			name = plugins;
+			path = plugins;
+			sourceTree = "<group>";
+		};
 		C9D631C20ADE622C5E77F1CE252E7888 /* Flutter */ = {
 			isa = PBXGroup;
 			children = (
@@ -3414,6 +3403,15 @@
 			path = my_flutter;
 			sourceTree = "<group>";
 		};
+		CC69666021135C2F6C5F24702D2A4CBF /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				83794DA3F9BDC4E1D44C9A0A60279C20 /* .. */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		CD21A9A98631AF9BCDA5730127C024F6 /* Documents */ = {
 			isa = PBXGroup;
 			children = (
@@ -3439,15 +3437,6 @@
 			);
 			name = ..;
 			path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.3+4/ios";
-			sourceTree = "<group>";
-		};
-		CE1D04E9DA7FDBBA45AF551DA7E27993 /* .. */ = {
-			isa = PBXGroup;
-			children = (
-				81EAB008D48FE6841AD88948EF6E19F5 /* .. */,
-			);
-			name = ..;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		CF0C7872AA9123E07008036B9FF11F39 /* .. */ = {
@@ -3525,12 +3514,16 @@
 			path = package_info;
 			sourceTree = "<group>";
 		};
-		D545DAEC0DBA37EB69F42B7978FD2A91 /* Frameworks */ = {
+		D52FFDDA567F498D5C6C53F921638AC2 /* fluwx */ = {
 			isa = PBXGroup;
 			children = (
-				06A305B7FF2817D2ECB053CCE4830B40 /* libWeChatSDK.a */,
+				48CD550796F282C8915402FA37D21CE5 /* .. */,
+				E4B8806BF6A40220FAA692D7CD3FD4B9 /* Frameworks */,
+				0D3FDB472C99B7B438BC8D0B0AC15BE1 /* Pod */,
+				6B98DE3DCBD724D43D41CF1749D812EF /* Support Files */,
 			);
-			name = Frameworks;
+			name = fluwx;
+			path = ../.symlinks/plugins/fluwx/ios;
 			sourceTree = "<group>";
 		};
 		D5616C30302ACF7A03C687FCB3661D80 /* shared_preferences */ = {
@@ -3548,6 +3541,15 @@
 			isa = PBXGroup;
 			children = (
 				501280B0BAC459996FACB33AA827D376 /* Users */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		D59477879EDC21DF5E84E6D487977C24 /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				A5BA945291486E16C10B40C54CB2077A /* .. */,
 			);
 			name = ..;
 			path = ..;
@@ -3698,6 +3700,15 @@
 			path = "../../../../../../../../../../../Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/ios";
 			sourceTree = "<group>";
 		};
+		DF640DAB91943A21890E58A1482CAD62 /* tinker */ = {
+			isa = PBXGroup;
+			children = (
+				EE0E155F97DA3903116170C408D7F779 /* Documents */,
+			);
+			name = tinker;
+			path = tinker;
+			sourceTree = "<group>";
+		};
 		DF7142CFFA12A656ECBE1FD761E753EF /* .. */ = {
 			isa = PBXGroup;
 			children = (
@@ -3803,6 +3814,28 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
+		E4B8806BF6A40220FAA692D7CD3FD4B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A7FFA2081E776AA159041E7B06CBD8A /* libWeChatSDK.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E4BF0C0DD60EB71C40D4AFB07BDF7DAC /* wechat */ = {
+			isa = PBXGroup;
+			children = (
+				26B8B630E6A2369E9950C7F6B6739EE1 /* FluwxResponseHandler.m */,
+				DDEAC87F9A7F6130407706140498CB3E /* SendMessageToWXReq+requestWithTextOrMediaMessage.h */,
+				47DB9421F70EAD41A9958C0E565F613B /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */,
+				EAC93F377BA083F19A2ABE88DFCA8793 /* WXApiRequestHandler.m */,
+				BE1D5B81276DD5E59B5D2B6AB2CC5589 /* WXMediaMessage+messageConstruct.h */,
+				1C9466AC5A88D954B0C00AE0AB3E872E /* WXMediaMessage+messageConstruct.m */,
+			);
+			name = wechat;
+			path = wechat;
+			sourceTree = "<group>";
+		};
 		E54C7332CBDCC159E1D362B313641107 /* tinker */ = {
 			isa = PBXGroup;
 			children = (
@@ -3810,16 +3843,6 @@
 			);
 			name = tinker;
 			path = tinker;
-			sourceTree = "<group>";
-		};
-		E6D85C1CEB3CD9A6EB7C447BFB5AF97E /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				C1369D76D80C8487CF82EA348AE0E5B4 /* fluwx.podspec */,
-				A1ABBBEDBBE6B9809BAC675E02906AAB /* LICENSE */,
-				C72381A9F0DB4AB875E416535C378F40 /* README.txt */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 		E83760A31416AB7FA1AFCB535271BD9C /* .. */ = {
@@ -3867,15 +3890,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		EB0F8FEE3760AB2B78CEB1F1DB720B9B /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				EBCF68046EF96BBF3F8DB1B6F1C157AB /* Classes */,
-			);
-			name = ios;
-			path = ios;
-			sourceTree = "<group>";
-		};
 		EBAFF640A6A290BDD4D00FA434A0BE33 /* xiaoheiqun */ = {
 			isa = PBXGroup;
 			children = (
@@ -3883,20 +3897,6 @@
 			);
 			name = xiaoheiqun;
 			path = xiaoheiqun;
-			sourceTree = "<group>";
-		};
-		EBCF68046EF96BBF3F8DB1B6F1C157AB /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				48B62EBAE001E262518AD2DA3A733214 /* FluwxPlugin.m */,
-				B3C8EB445D70819172DEB3EAC7B41160 /* constants */,
-				353CC2F5628D444379073264B2F10A72 /* handler */,
-				23F6BED89361FD29286BA0D4CBBDA005 /* helper */,
-				69AA82705B55012C573238E85EF109DA /* public */,
-				9EBE24A9763E5C9E5A216184DFCD6931 /* wechat */,
-			);
-			name = Classes;
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		EDEB6A146AD5112B63D85F5F9EFC225B /* AlipaySDK-iOS */ = {
@@ -3910,13 +3910,13 @@
 			path = "AlipaySDK-iOS";
 			sourceTree = "<group>";
 		};
-		EE65810765BB8528A91F67610C9C43BE /* .. */ = {
+		EE0E155F97DA3903116170C408D7F779 /* Documents */ = {
 			isa = PBXGroup;
 			children = (
-				11B400DB6FD39D1A6873A32C8D58E791 /* .. */,
+				32FDC5D86C1C85FB67EC8F977DA49079 /* Flutter */,
 			);
-			name = ..;
-			path = ..;
+			name = Documents;
+			path = Documents;
 			sourceTree = "<group>";
 		};
 		EFDCC2E71C74EC3469A827526266B54E /* plugins */ = {
@@ -3985,6 +3985,15 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		F7245151CC710DE03085FFD7149C3C3E /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				DF640DAB91943A21890E58A1482CAD62 /* tinker */,
+			);
+			name = Users;
+			path = Users;
+			sourceTree = "<group>";
+		};
 		F74F67FD6803A4C2254A636AA856C909 /* .. */ = {
 			isa = PBXGroup;
 			children = (
@@ -4010,15 +4019,6 @@
 			);
 			name = path_provider;
 			path = path_provider;
-			sourceTree = "<group>";
-		};
-		F92053E1520F272B81BDC02A21B28F97 /* Users */ = {
-			isa = PBXGroup;
-			children = (
-				8103C24FEAD78D4BFE8EA8CCE45483F8 /* tinker */,
-			);
-			name = Users;
-			path = Users;
 			sourceTree = "<group>";
 		};
 		FB2E8FFC77C2CEFCE35D73677834B740 /* Support Files */ = {
@@ -4094,29 +4094,29 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				596D690F3E99921F1946401A9FD56915 /* CallResults.h in Headers */,
-				9011208CF1B366F7E80D59585E7D96E0 /* FluwxAuthHandler.h in Headers */,
-				0F82D5BC45FC6A7A779C4549A007AB1E /* FluwxAutoDeductHandler.h in Headers */,
-				4B22B9703AFE2AF1A77933293E00335C /* FluwxKeys.h in Headers */,
-				6EAE11FCA1E0C577A61579C1D9EA76AD /* FluwxLaunchMiniProgramHandler.h in Headers */,
-				84F14F603AF9A08243E54C341C2DCBA5 /* FluwxMethods.h in Headers */,
-				665B766D3A3C3312FED9E25947656979 /* FluwxPaymentHandler.h in Headers */,
-				07F054E20A3F5CE56089BBE2AF7CDC55 /* FluwxPlugin.h in Headers */,
-				A8550D58F2BEF1BB6EC4463A79A8D55F /* FluwxResponseHandler.h in Headers */,
-				3A0883E77F7AE2EA74BAD663599DB706 /* FluwxShareHandler.h in Headers */,
-				5657479FAA184DF991B5E95CB561D064 /* FluwxSubscribeMsgHandler.h in Headers */,
-				D83074F58B8078B1B1100E0036A6F2AE /* FluwxWXApiHandler.h in Headers */,
-				7A547FCDB44B9052D4B84E8032814951 /* ImageSchema.h in Headers */,
-				0C51D5BA6C3B1C6FAF22283990E1067F /* NSStringWrapper.h in Headers */,
-				048371BAFC0B8957F81611F5C786AACD /* SendMessageToWXReq+requestWithTextOrMediaMessage.h in Headers */,
-				1308006ECCF40F4236FB1A6905CCBEA8 /* StringToWeChatScene.h in Headers */,
-				A34A545578375892F121A6FA9331EDF6 /* StringUtil.h in Headers */,
-				A7E8F31D7DB9757FE1D47ADBC178F615 /* ThumbnailHelper.h in Headers */,
-				216E6BC68ACDBBDBC336E13C28955BF0 /* WechatAuthSDK.h in Headers */,
-				3445A49E7B256805A84271472504889F /* WXApi.h in Headers */,
-				E91F9839841E360F55D8B2C45D0D689B /* WXApiObject.h in Headers */,
-				68E189C8736A1C3B4D3714750BD62A0F /* WXApiRequestHandler.h in Headers */,
-				68175428C0084C5802627EC88B9CC122 /* WXMediaMessage+messageConstruct.h in Headers */,
+				640A864696DAB989EAF99356806C4B89 /* CallResults.h in Headers */,
+				8FDF9804AAD2E16B6128570BECC525C1 /* FluwxAuthHandler.h in Headers */,
+				A14FD26440F90F8D8E3A93363EC2C460 /* FluwxAutoDeductHandler.h in Headers */,
+				5CF2DA9D3DBF159E259371C2B046E2DE /* FluwxKeys.h in Headers */,
+				E6DF7CD54EC7591E688313D858FA86C2 /* FluwxLaunchMiniProgramHandler.h in Headers */,
+				898168FE07D292B38DCF5DFA9B31EDCE /* FluwxMethods.h in Headers */,
+				0E6BF2A1F6499B41AF8C460D5E83D84E /* FluwxPaymentHandler.h in Headers */,
+				3C4C0E65FA1A0E687B36041E3A7B2CEA /* FluwxPlugin.h in Headers */,
+				210A9D4F6B370C08F9D8D700F5915428 /* FluwxResponseHandler.h in Headers */,
+				52DEBC1D4E778C4A73A80E3E8676173A /* FluwxShareHandler.h in Headers */,
+				572C29118A1F3CDA7EF623D35A05D44D /* FluwxSubscribeMsgHandler.h in Headers */,
+				91B9A90E5509F7F697ADA39CC50B25FD /* FluwxWXApiHandler.h in Headers */,
+				E9F0C69E0DB868234D5E8AAD338BF170 /* ImageSchema.h in Headers */,
+				3C2E98EE4D12D9B2B07F95A201F0FFFD /* NSStringWrapper.h in Headers */,
+				9A192247BAB0F762AD3328C154BE1923 /* SendMessageToWXReq+requestWithTextOrMediaMessage.h in Headers */,
+				3F4F3529416B584037849165EBB7F75A /* StringToWeChatScene.h in Headers */,
+				BCB43F796CC7A05C51288293887DAB88 /* StringUtil.h in Headers */,
+				F8AA970FB11BBDAB485312E0ED2B49C5 /* ThumbnailHelper.h in Headers */,
+				88890D707B1AE155AE4E03A9E194931F /* WechatAuthSDK.h in Headers */,
+				3CEA035FECB0C45C0A5E803B22AC35FC /* WXApi.h in Headers */,
+				9B4E83EE752A44088A4407C6EB243360 /* WXApiObject.h in Headers */,
+				6A2BF5B054B9E547CD0A76343DB8B789 /* WXApiRequestHandler.h in Headers */,
+				307A372B4D449494B967E05B73DD9C10 /* WXMediaMessage+messageConstruct.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4661,27 +4661,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EC7D03AE039CD72D2A4E89F06501E12 /* CallResults.m in Sources */,
+				7F975CD7F797571191B0DED08E614B9E /* CallResults.m in Sources */,
 				691BED0DEEA4A483BAF4E9B27AFA4EF9 /* fluwx-dummy.m in Sources */,
-				080010E7917DF63FFEC67E791FF01103 /* FluwxAuthHandler.m in Sources */,
-				69B2180AB9238D63F8A81D9A860CF7D1 /* FluwxAutoDeductHandler.m in Sources */,
-				60858772B4399232C488787EAD77EBD7 /* FluwxKeys.m in Sources */,
-				D7A4C2EE321DD47C5AA5F8F220B3741F /* FluwxLaunchMiniProgramHandler.m in Sources */,
-				9DD38C3825B71706ACC002869D55FCDB /* FluwxMethods.m in Sources */,
-				16072D0C907276167B343AB14A30487B /* FluwxPaymentHandler.m in Sources */,
-				2530F368DE38E1250E886DB78D919B96 /* FluwxPlugin.m in Sources */,
-				3A871672BBAD8AA254DBF4DC4F3A7D3D /* FluwxResponseHandler.m in Sources */,
-				1CD1C79F32E59458C95847D6D040E85C /* FluwxShareHandler.m in Sources */,
-				21C9B05A7FDA947A3B1B137740685FED /* FluwxSubscribeMsgHandler.m in Sources */,
-				873DD8AD89AC5209963D85D970BC0AC8 /* FluwxWXApiHandler.m in Sources */,
-				ED7A00078BF079424A26B49167E82D01 /* ImageSchema.m in Sources */,
-				B105F1F6D1DCBEA60F3EC4897D6FBAA5 /* NSStringWrapper.m in Sources */,
-				B68B14194F5BECD5EB3192C7F27378B2 /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */,
-				0D10EAD3182C991ECCD83623390B1157 /* StringToWeChatScene.m in Sources */,
-				E9A9F47680E5571CF2597DD51D7CA326 /* StringUtil.m in Sources */,
-				E666D0DD8E8FF204B40156361FEA86ED /* ThumbnailHelper.m in Sources */,
-				76EEA6CCFCBF4F785F0F916323C7D58B /* WXApiRequestHandler.m in Sources */,
-				1EBF576D864D99324DBF7AEE4C1C067C /* WXMediaMessage+messageConstruct.m in Sources */,
+				88E8F418F7CDDD5310293784C6677FBE /* FluwxAuthHandler.m in Sources */,
+				710F85C0A2B98DE5AE06E5BE9568E2BD /* FluwxAutoDeductHandler.m in Sources */,
+				5F742E7BB7A9553CFFB0D6196EED377E /* FluwxKeys.m in Sources */,
+				DF552FF2410E97EAADDE66F6D72AC0E4 /* FluwxLaunchMiniProgramHandler.m in Sources */,
+				48E567DB01F6E4C2BE243234BD5CD8C4 /* FluwxMethods.m in Sources */,
+				DC614EC4C31C015514FFE045814398C0 /* FluwxPaymentHandler.m in Sources */,
+				C790EB720052542F5B98C4C577441A25 /* FluwxPlugin.m in Sources */,
+				31B13CBC6C019948FAEFA13C52390573 /* FluwxResponseHandler.m in Sources */,
+				25C067243D638C74A209CA141CFB6D7A /* FluwxShareHandler.m in Sources */,
+				F1003E3417A072622166F9ABE78DE2F8 /* FluwxSubscribeMsgHandler.m in Sources */,
+				16DB7B8B5EF52A23256D8F0D8120F710 /* FluwxWXApiHandler.m in Sources */,
+				839BEB256C7352B2DCD09122D8FEFCF4 /* ImageSchema.m in Sources */,
+				2DEFF4995C64F847B0419BE4016176E5 /* NSStringWrapper.m in Sources */,
+				6C4F1D81AA0F0C9CAA060C15B964691E /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */,
+				D763211F286054B88C9E82C1E13ADEC3 /* StringToWeChatScene.m in Sources */,
+				79DD9857F945F97FF1F5204FCE2D26FC /* StringUtil.m in Sources */,
+				658462D8EB889985507E02C90A1BB26A /* ThumbnailHelper.m in Sources */,
+				93995C13DA4850EEE7B54075D3C8BD26 /* WXApiRequestHandler.m in Sources */,
+				0FEDCF94254F6EA1A487EF11F14ABA06 /* WXMediaMessage+messageConstruct.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5205,7 +5205,7 @@
 		};
 		2DF4FA8AA5D0D102E57F46CCA7622DAE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3DE61FEECBFF3BFD2E43806F407DD58 /* fluwx.xcconfig */;
+			baseConfigurationReference = EEE783E374E8B4DA1B2C1DBDA9E07E43 /* fluwx.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -5776,7 +5776,7 @@
 		};
 		7015BCE42475ABA1EE9C1788096E4A1D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3DE61FEECBFF3BFD2E43806F407DD58 /* fluwx.xcconfig */;
+			baseConfigurationReference = EEE783E374E8B4DA1B2C1DBDA9E07E43 /* fluwx.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -6573,7 +6573,7 @@
 		};
 		F7610B730D2456158F99696BDC3D426B /* Profile */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3DE61FEECBFF3BFD2E43806F407DD58 /* fluwx.xcconfig */;
+			baseConfigurationReference = EEE783E374E8B4DA1B2C1DBDA9E07E43 /* fluwx.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

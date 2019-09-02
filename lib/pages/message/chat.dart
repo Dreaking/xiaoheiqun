@@ -1,14 +1,18 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:audio_recorder/audio_recorder.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:extended_text_field/extended_text_field.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:rongcloud_im_plugin/rongcloud_im_plugin.dart';
+import 'package:xiaoheiqun/ExtendTextFiled/emoji_text.dart';
+import 'package:xiaoheiqun/ExtendTextFiled/my_special_text_span_builder.dart';
+import 'package:xiaoheiqun/ExtendTextFiled/toggle_button.dart';
 import 'package:xiaoheiqun/chatService/meadia_util.dart';
 import 'package:xiaoheiqun/common/app_config.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
@@ -176,9 +180,64 @@ class chatSate extends State<chat> {
     });
   }
 
+  TextEditingController _textEditingController = TextEditingController();
+  FocusNode _focusNode = FocusNode();
+
+  Widget buildEmojiGird() {
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 10, crossAxisSpacing: 10.0, mainAxisSpacing: 10.0),
+      itemBuilder: (context, index) {
+        return GestureDetector(
+          child: Image.asset(
+            EmojiUitl.instance.emojiMap["[${index + 1}]"],
+          ),
+          behavior: HitTestBehavior.translucent,
+          onTap: () {
+            insertText("[${index + 1}]");
+          },
+        );
+      },
+      itemCount: EmojiUitl.instance.emojiMap.length,
+      padding: EdgeInsets.all(5.0),
+    );
+  }
+
+  void insertText(String text) {
+    var value = _textEditingController.value;
+    var start = value.selection.baseOffset;
+    var end = value.selection.extentOffset;
+    if (value.selection.isValid) {
+      String newText = "";
+      if (value.selection.isCollapsed) {
+        if (end > 0) {
+          newText += value.text.substring(0, end);
+        }
+        newText += text;
+        if (value.text.length > end) {
+          newText += value.text.substring(end, value.text.length);
+        }
+      } else {
+        newText = value.text.replaceRange(start, end, text);
+        end = start;
+      }
+
+      _textEditingController.value = value.copyWith(
+          text: newText,
+          selection: value.selection.copyWith(
+              baseOffset: end + text.length, extentOffset: end + text.length));
+    } else {
+      _textEditingController.value = TextEditingValue(
+          text: text,
+          selection:
+              TextSelection.fromPosition(TextPosition(offset: text.length)));
+    }
+  }
+
   TextEditingController _control = new TextEditingController();
   @override
   Widget build(BuildContext context) {
+    FocusScope.of(context).autofocus(_focusNode);
     final size = MediaQuery.of(context).size;
     return user == null || targetUser == null
         ? Center(
@@ -190,12 +249,17 @@ class chatSate extends State<chat> {
                 backgroundColor: Colors.white,
                 title: Text(
                   targetUser.userName,
-                  style: TextStyle(fontWeight: FontWeight.normal),
+                  style: TextStyle(
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
                 centerTitle: true,
                 elevation: 0,
               ),
               body: Container(
+//                width: 100,
+//                height: 70,
+                alignment: Alignment.bottomCenter,
                 child: Stack(
                   children: <Widget>[
                     SafeArea(
@@ -209,7 +273,6 @@ class chatSate extends State<chat> {
                                     child: ListView.builder(
                                       key: UniqueKey(),
                                       shrinkWrap: true,
-
                                       //因为消息超过一屏，ListView 很难滚动到最底部，所以要翻转显示，同时数据源也要逆序
                                       reverse: true,
                                       controller: _controller,
@@ -559,7 +622,42 @@ class chatSate extends State<chat> {
                                             alignment: Alignment.center,
                                             child: Text("按住说话"),
                                           )
-                                        : TextField(
+                                        :
+//                                    ExtendedTextField(
+//                                            specialTextSpanBuilder:
+//                                                MySpecialTextSpanBuilder(
+//                                              showAtBackground: true,
+//                                            ),
+//                                            controller: _textEditingController,
+//                                            maxLines: null,
+//                                            focusNode: _focusNode,
+//                                            decoration: InputDecoration(
+//                                                suffixIcon: GestureDetector(
+//                                                  onTap: () {
+//                                                    setState(() {
+//                                                      activeEmojiGird = false;
+//                                                      _textEditingController
+//                                                              .value =
+//                                                          _textEditingController
+//                                                              .value
+//                                                              .copyWith(
+//                                                                  text: "",
+//                                                                  selection: TextSelection
+//                                                                      .collapsed(
+//                                                                          offset:
+//                                                                              0),
+//                                                                  composing:
+//                                                                      TextRange
+//                                                                          .empty);
+//                                                    });
+//                                                  },
+//                                                  child: Icon(Icons.send),
+//                                                ),
+//                                                contentPadding:
+//                                                    EdgeInsets.only(top: 3)),
+//                                            //textDirection: TextDirection.rtl,
+//                                          ),
+                                        TextField(
                                             textDirection: TextDirection.ltr,
                                             style: TextStyle(fontSize: 16),
                                             controller: _control,
@@ -599,6 +697,29 @@ class chatSate extends State<chat> {
                                     upScor = 0;
                                   },
                                 ),
+//                                ToggleButton(
+//                                  activeWidget: Icon(
+//                                    Icons.sentiment_very_satisfied,
+//                                    color: Colors.orange,
+//                                  ),
+//                                  unActiveWidget:
+//                                      Icon(Icons.sentiment_very_satisfied),
+//                                  activeChanged: (bool active) {
+//                                    Function change = () {
+//                                      setState(() {
+//                                        if (active) {
+//                                          activeAtGrid = activeDollarGrid =
+//                                              activeImageGrid = false;
+//                                          FocusScope.of(context)
+//                                              .requestFocus(_focusNode);
+//                                        }
+//                                        activeEmojiGird = active;
+//                                      });
+//                                    };
+//                                    update(change);
+//                                  },
+//                                  active: activeEmojiGird,
+//                                ),
 //                                ClipOval(
 //                                  child: Image.asset(
 //                                    "ChatBox/face1.png",
@@ -690,6 +811,10 @@ class chatSate extends State<chat> {
                                       ),
                                     ],
                                   ),
+                          ),
+                          Container(
+                            height: showCustomKeyBoard ? 267 : 0.0,
+                            child: buildEmojiGird(),
                           )
                         ],
                       ),
@@ -712,6 +837,24 @@ class chatSate extends State<chat> {
           );
   }
 
+  bool activeEmojiGird = false;
+  bool activeAtGrid = false;
+  bool activeDollarGrid = false;
+  bool activeImageGrid = false;
+  bool get showCustomKeyBoard =>
+      activeEmojiGird || activeAtGrid || activeDollarGrid || activeImageGrid;
+  void update(Function change) {
+    if (showCustomKeyBoard) {
+      change();
+    } else {
+      SystemChannels.textInput.invokeMethod('TextInput.hide').whenComplete(() {
+        Future.delayed(Duration(milliseconds: 200)).whenComplete(() {
+          change();
+        });
+      });
+    }
+  }
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -720,3 +863,16 @@ class chatSate extends State<chat> {
     eventBus.fire(JoinChatEvent(1));
   }
 }
+
+List<String> dollarList = <String>[
+  "\$Dota2\$",
+  "\$Dota2 Ti9\$",
+  "\$CN dota best dota\$",
+  "\$Flutter\$",
+  "\$CN dev best dev\$",
+  "\$UWP\$",
+  "\$Nevermore\$",
+  "\$FlutterCandies\$",
+  "\$ExtendedImage\$",
+  "\$ExtendedText\$",
+];

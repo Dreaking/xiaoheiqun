@@ -30,8 +30,6 @@ class authentationState extends State<authentation> {
     FormData param = FormData.from({"fromUserId": userId});
     Tinker.post("/api/user/doAllRenzhengUser", (data) {
       List top = data["rows"];
-      print("llllllllllllllla");
-      print(data["rows"]);
       setState(() {
         movies = top.map((m) => Renzheng.fromJson(m)).toList();
       });

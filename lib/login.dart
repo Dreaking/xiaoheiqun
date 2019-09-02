@@ -2,6 +2,7 @@ import 'dart:async';
 import "package:dio/dio.dart";
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:xiaoheiqun/common/LeftPageView.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/pages/user/index.dart';
 import 'common/tinker.dart';
@@ -296,7 +297,7 @@ class LoginState extends State<Login> {
 //          Navigator.pop(context);
           Navigator.pushAndRemoveUntil(
               context,
-              CupertinoPageRoute(builder: (context) => TinkerScaffold()),
+              CupertinoPageRoute(builder: (context) => LeftPageView()),
               (route) => route == null);
           eventBus.fire(new UserLoggedInEvent("10"));
         }, params: p);

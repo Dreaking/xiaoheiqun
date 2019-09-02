@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:xiaoheiqun/common/LeftPageView.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/login.dart';
@@ -28,6 +29,7 @@ Future launchGooglePlay() async {
 class SettingsState extends State<Settings> {
   TextStyle dialogButtonTextStyle;
   var userId, _control;
+
   void _listen() {
     _control = eventBus.on<UserLoggedInEvent>().listen((event) {
       setState(() {
@@ -46,6 +48,7 @@ class SettingsState extends State<Settings> {
   Future getData() async {
     userId = await Tinker.getuserID();
     print(userId);
+    setState(() {});
     print("1");
   }
 
@@ -221,7 +224,7 @@ class SettingsState extends State<Settings> {
               ),
               //退出登录
               Container(
-                child: userId == null || userId == ""
+                child: userId == null
                     ? Container()
                     : InkWell(
                         child: Container(
@@ -251,7 +254,7 @@ class SettingsState extends State<Settings> {
                           Navigator.pushAndRemoveUntil(
                             context,
                             CupertinoPageRoute(
-                                builder: (context) => TinkerScaffold()),
+                                builder: (context) => LeftPageView()),
                             (route) => route == null,
                           );
                         },

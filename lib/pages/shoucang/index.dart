@@ -16,59 +16,26 @@ class ShoucangIndex extends StatefulWidget {
 
 class ShoucangIndexState extends State<ShoucangIndex>
     with TickerProviderStateMixin {
-  @override
+  //初始化方法
   void initState() {
     // TODO: implement initState
     super.initState();
     _controller = TabController(length: 2, vsync: this);
   }
 
-  @override
   var _controller;
+
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
-//    return new Container(
-//      child: new Container(
-//        child: Tinker.Select_Image_picker(
-//            Image_height: 120,
-//            Image_width: 120,
-//            count: 5,
-//            line_count: 3,
-//            spacing: 13,
-//            runSpacing: 10,
-//            Click_Image_file: new Image.asset(
-//              "image/tianjiatupian.png",
-//              width: 120,
-//              height: 120,
-//              fit: BoxFit.fill,
-//            ),
-//            callback: (da) {
-////              print(da);
-//            }),
-//      ),
-//    );
     return Material(
       child: Scaffold(
         backgroundColor: Colors.white,
-//        appBar: AppBar(
-//          title: Text(
-//            "我的收藏",
-//            style: TextStyle(color: Colors.black, fontSize: 22),
-//          ),
-//          elevation: 0,
-//          backgroundColor: Colors.white,
-//        ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            new Container(
-              child: Text(
-                "收藏",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              ),
-              margin: EdgeInsets.fromLTRB(15, 30, 0, 0),
-            ),
-            Container(
+            SafeArea(
+                child: Container(
               height: 50,
               child: TabBar(
                 unselectedLabelColor: Colors.black38,
@@ -88,7 +55,7 @@ class ShoucangIndexState extends State<ShoucangIndex>
                 ],
                 controller: _controller,
               ),
-            ),
+            )),
             Expanded(
               child: TabBarView(
                 children: <Widget>[

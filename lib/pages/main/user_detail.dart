@@ -10,6 +10,7 @@ import 'package:xiaoheiqun/data/User.dart';
 import 'package:xiaoheiqun/pages/edit/index.dart';
 import 'package:xiaoheiqun/pages/main/o_person_data.dart';
 import 'package:xiaoheiqun/pages/main/other_dongtai.dart';
+import 'package:xiaoheiqun/pages/message/chat.dart';
 
 class udetail extends StatefulWidget {
   String id;
@@ -76,11 +77,13 @@ class detailState extends State<udetail> {
       Tinker.queryUserInfo(merchanId, (data) {
         setState(() {
           Muser = User.fromJson(data);
+          id = data["userId"];
         });
       });
     }, params: param);
   }
 
+  var id;
   void delDongtai() {
     FormData param = FormData.from({"userId": userId, "productId": widget.id});
     Tinker.post("/api/product/doDeleteProduct", (data) {
@@ -176,8 +179,9 @@ class detailState extends State<udetail> {
       return list;
     }
 
-    return Material(
-        child: animate1 == null || Muser == null
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: animate1 == null || Muser == null
             ? Center(child: CircularProgressIndicator())
             : Scaffold(
                 backgroundColor: Colors.white,
@@ -586,32 +590,42 @@ class detailState extends State<udetail> {
                                             flex: 1,
                                           ),
                                           Expanded(
-                                            child: Container(
-                                              color:
-                                                  Color.fromRGBO(234, 6, 59, 1),
-                                              alignment: Alignment.center,
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Image.asset(
-                                                    "image/kefu@2x.png",
-                                                    width: 20,
-                                                    height: 20,
-                                                  ),
-                                                  Container(
-                                                    child: Text(
-                                                      "发消息",
-                                                      style: TextStyle(
-                                                          fontSize:
-                                                              leftFontSize,
-                                                          color: Colors.white),
+                                            child: InkWell(
+                                              child: Container(
+                                                color: Color.fromRGBO(
+                                                    234, 6, 59, 1),
+                                                alignment: Alignment.center,
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Image.asset(
+                                                      "image/kefu@2x.png",
+                                                      width: 20,
+                                                      height: 20,
                                                     ),
-                                                    margin: EdgeInsets.only(
-                                                        left: 10),
-                                                  )
-                                                ],
+                                                    Container(
+                                                      child: Text(
+                                                        "发消息",
+                                                        style: TextStyle(
+                                                            fontSize:
+                                                                leftFontSize,
+                                                            color:
+                                                                Colors.white),
+                                                      ),
+                                                      margin: EdgeInsets.only(
+                                                          left: 10),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
+                                              onTap: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            chat(id)));
+                                              },
                                             ),
                                             flex: 1,
                                           ),

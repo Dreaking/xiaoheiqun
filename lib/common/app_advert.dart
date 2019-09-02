@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:xiaoheiqun/common/LeftPageView.dart';
 
 import 'tinker.dart';
 import 'app_config.dart';
@@ -50,15 +51,7 @@ class AppDvertState extends State<AppDvert>
                 Duration(milliseconds: 5000),
                 () => {
                   Navigator.of(context).pushAndRemoveUntil(
-                    PageRouteBuilder(
-                      pageBuilder: (
-                        ctx,
-                        animation1,
-                        animation2,
-                      ) {
-                        return TinkerScaffold();
-                      },
-                    ),
+                    MaterialPageRoute(builder: (context) => LeftPageView()),
                     (route) => route == null,
                   ),
                 },
@@ -121,7 +114,7 @@ class AppDvertState extends State<AppDvert>
                       animation1,
                       animation2,
                     ) {
-                      return TinkerScaffold();
+                      return LeftPageView();
                     },
                   ),
                   (route) => route == null,

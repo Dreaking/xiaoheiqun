@@ -6,6 +6,7 @@ import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/data/Animate.dart';
 import 'package:xiaoheiqun/pages/main/dongtai_item.dart';
+import 'package:xiaoheiqun/pages/shoucang/shoucangItem.dart';
 
 class shoucangList extends StatefulWidget {
   @override
@@ -74,7 +75,7 @@ class shoucangListState extends State<shoucangList> {
 //                    physics: NeverScrollableScrollPhysics(),
                         itemCount: movies.length,
                         itemBuilder: (BuildContext context, int index) {
-                          return DongtaiItem(movies[index]);
+                          return ShoucangItem(movies[index]);
                         },
                         //                controller: _scrollController,
                       ),

@@ -34,3 +34,11 @@ class JoinChatEvent {
 class RinitView {
   RinitView() {}
 }
+
+//监听是否允许左右滑动
+class setSlide {
+  bool slide;
+  setSlide(bool slide) {
+    this.slide = slide;
+  }
+}

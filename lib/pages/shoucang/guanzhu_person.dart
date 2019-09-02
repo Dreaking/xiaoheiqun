@@ -59,7 +59,7 @@ class guanzhuState extends State<guanzhuPerson> {
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                         margin: EdgeInsets.only(top: 10),
-                        height: 85,
+                        height: 70,
                         //单个item
                         child: InkWell(
                           child: Row(
@@ -90,12 +90,6 @@ class guanzhuState extends State<guanzhuPerson> {
                               Container(
                                 margin: EdgeInsets.only(right: 20),
                                 width: width * 0.7,
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                            width: 1,
-                                            color: Color.fromRGBO(
-                                                242, 242, 242, 1)))),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'dart:io';
 
-import 'package:audio_recorder/audio_recorder.dart';
+//import 'package:audio_recorder/audio_recorder.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_sound/flutter_sound.dart';
@@ -49,34 +49,34 @@ class MediaUtil {
     return imgPath;
   }
 
-  //开始录音
-  void startRecordAudio() async {
-    Directory tempDir = await getTemporaryDirectory();
-    String tempPath = "/data/data/com.fuman.flutter.xiaoheiqun/cache/" +
-        DateTime.now().millisecondsSinceEpoch.toString() +
-        ".aac";
-    await AudioRecorder.start(
-        path: tempPath, audioOutputFormat: AudioOutputFormat.AAC);
-  }
-
-  //录音结束，通过 finished 返回本地路径和语音时长，注：Android 必须要加 file:// 头
-  void stopRecordAudio(Function(String path, int duration) finished) async {
-    Recording recording = await AudioRecorder.stop();
-    String path = recording.path;
-
-    if (path == null) {
-      if (finished != null) {
-        finished(null, 0);
-      }
-    }
-
-    if (TargetPlatform.android == defaultTargetPlatform) {
-      path = "file://" + path;
-    }
-    if (finished != null) {
-      finished(path, recording.duration.inSeconds);
-    }
-  }
+//  //开始录音
+//  void startRecordAudio() async {
+//    Directory tempDir = await getTemporaryDirectory();
+//    String tempPath = "/data/data/com.fuman.flutter.xiaoheiqun/cache/" +
+//        DateTime.now().millisecondsSinceEpoch.toString() +
+//        ".aac";
+//    await AudioRecorder.start(
+//        path: tempPath, audioOutputFormat: AudioOutputFormat.AAC);
+//  }
+//
+//  //录音结束，通过 finished 返回本地路径和语音时长，注：Android 必须要加 file:// 头
+//  void stopRecordAudio(Function(String path, int duration) finished) async {
+//    Recording recording = await AudioRecorder.stop();
+//    String path = recording.path;
+//
+//    if (path == null) {
+//      if (finished != null) {
+//        finished(null, 0);
+//      }
+//    }
+//
+//    if (TargetPlatform.android == defaultTargetPlatform) {
+//      path = "file://" + path;
+//    }
+//    if (finished != null) {
+//      finished(path, recording.duration.inSeconds);
+//    }
+//  }
 
   //播放语音
   void startPlayAudio(String path) {

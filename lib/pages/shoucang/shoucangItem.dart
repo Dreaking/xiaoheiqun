@@ -10,16 +10,16 @@ import 'package:xiaoheiqun/data/Animate.dart';
 import 'package:xiaoheiqun/login.dart';
 import 'package:xiaoheiqun/pages/main/user_detail.dart';
 
-class DongtaiItem extends StatefulWidget {
+class ShoucangItem extends StatefulWidget {
   @override
   Animate animate;
-  DongtaiItem(this.animate);
+  ShoucangItem(this.animate);
   State<StatefulWidget> createState() {
-    return DongtaiItemState();
+    return ShoucangItemState();
   }
 }
 
-class DongtaiItemState extends State<DongtaiItem> {
+class ShoucangItemState extends State<ShoucangItem> {
   @override
   void initState() {
     // TODO: implement initState
@@ -187,6 +187,15 @@ class ContentState extends State<Content> {
     eventBus.fire(new ShouCangInEvent());
   } //收藏功能的实现
 
+  List<Widget> Boxs() => List.generate(widget.animate.img.length, (index) {
+        return CachedNetworkImage(
+          imageUrl: AppConfig.AJAX_IMG_SERVER + widget.animate.img[index],
+          width: 50,
+          height: 50,
+          fit: BoxFit.cover,
+        );
+      });
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -260,123 +269,30 @@ class ContentState extends State<Content> {
               children: <Widget>[
                 Text(
                   widget.animate.merchantName,
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 14, color: Colors.black45),
                   overflow: TextOverflow.clip,
                   maxLines: 1,
                 ),
-                Container(
-                  margin: EdgeInsets.only(left: 5),
-                  child: widget.animate.isRenzheng == "0"
-                      ? null
-                      : Image.asset(
-                          "image/renzheng.png",
-                          width: 20,
-                          height: 10,
-                        ),
-                )
+                Text(
+                  " " + widget.animate.title,
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                  textDirection: TextDirection.ltr,
+                  textAlign: TextAlign.left,
+                ),
               ],
             )),
           ],
         ), //Row
-        Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-        Container(child: firstSwiperView()),
-        Text(
-          widget.animate.title,
-          style: TextStyle(
-            fontSize: 16,
+        Container(
+          margin: EdgeInsets.only(left: 50),
+          child: Wrap(
+            spacing: 2, //主轴上子控件的间距
+            runSpacing: 5, //交叉轴上子控件之间的间距
+            children: Boxs(), //要显示的子控件集合
           ),
-          textDirection: TextDirection.ltr,
-          textAlign: TextAlign.left,
-        ),
-        Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          verticalDirection: VerticalDirection.down,
-          children: <Widget>[
-            Flex(
-              mainAxisSize: MainAxisSize.min,
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                ClipOval(
-                  child: Image.asset(
-                    "image/liulan@2x.png",
-                    width: 20,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Padding(padding: EdgeInsets.symmetric(horizontal: 2)),
-                Text(
-                  widget.animate.clickCount.toString(),
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Color.fromARGB(0xff, 0xcc, 0xcc, 0xcc),
-                  ),
-                  overflow: TextOverflow.fade,
-                  textDirection: TextDirection.rtl,
-                ),
-                Padding(padding: EdgeInsets.symmetric(horizontal: 2)),
-                ClipOval(
-                  child: Image.asset(
-                    "image/shijian@2x.png",
-                    width: 20,
-                    height: 20,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Padding(padding: EdgeInsets.symmetric(horizontal: 2)),
-                Text(
-                  widget.animate.createTime,
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Color.fromARGB(0xff, 0xcc, 0xcc, 0xcc),
-                  ),
-                  overflow: TextOverflow.fade,
-                ),
-              ],
-            ),
-            Padding(padding: EdgeInsets.symmetric(vertical: 2)),
-            Flex(
-              mainAxisSize: MainAxisSize.min,
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                InkWell(
-                  child: widget.animate.isShoucang
-                      ? Image.asset(
-                          "image/shoucang2.png",
-                          width: 20,
-                          height: 20,
-                          fit: BoxFit.cover,
-                        )
-                      : Image.asset(
-                          "image/shoucang1.png",
-                          width: 20,
-                          height: 20,
-                          fit: BoxFit.cover,
-                        ),
-                  onTap: () {
-                    if (userId == null) {
-                      Navigator.push(context,
-                          CupertinoPageRoute(builder: (context) => Login()));
-                    } else
-                      shoucang();
-                  },
-                ),
-                Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
-                Image.asset(
-                  "image/liaotian.png",
-                  width: 20,
-                  height: 20,
-                  fit: BoxFit.cover,
-                ),
-              ],
-            ),
-          ],
-        ),
+        )
       ],
     );
   }

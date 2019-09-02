@@ -212,7 +212,7 @@ class Tinker {
   static ThemeData getThemeData() {
     return ThemeData(
         fontFamily: "Arial",
-        primaryColor: Colors.yellow,
+        primaryColor: Colors.white,
         accentColor: Colors.blue,
         textTheme: TextTheme(caption: TextStyle(fontSize: 18)));
   }
@@ -348,7 +348,10 @@ class TinkerScaffoldState extends State<TinkerScaffold>
   int _currentIndex = 1;
   PageView _pageView;
   PageController _pageController;
+
   @override
+  bool get wantKeepAlive => true;
+
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -415,6 +418,11 @@ class TinkerScaffoldState extends State<TinkerScaffold>
           });
         }
       }
+    }
+    if (index == 1) {
+      eventBus.fire(setSlide(true));
+    } else {
+      eventBus.fire(setSlide(false));
     }
     _pageController.jumpToPage(_currentIndex);
 //    _pageController.animateToPage(

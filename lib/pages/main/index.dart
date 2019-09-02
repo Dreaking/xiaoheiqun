@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:xiaoheiqun/common/app_config.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
+import 'package:xiaoheiqun/common/wxchart.dart';
+import 'package:xiaoheiqun/pages/edit/index.dart';
 import 'package:xiaoheiqun/pages/main/dongtai_list.dart';
 
 class MainIndex extends StatefulWidget {
@@ -40,6 +44,8 @@ class MainIndexState extends State<MainIndex>
   }
 
   static var paths;
+  int count = 0;
+  double a = 0;
 
   List<String> _tabbarTitle = ["热门", "发布时间", "认证用户", "关注"];
 
@@ -58,7 +64,9 @@ class MainIndexState extends State<MainIndex>
   @override
   void initState() {
     super.initState();
+    WxPay.register();
     _getBanner();
+    WxPay.listen();
     _scrollViewController = ScrollController(initialScrollOffset: 0.0);
     _tabController = TabController(
       length: _tabbarTitle.length,
@@ -215,18 +223,69 @@ class MainIndexState extends State<MainIndex>
     ];
   }
 
+  Future<Null> refresh() async {
+    Tinker.toast("刷新成功");
+  }
+
+  ScrollController _controller = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return DefaultTabController(
-        length: _tabbarTitle.length,
-        child: Scaffold(
-          body: NestedScrollView(
-            controller: _scrollViewController,
-            headerSliverBuilder: _headerSliverBuilder,
-            body: _createTabbarView(),
+    return Material(
+      child: Scaffold(
+          appBar: PreferredSize(
+              child: AppBar(
+                title: GestureDetector(
+                  child: Text(
+                    "我的小黄鱼",
+                    style: TextStyle(fontWeight: FontWeight.normal),
+                  ),
+                  onTap: () {
+                    _controller.jumpTo(_controller.position.minScrollExtent);
+                  },
+                ),
+                leading: InkWell(
+                  child: Icon(
+                    Icons.photo_camera,
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => EditIndex(null)));
+                  },
+                ),
+                actions: <Widget>[
+                  Icon(Icons.build),
+                  InkWell(
+                    child: Container(
+                      child: Icon(Icons.share),
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                    ),
+                    onTap: () {
+                      WxPay.SHare();
+                    },
+                  )
+                ],
+              ),
+              preferredSize: Size.fromHeight(
+                  MediaQuery.of(context).size.height *
+                      0.05)), //PreferredSize设置AppBar的高度
+          body: RefreshIndicator(child: DongtaiList(1), onRefresh: refresh)
+
+          //ListView列表
           ),
-        ));
+    );
+//      DefaultTabController(
+//        length: _tabbarTitle.length,
+//        child: Scaffold(
+//          body: NestedScrollView(
+//            controller: _scrollViewController,
+//            headerSliverBuilder: _headerSliverBuilder,
+//            body: _createTabbarView(),
+//          ),
+//        ));
   }
 
   //////////////////////////////
