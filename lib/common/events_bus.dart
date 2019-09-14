@@ -42,3 +42,8 @@ class setSlide {
     this.slide = slide;
   }
 }
+
+//监听首页个人信息跳转
+class setUserIndex {
+  setUserIndex() {}
+}

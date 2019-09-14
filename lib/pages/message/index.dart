@@ -28,15 +28,6 @@ class MessageIndexState extends State<MessageIndex>
     return Material(
       child: Scaffold(
         backgroundColor: Colors.white,
-//        appBar: AppBar(
-//          brightness: Brightness.light,
-//          title: Text(
-//            "消息",
-//            style: TextStyle(color: Colors.black, fontSize: 22),
-//          ),
-//          elevation: 0,
-//          backgroundColor: Colors.white,
-//        ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -50,11 +41,12 @@ class MessageIndexState extends State<MessageIndex>
             Container(
               height: 50,
               child: TabBar(
+                indicatorWeight: 1,
                 unselectedLabelColor: Colors.black38,
                 isScrollable: false,
 //                unselectedLabelStyle: TextStyle(fontSize: 12),
-                indicatorColor: Colors.deepOrange,
-                indicatorSize: TabBarIndicatorSize.label,
+                indicatorColor: Colors.black45,
+                indicatorSize: TabBarIndicatorSize.tab,
                 labelStyle: TextStyle(fontSize: 15),
                 labelColor: Colors.black,
                 tabs: <Widget>[

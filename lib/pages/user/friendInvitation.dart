@@ -18,7 +18,7 @@ class SecondScreenState extends State<SecondScreen> {
     initView();
   }
 
-  var userId, poll = "12", money = "0", friends = "0";
+  var userId, poll = "", money = "0", friends = "0";
   Future initView() async {
     userId = await Tinker.getuserID();
     FormData param = FormData.from({"userId": userId});
@@ -58,76 +58,80 @@ class SecondScreenState extends State<SecondScreen> {
         ),
         iconTheme: IconThemeData(color: Colors.black),
       ),
-      body: new Container(
-        child: new Column(
-          children: <Widget>[
-            new Container(
-              margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
-              child: new Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: poll == ""
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : Container(
+              child: new Column(
                 children: <Widget>[
-                  new Column(
-                    children: <Widget>[
-                      new Text(
-                        poll,
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.deepOrange,
+                  new Container(
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
+                    child: new Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        new Column(
+                          children: <Widget>[
+                            new Text(
+                              poll,
+                              style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.deepOrange,
+                              ),
+                            ),
+                            new Text(
+                              "我的邀请码",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ],
                         ),
-                      ),
-                      new Text(
-                        "我的邀请码",
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ],
+                        new Column(
+                          children: <Widget>[
+                            new Text(
+                              money,
+                              style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.deepOrange,
+                              ),
+                            ),
+                            new Text(
+                              "总收益",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
-                  new Column(
-                    children: <Widget>[
-                      new Text(
-                        money,
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.deepOrange,
+                  new Container(
+                      margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      width: double.infinity,
+                      child: new Container(
+                        child: new Row(
+                          children: <Widget>[
+                            new Container(
+                              width: 50,
+                            ),
+                            new Container(
+                              child: new Text(
+                                "已邀请",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                              width: 70,
+                            ),
+                            new Container(
+                              child: new Text("共" + friends + "个"),
+                              width: 50,
+                            )
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         ),
-                      ),
-                      new Text(
-                        "总收益",
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ],
-                  )
+                      )),
                 ],
               ),
             ),
-            new Container(
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                width: double.infinity,
-                child: new Container(
-                  child: new Row(
-                    children: <Widget>[
-                      new Container(
-                        width: 50,
-                      ),
-                      new Container(
-                        child: new Text(
-                          "已邀请",
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                        width: 70,
-                      ),
-                      new Container(
-                        child: new Text("共" + friends + "个"),
-                        width: 50,
-                      )
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  ),
-                )),
-          ],
-        ),
-      ),
     );
   }
 }

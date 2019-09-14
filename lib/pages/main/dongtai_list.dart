@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:xiaoheiqun/common/app_config.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
@@ -9,6 +10,8 @@ import 'package:xiaoheiqun/data/Animate.dart';
 import 'package:xiaoheiqun/data/Renzheng.dart';
 import 'package:xiaoheiqun/data/User.dart';
 import 'package:xiaoheiqun/pages/main/recommder.dart';
+import 'package:xiaoheiqun/pages/user/index.dart';
+import 'package:xiaoheiqun/pages/user/person_data.dart';
 import 'dongtai_item.dart';
 
 class DongtaiList extends StatefulWidget {
@@ -223,48 +226,54 @@ class RefreshState extends State<Refresh> {
         ? Center(
             child: CircularProgressIndicator(),
           )
-        : Container(
-            decoration: BoxDecoration(
-                border: Border(bottom: BorderSide(color: Colors.black12))),
-            width: double.infinity,
+        : InkWell(
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(
+                    border: Border(bottom: BorderSide(color: Colors.black12))),
+                width: double.infinity,
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
 
-              child: Row(
-                children: <Widget>[
-                  Column(
+                  child: Row(
                     children: <Widget>[
-                      InkWell(
-                        child: Container(
-                          margin: EdgeInsets.only(bottom: 5),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              border: Border.all(color: Colors.black12)),
-                          child: ClipOval(
-                            child: userId == null
-                                ? Image.asset(
-                                    "image/nologin@2x.png",
-                                    width: 50,
-                                    height: 50,
-                                  )
-                                : CachedNetworkImage(
-                                    imageUrl: AppConfig.AJAX_IMG_SERVER +
-                                        myuser.headImg,
-                                    width: 50,
-                                    height: 50,
-                                    fit: BoxFit.cover,
-                                  ),
-                          ),
-                        ), //Container,
-                      ), //InkWell
-                      Text(userId == null ? "未登录" : myuser.userName)
+                      Column(
+                        children: <Widget>[
+                          InkWell(
+                            child: Container(
+                              margin: EdgeInsets.only(bottom: 5),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  border: Border.all(color: Colors.black12)),
+                              child: ClipOval(
+                                child: userId == null
+                                    ? Image.asset(
+                                        "image/nologin@2x.png",
+                                        width: 50,
+                                        height: 50,
+                                      )
+                                    : CachedNetworkImage(
+                                        imageUrl: AppConfig.AJAX_IMG_SERVER +
+                                            myuser.headImg,
+                                        width: 50,
+                                        height: 50,
+                                        fit: BoxFit.cover,
+                                      ),
+                              ),
+                            ), //Container,
+                          ), //InkWell
+                          Text(userId == null ? "未登录" : myuser.userName)
+                        ],
+                      ), //Column
+                      Padding(padding: EdgeInsets.only(left: 20)),
                     ],
-                  ), //Column
-                  Padding(padding: EdgeInsets.only(left: 20)),
-                ],
-              ), //Row,
-            ) //Container
-            ); //返回顶部的推荐人动态
+                  ), //Row,
+                ) //Container
+                ),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => person()));
+            },
+          ); //返回顶部的推荐人动态
   }
 
   Widget centerRecommender() {

@@ -85,8 +85,8 @@ class AppConfig {
   static const BOTTOM_TAB_BAR_COLOR = Color.fromARGB(0xff, 0x99, 0x99, 0x99);
 
   ///高亮颜色
-  static const BOTTOM_TAB_BAR_COLOR_SELECT =
-      Color.fromARGB(0xff, 0xd0, 0x02, 0x1b);
+  static const BOTTOM_TAB_BAR_COLOR_SELECT = Colors.black;
+//      Color.fromARGB(0xff, 0xd0, 0x02, 0x1b);
 
   ///是否显示浮动按钮
   static const IS_BOTTOM_FLOAT_ICON = false;

@@ -79,16 +79,8 @@ class chatSate extends State<chat> {
     print("get history message");
     VoicImage = new List(count);
     initVoicImage();
-//    for (Message m in msgs) {
-//      VoiceMessage a = m.content;
-//      print(a.remoteUrl);
-//      print(a.localPath);
-//      print(a.duration);
-//      print(m.objectName);
-//      print("sentTime = " + m.content.toString());
-//    }
-    //倒序
-    TextMsg = msgs.reversed.toList();
+//    //倒序
+//    TextMsg = msgs.reversed.toList();
   }
 
   //设置融云监听
@@ -125,7 +117,8 @@ class chatSate extends State<chat> {
       path = image.path;
     }
     if (image != null) {
-      ImageMessage imgMsg = ImageMessage.obtain(path);
+      ImageMessage imgMsg = new ImageMessage();
+      imgMsg = ImageMessage.obtain(path);
       Message msg = await RongcloudImPlugin.sendMessage(
           RCConversationType.Private, widget.id, imgMsg);
       setState(() {
@@ -147,13 +140,10 @@ class chatSate extends State<chat> {
   var path;
   Future statrVcMessage() async {
     String path = await flutterSound.startRecorder(null);
-    print('startRecorder: $path');
-    print("111111111111111111");
     this.path = path;
     var _recorderSubscription = flutterSound.onRecorderStateChanged.listen((e) {
       DateTime date =
           new DateTime.fromMillisecondsSinceEpoch(e.currentPosition.toInt());
-      print(e.currentPosition.toString() + "aaaaaaaaaaa");
       millseconds = e.currentPosition.toInt();
     });
   }
@@ -182,57 +172,6 @@ class chatSate extends State<chat> {
 
   TextEditingController _textEditingController = TextEditingController();
   FocusNode _focusNode = FocusNode();
-
-  Widget buildEmojiGird() {
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 10, crossAxisSpacing: 10.0, mainAxisSpacing: 10.0),
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          child: Image.asset(
-            EmojiUitl.instance.emojiMap["[${index + 1}]"],
-          ),
-          behavior: HitTestBehavior.translucent,
-          onTap: () {
-            insertText("[${index + 1}]");
-          },
-        );
-      },
-      itemCount: EmojiUitl.instance.emojiMap.length,
-      padding: EdgeInsets.all(5.0),
-    );
-  }
-
-  void insertText(String text) {
-    var value = _textEditingController.value;
-    var start = value.selection.baseOffset;
-    var end = value.selection.extentOffset;
-    if (value.selection.isValid) {
-      String newText = "";
-      if (value.selection.isCollapsed) {
-        if (end > 0) {
-          newText += value.text.substring(0, end);
-        }
-        newText += text;
-        if (value.text.length > end) {
-          newText += value.text.substring(end, value.text.length);
-        }
-      } else {
-        newText = value.text.replaceRange(start, end, text);
-        end = start;
-      }
-
-      _textEditingController.value = value.copyWith(
-          text: newText,
-          selection: value.selection.copyWith(
-              baseOffset: end + text.length, extentOffset: end + text.length));
-    } else {
-      _textEditingController.value = TextEditingValue(
-          text: text,
-          selection:
-              TextSelection.fromPosition(TextPosition(offset: text.length)));
-    }
-  }
 
   TextEditingController _control = new TextEditingController();
   @override
@@ -434,6 +373,8 @@ class chatSate extends State<chat> {
                                                                         .objectName ==
                                                                     "RC:ImgMsg"
                                                                 ? CachedNetworkImage(
+                                                                    width: 80,
+                                                                    height: 100,
                                                                     imageUrl: msgs[
                                                                             index]
                                                                         .content
@@ -463,15 +404,6 @@ class chatSate extends State<chat> {
                                                                         new Icon(
                                                                             Icons.error),
                                                                   )
-//                                                            Image.network(
-//                                                                    msgs[index]
-//                                                                        .content
-//                                                                        .imageUri,
-//                                                                    width: 50,
-//                                                                    height: 50,
-//                                                                    fit: BoxFit
-//                                                                        .cover,
-//                                                                  )
                                                                 : msgs[index]
                                                                             .objectName ==
                                                                         "RC:HQVCMsg"
@@ -564,12 +496,11 @@ class chatSate extends State<chat> {
                                       },
                                     ),
                                     onTap: () {
-                                      setState(() {
-                                        bottomUp = 0;
-                                      });
-
-                                      FocusScope.of(context)
-                                          .requestFocus(FocusNode());
+//                                      setState(() {
+//                                        bottomUp = 0;
+//                                      });
+//                                      FocusScope.of(context)
+//                                          .requestFocus(FocusNode());
                                     },
                                   ),
                                 )
@@ -622,42 +553,7 @@ class chatSate extends State<chat> {
                                             alignment: Alignment.center,
                                             child: Text("按住说话"),
                                           )
-                                        :
-//                                    ExtendedTextField(
-//                                            specialTextSpanBuilder:
-//                                                MySpecialTextSpanBuilder(
-//                                              showAtBackground: true,
-//                                            ),
-//                                            controller: _textEditingController,
-//                                            maxLines: null,
-//                                            focusNode: _focusNode,
-//                                            decoration: InputDecoration(
-//                                                suffixIcon: GestureDetector(
-//                                                  onTap: () {
-//                                                    setState(() {
-//                                                      activeEmojiGird = false;
-//                                                      _textEditingController
-//                                                              .value =
-//                                                          _textEditingController
-//                                                              .value
-//                                                              .copyWith(
-//                                                                  text: "",
-//                                                                  selection: TextSelection
-//                                                                      .collapsed(
-//                                                                          offset:
-//                                                                              0),
-//                                                                  composing:
-//                                                                      TextRange
-//                                                                          .empty);
-//                                                    });
-//                                                  },
-//                                                  child: Icon(Icons.send),
-//                                                ),
-//                                                contentPadding:
-//                                                    EdgeInsets.only(top: 3)),
-//                                            //textDirection: TextDirection.rtl,
-//                                          ),
-                                        TextField(
+                                        : TextField(
                                             textDirection: TextDirection.ltr,
                                             style: TextStyle(fontSize: 16),
                                             controller: _control,
@@ -697,36 +593,6 @@ class chatSate extends State<chat> {
                                     upScor = 0;
                                   },
                                 ),
-//                                ToggleButton(
-//                                  activeWidget: Icon(
-//                                    Icons.sentiment_very_satisfied,
-//                                    color: Colors.orange,
-//                                  ),
-//                                  unActiveWidget:
-//                                      Icon(Icons.sentiment_very_satisfied),
-//                                  activeChanged: (bool active) {
-//                                    Function change = () {
-//                                      setState(() {
-//                                        if (active) {
-//                                          activeAtGrid = activeDollarGrid =
-//                                              activeImageGrid = false;
-//                                          FocusScope.of(context)
-//                                              .requestFocus(_focusNode);
-//                                        }
-//                                        activeEmojiGird = active;
-//                                      });
-//                                    };
-//                                    update(change);
-//                                  },
-//                                  active: activeEmojiGird,
-//                                ),
-//                                ClipOval(
-//                                  child: Image.asset(
-//                                    "ChatBox/face1.png",
-//                                    width: 30,
-//                                    height: 30,
-//                                  ),
-//                                ),
                                 InkWell(
                                   child: ClipOval(
                                     child: Image.asset(
@@ -812,10 +678,6 @@ class chatSate extends State<chat> {
                                     ],
                                   ),
                           ),
-                          Container(
-                            height: showCustomKeyBoard ? 267 : 0.0,
-                            child: buildEmojiGird(),
-                          )
                         ],
                       ),
                     ),
@@ -837,24 +699,6 @@ class chatSate extends State<chat> {
           );
   }
 
-  bool activeEmojiGird = false;
-  bool activeAtGrid = false;
-  bool activeDollarGrid = false;
-  bool activeImageGrid = false;
-  bool get showCustomKeyBoard =>
-      activeEmojiGird || activeAtGrid || activeDollarGrid || activeImageGrid;
-  void update(Function change) {
-    if (showCustomKeyBoard) {
-      change();
-    } else {
-      SystemChannels.textInput.invokeMethod('TextInput.hide').whenComplete(() {
-        Future.delayed(Duration(milliseconds: 200)).whenComplete(() {
-          change();
-        });
-      });
-    }
-  }
-
   @override
   void dispose() {
     // TODO: implement dispose
@@ -863,16 +707,3 @@ class chatSate extends State<chat> {
     eventBus.fire(JoinChatEvent(1));
   }
 }
-
-List<String> dollarList = <String>[
-  "\$Dota2\$",
-  "\$Dota2 Ti9\$",
-  "\$CN dota best dota\$",
-  "\$Flutter\$",
-  "\$CN dev best dev\$",
-  "\$UWP\$",
-  "\$Nevermore\$",
-  "\$FlutterCandies\$",
-  "\$ExtendedImage\$",
-  "\$ExtendedText\$",
-];

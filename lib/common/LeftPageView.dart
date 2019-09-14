@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/test.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
-import 'package:xiaoheiqun/pages/edit/index.dart';
-import 'package:xiaoheiqun/pages/user/index.dart';
+import 'package:xiaoheiqun/pages/user/index2.dart';
 
 class LeftPageView extends StatefulWidget {
   @override
@@ -33,7 +32,7 @@ class LeftPageViewState extends State<LeftPageView>
 //    EditIndex(null),
     testCM(),
     TinkerScaffold(),
-    UserIndex()
+    UserIndex2()
   ];
 
   TabController mController;

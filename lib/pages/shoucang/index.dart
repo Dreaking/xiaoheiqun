@@ -36,13 +36,16 @@ class ShoucangIndexState extends State<ShoucangIndex>
           children: <Widget>[
             SafeArea(
                 child: Container(
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.black12)),
               height: 50,
               child: TabBar(
                 unselectedLabelColor: Colors.black38,
+                indicatorWeight: 1,
                 isScrollable: false,
 //                unselectedLabelStyle: TextStyle(fontSize: 12),
-                indicatorColor: Colors.deepOrange,
-                indicatorSize: TabBarIndicatorSize.label,
+                indicatorColor: Colors.black45,
+                indicatorSize: TabBarIndicatorSize.tab,
                 labelStyle: TextStyle(fontSize: 15),
                 labelColor: Colors.black,
                 tabs: <Widget>[

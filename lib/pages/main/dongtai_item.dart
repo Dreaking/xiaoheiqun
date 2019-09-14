@@ -62,6 +62,12 @@ class DongtaiItemState extends State<DongtaiItem> {
       },
     );
   }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
 }
 
 class Content extends StatefulWidget {

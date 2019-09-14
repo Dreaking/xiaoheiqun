@@ -29,6 +29,7 @@ class detailState extends State<udetail> {
     super.initState();
     leftFontSize = 12;
     getData();
+    eventBus.fire(setSlide(false));
   }
 
   double leftFontSize;
@@ -355,12 +356,8 @@ class detailState extends State<udetail> {
                                                               0, 0, 20, 0),
                                                       decoration: BoxDecoration(
                                                           border: Border.all(
-                                                              color: Color
-                                                                  .fromRGBO(
-                                                                      193,
-                                                                      21,
-                                                                      43,
-                                                                      1)),
+                                                              color: Colors
+                                                                  .lightBlueAccent),
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
@@ -374,12 +371,8 @@ class detailState extends State<udetail> {
                                                         style: TextStyle(
                                                             fontSize:
                                                                 leftFontSize,
-                                                            color:
-                                                                Color.fromRGBO(
-                                                                    193,
-                                                                    21,
-                                                                    43,
-                                                                    1)),
+                                                            color: Colors
+                                                                .lightBlueAccent),
                                                       ),
                                                     ),
                                                     onTap: () {
@@ -393,11 +386,10 @@ class detailState extends State<udetail> {
                                               height: 30,
                                               alignment: Alignment.center,
                                               decoration: BoxDecoration(
-                                                  color: Color.fromRGBO(
-                                                      193, 21, 43, 1),
+                                                  color: Colors.lightBlueAccent,
                                                   border: Border.all(
-                                                      color: Color.fromRGBO(
-                                                          193, 21, 43, 1)),
+                                                      color: Colors
+                                                          .lightBlueAccent),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           10)),
@@ -458,6 +450,20 @@ class detailState extends State<udetail> {
                                     )
                                   ],
                                 ),
+                              ),
+                              //文本内容
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: <Widget>[
+                                  Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 10),
+                                    child: Text(
+                                      animate1.title,
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                  )
+                                ],
                               ),
                               //图片
                               Container(
@@ -637,5 +643,12 @@ class detailState extends State<udetail> {
                       ],
                     )),
               ));
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    eventBus.fire(setSlide(true));
   }
 }

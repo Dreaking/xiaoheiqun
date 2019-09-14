@@ -135,8 +135,6 @@ class UserIndexState extends State<UserIndex>
   // TODO: implement wantKeepAlive
 //  bool get wantKeepAlive => true;
   Widget build(BuildContext context) {
-//    super.build(context);
-    // TODO: implement build
     _listen();
     //Ios风格弹窗
     final size = MediaQuery.of(context).size;
@@ -240,6 +238,21 @@ class UserIndexState extends State<UserIndex>
     }
 
     return Scaffold(
+      endDrawer: Drawer(
+        child: SafeArea(
+          child: Column(
+            children: <Widget>[Text(name)],
+          ),
+        ),
+      ),
+      appBar: AppBar(
+        elevation: 0,
+        title: Text(
+          name,
+          style: TextStyle(fontWeight: FontWeight.normal),
+        ),
+        actions: <Widget>[],
+      ),
       backgroundColor: Colors.white,
       body: userId == "" || name == null
           ? Center(
@@ -256,14 +269,14 @@ class UserIndexState extends State<UserIndex>
                       child: new Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      new Container(
-                        child: Text(
-                          "我的",
-                          style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold),
-                        ),
-                        margin: EdgeInsets.fromLTRB(15, 30, 0, 0),
-                      ),
+//                      new Container(
+//                        child: Text(
+//                          name,
+//                          style: TextStyle(
+//                              fontSize: 18, fontWeight: FontWeight.bold),
+//                        ),
+//                        margin: EdgeInsets.fromLTRB(15, 30, 0, 0),
+//                      ),
                       new Row(
                         children: <Widget>[
                           new Container(
@@ -480,6 +493,7 @@ class UserIndexState extends State<UserIndex>
                       ),
                     ],
                   )),
+                  //中部邀请余额信息
                   new Container(
                     margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
                     padding: const EdgeInsets.only(top: 25.0),
@@ -558,6 +572,7 @@ class UserIndexState extends State<UserIndex>
                       ],
                     ),
                   ),
+                  //点击事件、个人资料。。。
                   new Container(
                     padding: const EdgeInsets.only(left: 15.0, right: 15.0),
                     child: new Column(

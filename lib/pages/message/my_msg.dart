@@ -16,7 +16,7 @@ class my_msg extends StatefulWidget {
 }
 
 class my_msgState extends State<my_msg> {
-  int count;
+  int count = 0;
   int n = 0, a = 0;
 
   List conversationList = [], users;
@@ -27,6 +27,7 @@ class my_msgState extends State<my_msg> {
     List cons = await RongcloudImPlugin.getConversationList(
         [RCConversationType.Private]);
     conversationList = cons;
+    count = conversationList.length;
     users = new List(1);
     for (Conversation con in conversationList) {
       MessageContent a = con.latestMessageContent;
@@ -75,12 +76,12 @@ class my_msgState extends State<my_msg> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     // TODO: implement build
-    return conversationList == []
+    return conversationList.length == 0
         ? Center(
             child: Text("暂无数据"),
           )
         : ListView.builder(
-            itemCount: conversationList.length,
+            itemCount: count,
             itemBuilder: (context, index) {
               return InkWell(
                 child: Row(

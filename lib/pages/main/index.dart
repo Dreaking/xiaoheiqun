@@ -1,10 +1,15 @@
 import 'dart:async';
-
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:xiaoheiqun/common/app_config.dart';
+import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
 import 'package:xiaoheiqun/common/wxchart.dart';
+import 'package:xiaoheiqun/data/Draft.dart';
+import 'package:xiaoheiqun/login.dart';
+import 'package:xiaoheiqun/microMall/home/index.dart';
 import 'package:xiaoheiqun/pages/edit/index.dart';
 import 'package:xiaoheiqun/pages/main/dongtai_list.dart';
 
@@ -66,6 +71,7 @@ class MainIndexState extends State<MainIndex>
     super.initState();
     WxPay.register();
     _getBanner();
+    initData();
     WxPay.listen();
     _scrollViewController = ScrollController(initialScrollOffset: 0.0);
     _tabController = TabController(
@@ -74,6 +80,12 @@ class MainIndexState extends State<MainIndex>
       initialIndex: _tabBarIndex,
     );
     _dongtaiList = DongtaiList(_tabBarIndex);
+  }
+
+  var userId;
+  //更新用户信息
+  Future initData() async {
+    userId = await Tinker.getuserID();
   }
 
   Widget _createSwiper() {
@@ -228,6 +240,20 @@ class MainIndexState extends State<MainIndex>
   }
 
   ScrollController _controller = ScrollController();
+  /*拍照*/
+  Future _takePhoto() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      List img = new List();
+      img.add(image);
+      Draft draft = new Draft(img: img.toList());
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => EditIndex(draft)));
+//      setState(() {
+//        imgList.add(image);
+//      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -250,14 +276,27 @@ class MainIndexState extends State<MainIndex>
                     Icons.photo_camera,
                   ),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EditIndex(null)));
+                    if (userId != null) {
+                      _takePhoto();
+                    } else {
+                      Navigator.push(context,
+                          CupertinoPageRoute(builder: (context) => Login()));
+                    }
                   },
                 ),
                 actions: <Widget>[
-                  Icon(Icons.build),
+                  InkWell(
+                    child: Container(
+                      child: Icon(Icons.build),
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomeIndex()));
+                      eventBus.fire(setSlide(false));
+//                      Tinker.toast("功能开发中");
+                    },
+                  ),
                   InkWell(
                     child: Container(
                       child: Icon(Icons.share),

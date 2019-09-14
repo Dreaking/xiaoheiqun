@@ -10,6 +10,7 @@ import 'package:xiaoheiqun/data/Draft.dart';
 import 'dart:convert';
 import 'package:xiaoheiqun/pages/edit/index.dart';
 import 'package:xiaoheiqun/pages/message/index.dart';
+import 'package:xiaoheiqun/pages/user/index2.dart';
 import '../pages/main/index.dart';
 import '../pages/user//index.dart';
 import 'app_config.dart';
@@ -352,6 +353,15 @@ class TinkerScaffoldState extends State<TinkerScaffold>
   @override
   bool get wantKeepAlive => true;
 
+//  void _listen() {
+//    eventBus.on<setUserIndex>().listen((event) {
+//      Tinker.toast("asdf");
+//      setState(() {
+//        _switchTab(4);
+//      });
+//    });
+//  }
+
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -364,6 +374,7 @@ class TinkerScaffoldState extends State<TinkerScaffold>
 
   @override
   Widget build(BuildContext context) {
+//    _listen();
     // TODO: implement build
     return MaterialApp(
       theme: Tinker.getThemeData(),
@@ -656,7 +667,7 @@ class TinkerScaffoldState extends State<TinkerScaffold>
       ..add(MainIndex())
       ..add(null)
       ..add(ShoucangIndex())
-      ..add(UserIndex());
+      ..add(UserIndex2());
   }
 }
 
