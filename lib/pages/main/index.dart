@@ -10,6 +10,7 @@ import 'package:xiaoheiqun/common/wxchart.dart';
 import 'package:xiaoheiqun/data/Draft.dart';
 import 'package:xiaoheiqun/login.dart';
 import 'package:xiaoheiqun/microMall/home/index.dart';
+import 'package:xiaoheiqun/microMall/main.dart';
 import 'package:xiaoheiqun/pages/edit/index.dart';
 import 'package:xiaoheiqun/pages/main/dongtai_list.dart';
 
@@ -292,7 +293,7 @@ class MainIndexState extends State<MainIndex>
                     ),
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomeIndex()));
+                          MaterialPageRoute(builder: (context) => MicroMall()));
                       eventBus.fire(setSlide(false));
 //                      Tinker.toast("功能开发中");
                     },

@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
-import 'package:crypt/crypt.dart';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jpush_flutter/jpush_flutter.dart';
+import 'package:provide/provide.dart';
 import 'package:rongcloud_im_plugin/rongcloud_im_plugin.dart';
 import 'package:xiaoheiqun/common/app_config.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
@@ -16,9 +16,13 @@ import 'package:oktoast/oktoast.dart';
 import 'package:flutter/services.dart';
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
+import 'package:xiaoheiqun/microMall/provide/currentIndex.dart';
 
 void main() {
-  runApp(MyApp());
+  var providers = new Providers();
+  var currentIndex = new CurrentIndexProvide();
+  providers..provide(Provider<CurrentIndexProvide>.value(currentIndex));
+  runApp(ProviderNode(child: MyApp(), providers: providers));
 }
 
 class MyApp extends StatefulWidget {

@@ -285,6 +285,13 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_screenutil">
+          <value>
+            <list>
+              <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_screenutil-0.6.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_sound">
           <value>
             <list>
@@ -566,6 +573,13 @@
             <list>
               <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/pool-1.4.0/lib" />
               <option value="$PROJECT_DIR$/../../../../../shikk/.pub-cache/hosted/pub.flutter-io.cn/pool-1.4.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="provide">
+          <value>
+            <list>
+              <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/provide-1.0.2/lib" />
             </list>
           </value>
         </entry>
@@ -905,6 +919,7 @@
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_easyrefresh-1.2.7/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_page_indicator-0.0.3/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_redux-0.5.3/lib" />
+      <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_screenutil-0.6.0/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_sound-1.4.2/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_staggered_grid_view-0.2.7/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_swiper-1.1.6/lib" />
@@ -939,6 +954,7 @@
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/pedantic-1.8.0+1/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/platform-2.2.1/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/pool-1.4.0/lib" />
+      <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/provide-1.0.2/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/pub_semver-1.4.2/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/pubspec_parse-0.1.5/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/quiver-2.0.5/lib" />

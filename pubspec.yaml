@@ -19,6 +19,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_screenutil: ^0.6.0
+  provide: ^1.0.2
 
   jpush_flutter: ^0.0.13
   cupertino_icons: ^0.1.2

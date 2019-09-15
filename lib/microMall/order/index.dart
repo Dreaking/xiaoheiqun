@@ -12,6 +12,10 @@ class OrderIndexState extends State<OrderIndex> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return null;
+    return Scaffold(
+      body: Center(
+        child: Text("订单"),
+      ),
+    );
   }
 }
