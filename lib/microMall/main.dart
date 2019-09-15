@@ -38,6 +38,7 @@ class MicroMall extends StatelessWidget {
           backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
+            selectedItemColor: Color.fromRGBO(238, 121, 44, 1),
             currentIndex: currentIndex,
             items: bottomTabs,
             onTap: (index) {
