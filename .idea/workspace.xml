@@ -22,31 +22,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fb33d7d-f81b-446a-b887-96cce5bb9e45" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/microMall/home/classFiledDIsplay.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/microMall/home/searchAfter.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/microMall/home/details/DetailsExplain.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/microMall/home/details/DetailsTopArea.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/microMall/home/details/DetailsWeb.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/microMall/home/productDetails.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/App.framework/App" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/App.framework/App" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/App.framework/flutter_assets/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/App.framework/flutter_assets/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Flutter" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Flutter" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Headers/FlutterBinaryMessenger.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Headers/FlutterBinaryMessenger.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Headers/FlutterChannels.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Headers/FlutterChannels.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Headers/FlutterEngine.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Headers/FlutterEngine.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Headers/FlutterPlugin.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Headers/FlutterPlugin.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Headers/FlutterPluginAppLifeCycleDelegate.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Headers/FlutterPluginAppLifeCycleDelegate.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Headers/FlutterViewController.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Headers/FlutterViewController.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Flutter.framework/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Local Podspecs/Flutter.podspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Pods/Local Podspecs/Flutter.podspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/xcuserdata/tinker.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/xcuserdata/tinker.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/tinker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/tinker.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/microMall/home/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/microMall/home/index.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/microMall/home/searchBefore.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/microMall/home/searchBefore.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/microMall/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/microMall/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/microMall/provide/currentIndex.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/microMall/provide/currentIndex.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -63,11 +51,92 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/microMall/home/index.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="65" selection-end-column="3" />
+            <state relative-caret-position="-498">
+              <caret line="52" column="47" selection-start-line="52" selection-end-line="53" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
-                <element signature="e#491#1837#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/microMall/home/productDetails.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="76" column="8" selection-start-line="76" selection-start-column="7" selection-end-line="76" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/microMall/home/details/DetailsWeb.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="313">
+              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="354">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/microMall/main.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/microMall/home/details/DetailsExplain.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="117" column="70" selection-start-line="117" selection-start-column="70" selection-end-line="117" selection-end-column="70" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#900#3278#0" />
+                <element signature="e#1212#3259#0" />
+                <element signature="e#3351#4219#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/microMall/provide/currentIndex.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/microMall/home/details/DetailsTopArea.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#396#1214#0" />
               </folding>
             </state>
           </provider>
@@ -76,8 +145,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/microMall/home/searchBefore.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+            <state relative-caret-position="306">
+              <caret line="70" column="6" selection-start-line="70" selection-start-column="6" selection-end-line="92" selection-end-column="51" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
                 <element signature="e#2206#2935#0" />
@@ -87,51 +156,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/microMall/home/classFiledDIsplay.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="87" column="31" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
+            <state relative-caret-position="282">
+              <caret line="76" selection-start-line="76" selection-end-line="76" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/microMall/home/searchAfter.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#1900#2629#0" />
-                <element signature="e#4506#5077#0" />
-                <element signature="e#4739#4960#0" />
-                <element signature="e#5040#5093#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/microMall/main.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/microMall/provide/currentIndex.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -178,11 +210,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/ExtendTextFiled/pic_swiper.dart" />
-        <option value="$PROJECT_DIR$/lib/ExtendTextFiled/emoji_text.dart" />
-        <option value="$PROJECT_DIR$/lib/ExtendTextFiled/toggle_button.dart" />
-        <option value="$PROJECT_DIR$/lib/ExtendTextFiled/my_special_text_span_builder.dart" />
-        <option value="$PROJECT_DIR$/lib/ExtendTextFiled/image_text.dart" />
         <option value="$PROJECT_DIR$/lib/chatService/meadia_util.dart" />
         <option value="$PROJECT_DIR$/lib/common/app_advert.dart" />
         <option value="$PROJECT_DIR$/lib/login.dart" />
@@ -205,7 +232,6 @@
         <option value="$PROJECT_DIR$/lib/pages/main/dongtai_item.dart" />
         <option value="$PROJECT_DIR$/lib/pages/main/user_detail.dart" />
         <option value="$PROJECT_DIR$/lib/pages/user/index.dart" />
-        <option value="$PROJECT_DIR$/lib/common/tinker.dart" />
         <option value="$PROJECT_DIR$/lib/pages/main/dongtai_list.dart" />
         <option value="$PROJECT_DIR$/lib/common/LeftPageView.dart" />
         <option value="$PROJECT_DIR$/lib/data/Draft.dart" />
@@ -217,23 +243,29 @@
         <option value="$PROJECT_DIR$/lib/microMall/home/order/shopCat/my/index.dart" />
         <option value="$PROJECT_DIR$/lib/microMall/home/order/shopCat/index.dart" />
         <option value="$PROJECT_DIR$/lib/microMall/home/order/index.dart" />
-        <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/main.dart" />
         <option value="$PROJECT_DIR$/lib/pages/main/index.dart" />
         <option value="$PROJECT_DIR$/lib/microMall/order/index.dart" />
         <option value="$PROJECT_DIR$/lib/microMall/shopCat/index.dart" />
         <option value="$PROJECT_DIR$/lib/microMall/my/index.dart" />
-        <option value="$PROJECT_DIR$/lib/microMall/provide/currentIndex.dart" />
         <option value="$PROJECT_DIR$/lib/microMall/home/searchBefore.dart" />
         <option value="$PROJECT_DIR$/lib/microMall/home/searchAfter.dart" />
         <option value="$PROJECT_DIR$/lib/microMall/main.dart" />
-        <option value="$PROJECT_DIR$/lib/microMall/home/index.dart" />
         <option value="$PROJECT_DIR$/lib/microMall/home/classFiledDIsplay.dart" />
+        <option value="$PROJECT_DIR$/lib/common/tinker.dart" />
+        <option value="$PROJECT_DIR$/lib/microMall/home/details.dart" />
+        <option value="$PROJECT_DIR$/lib/microMall/home/index.dart" />
+        <option value="$PROJECT_DIR$/lib/microMall/home/details/DetailsTopArea.dart" />
+        <option value="$PROJECT_DIR$/lib/microMall/provide/currentIndex.dart" />
+        <option value="$PROJECT_DIR$/lib/microMall/home/details/DetailsExplain.dart" />
+        <option value="$PROJECT_DIR$/pubspec.yaml" />
+        <option value="$PROJECT_DIR$/lib/microMall/home/details/DetailsWeb.dart" />
+        <option value="$PROJECT_DIR$/lib/microMall/home/productDetails.dart" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="392" />
+    <option name="x" value="479" />
     <option name="y" value="22" />
     <option name="width" value="1009" />
     <option name="height" value="792" />
@@ -268,6 +300,14 @@
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="microMall" type="462c0819:PsiDirectoryNode" />
               <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xiaoheiqun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xiaoheiqun" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="microMall" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="details" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="xiaoheiqun" type="b2602c69:ProjectViewProjectNode" />
@@ -544,7 +584,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568530450833</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="精品分类">
+      <created>1568555671488</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1568555671488</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TodoView">
@@ -557,9 +604,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="392" y="22" width="1009" height="792" extended-state="0" />
+    <frame x="479" y="22" width="1009" height="792" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976852" weight="0.2532189" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976852" weight="0.2523268" />
       <window_info id="Captures" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -569,16 +617,16 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Dart Analysis" order="0" sideWeight="0.49928468" weight="0.32650602" />
-      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.527897" weight="0.30285713" />
+      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.527897" weight="0.3014286" />
       <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.49928468" weight="0.32062146" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Logcat" order="4" sideWeight="0.49928468" weight="0.3145275" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.32162923" />
+      <window_info anchor="bottom" id="Logcat" order="4" sideWeight="0.49928468" weight="0.31428573" />
+      <window_info active="true" anchor="bottom" id="Debug" order="5" visible="true" weight="0.32142857" />
       <window_info anchor="bottom" id="Device File Explorer" order="6" sideWeight="0.3469242" side_tool="true" weight="0.348378" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.4356223" side_tool="true" weight="0.3028169" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" sideWeight="0.472103" side_tool="true" weight="0.3028169" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49772382" visible="true" weight="0.27142859" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4985694" weight="0.3056338" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49772382" weight="0.2631579" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4985694" weight="0.3042857" />
       <window_info active="true" anchor="bottom" id="Find" order="11" visible="true" weight="0.24698795" />
       <window_info anchor="bottom" id="Build" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.4985694" weight="0.32394367" />
@@ -655,7 +703,8 @@
     <MESSAGE value="增加了微信分享和收藏页面的重绘" />
     <MESSAGE value="微商城架构搭建" />
     <MESSAGE value="微商城首页以及搜索" />
-    <option name="LAST_COMMIT_MESSAGE" value="微商城首页以及搜索" />
+    <MESSAGE value="精品分类" />
+    <option name="LAST_COMMIT_MESSAGE" value="精品分类" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -667,80 +716,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/pages/main/other_dongtai.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="334" column="45" lean-forward="true" selection-start-line="334" selection-start-column="45" selection-end-line="334" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/shoucang/shoucang_list.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="74" column="37" lean-forward="true" selection-start-line="74" selection-start-column="37" selection-end-line="74" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/shoucang/shoucang.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="77" column="44" selection-start-line="77" selection-start-column="44" selection-end-line="77" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/common/test.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="50" column="46" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/common/wxchart.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1515">
-          <caret line="109" column="23" selection-start-line="109" selection-start-column="23" selection-end-line="109" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/user/settings.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3660">
-          <caret line="253" column="55" selection-start-line="253" selection-start-column="55" selection-end-line="253" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/common/app_config.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="87" column="58" selection-start-line="87" selection-start-column="58" selection-end-line="87" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/shoucang/shoucangItem.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="239" column="18" selection-start-line="239" selection-start-column="18" selection-end-line="239" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/shoucang/guanzhu_person.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -1000,18 +975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/common/tinker.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="464" column="1" selection-start-line="464" selection-start-column="1" selection-end-line="524" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-            <element signature="e#19852#20606#0" />
-            <element signature="e#20667#33046#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -1029,13 +992,6 @@
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
@@ -1060,13 +1016,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/microMall/provide/currentIndex.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/microMall/home/searchAfter.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1081,31 +1030,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/microMall/main.dart">
+    <entry file="file:///Library/Flutter/packages/flutter/lib/src/widgets/overlay.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+        <state relative-caret-position="-403">
+          <caret line="60" column="2" selection-start-line="60" selection-start-column="2" selection-end-line="60" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Flutter/packages/flutter/lib/src/material/reorderable_list.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="132" column="32" selection-start-line="132" selection-start-column="32" selection-end-line="132" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Flutter/packages/flutter/lib/src/widgets/drag_target.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="477" column="8" selection-start-line="477" selection-start-column="8" selection-end-line="477" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/common/tinker.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="955" column="13" selection-start-line="955" selection-start-column="13" selection-end-line="955" selection-end-column="13" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#17#0" expanded="true" />
+            <element signature="e#9673#19808#0" />
+            <element signature="e#19852#20606#0" />
+            <element signature="e#30093#30531#0" />
+            <element signature="e#30663#32030#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/microMall/home/index.dart">
+    <entry file="file://$PROJECT_DIR$/lib/microMall/home/classFiledDIsplay.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="65" selection-end-column="3" />
+        <state relative-caret-position="282">
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
-            <element signature="e#491#1837#0" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/microMall/home/details.dart">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/microMall/home/searchBefore.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+        <state relative-caret-position="306">
+          <caret line="70" column="6" selection-start-line="70" selection-start-column="6" selection-end-line="92" selection-end-column="51" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
             <element signature="e#2206#2935#0" />
@@ -1114,10 +1090,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/microMall/home/classFiledDIsplay.dart">
+    <entry file="file://$PROJECT_DIR$/lib/microMall/home/details/DetailsTopArea.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="87" column="31" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
+        <state relative-caret-position="150">
+          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#396#1214#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/microMall/provide/currentIndex.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/microMall/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/microMall/home/details/DetailsExplain.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="117" column="70" selection-start-line="117" selection-start-column="70" selection-end-line="117" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#900#3278#0" />
+            <element signature="e#1212#3259#0" />
+            <element signature="e#3351#4219#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/microMall/home/index.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-498">
+          <caret line="52" column="47" selection-start-line="52" selection-end-line="53" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/microMall/home/details/DetailsWeb.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/microMall/home/productDetails.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="76" column="8" selection-start-line="76" selection-start-column="7" selection-end-line="76" selection-end-column="8" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

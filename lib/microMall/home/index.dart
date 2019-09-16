@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:xiaoheiqun/microMall/home/classFiledDIsplay.dart';
+import 'package:xiaoheiqun/microMall/home/productDetails.dart';
 import 'package:xiaoheiqun/microMall/home/searchBefore.dart';
 
 class HomeIndex extends StatefulWidget {
@@ -130,6 +131,12 @@ class HomeIndexState extends State<HomeIndex> {
                       ),
                     ),
                   );
+                },
+                onTap: (index) {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => productDetails()));
                 },
               ),
               height: 200,

@@ -264,6 +264,13 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_html">
+          <value>
+            <list>
+              <option value="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_html-0.9.9/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_localizations">
           <value>
             <list>
@@ -917,6 +924,7 @@
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_cache_manager-1.1.1/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_cupertino_date_picker-1.0.12/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_easyrefresh-1.2.7/lib" />
+      <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_html-0.9.9/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_page_indicator-0.0.3/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_redux-0.5.3/lib" />
       <root url="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_screenutil-0.6.0/lib" />
