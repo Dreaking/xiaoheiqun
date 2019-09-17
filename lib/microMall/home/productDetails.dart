@@ -19,9 +19,8 @@ class productDetailsState extends State<productDetails> {
 
     final size = MediaQuery.of(context).size;
     // TODO: implement build
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Material(
+      child: Scaffold(
         backgroundColor: Color.fromRGBO(242, 242, 242, 1),
         appBar: PreferredSize(
             child: AppBar(
@@ -76,7 +75,27 @@ class productDetailsState extends State<productDetails> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Icon(Icons.add_shopping_cart),
+                          Stack(
+                            children: <Widget>[
+                              Icon(Icons.add_shopping_cart),
+                              Positioned(
+                                  right: 0,
+                                  child: Container(
+                                    width: 10,
+                                    alignment: Alignment.center,
+                                    height: 10,
+                                    decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Text(
+                                      "1",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 8),
+                                    ),
+                                  ))
+                            ],
+                          ),
                           Text("购物车")
                         ],
                       ),

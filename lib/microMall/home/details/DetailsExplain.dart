@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provide/provide.dart';
+import 'package:xiaoheiqun/microMall/home/details/Evaluate.dart';
 import 'package:xiaoheiqun/microMall/provide/currentIndex.dart';
 
 class DetailsExplain extends StatelessWidget {
@@ -110,21 +112,27 @@ class DetailsExplain extends StatelessWidget {
           ), //服务
           Padding(padding: EdgeInsets.only(top: ScreenUtil().setWidth(40))),
 
-          Container(
-            decoration: BoxDecoration(
-                border: Border(
-                    top: BorderSide(
-                        width: 10, color: Color.fromRGBO(242, 242, 242, 1)))),
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Container(
-                  child: Text("评价(0)"),
-                ),
-                Icon(Icons.keyboard_arrow_right)
-              ],
+          GestureDetector(
+            child: Container(
+              decoration: BoxDecoration(
+                  border: Border(
+                      top: BorderSide(
+                          width: 10, color: Color.fromRGBO(242, 242, 242, 1)))),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    child: Text("评价(0)"),
+                  ),
+                  Icon(Icons.keyboard_arrow_right)
+                ],
+              ),
             ),
+            onTap: () {
+              Navigator.push(context,
+                  CupertinoPageRoute(builder: (context) => Evaluate()));
+            },
           )
         ],
       ),

@@ -29,9 +29,8 @@ class MicroMall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Provide<CurrentIndexProvide>(builder: (context, child, val) {
+    return Material(
+      child: Provide<CurrentIndexProvide>(builder: (context, child, val) {
         int currentIndex =
             Provide.value<CurrentIndexProvide>(context).currentIndex;
         return Scaffold(
