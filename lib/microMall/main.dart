@@ -13,7 +13,7 @@ class MicroMall extends StatelessWidget {
   final List<BottomNavigationBarItem> bottomTabs = [
     BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), title: Text('首页')),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.search), title: Text('分类')),
+        icon: Icon(CupertinoIcons.search), title: Text('订单')),
     BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.shopping_cart), title: Text('购物车')),
     BottomNavigationBarItem(

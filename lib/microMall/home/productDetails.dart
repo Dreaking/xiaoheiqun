@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:xiaoheiqun/microMall/home/details/DetailsExplain.dart';
 import 'package:xiaoheiqun/microMall/home/details/DetailsTopArea.dart';
 import 'package:xiaoheiqun/microMall/home/details/DetailsWeb.dart';
+import 'package:xiaoheiqun/microMall/order/orderSettlement.dart';
 
 class productDetails extends StatefulWidget {
   @override
@@ -119,16 +121,25 @@ class productDetailsState extends State<productDetails> {
                               ),
                               alignment: Alignment.center,
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.deepOrange,
-                                  borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(20),
-                                      bottomRight: Radius.circular(20))),
-                              width: ScreenUtil().setWidth(300),
-                              child: Text("立即购买",
-                                  style: TextStyle(color: Colors.white)),
-                              alignment: Alignment.center,
+                            GestureDetector(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.deepOrange,
+                                    borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        bottomRight: Radius.circular(20))),
+                                width: ScreenUtil().setWidth(300),
+                                child: Text("立即购买",
+                                    style: TextStyle(color: Colors.white)),
+                                alignment: Alignment.center,
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (context) =>
+                                            orderSettlement()));
+                              },
                             )
                           ],
                         ),
