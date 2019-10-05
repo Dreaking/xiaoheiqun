@@ -18,7 +18,7 @@ class downloadState extends State<download> {
         appBar: AppBar(
             elevation: 0,
             title: Text(
-              "下载小黑裙",
+              "下载小黄鱼",
               style:
                   TextStyle(color: Colors.black, fontWeight: FontWeight.normal),
             ),
@@ -41,7 +41,7 @@ class downloadState extends State<download> {
               Container(
                 margin: EdgeInsets.symmetric(vertical: 50),
                 child: Image.asset(
-                  "image/logo@2x.png",
+                  "image/logo@2x.jpg",
                   width: 60,
                   height: 60,
                 ),

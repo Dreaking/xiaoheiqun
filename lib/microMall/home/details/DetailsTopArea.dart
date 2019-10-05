@@ -8,7 +8,6 @@ class DetailsTopArea extends StatelessWidget {
     // TODO: implement build
     return Container(
       color: Colors.white,
-      height: ScreenUtil().setHeight(1455),
       child: Column(
         children: <Widget>[
           Container(

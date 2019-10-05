@@ -17,49 +17,58 @@ class HomeIndex extends StatefulWidget {
 
 class HomeIndexState extends State<HomeIndex> {
   List<Widget> listWidget = new List();
+  Set<String> typeLtist = {"豆浆机", ""};
+
   //加载数据
   Widget _wrapList() {
     for (double i = 0; i < 9; i++) {
-      listWidget.add(InkWell(
+      listWidget.add(
+        InkWell(
           child: Container(
-        decoration: BoxDecoration(
-            color: Color(0xffffffff),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black12,
-                blurRadius: 5.0,
-              ),
-            ],
-            borderRadius: BorderRadius.circular(10)),
-        width: ScreenUtil().setWidth(480),
-        height: 235,
-        padding: EdgeInsets.all(10.0),
-        margin: EdgeInsets.only(
-            bottom: 10.0,
-            left: double.parse((i % 2.0).toString()) == 0 ? 0 : 10),
-        child: Column(
-          children: <Widget>[
-            Image.asset(
-              "image/img5.png",
-              width: ScreenUtil().setWidth(375),
-            ),
-            Padding(padding: EdgeInsets.only(top: 5)),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('『粉丝限量20台』九阳家用电蒸锅304不锈钢蒸笼'),
-                Text(
-                  '￥299',
-                  style: TextStyle(
-                    color: Colors.deepOrange,
-//                      decoration: TextDecoration.lineThrough
+            decoration: BoxDecoration(
+                color: Color(0xffffffff),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 5.0,
                   ),
+                ],
+                borderRadius: BorderRadius.circular(10)),
+            width: ScreenUtil().setWidth(480),
+            height: 235,
+            padding: EdgeInsets.all(10.0),
+            margin: EdgeInsets.only(
+                bottom: 10.0,
+                left: double.parse((i % 2.0).toString()) == 0 ? 0 : 10),
+            child: Column(
+              children: <Widget>[
+                Image.asset(
+                  "image/img5.png",
+                  width: ScreenUtil().setWidth(375),
+                ),
+                Padding(padding: EdgeInsets.only(top: 5)),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text('『粉丝限量20台』九阳家用电蒸锅304不锈钢蒸笼'),
+                    Text(
+                      '￥299',
+                      style: TextStyle(
+                        color: Colors.deepOrange,
+//                      decoration: TextDecoration.lineThrough
+                      ),
+                    )
+                  ],
                 )
               ],
-            )
-          ],
+            ),
+          ),
+          onTap: () {
+            Navigator.push(context,
+                CupertinoPageRoute(builder: (context) => productDetails()));
+          },
         ),
-      )));
+      );
     }
 
     return Wrap(
@@ -70,6 +79,11 @@ class HomeIndexState extends State<HomeIndex> {
 
   GlobalKey<RefreshFooterState> _footerKey =
       new GlobalKey<RefreshFooterState>();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -175,7 +189,7 @@ class HomeIndexState extends State<HomeIndex> {
                               children: <Widget>[
                                 Icon(Icons.shop),
                                 Padding(padding: EdgeInsets.only(top: 10)),
-                                Text("商城$index")
+                                Text("分类$index")
                               ],
                             ),
                             onTap: () {
@@ -197,15 +211,23 @@ class HomeIndexState extends State<HomeIndex> {
                     color: Color.fromRGBO(242, 241, 246, 1),
                   ),
                 ), //间隙
-                Container(
-                  width: size.width,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      image: DecorationImage(
-                          image: new AssetImage("image/banner2.png"),
-                          fit: BoxFit.cover)),
-                  margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  height: 120,
+                GestureDetector(
+                  child: Container(
+                    width: size.width,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        image: DecorationImage(
+                            image: new AssetImage("image/banner2.png"),
+                            fit: BoxFit.cover)),
+                    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    height: 120,
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => productDetails()));
+                  },
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 0),
@@ -242,19 +264,27 @@ class HomeIndexState extends State<HomeIndex> {
                       itemCount: 8,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
-                          width: 280,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: new AssetImage('image/img5.png'), // 图片数组
-                              fit: BoxFit.cover,
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10.0),
+                        return GestureDetector(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            width: 280,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: new AssetImage('image/img5.png'), // 图片数组
+                                fit: BoxFit.cover,
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10.0),
+                              ),
                             ),
                           ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) => productDetails()));
+                          },
                         );
                       }),
                 ), //选择单品广告
@@ -292,40 +322,48 @@ class HomeIndexState extends State<HomeIndex> {
                       itemCount: 8,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return Container(
-                          margin: EdgeInsets.all(5),
-                          width: 150,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(5.0),
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black12,
-                                  blurRadius: 5,
+                        return GestureDetector(
+                          child: Container(
+                            margin: EdgeInsets.all(5),
+                            width: 150,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(5.0),
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 5,
+                                  )
+                                ]),
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  width: 120,
+                                  height: 140,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.asset("image/img5.png"),
+                                  ),
+                                ),
+                                Container(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text("￥899.00"),
+                                      Text("￥1599.00")
+                                    ],
+                                  ),
                                 )
-                              ]),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                width: 120,
-                                height: 140,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset("image/img5.png"),
-                                ),
-                              ),
-                              Container(
-                                child: Column(
-                                  children: <Widget>[
-                                    Text("￥899.00"),
-                                    Text("￥1599.00")
-                                  ],
-                                ),
-                              )
-                            ],
+                              ],
+                            ),
                           ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) => productDetails()));
+                          },
                         );
                       }),
                 ), //剁手灵感
@@ -345,17 +383,25 @@ class HomeIndexState extends State<HomeIndex> {
                         color: Color.fromRGBO(238, 121, 44, 1), fontSize: 17),
                   ),
                 ), //限量购物专区
-                Container(
-                  height: 140,
-                  width: size.width,
-                  padding: EdgeInsets.symmetric(horizontal: 15),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      "image/banner1.png",
-                      fit: BoxFit.fill,
-                    ),
+                GestureDetector(
+                  child: Container(
+                    height: 140,
+                    width: size.width,
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        "image/banner1.png",
+                        fit: BoxFit.fill,
+                      ),
+                    ), //图片圆角剪切
                   ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => productDetails()));
+                  },
                 ), //广告
                 Padding(padding: EdgeInsets.only(top: 10)),
                 Center(
@@ -367,46 +413,57 @@ class HomeIndexState extends State<HomeIndex> {
               print('开始加载更多');
               for (double i = 0; i < 9; i++) {
                 setState(() {
-                  listWidget.add(InkWell(
+                  listWidget.add(
+                    InkWell(
                       child: Container(
-                    decoration: BoxDecoration(
-                        color: Color(0xffffffff),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 5.0,
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(10)),
-                    width: ScreenUtil().setWidth(480),
-                    height: 235,
-                    padding: EdgeInsets.all(10.0),
-                    margin: EdgeInsets.only(
-                        bottom: 10.0,
-                        left: double.parse((i % 2.0).toString()) == 0 ? 0 : 10),
-                    child: Column(
-                      children: <Widget>[
-                        Image.asset(
-                          "image/img5.png",
-                          width: ScreenUtil().setWidth(375),
-                        ),
-                        Padding(padding: EdgeInsets.only(top: 5)),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text('『粉丝限量20台』九阳家用电蒸锅304不锈钢蒸笼'),
-                            Text(
-                              '￥299',
-                              style: TextStyle(
-                                color: Colors.deepOrange,
-//                      decoration: TextDecoration.lineThrough
+                        decoration: BoxDecoration(
+                            color: Color(0xffffffff),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 5.0,
                               ),
+                            ],
+                            borderRadius: BorderRadius.circular(10)),
+                        width: ScreenUtil().setWidth(480),
+                        height: 235,
+                        padding: EdgeInsets.all(10.0),
+                        margin: EdgeInsets.only(
+                            bottom: 10.0,
+                            left: double.parse((i % 2.0).toString()) == 0
+                                ? 0
+                                : 10),
+                        child: Column(
+                          children: <Widget>[
+                            Image.asset(
+                              "image/img5.png",
+                              width: ScreenUtil().setWidth(375),
+                            ),
+                            Padding(padding: EdgeInsets.only(top: 5)),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text('『粉丝限量20台』九阳家用电蒸锅304不锈钢蒸笼'),
+                                Text(
+                                  '￥299',
+                                  style: TextStyle(
+                                    color: Colors.deepOrange,
+//                      decoration: TextDecoration.lineThrough
+                                  ),
+                                )
+                              ],
                             )
                           ],
-                        )
-                      ],
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => productDetails()));
+                      },
                     ),
-                  )));
+                  );
                 });
               }
             },

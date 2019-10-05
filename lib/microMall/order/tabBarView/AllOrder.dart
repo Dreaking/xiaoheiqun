@@ -23,7 +23,6 @@ class AllOrderState extends State<AllOrder> {
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7), color: Colors.white),
-              height: ScreenUtil().setHeight(580),
               margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
               child: Column(
                 children: <Widget>[

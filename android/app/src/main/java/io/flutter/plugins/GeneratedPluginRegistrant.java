@@ -1,10 +1,11 @@
 package io.flutter.plugins;
 
 import io.flutter.plugin.common.PluginRegistry;
+import com.example.citypickers.CityPickersPlugin;
 import com.dooboolab.fluttersound.FlutterSoundPlugin;
+import com.flutter_webview_plugin.FlutterWebviewPlugin;
 import com.jarvan.fluwx.FluwxPlugin;
 import io.flutter.plugins.imagepicker.ImagePickerPlugin;
-import com.jiguang.jpush.JPushPlugin;
 import io.flutter.plugins.packageinfo.PackageInfoPlugin;
 import io.flutter.plugins.pathprovider.PathProviderPlugin;
 import com.example.rongcloud_im_plugin.RongcloudImPlugin;
@@ -23,10 +24,11 @@ public final class GeneratedPluginRegistrant {
     if (alreadyRegisteredWith(registry)) {
       return;
     }
+    CityPickersPlugin.registerWith(registry.registrarFor("com.example.citypickers.CityPickersPlugin"));
     FlutterSoundPlugin.registerWith(registry.registrarFor("com.dooboolab.fluttersound.FlutterSoundPlugin"));
+    FlutterWebviewPlugin.registerWith(registry.registrarFor("com.flutter_webview_plugin.FlutterWebviewPlugin"));
     FluwxPlugin.registerWith(registry.registrarFor("com.jarvan.fluwx.FluwxPlugin"));
     ImagePickerPlugin.registerWith(registry.registrarFor("io.flutter.plugins.imagepicker.ImagePickerPlugin"));
-    JPushPlugin.registerWith(registry.registrarFor("com.jiguang.jpush.JPushPlugin"));
     PackageInfoPlugin.registerWith(registry.registrarFor("io.flutter.plugins.packageinfo.PackageInfoPlugin"));
     PathProviderPlugin.registerWith(registry.registrarFor("io.flutter.plugins.pathprovider.PathProviderPlugin"));
     RongcloudImPlugin.registerWith(registry.registrarFor("com.example.rongcloud_im_plugin.RongcloudImPlugin"));

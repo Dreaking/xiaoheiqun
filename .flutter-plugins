@@ -1,7 +1,8 @@
+city_pickers=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/city_pickers-0.1.25/
 flutter_sound=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_sound-1.4.2/
+flutter_webview_plugin=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_webview_plugin-0.3.8/
 fluwx=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/
-image_picker=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/image_picker-0.4.12+1/
-jpush_flutter=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/jpush_flutter-0.0.13/
+image_picker=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/image_picker-0.6.1+4/
 package_info=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.3.2+1/
 path_provider=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.2.0/
 rongcloud_im_plugin=/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/

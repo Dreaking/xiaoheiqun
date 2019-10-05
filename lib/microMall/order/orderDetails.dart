@@ -21,7 +21,10 @@ class orderDetailsState extends State<orderDetails> {
       appBar: PreferredSize(
           child: AppBar(
             elevation: 0,
-            title: Text("订单详情"),
+            title: Text(
+              "订单详情",
+              style: TextStyle(fontSize: 18),
+            ),
           ),
           preferredSize: Size(size.width, 50)),
       body: Stack(
@@ -95,7 +98,6 @@ class orderDetailsState extends State<orderDetails> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     color: Colors.white),
-                height: ScreenUtil().setHeight(650),
                 margin: EdgeInsets.only(
                     left: ScreenUtil().setWidth(35),
                     right: ScreenUtil().setWidth(35),

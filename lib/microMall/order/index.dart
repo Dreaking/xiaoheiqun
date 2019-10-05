@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:xiaoheiqun/microMall/order/tabBarView/AllOrder.dart';
@@ -30,13 +32,20 @@ class OrderIndexState extends State<OrderIndex> with TickerProviderStateMixin {
     return Scaffold(
       backgroundColor: Color.fromRGBO(242, 242, 242, 1),
       appBar: PreferredSize(
-          child: AppBar(
-            leading: Container(),
-            title: Text(
-              "我的订单",
-              style: TextStyle(fontWeight: FontWeight.normal),
+          child: Container(
+            alignment: Alignment.centerLeft,
+            color: Colors.white,
+            margin: EdgeInsets.only(
+              top: MediaQueryData.fromWindow(window).padding.top,
             ),
-            elevation: 0,
+            padding: EdgeInsets.only(
+              left: 10,
+            ),
+            child: Text(
+              "我的订单",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            height: 50,
           ),
           preferredSize: Size(size.width, 50)),
       body: Column(

@@ -30,7 +30,7 @@ class orderSettlementState extends State<orderSettlement> {
             elevation: 0,
             title: Text(
               "订单结算",
-              style: TextStyle(fontWeight: FontWeight.normal),
+              style: TextStyle(fontWeight: FontWeight.normal, fontSize: 18),
             ),
           ),
           preferredSize: Size(size.width, 50)),

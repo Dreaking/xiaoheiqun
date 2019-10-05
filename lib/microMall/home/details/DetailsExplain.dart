@@ -13,7 +13,6 @@ class DetailsExplain extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 10),
       color: Colors.white,
-      height: ScreenUtil().setHeight(400),
       child: Column(
         children: <Widget>[
           Container(

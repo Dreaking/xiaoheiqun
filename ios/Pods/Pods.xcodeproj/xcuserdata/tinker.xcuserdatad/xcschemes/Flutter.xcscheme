@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5044EAEB457ABFD79CEAB2B7F3FB1B9B"
+               BlueprintIdentifier = "A32ADCA89FB7A9F2B1AA2FFE4668EAD3"
                BuildableName = "Flutter"
                BlueprintName = "Flutter"
                ReferencedContainer = "container:Pods.xcodeproj">

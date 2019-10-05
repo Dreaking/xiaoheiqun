@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
-	<string>xiaoheiqun</string>
+	<string>我的小黄鱼</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -26,32 +26,26 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>alipay</string>
+			<string>weixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>alisdkdemo0</string>
+				<string>wx7a3f09a16d6d1068</string>
 			</array>
 		</dict>
 	</array>
-		<key>CFBundleURLTypes</key>
-	<array>
-    		<dict>
-    			<key>CFBundleTypeRole</key>
-    			<string>Editor</string>
-    			<key>CFBundleURLName</key>
-    			<string>weixin</string>
-    			<key>CFBundleURLSchemes</key>
-    			<array>
-    				<string>wx7a3f09a16d6d1068</string>
-    			</array>
-    		</dict>
-    	</array>
-    	<key>LSApplicationQueriesSchemes</key>
-        	<array>
-        		<string>weixin</string>
-        	</array>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+        <key>NSAllowsArbitraryLoadsInWebContent</key>
+        <true/>
+    </dict>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>weixin</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>

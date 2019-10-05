@@ -371,7 +371,7 @@ class UserIndexState2 extends State<UserIndex2>
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             new Text(
-                              "下载小黑裙",
+                              "下载小黄鱼",
                               style: Theme.of(context).textTheme.subhead,
                             ),
                             new Image.asset(

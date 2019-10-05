@@ -172,7 +172,7 @@ class SettingsState extends State<Settings> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Text(
-                              "关于小黑裙",
+                              "关于小黄鱼",
                               style: TextStyle(fontSize: 15),
                             ),
                             Image.asset(

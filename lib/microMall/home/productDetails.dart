@@ -18,7 +18,6 @@ class productDetailsState extends State<productDetails> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 1080, height: 2340)..init(context);
-
     final size = MediaQuery.of(context).size;
     // TODO: implement build
     return Material(
@@ -43,7 +42,7 @@ class productDetailsState extends State<productDetails> {
                 style: TextStyle(
                     fontWeight: FontWeight.normal,
                     color: Colors.black,
-                    fontSize: 16),
+                    fontSize: 18),
               ),
             ),
             preferredSize: Size(size.width, 50)),

@@ -20,7 +20,7 @@ class aboutState extends State<about> {
           backgroundColor: Colors.white,
           elevation: 0,
           title: Text(
-            "关于小黑裙",
+            "关于小黄鱼",
             style:
                 TextStyle(color: Colors.black, fontWeight: FontWeight.normal),
           ),
@@ -43,7 +43,7 @@ class aboutState extends State<about> {
                 children: <Widget>[
                   Container(
                     child: Image.asset(
-                      "image/logo@2x.png",
+                      "image/logo@2x.jpg",
                       width: 60,
                       height: 60,
                     ),
@@ -52,7 +52,7 @@ class aboutState extends State<about> {
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 30),
                     child: Text(
-                      "小黑裙   V1.0.4",
+                      "小黄鱼   V1.0.4",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     ),
@@ -60,7 +60,7 @@ class aboutState extends State<about> {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
-                        "        小黑裙是一款火爆的同城社交软件，快来和你附近的TA聊天、约会、交友吧。同时还可以发送私信、图片、语音以及动态等多种聊天方式，让交友更加多样化。"),
+                        "        小黄鱼是一款火爆的同城社交软件，快来和你附近的TA聊天、约会、交友吧。同时还可以发送私信、图片、语音以及动态等多种聊天方式，让交友更加多样化。"),
                   )
                 ],
               ),
@@ -94,7 +94,7 @@ class aboutState extends State<about> {
                       children: <Widget>[
                         Text("官网"),
                         Text(
-                          "wwww.jiashilan.com",
+                          "www.fuful.com",
                           style: TextStyle(
                               color: Color.fromRGBO(162, 162, 174, 1)),
                         )
@@ -138,7 +138,7 @@ class aboutState extends State<about> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          "嘉兴嘉世蓝信息技术有限公司  版权所有",
+                          "山东福满网络科技有限公司  版权所有",
                           style: TextStyle(
                               fontSize: 11,
                               color: Color.fromRGBO(162, 162, 174, 1)),

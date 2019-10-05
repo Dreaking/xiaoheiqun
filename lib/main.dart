@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jpush_flutter/jpush_flutter.dart';
+//import 'package:jpush_flutter/jpush_flutter.dart';
 import 'package:provide/provide.dart';
 import 'package:rongcloud_im_plugin/rongcloud_im_plugin.dart';
 import 'package:xiaoheiqun/common/app_config.dart';
@@ -34,75 +34,77 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-//  static const platform = const MethodChannel('com.fuman.flutter/u_push');
-//
-//  Future<Null> _getBatteryLevel() async {
-//    final String result = await platform.invokeMethod('init');
-////    Tinker.toast(result);
-//  }
-  final JPush jpush = new JPush();
-  String debugLable = 'Unknown';
+  static const platform = const MethodChannel('com.fuman.flutter/u_push');
 
-  Future<void> initPlatformState() async {
-    String platformVersion;
-
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    jpush.getRegistrationID().then((rid) {
-      setState(() {
-        debugLable = "flutter getRegistrationID: $rid";
-      });
-      print("tokenId:");
-      print(rid);
-    });
-
-    jpush.setup(
-      appKey: "7861397af19cbdeaef2afa47",
-      channel: "theChannel",
-      production: false,
-      debug: true,
-    );
-    jpush.applyPushAuthority(
-        new NotificationSettingsIOS(sound: true, alert: true, badge: true));
-
-    try {
-      jpush.addEventHandler(
-        onReceiveNotification: (Map<String, dynamic> message) async {
-          print("flutter onReceiveNotification: $message");
-          setState(() {
-            debugLable = "flutter onReceiveNotification: $message";
-          });
-        },
-        onOpenNotification: (Map<String, dynamic> message) async {
-          print("flutter onOpenNotification: $message");
-          setState(() {
-            debugLable = "flutter onOpenNotification: $message";
-          });
-        },
-        onReceiveMessage: (Map<String, dynamic> message) async {
-          print("flutter onReceiveMessage: $message");
-          setState(() {
-            debugLable = "flutter onReceiveMessage: $message";
-          });
-        },
-      );
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      debugLable = platformVersion;
-    });
+  Future<Null> _getBatteryLevel() async {
+    final String result = await platform.invokeMethod('init');
+//    Tinker.toast(result);
   }
+
+//  final JPush jpush = new JPush();
+  String debugLable = 'Unknown';
+  //极光推送
+//  Future<void> initPlatformState() async {
+//    String platformVersion;
+//
+//    // Platform messages may fail, so we use a try/catch PlatformException.
+//    jpush.getRegistrationID().then((rid) {
+//      setState(() {
+//        debugLable = "flutter getRegistrationID: $rid";
+//      });
+//      print("tokenId:");
+//      print(rid);
+//    });
+//
+//    jpush.setup(
+//      appKey: "7861397af19cbdeaef2afa47",
+//      channel: "theChannel",
+//      production: false,
+//      debug: true,
+//    );
+//    jpush.applyPushAuthority(
+//        new NotificationSettingsIOS(sound: true, alert: true, badge: true));
+//
+//    try {
+//      jpush.addEventHandler(
+//        onReceiveNotification: (Map<String, dynamic> message) async {
+//          print("flutter onReceiveNotification: $message");
+//          setState(() {
+//            debugLable = "flutter onReceiveNotification: $message";
+//          });
+//        },
+//        onOpenNotification: (Map<String, dynamic> message) async {
+//          print("flutter onOpenNotification: $message");
+//          setState(() {
+//            debugLable = "flutter onOpenNotification: $message";
+//          });
+//        },
+//        onReceiveMessage: (Map<String, dynamic> message) async {
+//          print("flutter onReceiveMessage: $message");
+//          setState(() {
+//            debugLable = "flutter onReceiveMessage: $message";
+//          });
+//        },
+//      );
+//    } on PlatformException {
+//      platformVersion = 'Failed to get platform version.';
+//    }
+//
+//    // If the widget was removed from the tree while the asynchronous platform
+//    // message was in flight, we want to discard the reply rather than calling
+//    // setState to update our non-existent appearance.
+//    if (!mounted) return;
+//
+//    setState(() {
+//      debugLable = platformVersion;
+//    });
+//  }
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    _getBatteryLevel();
+//    initPlatformState();
     initRongyun();
     RongyunListener();
   }
@@ -171,7 +173,7 @@ class MyAppState extends State<MyApp> {
       print(JoinChat);
       print("判断是否进入chat");
       if (JoinChat == 1) {
-        tuisong(msg);
+//        tuisong(msg);
       }
     };
   }
@@ -187,23 +189,23 @@ class MyAppState extends State<MyApp> {
     });
   }
 
-  void tuisong(push) {
-    var fireDate = DateTime.fromMillisecondsSinceEpoch(
-        DateTime.now().millisecondsSinceEpoch + 3000);
-    Tinker.queryUserInfo(push.targetId, (data) {
-      var localNotification = LocalNotification(
-          id: 234,
-          title: data["userName"],
-          buildId: 1,
-          content: push.content.content.toString(),
-          fireTime: fireDate,
-          subtitle: 'notification subtitle', // 该参数只有在 iOS 有效
-          badge: 5, // 该参数只有在 iOS 有效
-          extra: {"fa": "0"} // 设置 extras ，extras 需要是 Map<String, String>
-          );
-      jpush.sendLocalNotification(localNotification).then((res) {});
-    });
-  }
+//  void tuisong(push) {
+//    var fireDate = DateTime.fromMillisecondsSinceEpoch(
+//        DateTime.now().millisecondsSinceEpoch + 3000);
+//    Tinker.queryUserInfo(push.targetId, (data) {
+//      var localNotification = LocalNotification(
+//          id: 234,
+//          title: data["userName"],
+//          buildId: 1,
+//          content: push.content.content.toString(),
+//          fireTime: fireDate,
+//          subtitle: 'notification subtitle', // 该参数只有在 iOS 有效
+//          badge: 5, // 该参数只有在 iOS 有效
+//          extra: {"fa": "0"} // 设置 extras ，extras 需要是 Map<String, String>
+//          );
+//      jpush.sendLocalNotification(localNotification).then((res) {});
+//    });
+//  }
 
   @override
   Widget build(BuildContext context) {

@@ -19,27 +19,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>JCore.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>JPush.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Runner.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>RongCloudIM.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>UMCAnalytics.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -54,7 +39,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>city_pickers.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>flutter_sound.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>flutter_webview_plugin.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -65,11 +60,6 @@
 			<false/>
 		</dict>
 		<key>image_picker.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>jpush_flutter.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

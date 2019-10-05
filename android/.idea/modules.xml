@@ -3,19 +3,21 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
-      <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.1.2/android/android-url_launcher.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.1.2/android/android-url_launcher.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/android/fluwx.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-0.6.3/android/fluwx.iml" />
-      <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/image_picker-0.4.12+1/android/image_picker.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/image_picker-0.4.12+1/android/image_picker.iml" />
-      <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/jpush_flutter-0.0.13/android/jpush_flutter.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/jpush_flutter-0.0.13/android/jpush_flutter.iml" />
+      <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/city_pickers-0.1.25/android/city_pickers.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/city_pickers-0.1.25/android/city_pickers.iml" />
+      <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_sound-1.4.2/android/flutter_sound.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_sound-1.4.2/android/flutter_sound.iml" />
+      <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_webview_plugin-0.3.8/android/flutter_webview_plugin.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_webview_plugin-0.3.8/android/flutter_webview_plugin.iml" />
+      <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/android/fluwx.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/fluwx-1.0.4/android/fluwx.iml" />
+      <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/image_picker-0.6.1+4/android/image_picker.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/image_picker-0.6.1+4/android/image_picker.iml" />
       <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.3.2+1/android/package_info.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.3.2+1/android/package_info.iml" />
       <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.2.0/android/path_provider.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.2.0/android/path_provider.iml" />
       <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/android/rongcloud_im_plugin.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/rongcloud_im_plugin-0.9.5/android/rongcloud_im_plugin.iml" />
       <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/screen-0.0.5/android/screen.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/screen-0.0.5/android/screen.iml" />
       <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.3+4/android/shared_preferences.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.3+4/android/shared_preferences.iml" />
-      <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.6+3/android/sqflite.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.6+3/android/sqflite.iml" />
+      <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.6+4/android/sqflite.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.6+4/android/sqflite.iml" />
       <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/tobias-1.1.0+1/android/tobias.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/tobias-1.1.0+1/android/tobias.iml" />
-      <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.1+6/android/video_player.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.1+6/android/video_player.iml" />
+      <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.1.2/android/url_launcher.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.1.2/android/url_launcher.iml" />
+      <module fileurl="file:///Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.2/android/video_player.iml" filepath="/Library/Flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.2/android/video_player.iml" />
     </modules>
   </component>
 </project>

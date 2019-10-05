@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:xiaoheiqun/common/app_config.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
@@ -259,7 +260,18 @@ class MainIndexState extends State<MainIndex>
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Material(
+    return
+//      new MaterialApp(
+//      routes: {
+//        "/": (_) => new WebviewScaffold(
+//              url: "https://www.baidu.com",
+//              appBar: new AppBar(
+//                title: new Text("Widget webview"),
+//              ),
+//            ),
+//      },
+//    );
+        Material(
       child: Scaffold(
           appBar: PreferredSize(
               child: AppBar(
@@ -288,7 +300,7 @@ class MainIndexState extends State<MainIndex>
                 actions: <Widget>[
                   InkWell(
                     child: Container(
-                      child: Icon(Icons.build),
+                      child: Icon(Icons.shop),
                       margin: EdgeInsets.symmetric(horizontal: 10),
                     ),
                     onTap: () {
@@ -317,15 +329,16 @@ class MainIndexState extends State<MainIndex>
           //ListView列表
           ),
     );
-//      DefaultTabController(
-//        length: _tabbarTitle.length,
-//        child: Scaffold(
-//          body: NestedScrollView(
-//            controller: _scrollViewController,
-//            headerSliverBuilder: _headerSliverBuilder,
-//            body: _createTabbarView(),
-//          ),
-//        ));
+
+    DefaultTabController(
+        length: _tabbarTitle.length,
+        child: Scaffold(
+          body: NestedScrollView(
+            controller: _scrollViewController,
+            headerSliverBuilder: _headerSliverBuilder,
+            body: _createTabbarView(),
+          ),
+        ));
   }
 
   //////////////////////////////
