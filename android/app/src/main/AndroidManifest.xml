@@ -28,7 +28,7 @@
          FlutterApplication and put your custom class here. -->
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:name="io.flutter.app.FlutterApplication"
+        android:name=".MyApplication"
         android:label="我的小黄鱼"
         android:allowBackup="true"
         android:supportsRtl="true"

@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:xiaoheiqun/common/app_config.dart';
 import 'package:xiaoheiqun/common/events_bus.dart';
 import 'package:xiaoheiqun/common/tinker.dart';
@@ -164,6 +165,8 @@ class RefreshState extends State<Refresh> {
 
   bool get wantKeepAlive => true;
   bool slide = false;
+  GlobalKey<RefreshFooterState> _footerKey =
+      new GlobalKey<RefreshFooterState>();
 
   @override
   Widget build(BuildContext context) {
@@ -186,39 +189,50 @@ class RefreshState extends State<Refresh> {
 //          return true;
 //        },
 //        child:
-        RefreshIndicator(
-            child: movies == null
-                ? Center(child: CircularProgressIndicator())
-                : movies.toString() == "[]"
-                    ? Center(
-                        child: Text("暂无数据"),
-                      )
-                    : ListView.builder(
+        EasyRefresh(
+      refreshFooter: ClassicsFooter(
+          key: _footerKey,
+          bgColor: Colors.white,
+          textColor: Colors.pink,
+          moreInfoColor: Colors.pink,
+          showMore: true,
+          noMoreText: '',
+          moreInfo: '加载中',
+          loadReadyText: '上拉加载....'),
+      child: movies == null
+          ? Center(child: CircularProgressIndicator())
+          : movies.toString() == "[]"
+              ? Center(
+                  child: Text("暂无数据"),
+                )
+              : ListView.builder(
 //                        shrinkWrap: true,
-                        padding: EdgeInsets.only(top: 5),
+                  padding: EdgeInsets.only(top: 5),
 //                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: movies.length + 2,
-                        itemBuilder: (BuildContext context, int index) {
-                          if (index == 0) {
-                            return userId == null
-                                ? Container()
-                                : topRecommender();
-                          } else if (index == 2) {
-                            return userId == null
-                                ? Container()
-                                : centerRecommender();
-                          } else {
-                            int n;
-                            if (index > 2) {
-                              n = index - 2;
-                            } else {
-                              n = index - 1;
-                            }
-                            return DongtaiItem(movies[n]); //返回单个Item项目
-                          }
-                        },
-                      ),
-            onRefresh: refresh);
+                  itemCount: movies.length + 2,
+                  itemBuilder: (BuildContext context, int index) {
+                    if (index == 0) {
+                      return userId == null ? Container() : topRecommender();
+                    } else if (index == 2) {
+                      return userId == null ? Container() : centerRecommender();
+                    } else {
+                      int n;
+                      if (index > 2) {
+                        n = index - 2;
+                      } else {
+                        n = index - 1;
+                      }
+                      return DongtaiItem(movies[n]); //返回单个Item项目
+                    }
+                  },
+                ),
+      loadMore: () async {
+        print('开始加载更多');
+        for (double i = 0; i < 9; i++) {
+          _getMoretEvent();
+        }
+      },
+    );
   }
 
   Widget topRecommender() {

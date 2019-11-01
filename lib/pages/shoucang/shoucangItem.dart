@@ -188,18 +188,21 @@ class ContentState extends State<Content> {
   } //收藏功能的实现
 
   List<Widget> Boxs() => List.generate(widget.animate.img.length, (index) {
-        return CachedNetworkImage(
-          imageUrl: AppConfig.AJAX_IMG_SERVER + widget.animate.img[index],
-          width: 50,
-          height: 50,
-          fit: BoxFit.cover,
-        );
+        print(widget.animate.img[index]);
+        print("aaaaccccc");
+        if (widget.animate.img[index] != null) {
+          return CachedNetworkImage(
+            imageUrl: AppConfig.AJAX_IMG_SERVER + widget.animate.img[index],
+            width: 50,
+            height: 50,
+            fit: BoxFit.cover,
+          );
+        }
+        return Container();
       });
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final width = size.width;
     // TODO: implement build
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,

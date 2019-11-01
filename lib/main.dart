@@ -35,9 +35,12 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp> {
   static const platform = const MethodChannel('com.fuman.flutter/u_push');
-
+  static const platform1 = const MethodChannel('com.fuman.flutter/alias');
   Future<Null> _getBatteryLevel() async {
     final String result = await platform.invokeMethod('init');
+    print("注册完成");
+    final String result1 = await platform.invokeMethod('getBatteryLevel');
+
 //    Tinker.toast(result);
   }
 
@@ -105,8 +108,8 @@ class MyAppState extends State<MyApp> {
     super.initState();
     _getBatteryLevel();
 //    initPlatformState();
-    initRongyun();
-    RongyunListener();
+//    initRongyun();
+//    RongyunListener();
   }
 
   Future initRongyun() async {

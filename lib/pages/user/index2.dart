@@ -13,6 +13,7 @@ import 'package:xiaoheiqun/pages/user/balance.dart';
 import 'package:xiaoheiqun/pages/user/download.dart';
 import 'package:xiaoheiqun/pages/user/friendInvitation.dart';
 import 'package:xiaoheiqun/pages/user/index2Left.dart';
+import 'package:xiaoheiqun/pages/user/pay.dart';
 import 'package:xiaoheiqun/pages/user/person_data.dart';
 import 'package:xiaoheiqun/pages/user/release.dart';
 import 'package:xiaoheiqun/pages/user/settings.dart';

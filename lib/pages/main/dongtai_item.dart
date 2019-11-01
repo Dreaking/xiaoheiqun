@@ -51,6 +51,8 @@ class DongtaiItemState extends State<DongtaiItem> {
         ),
       ),
       onTap: () {
+        eventBus.fire(setSlide(false));
+
         if (userId == null) {
           Navigator.push(
               context, CupertinoPageRoute(builder: (context) => Login()));

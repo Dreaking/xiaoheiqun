@@ -48,7 +48,6 @@
             if ([[[UIDevice currentDevice] systemVersion]intValue]>=10) {
                 UNNotificationAction *action1_ios10 = [UNNotificationAction actionWithIdentifier:@"action1_identifier" title:@"打开应用" options:UNNotificationActionOptionForeground];
                 UNNotificationAction *action2_ios10 = [UNNotificationAction actionWithIdentifier:@"action2_identifier" title:@"忽略" options:UNNotificationActionOptionForeground];
-
                 //UNNotificationCategoryOptionNone
                 //UNNotificationCategoryOptionCustomDismissAction  清除通知被触发会走通知的代理方法
                 //UNNotificationCategoryOptionAllowInCarPlay       适用于行车模式
@@ -62,20 +61,23 @@
                 }else{
                 }
             }];
+     
         } else {
             result(FlutterMethodNotImplemented);
         }
         // TODO
     }];
     
-
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 //    return YES;
 }
 
+
+
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
+    [UMessage registerDeviceToken:deviceToken];
     if (![deviceToken isKindOfClass:[NSData class]]) return;
     const unsigned *tokenBytes = (const unsigned *)[deviceToken bytes];
     NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
@@ -84,4 +86,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
                           ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
     NSLog(@"deviceToken:%@",hexToken);
 }
+
+
 @end
+
+
